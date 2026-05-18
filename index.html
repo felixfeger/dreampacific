@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamPacific Airways — Felix Lego City International Airport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #001E62;
+      --navy-dark:  #000E38;
+      --navy-mid:   #002B8A;
+      --blue:       #0066CC;
+      --blue-dark:  #0055AA;
+      --blue-light: #E8F2FF;
+      --gold:       #C8900A;
+      --white:      #FFFFFF;
+      --off-white:  #F7F8FA;
+      --gray-100:   #F0F2F6;
+      --gray-200:   #DDE2EC;
+      --gray-400:   #9AA3B5;
+      --gray-600:   #5A6272;
+      --gray-800:   #2C3348;
+      --text:       #141928;
+      --r:          8px;
+      --r-lg:       16px;
+      --sh-sm:      0 2px 8px rgba(0,0,0,.08);
+      --sh-md:      0 4px 20px rgba(0,0,0,.12);
+      --sh-lg:      0 8px 40px rgba(0,0,0,.20);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 15px; line-height: 1.6; color: var(--text);
+      background: var(--white); -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Utilities ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Status Bar ── */
+    .status-bar { background: #002B8A; padding: 7px 0; }
+    .status-bar-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+    .status-item { font-size: 12px; color: rgba(255,255,255,.72); display: flex; align-items: center; gap: 7px; }
+    .dot-live { width: 6px; height: 6px; border-radius: 50%; background: #4CAF50; flex-shrink: 0; }
+    .status-links { display: flex; gap: 20px; }
+    .status-links a { font-size: 12px; color: rgba(255,255,255,.55); text-decoration: none; transition: color .15s; }
+    .status-links a:hover { color: #fff; }
+
+    /* ── Navigation ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--navy); height: 62px;
+      display: flex; align-items: center;
+      transition: box-shadow .3s;
+    }
+    .nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.35); }
+    .nav-inner {
+      width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; gap: 28px;
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    .nav-logo img { height: 34px; width: auto; display: block; }
+    .nav-logo-fallback {
+      font-size: 15px; font-weight: 800; letter-spacing: -.01em;
+      color: #fff; display: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; }
+    .nav-links a {
+      display: block; padding: 7px 13px;
+      font-size: 13.5px; font-weight: 500; letter-spacing: .01em;
+      color: rgba(255,255,255,.78); text-decoration: none;
+      border-radius: 6px; transition: color .15s, background .15s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.1); }
+    .nav-links a.active { color: #fff; }
+    .nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .btn-nav-ghost {
+      padding: 6px 15px; font-size: 13px; font-weight: 600; font-family: inherit;
+      color: rgba(255,255,255,.88); background: transparent;
+      border: 1.5px solid rgba(255,255,255,.3); border-radius: 6px;
+      cursor: pointer; text-decoration: none; transition: all .15s;
+    }
+    .btn-nav-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.55); color: #fff; }
+    .btn-nav-solid {
+      padding: 6px 17px; font-size: 13px; font-weight: 700; font-family: inherit;
+      color: var(--navy); background: #fff; border: none; border-radius: 6px;
+      cursor: pointer; text-decoration: none; transition: all .15s;
+    }
+    .btn-nav-solid:hover { background: var(--blue-light); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100svh;
+      background: var(--navy-dark);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 0 64px; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 80% at 15% 60%, rgba(0,102,204,.16) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 85% 20%, rgba(0,43,138,.22) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 50% at 55% 85%, rgba(0,30,98,.3) 0%, transparent 50%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(160,195,255,.65);
+      margin-bottom: 18px; display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 28px; height: 1px;
+      background: rgba(160,195,255,.4); flex-shrink: 0;
+    }
+    .hero-title {
+      font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+      font-size: clamp(46px, 7vw, 86px);
+      line-height: 1.06; letter-spacing: -.025em;
+      color: #fff; font-weight: 400; margin-bottom: 22px;
+    }
+    .hero-title em { font-style: italic; color: rgba(140,190,255,.88); }
+    .hero-sub {
+      font-size: 16px; font-weight: 400; line-height: 1.65;
+      color: rgba(255,255,255,.55); max-width: 500px; margin-bottom: 44px;
+    }
+
+    /* ── Search Widget ── */
+    .search-widget {
+      background: #fff; border-radius: var(--r-lg);
+      box-shadow: var(--sh-lg); max-width: 960px;
+    }
+    .search-tabs {
+      display: flex; padding: 0 24px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .search-tab {
+      padding: 15px 18px 13px;
+      font-size: 13px; font-weight: 600; font-family: inherit;
+      color: var(--gray-600); background: none; border: none;
+      border-bottom: 3px solid transparent; margin-bottom: -1px;
+      cursor: pointer; letter-spacing: .02em; transition: all .15s;
+    }
+    .search-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .search-tab:hover:not(.active) { color: var(--text); }
+    .search-body { padding: 22px 24px 24px; }
+
+    .search-row-1 {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr 1px 1fr 1px 1fr;
+      gap: 0; align-items: stretch; margin-bottom: 12px;
+    }
+    .search-divider { background: var(--gray-200); align-self: stretch; margin: 4px 0; }
+
+    .search-field { display: flex; flex-direction: column; }
+    .search-field label {
+      font-size: 10px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--gray-400);
+      padding: 10px 14px 3px;
+    }
+    .search-field-input {
+      display: flex; align-items: center; gap: 8px;
+      padding: 0 14px 10px;
+    }
+    .search-field-input svg { width: 15px; height: 15px; color: var(--gray-400); flex-shrink: 0; }
+    .search-field input,
+    .search-field select {
+      flex: 1; font-family: inherit; font-size: 15px; font-weight: 500;
+      color: var(--text); border: none; outline: none; background: none;
+      appearance: none; -webkit-appearance: none; min-width: 0;
+      height: 30px; padding: 0; cursor: pointer;
+    }
+    .search-field input::placeholder { color: var(--gray-400); font-weight: 400; }
+    .search-field:focus-within { background: var(--gray-100); border-radius: 8px; }
+
+    .swap-btn {
+      width: 40px; align-self: center; margin-top: 8px;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: 1.5px solid var(--gray-200);
+      border-radius: 50%; cursor: pointer; height: 34px; width: 34px;
+      color: var(--gray-600); margin: auto; transition: all .2s;
+    }
+    .swap-btn:hover { background: var(--blue); border-color: var(--blue); color: #fff; transform: rotate(180deg); }
+
+    .search-row-2 {
+      display: flex; gap: 12px; align-items: flex-end;
+    }
+    .search-row-2 .search-field {
+      flex: 1;
+      border: 1.5px solid var(--gray-200); border-radius: 8px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .search-row-2 .search-field:focus-within {
+      border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,102,204,.1);
+      background: #fff;
+    }
+    .search-row-2 .search-field-input { padding: 0 14px 10px; }
+
+    .search-btn {
+      height: 52px; padding: 0 30px;
+      font-size: 15px; font-weight: 700; font-family: inherit;
+      color: #fff; background: var(--blue); border: none; border-radius: 8px;
+      cursor: pointer; white-space: nowrap; letter-spacing: .02em;
+      transition: all .2s; flex-shrink: 0;
+    }
+    .search-btn:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,.35); }
+    .search-btn:active { transform: none; }
+
+    .search-row-1-border {
+      border: 1.5px solid var(--gray-200); border-radius: 8px; overflow: hidden;
+      margin-bottom: 12px;
+      display: grid;
+      grid-template-columns: 1fr 44px 1fr 1px 1fr 1px 1fr;
+      align-items: stretch;
+    }
+    .search-row-1-border .search-field:first-child,
+    .search-row-1-border .search-field:nth-child(3) { border-right: 1.5px solid var(--gray-200); }
+    .search-row-1-border:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,102,204,.1); }
+
+    /* ── Sections ── */
+    .section { padding: 88px 0; }
+    .section-alt { background: var(--off-white); }
+    .section-dark { background: var(--navy-dark); }
+    .section-navy { background: var(--navy); }
+
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 12px;
+    }
+    .section-label-light { color: rgba(140,190,255,.75); }
+    .section-title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 400; line-height: 1.14; letter-spacing: -.02em;
+      color: var(--text); margin-bottom: 14px;
+    }
+    .section-title-light { color: #fff; }
+    .section-sub {
+      font-size: 15px; color: var(--gray-600); max-width: 520px; line-height: 1.68;
+    }
+    .section-sub-light { color: rgba(255,255,255,.55); }
+    .section-hdr { margin-bottom: 48px; }
+    .section-hdr-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .link-more {
+      font-size: 13px; font-weight: 600; color: var(--blue);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+      white-space: nowrap; transition: gap .15s;
+    }
+    .link-more:hover { gap: 9px; }
+    .link-more-light { color: rgba(140,190,255,.85); }
+
+    /* ── How We Fly cards ── */
+    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .how-card {
+      border-radius: var(--r-lg); padding: 36px;
+      position: relative; overflow: hidden;
+    }
+    .how-card.card-dp {
+      background: linear-gradient(140deg, var(--navy) 0%, #003399 100%);
+      color: #fff;
+    }
+    .how-card.card-cs {
+      background: #fff; border: 1.5px solid var(--gray-200);
+    }
+    .type-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; border-radius: 20px; margin-bottom: 22px;
+      font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .badge-dp   { background: rgba(255,255,255,.14); color: rgba(255,255,255,.9); }
+    .badge-cs   { background: var(--blue-light); color: var(--blue); }
+    .badge-glob { background: #F3E8FF; color: #6B21A8; }
+    .how-card-title { font-size: 22px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 10px; }
+    .how-card-title-dark { color: var(--text); }
+    .how-card-desc { font-size: 14px; line-height: 1.7; margin-bottom: 22px; }
+    .how-card-desc-dark { color: var(--gray-600); }
+    .how-card-desc-light { color: rgba(255,255,255,.68); }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .chip {
+      padding: 4px 12px; border-radius: 20px;
+      font-size: 12px; font-weight: 600;
+    }
+    .chip-dp { background: rgba(255,255,255,.12); color: rgba(255,255,255,.82); border: 1px solid rgba(255,255,255,.14); }
+    .chip-cs-aa { background: #FFF0F0; color: #B91C1C; }
+    .chip-cs-ba { background: #EEF2FF; color: #1E40AF; }
+    .chip-cs-ek { background: #FFF7ED; color: #C2410C; }
+    .chip-cs-wn { background: #EEF2FF; color: #1D4ED8; }
+    .chip-cs-b6 { background: #EFF6FF; color: #1D4ED8; }
+    .chip-cs-ha { background: #F5F3FF; color: #6D28D9; }
+    .chip-cs-cx { background: #ECFDF5; color: #065F46; }
+    .globestar-note {
+      border-top: 1px solid rgba(255,255,255,.12);
+      margin-top: 20px; padding-top: 18px;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .globestar-note span { font-size: 12.5px; color: rgba(255,255,255,.52); line-height: 1.55; }
+
+    /* ── Destinations ── */
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 18px;
+    }
+    .dest-card {
+      border-radius: var(--r-lg); overflow: hidden;
+      position: relative; cursor: pointer;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .dest-card:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+    .dest-card:first-child { grid-row: span 2; }
+    .dest-img {
+      width: 100%; aspect-ratio: 4/3;
+      position: relative;
+    }
+    .dest-card:first-child .dest-img { aspect-ratio: unset; height: 100%; min-height: 340px; }
+    .dest-grad {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.1) 55%, transparent 100%);
+    }
+    .d-flx  { background: linear-gradient(150deg,#060d1f,#0f2d5c); }
+    .d-lax  { background: linear-gradient(150deg,#0d1b6e,#2563EB,#EC4899 100%); }
+    .d-lhr  { background: linear-gradient(150deg,#14532d,#15803d,#86efac 100%); }
+    .d-dxb  { background: linear-gradient(150deg,#7c2d12,#ea580c,#fbbf24 100%); }
+    .d-hkg  { background: linear-gradient(150deg,#831843,#db2777,#fda4af 100%); }
+    .d-hnl  { background: linear-gradient(150deg,#164e63,#0891b2,#67e8f9 100%); }
+    .dest-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px; }
+    .dest-tag {
+      display: inline-block; padding: 2px 9px;
+      border-radius: 4px; font-size: 10px; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      margin-bottom: 6px; color: #fff;
+    }
+    .dest-city { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.2; }
+    .dest-sub  { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 2px; }
+    .dest-price {
+      position: absolute; top: 14px; right: 14px;
+      background: rgba(0,0,0,.48); backdrop-filter: blur(6px);
+      color: #fff; padding: 4px 10px; border-radius: 20px;
+      font-size: 12px; font-weight: 600;
+    }
+
+    /* ── Fleet ── */
+    .fleet-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .fleet-card {
+      background: #fff; border: 1.5px solid var(--gray-200);
+      border-radius: var(--r-lg); padding: 26px;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .fleet-card:hover { border-color: var(--blue); box-shadow: var(--sh-md); transform: translateY(-3px); }
+    .fleet-vis {
+      height: 112px; border-radius: 10px; margin-bottom: 18px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .fv-dp { background: linear-gradient(140deg, #001E62, #0044BB); }
+    .fv-gs { background: linear-gradient(140deg, #2E1065, #7E22CE); }
+    .fleet-vis svg { width: 110px; filter: drop-shadow(0 3px 8px rgba(0,0,0,.3)); }
+    .fleet-sub-label { font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 6px; }
+    .fleet-sub-dp { color: var(--blue); }
+    .fleet-sub-gs { color: #7E22CE; }
+    .fleet-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .fleet-type-line { font-size: 13px; color: var(--gray-600); margin-bottom: 16px; }
+    .fleet-specs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      border-top: 1px solid var(--gray-200); padding-top: 14px;
+    }
+    .fleet-spec-label { font-size: 10px; color: var(--gray-400); font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+    .fleet-spec-val { font-size: 14px; font-weight: 700; color: var(--text); }
+
+    /* ── Partners dark ── */
+    .partners-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 14px; }
+    .partner-card {
+      background: rgba(255,255,255,.05); border: 1.5px solid rgba(255,255,255,.09);
+      border-radius: var(--r); padding: 18px 10px; text-align: center;
+      cursor: pointer; transition: all .2s;
+    }
+    .partner-card:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); transform: translateY(-2px); }
+    .partner-iata {
+      width: 42px; height: 42px; border-radius: 50%;
+      font-size: 13px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px; color: #fff;
+    }
+    .iata-AA { background: #CC0000; }
+    .iata-BA { background: #003087; }
+    .iata-EK { background: #C8102E; }
+    .iata-WN { background: #304CB2; }
+    .iata-B6 { background: #0033A0; }
+    .iata-HA { background: #5D3193; }
+    .iata-CX { background: #006564; }
+    .partner-name { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.65); line-height: 1.3; }
+    .partner-hub  { font-size: 10px; color: rgba(255,255,255,.32); margin-top: 3px; }
+
+    /* ── CTA Banner ── */
+    .cta { background: linear-gradient(135deg, var(--navy) 0%, #003399 100%); padding: 88px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40Z' fill='white' fill-opacity='.025'/%3E%3C/svg%3E");
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(30px,4vw,52px); font-weight: 400;
+      color: #fff; letter-spacing: -.02em; margin-bottom: 14px;
+    }
+    .cta p { font-size: 15px; color: rgba(255,255,255,.58); margin-bottom: 36px; }
+    .btn-cta {
+      display: inline-block; padding: 13px 34px;
+      font-size: 14px; font-weight: 700; font-family: inherit;
+      border-radius: 8px; cursor: pointer; text-decoration: none;
+      transition: all .2s; margin: 0 6px; letter-spacing: .02em;
+    }
+    .btn-cta-white { color: var(--navy); background: #fff; border: 2px solid #fff; }
+    .btn-cta-white:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+    .btn-cta-ghost { color: #fff; background: transparent; border: 2px solid rgba(255,255,255,.38); }
+    .btn-cta-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.7); }
+
+    /* ── Footer ── */
+    .footer { background: #080D1C; color: rgba(255,255,255,.55); padding: 60px 0 30px; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 28px;
+    }
+    .footer-brand img { height: 38px; margin-bottom: 14px; display: block; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 230px; }
+    .footer-hub { font-size: 11px; color: rgba(255,255,255,.28); margin-top: 14px; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.88); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col a { font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; transition: color .15s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .footer-bottom p { font-size: 12px; }
+    .footer-legal { display: flex; gap: 22px; }
+    .footer-legal a { font-size: 12px; color: rgba(255,255,255,.32); text-decoration: none; }
+    .footer-legal a:hover { color: rgba(255,255,255,.7); }
+
+    /* ── Animations ── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+    .delay-4 { transition-delay: .4s; }
+    .delay-5 { transition-delay: .5s; }
+    .delay-6 { transition-delay: .6s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .partners-grid { grid-template-columns: repeat(4,1fr); }
+    }
+    @media (max-width: 860px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .fleet-grid { grid-template-columns: 1fr 1fr; }
+      .dest-grid { grid-template-columns: 1fr 1fr; }
+      .dest-card:first-child { grid-row: auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .partners-grid { grid-template-columns: repeat(4,1fr); }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .fleet-grid { grid-template-columns: 1fr; }
+      .dest-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+      .partners-grid { grid-template-columns: repeat(3,1fr); }
+      .hero-title { font-size: 42px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ░░ Status Bar ░░ -->
+<div class="status-bar">
+  <div class="status-bar-inner">
+    <span class="status-item">
+      <span class="dot-live"></span>
+      All systems operational · FLX Hub
+    </span>
+    <div class="status-links">
+      <a href="status.html">Flight Status</a>
+      <a href="checkin.html">Online Check-In</a>
+      <a href="account.html">My Trips</a>
+    </div>
+  </div>
+</div>
+
+<!-- ░░ Navigation ░░ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="./assets/logo.png" alt="DreamPacific Airways"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-fallback">DreamPacific</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Book</a></li>
+      <li><a href="checkin.html">Check-In</a></li>
+      <li><a href="status.html">Flight Status</a></li>
+      <li><a href="account.html">My Trips</a></li>
+      <li><a href="#fleet">Our Fleet</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="account.html" class="btn-nav-ghost" id="navLoginBtn">Sign In</a>
+      <a href="account.html?tab=register" class="btn-nav-solid">Create Account</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ░░ Hero ░░ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Felix Lego City International Airport &nbsp;·&nbsp; Hub FLX</div>
+
+    <h1 class="hero-title">
+      The world<br>connects <em>here.</em>
+    </h1>
+
+    <p class="hero-sub">
+      DreamPacific Airways operates codeshare partnerships with seven of the world's leading carriers, plus independent nonstop service on our own Boeing and Airbus fleet from FLX.
+    </p>
+
+    <!-- Search Widget -->
+    <div class="search-widget" id="searchWidget">
+
+      <div class="search-tabs">
+        <button class="search-tab active" data-trip="oneway">One Way</button>
+        <button class="search-tab" data-trip="roundtrip">Round Trip</button>
+      </div>
+
+      <div class="search-body">
+        <!-- Row 1: Route + date + cabin -->
+        <div class="search-row-1-border">
+          <!-- Origin -->
+          <div class="search-field">
+            <label for="s-origin">From</label>
+            <div class="search-field-input">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
+              <input type="text" id="s-origin" placeholder="City or airport" list="airportList" value="FLX – Felix Lego City" autocomplete="off">
+            </div>
+          </div>
+
+          <!-- Swap -->
+          <div style="display:flex;align-items:center;justify-content:center;border-right:1.5px solid var(--gray-200);">
+            <button class="swap-btn" id="swapBtn" title="Swap">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+            </button>
+          </div>
+
+          <!-- Destination -->
+          <div class="search-field" style="border-right:1.5px solid var(--gray-200);">
+            <label for="s-dest">To</label>
+            <div class="search-field-input">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
+              <input type="text" id="s-dest" placeholder="City or airport" list="airportList" autocomplete="off">
+            </div>
+          </div>
+
+          <!-- Depart Date -->
+          <div class="search-field" style="border-right:1.5px solid var(--gray-200);">
+            <label for="s-depart">Depart</label>
+            <div class="search-field-input">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <input type="date" id="s-depart">
+            </div>
+          </div>
+
+          <!-- Return Date (hidden) -->
+          <div class="search-field" id="returnField" style="display:none;border-right:1.5px solid var(--gray-200);">
+            <label for="s-return">Return</label>
+            <div class="search-field-input">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <input type="date" id="s-return">
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: cabin + passengers + type + button -->
+        <div class="search-row-2">
+          <div class="search-field">
+            <label for="s-cabin">Cabin</label>
+            <div class="search-field-input">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/></svg>
+              <select id="s-cabin">
+                <option value="economy">Economy</option>
+                <option value="premium_economy">Premium Economy</option>
+                <option value="business">Business</option>
+                <option value="first">First Class</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="search-field">
+            <label for="s-pax">Passengers</label>
+            <div class="search-field-input">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <select id="s-pax">
+                <option>1 Passenger</option>
+                <option>2 Passengers</option>
+                <option>3 Passengers</option>
+                <option>4 Passengers</option>
+                <option>5 Passengers</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="search-field">
+            <label for="s-type">Flight Type</label>
+            <div class="search-field-input">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 2H6.5L2 12l5 2 5-4 5 4 5-2Z"/><path d="M12 10v10"/></svg>
+              <select id="s-type">
+                <option value="all">All Flights</option>
+                <option value="independent">DP Independent</option>
+                <option value="codeshare">Codeshare</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="search-btn" id="searchBtn">Search Flights &nbsp;→</button>
+        </div>
+      </div>
+    </div><!-- /search-widget -->
+
+    <datalist id="airportList">
+      <option value="FLX – Felix Lego City">
+      <option value="LAX – Los Angeles">
+      <option value="JFK – New York">
+      <option value="ORD – Chicago">
+      <option value="MIA – Miami">
+      <option value="DFW – Dallas">
+      <option value="BOS – Boston">
+      <option value="LGA – New York LaGuardia">
+      <option value="FLL – Fort Lauderdale">
+      <option value="HNL – Honolulu">
+      <option value="OGG – Maui">
+      <option value="LHR – London Heathrow">
+      <option value="DXB – Dubai">
+      <option value="HKG – Hong Kong">
+    </datalist>
+  </div><!-- /hero-content -->
+</section>
+
+<!-- ░░ How We Fly ░░ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-hdr">
+      <div class="section-label">How We Fly</div>
+      <h2 class="section-title">Two ways to reach the world from FLX</h2>
+    </div>
+    <div class="how-grid">
+
+      <!-- DreamPacific Independent -->
+      <div class="how-card card-dp reveal">
+        <span class="type-badge badge-dp">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 2 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          DreamPacific Independent
+        </span>
+        <div class="how-card-title">Own Metal. Own Experience.</div>
+        <div class="how-card-desc how-card-desc-light">
+          Our Airbus A321neo and Boeing 787 Dreamliner aircraft operate direct services between Felix Lego City and select destinations. Full DreamPacific cabin, crew, and in-flight experience on every departure.
+        </div>
+        <div class="chips" style="margin-bottom:20px;">
+          <span class="chip chip-dp">Airbus A321neo ×2</span>
+          <span class="chip chip-dp">Boeing 787 ×2</span>
+        </div>
+        <div class="globestar-note">
+          <span class="type-badge badge-glob" style="margin:0;flex-shrink:0;font-size:9px;">Globestar</span>
+          <span>Subsidiary airline operating scheduled cargo (747F) and private charter (747) services under the DreamPacific umbrella.</span>
+        </div>
+      </div>
+
+      <!-- Codeshare -->
+      <div class="how-card card-cs reveal delay-1">
+        <span class="type-badge badge-cs">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Codeshare Partnership
+        </span>
+        <div class="how-card-title how-card-title-dark">Contracted &amp; Connected.</div>
+        <div class="how-card-desc how-card-desc-dark">
+          DreamPacific has contracted with seven of the world's major carriers to operate direct service into Felix Lego City. These codeshare flights connect FLX to each partner's hub — giving passengers seamless access to their full global network.
+        </div>
+        <div style="font-size:11px;color:var(--gray-400);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Our 7 Partners</div>
+        <div class="chips">
+          <span class="chip chip-cs-aa">American Airlines</span>
+          <span class="chip chip-cs-ba">British Airways</span>
+          <span class="chip chip-cs-ek">Emirates</span>
+          <span class="chip chip-cs-wn">Southwest</span>
+          <span class="chip chip-cs-b6">JetBlue</span>
+          <span class="chip chip-cs-ha">Hawaiian</span>
+          <span class="chip chip-cs-cx">Cathay Pacific</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░ Popular Destinations ░░ -->
+<section class="section" id="destinations">
+  <div class="container">
+    <div class="section-hdr">
+      <div class="section-label">Where We Fly</div>
+      <div class="section-hdr-row">
+        <h2 class="section-title">Popular routes from FLX</h2>
+        <a href="flights.html" class="link-more">All flights &nbsp;→</a>
+      </div>
+    </div>
+    <div class="dest-grid">
+
+      <div class="dest-card reveal" onclick="quickSearch('FLX','LAX')">
+        <div class="dest-img d-lax"><div class="dest-grad"></div></div>
+        <span class="dest-price">from $149</span>
+        <div class="dest-info">
+          <div class="dest-tag" style="background:rgba(0,65,145,.85);">DP Independent</div>
+          <div class="dest-city">Los Angeles</div>
+          <div class="dest-sub">California · LAX</div>
+        </div>
+      </div>
+
+      <div class="dest-card reveal delay-1" onclick="quickSearch('FLX','JFK')">
+        <div class="dest-img d-flx"><div class="dest-grad"></div></div>
+        <span class="dest-price">from $219</span>
+        <div class="dest-info">
+          <div class="dest-tag" style="background:rgba(0,51,160,.85);">JetBlue Codeshare</div>
+          <div class="dest-city">New York</div>
+          <div class="dest-sub">New York · JFK</div>
+        </div>
+      </div>
+
+      <div class="dest-card reveal delay-2" onclick="quickSearch('FLX','LHR')">
+        <div class="dest-img d-lhr"><div class="dest-grad"></div></div>
+        <span class="dest-price">from $549</span>
+        <div class="dest-info">
+          <div class="dest-tag" style="background:rgba(0,48,135,.85);">British Airways</div>
+          <div class="dest-city">London</div>
+          <div class="dest-sub">United Kingdom · LHR</div>
+        </div>
+      </div>
+
+      <div class="dest-card reveal delay-1" onclick="quickSearch('FLX','DXB')">
+        <div class="dest-img d-dxb"><div class="dest-grad"></div></div>
+        <span class="dest-price">from $699</span>
+        <div class="dest-info">
+          <div class="dest-tag" style="background:rgba(200,16,46,.85);">Emirates</div>
+          <div class="dest-city">Dubai</div>
+          <div class="dest-sub">United Arab Emirates · DXB</div>
+        </div>
+      </div>
+
+      <div class="dest-card reveal delay-2" onclick="quickSearch('FLX','HKG')">
+        <div class="dest-img d-hkg"><div class="dest-grad"></div></div>
+        <span class="dest-price">from $629</span>
+        <div class="dest-info">
+          <div class="dest-tag" style="background:rgba(0,101,100,.85);">Cathay Pacific</div>
+          <div class="dest-city">Hong Kong</div>
+          <div class="dest-sub">Hong Kong · HKG</div>
+        </div>
+      </div>
+
+      <div class="dest-card reveal delay-3" onclick="quickSearch('FLX','HNL')">
+        <div class="dest-img d-hnl"><div class="dest-grad"></div></div>
+        <span class="dest-price">from $249</span>
+        <div class="dest-info">
+          <div class="dest-tag" style="background:rgba(93,49,147,.85);">Hawaiian Airlines</div>
+          <div class="dest-city">Honolulu</div>
+          <div class="dest-sub">Hawaii · HNL</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░ Fleet ░░ -->
+<section class="section section-alt" id="fleet">
+  <div class="container">
+    <div class="section-hdr">
+      <div class="section-label">Our Aircraft</div>
+      <div class="section-hdr-row">
+        <h2 class="section-title">The DreamPacific fleet</h2>
+        <span style="font-size:13px;color:var(--gray-600);">Including Globestar Airlines subsidiary</span>
+      </div>
+    </div>
+    <div class="fleet-grid">
+
+      <!-- A321neo -->
+      <div class="fleet-card reveal">
+        <div class="fleet-vis fv-dp">
+          <svg viewBox="0 0 140 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 30 Q32 25 70 23 Q102 21 126 26 L131 30 L126 34 Q102 38 70 37 Q32 37 8 33Z" fill="white" opacity=".9"/>
+            <path d="M70 23 Q76 8 87 6 L92 6 L89 23" fill="white" opacity=".75"/>
+            <path d="M70 37 Q73 45 79 49 L83 49 L81 37" fill="white" opacity=".65"/>
+            <path d="M38 25 Q42 16 51 14 L56 14 L54 25" fill="white" opacity=".45"/>
+            <circle cx="18" cy="37" r="4.5" fill="white" opacity=".55"/>
+            <circle cx="30" cy="37" r="4.5" fill="white" opacity=".55"/>
+            <circle cx="126" cy="34" r="3.5" fill="white" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="fleet-sub-label fleet-sub-dp">DreamPacific Airways</div>
+        <div class="fleet-name">Airbus A321neo</div>
+        <div class="fleet-type-line">Narrow-body · Short/Medium Haul · 2 Aircraft</div>
+        <div class="fleet-specs">
+          <div><div class="fleet-spec-label">Business</div><div class="fleet-spec-val">12 seats</div></div>
+          <div><div class="fleet-spec-label">Economy</div><div class="fleet-spec-val">168 seats</div></div>
+          <div><div class="fleet-spec-label">Range</div><div class="fleet-spec-val">4,000 nm</div></div>
+          <div><div class="fleet-spec-label">Total</div><div class="fleet-spec-val">180 seats</div></div>
+        </div>
+      </div>
+
+      <!-- 787 -->
+      <div class="fleet-card reveal delay-1">
+        <div class="fleet-vis fv-dp">
+          <svg viewBox="0 0 140 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 30 Q34 25 74 23 Q108 21 130 27 L135 31 L130 35 Q108 39 74 38 Q34 37 6 33Z" fill="white" opacity=".9"/>
+            <path d="M74 23 Q81 5 94 3 L99 3 L96 23" fill="white" opacity=".78"/>
+            <path d="M74 38 Q78 47 84 51 L89 51 L86 38" fill="white" opacity=".65"/>
+            <path d="M40 25 Q45 14 56 12 L62 12 L59 25" fill="white" opacity=".45"/>
+            <circle cx="16" cy="38" r="5" fill="white" opacity=".55"/>
+            <circle cx="29" cy="38" r="5" fill="white" opacity=".55"/>
+            <circle cx="130" cy="35" r="4" fill="white" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="fleet-sub-label fleet-sub-dp">DreamPacific Airways</div>
+        <div class="fleet-name">Boeing 787 Dreamliner</div>
+        <div class="fleet-type-line">Wide-body · Long Haul · 2 Aircraft</div>
+        <div class="fleet-specs">
+          <div><div class="fleet-spec-label">Business</div><div class="fleet-spec-val">28 seats</div></div>
+          <div><div class="fleet-spec-label">Prem. Economy</div><div class="fleet-spec-val">21 seats</div></div>
+          <div><div class="fleet-spec-label">Economy</div><div class="fleet-spec-val">222 seats</div></div>
+          <div><div class="fleet-spec-label">Range</div><div class="fleet-spec-val">7,500 nm</div></div>
+        </div>
+      </div>
+
+      <!-- Globestar 747 -->
+      <div class="fleet-card reveal delay-2">
+        <div class="fleet-vis fv-gs">
+          <svg viewBox="0 0 140 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 32 Q35 27 72 25 Q106 23 130 29 L134 33 L130 37 Q106 41 72 41 Q35 41 6 36Z" fill="white" opacity=".85"/>
+            <path d="M72 25 Q77 12 88 10 Q99 10 101 15 L98 25" fill="white" opacity=".88"/>
+            <path d="M88 25 Q92 14 104 13 L110 14 L106 25" fill="white" opacity=".55"/>
+            <path d="M72 41 Q76 50 82 54 L87 54 L84 41" fill="white" opacity=".6"/>
+            <path d="M38 27 Q43 16 54 14 L60 14 L57 27" fill="white" opacity=".45"/>
+            <circle cx="15" cy="40" r="5.5" fill="white" opacity=".55"/>
+            <circle cx="28" cy="40" r="5.5" fill="white" opacity=".55"/>
+            <circle cx="130" cy="37" r="4" fill="white" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="fleet-sub-label fleet-sub-gs">Globestar Airlines</div>
+        <div class="fleet-name">Boeing 747</div>
+        <div class="fleet-type-line">Cargo (747F) · Charter (747) · 2 Aircraft</div>
+        <div class="fleet-specs">
+          <div><div class="fleet-spec-label">Cargo</div><div class="fleet-spec-val">747F ×1</div></div>
+          <div><div class="fleet-spec-label">Charter</div><div class="fleet-spec-val">747 ×1</div></div>
+          <div><div class="fleet-spec-label">Charter Cap.</div><div class="fleet-spec-val">310 seats</div></div>
+          <div><div class="fleet-spec-label">Range</div><div class="fleet-spec-val">8,000 nm</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░ Partners ░░ -->
+<section class="section section-dark" id="partners">
+  <div class="container">
+    <div class="section-hdr">
+      <div class="section-label section-label-light">Codeshare Network</div>
+      <div class="section-hdr-row">
+        <div>
+          <h2 class="section-title section-title-light">Our airline partners</h2>
+          <p class="section-sub section-sub-light">Seven of the world's leading carriers contracted to bring their full global networks directly to Felix Lego City.</p>
+        </div>
+        <a href="flights.html?type=codeshare" class="link-more link-more-light">View codeshare flights →</a>
+      </div>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card reveal">
+        <div class="partner-iata iata-AA">AA</div>
+        <div class="partner-name">American Airlines</div>
+        <div class="partner-hub">DFW Hub</div>
+      </div>
+      <div class="partner-card reveal delay-1">
+        <div class="partner-iata iata-BA">BA</div>
+        <div class="partner-name">British Airways</div>
+        <div class="partner-hub">LHR Hub</div>
+      </div>
+      <div class="partner-card reveal delay-2">
+        <div class="partner-iata iata-EK">EK</div>
+        <div class="partner-name">Emirates</div>
+        <div class="partner-hub">DXB Hub</div>
+      </div>
+      <div class="partner-card reveal delay-3">
+        <div class="partner-iata iata-WN">WN</div>
+        <div class="partner-name">Southwest Airlines</div>
+        <div class="partner-hub">DAL Hub</div>
+      </div>
+      <div class="partner-card reveal delay-4">
+        <div class="partner-iata iata-B6">B6</div>
+        <div class="partner-name">JetBlue Airways</div>
+        <div class="partner-hub">JFK Hub</div>
+      </div>
+      <div class="partner-card reveal delay-5">
+        <div class="partner-iata iata-HA">HA</div>
+        <div class="partner-name">Hawaiian Airlines</div>
+        <div class="partner-hub">HNL Hub</div>
+      </div>
+      <div class="partner-card reveal delay-6">
+        <div class="partner-iata iata-CX">CX</div>
+        <div class="partner-name">Cathay Pacific</div>
+        <div class="partner-hub">HKG Hub</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CTA ░░ -->
+<section class="cta">
+  <div class="container cta-inner">
+    <h2>Ready to take off?</h2>
+    <p>Create your DreamPacific account to manage bookings, check in online, and access your trip history.</p>
+    <a href="account.html?tab=register" class="btn-cta btn-cta-white">Create Account</a>
+    <a href="flights.html" class="btn-cta btn-cta-ghost">Browse All Flights</a>
+  </div>
+</section>
+
+<!-- ░░ Footer ░░ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="./assets/logo.png" alt="DreamPacific Airways"
+             onerror="this.style.display='none'">
+        <p>DreamPacific Airways — the flag carrier of Felix Lego City, connecting FLX to the world through our own fleet and global codeshare network.</p>
+        <div class="footer-hub">Hub: Felix Lego City International Airport (FLX)</div>
+      </div>
+      <div class="footer-col">
+        <h4>Travel</h4>
+        <ul>
+          <li><a href="flights.html">Book a Flight</a></li>
+          <li><a href="checkin.html">Online Check-In</a></li>
+          <li><a href="status.html">Flight Status</a></li>
+          <li><a href="account.html">Manage Booking</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Information</h4>
+        <ul>
+          <li><a href="#fleet">Our Fleet</a></li>
+          <li><a href="#partners">Codeshare Partners</a></li>
+          <li><a href="#">Baggage Policy</a></li>
+          <li><a href="#">Seat Maps</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About DreamPacific</a></li>
+          <li><a href="#">Globestar Airlines</a></li>
+          <li><a href="#">Cargo Services</a></li>
+          <li><a href="admin.html">Admin Portal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 DreamPacific Airways. Felix Lego City, FLX. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Config ──
+  const API = 'https://YOUR-WORKER.workers.dev'; // ← update with your Worker URL
+
+  // ── Nav scroll ──
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), { passive: true });
+
+  // ── Depart date: set to tomorrow ──
+  const tmr = new Date(); tmr.setDate(tmr.getDate() + 1);
+  const fmt = d => d.toISOString().split('T')[0];
+  const departEl = document.getElementById('s-depart');
+  const returnEl = document.getElementById('s-return');
+  departEl.value = fmt(tmr);
+  departEl.min   = fmt(tmr);
+
+  // ── Trip tabs ──
+  document.querySelectorAll('.search-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const isRT = tab.dataset.trip === 'roundtrip';
+      const rf = document.getElementById('returnField');
+      rf.style.display = isRT ? 'flex' : 'none';
+      if (isRT) {
+        const ret = new Date(departEl.value || tmr);
+        ret.setDate(ret.getDate() + 7);
+        returnEl.value = fmt(ret);
+        returnEl.min = departEl.value;
+      }
+    });
+  });
+
+  // Sync return min when depart changes
+  departEl.addEventListener('change', () => { returnEl.min = departEl.value; });
+
+  // ── Swap ──
+  document.getElementById('swapBtn').addEventListener('click', () => {
+    const o = document.getElementById('s-origin');
+    const d = document.getElementById('s-dest');
+    [o.value, d.value] = [d.value, o.value];
+  });
+
+  // ── Search ──
+  function extractIATA(str) {
+    if (!str) return '';
+    const m = str.match(/^([A-Z]{3})\b/);
+    if (m) return m[1];
+    const parts = str.split(/[–\-–]/);
+    const code = parts[0].trim().toUpperCase();
+    return code.length === 3 ? code : '';
+  }
+
+  function performSearch() {
+    const origin = extractIATA(document.getElementById('s-origin').value);
+    const dest   = extractIATA(document.getElementById('s-dest').value);
+    if (!origin || !dest) { alert('Please enter valid origin and destination airports.'); return; }
+    const params = new URLSearchParams({
+      origin, destination: dest,
+      date:       document.getElementById('s-depart').value,
+      cabin:      document.getElementById('s-cabin').value,
+      passengers: document.getElementById('s-pax').value.split(' ')[0],
+      type:       document.getElementById('s-type').value,
+    });
+    window.location.href = `flights.html?${params}`;
+  }
+
+  document.getElementById('searchBtn').addEventListener('click', performSearch);
+  document.getElementById('searchWidget').addEventListener('keydown', e => {
+    if (e.key === 'Enter') performSearch();
+  });
+
+  function quickSearch(o, d) {
+    const params = new URLSearchParams({ origin: o, destination: d, date: fmt(tmr), cabin: 'economy', passengers: '1', type: 'all' });
+    window.location.href = `flights.html?${params}`;
+  }
+
+  // ── Auth state ──
+  const user = JSON.parse(localStorage.getItem('dp_user') || 'null');
+  if (user) {
+    const btn = document.getElementById('navLoginBtn');
+    btn.textContent = `Hi, ${user.first_name}`;
+    btn.href = 'account.html';
+  }
+
+  // ── Scroll reveal ──
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
