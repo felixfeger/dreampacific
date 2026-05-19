@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal — DreamPacific Airways</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #001B5E;
+      --navy-dk:  #000F3A;
+      --blue:     #0057B8;
+      --blue-h:   #004699;
+      --blue-lt:  #E6EEF9;
+      --white:    #FFFFFF;
+      --gray-50:  #F8F9FC;
+      --gray-100: #EEF0F6;
+      --gray-200: #D8DCE8;
+      --gray-300: #BEC7D8;
+      --gray-400: #8D97AF;
+      --gray-600: #535E78;
+      --gray-800: #252D42;
+      --text:     #0F1626;
+      --green:    #059669;
+      --green-lt: #ECFDF5;
+      --red:      #DC2626;
+      --red-lt:   #FEF2F2;
+      --amber:    #D97706;
+      --amber-lt: #FFFBEB;
+      --purple:   #7C3AED;
+      --purple-lt:#F5F3FF;
+      --sidebar-w: 240px;
+    }
+
+    html { height: 100%; }
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; background: var(--gray-50); height: 100%; display: flex; flex-direction: column; }
+
+    /* ── Admin gate (login) ── */
+    .gate {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: var(--navy-dk); padding: 24px;
+    }
+    .gate-card {
+      background: #fff; border-radius: 20px; width: 100%; max-width: 400px;
+      overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,.4);
+    }
+    .gate-head {
+      background: linear-gradient(135deg, var(--navy) 0%, #002FA8 100%);
+      padding: 32px; text-align: center;
+    }
+    .gate-head img { height: 38px; display: block; margin: 0 auto 14px; }
+    .gate-head h1 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .gate-head p  { font-size: 12px; color: rgba(255,255,255,.48); }
+    .gate-body { padding: 28px; }
+    .gate-label { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--gray-600); display: block; margin-bottom: 6px; }
+    .gate-input { width: 100%; padding: 11px 14px; font-size: 14px; font-family: inherit; font-weight: 500; color: var(--text); background: var(--gray-50); border: 1.5px solid var(--gray-200); border-radius: 9px; outline: none; margin-bottom: 14px; transition: border-color .15s, box-shadow .15s; }
+    .gate-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,87,184,.1); background: #fff; }
+    .gate-btn { width: 100%; padding: 12px; font-size: 14px; font-weight: 700; font-family: inherit; color: #fff; background: var(--blue); border: none; border-radius: 9px; cursor: pointer; transition: background .2s; }
+    .gate-btn:hover { background: var(--blue-h); }
+    .gate-btn:disabled { background: var(--gray-300); cursor: not-allowed; }
+    .gate-err { background: var(--red-lt); border: 1px solid #fecaca; color: var(--red); font-size: 13px; padding: 9px 12px; border-radius: 8px; margin-bottom: 14px; display: none; }
+    .gate-err.show { display: block; }
+
+    /* ── App shell ── */
+    .app { display: none; flex: 1; flex-direction: row; min-height: 100vh; }
+    .app.visible { display: flex; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-w); background: var(--navy-dk); flex-shrink: 0;
+      display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100;
+      overflow-y: auto;
+    }
+    .sidebar-logo { padding: 20px 20px 16px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .sidebar-logo img { height: 34px; display: block; }
+    .sidebar-logo-sub { font-size: 9.5px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-top: 6px; }
+
+    .sidebar-section { padding: 18px 12px 6px; }
+    .sidebar-section-label { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); padding: 0 8px; margin-bottom: 4px; }
+    .sidebar-link {
+      display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.58); text-decoration: none; cursor: pointer;
+      transition: background .15s, color .15s; border: none; background: none; width: 100%; text-align: left; font-family: inherit;
+    }
+    .sidebar-link:hover { background: rgba(255,255,255,.07); color: rgba(255,255,255,.88); }
+    .sidebar-link.active { background: rgba(255,255,255,.12); color: #fff; font-weight: 600; }
+    .sidebar-link svg { flex-shrink: 0; opacity: .7; }
+    .sidebar-link.active svg { opacity: 1; }
+
+    .sidebar-bottom { margin-top: auto; padding: 12px; border-top: 1px solid rgba(255,255,255,.06); }
+    .sidebar-user { display: flex; align-items: center; gap: 10px; padding: 10px; }
+    .sidebar-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .sidebar-user-name { font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.75); }
+    .sidebar-user-role { font-size: 10.5px; color: rgba(255,255,255,.32); }
+    .sidebar-logout { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.4); cursor: pointer; background: none; border: none; width: 100%; font-family: inherit; transition: all .15s; }
+    .sidebar-logout:hover { background: rgba(255,255,255,.06); color: rgba(255,255,255,.7); }
+
+    /* ── Main ── */
+    .main { margin-left: var(--sidebar-w); flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ── Top bar ── */
+    .topbar {
+      background: #fff; border-bottom: 1px solid var(--gray-200); padding: 0 32px;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 50;
+    }
+    .topbar-title { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
+    .topbar-btn {
+      padding: 7px 16px; font-size: 13px; font-weight: 600; font-family: inherit;
+      border-radius: 8px; cursor: pointer; border: none; transition: all .15s; display: flex; align-items: center; gap: 6px;
+    }
+    .topbar-btn-blue { background: var(--blue); color: #fff; }
+    .topbar-btn-blue:hover { background: var(--blue-h); }
+    .topbar-btn-ghost { background: var(--gray-100); color: var(--gray-800); border: 1.5px solid var(--gray-200); }
+    .topbar-btn-ghost:hover { background: var(--gray-200); }
+
+    /* ── Page body ── */
+    .page { padding: 28px 32px 64px; flex: 1; }
+
+    /* ── Panel system ── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── Stat cards ── */
+    .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 32px; }
+    .stat-card {
+      background: #fff; border: 1.5px solid var(--gray-200); border-radius: 14px; padding: 20px 22px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .stat-card:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(0,27,94,.09); }
+    .stat-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .stat-num { font-size: 28px; font-weight: 800; letter-spacing: -.03em; line-height: 1; margin-bottom: 4px; }
+    .stat-lbl { font-size: 12px; color: var(--gray-400); font-weight: 500; }
+
+    /* ── Table ── */
+    .table-card { background: #fff; border: 1.5px solid var(--gray-200); border-radius: 16px; overflow: hidden; }
+    .table-header { padding: 18px 24px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .table-title { font-size: 15px; font-weight: 700; color: var(--text); }
+    .table-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .table-search {
+      padding: 8px 14px; font-size: 13px; font-family: inherit; font-weight: 500;
+      border: 1.5px solid var(--gray-200); border-radius: 8px; outline: none; background: var(--gray-50);
+      color: var(--text); width: 220px; transition: border-color .15s;
+    }
+    .table-search:focus { border-color: var(--blue); background: #fff; }
+    .add-btn {
+      padding: 8px 18px; font-size: 13px; font-weight: 700; font-family: inherit;
+      background: var(--blue); color: #fff; border: none; border-radius: 8px; cursor: pointer;
+      display: flex; align-items: center; gap: 6px; transition: background .2s;
+    }
+    .add-btn:hover { background: var(--blue-h); }
+
+    table { width: 100%; border-collapse: collapse; }
+    thead th { padding: 11px 16px; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-400); background: var(--gray-50); border-bottom: 1px solid var(--gray-200); text-align: left; white-space: nowrap; }
+    tbody td { padding: 14px 16px; font-size: 13.5px; border-bottom: 1px solid var(--gray-100); vertical-align: middle; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr { transition: background .12s; }
+    tbody tr:hover { background: var(--gray-50); }
+
+    .badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: .03em; white-space: nowrap; }
+    .badge-green   { background: var(--green-lt); color: var(--green); }
+    .badge-blue    { background: var(--blue-lt);  color: var(--blue); }
+    .badge-amber   { background: var(--amber-lt); color: var(--amber); }
+    .badge-red     { background: var(--red-lt);   color: var(--red); }
+    .badge-purple  { background: var(--purple-lt);color: var(--purple); }
+    .badge-gray    { background: var(--gray-100); color: var(--gray-600); }
+
+    .tbl-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    .tbl-action-btn {
+      padding: 5px 11px; font-size: 12px; font-weight: 600; font-family: inherit;
+      border-radius: 6px; cursor: pointer; border: none; transition: all .15s;
+    }
+    .tbl-edit  { background: var(--blue-lt); color: var(--blue); }
+    .tbl-edit:hover  { background: var(--blue); color: #fff; }
+    .tbl-delete { background: var(--red-lt); color: var(--red); margin-left: 4px; }
+    .tbl-delete:hover { background: var(--red); color: #fff; }
+
+    .flight-num { font-size: 13px; font-weight: 800; color: var(--navy); font-feature-settings: 'tnum'; }
+    .airline-cell { display: flex; align-items: center; gap: 8px; }
+    .airline-logo-sm { width: 26px; height: 26px; border-radius: 6px; background: var(--gray-50); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; padding: 3px; flex-shrink: 0; }
+    .airline-logo-sm img { width: 100%; height: 100%; object-fit: contain; }
+
+    /* ── Modal ── */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 400;
+      display: none; align-items: flex-start; justify-content: center; padding: 32px 16px;
+      overflow-y: auto;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: #fff; border-radius: 20px; width: 100%; max-width: 680px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.3); overflow: hidden;
+      margin: auto;
+    }
+    .modal-head { padding: 24px 28px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; }
+    .modal-head h2 { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
+    .modal-close { width: 32px; height: 32px; border-radius: 8px; background: var(--gray-100); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--gray-600); font-size: 16px; transition: all .15s; }
+    .modal-close:hover { background: var(--gray-200); color: var(--text); }
+    .modal-body { padding: 24px 28px; max-height: 72vh; overflow-y: auto; }
+    .modal-footer { padding: 16px 28px; border-top: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: flex-end; gap: 10px; background: var(--gray-50); }
+
+    /* Form fields inside modal */
+    .mf-group { margin-bottom: 18px; }
+    .mf-group label { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-600); margin-bottom: 6px; }
+    .mf-input, .mf-select, .mf-textarea {
+      width: 100%; padding: 10px 13px; font-size: 13.5px; font-family: inherit; font-weight: 500;
+      color: var(--text); background: var(--gray-50); border: 1.5px solid var(--gray-200); border-radius: 9px;
+      outline: none; transition: border-color .15s, box-shadow .15s, background .15s;
+    }
+    .mf-input:focus, .mf-select:focus, .mf-textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,87,184,.1); background: #fff; }
+    .mf-textarea { resize: vertical; min-height: 80px; }
+    .mf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .mf-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .mf-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+    .mf-section { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin: 22px 0 14px; padding-bottom: 8px; border-bottom: 1.5px solid var(--blue-lt); }
+    .mf-hint { font-size: 11px; color: var(--gray-400); margin-top: 4px; }
+
+    .modal-save-btn { padding: 10px 26px; font-size: 14px; font-weight: 700; font-family: inherit; color: #fff; background: var(--blue); border: none; border-radius: 9px; cursor: pointer; transition: background .2s; }
+    .modal-save-btn:hover { background: var(--blue-h); }
+    .modal-save-btn:disabled { background: var(--gray-300); cursor: not-allowed; }
+    .modal-cancel-btn { padding: 10px 20px; font-size: 14px; font-weight: 600; font-family: inherit; color: var(--gray-600); background: #fff; border: 1.5px solid var(--gray-200); border-radius: 9px; cursor: pointer; transition: all .15s; }
+    .modal-cancel-btn:hover { border-color: var(--gray-400); color: var(--text); }
+
+    /* Alert in modal */
+    .modal-alert { padding: 10px 14px; border-radius: 9px; font-size: 13px; font-weight: 500; margin-bottom: 16px; display: none; }
+    .modal-alert.show { display: flex; align-items: flex-start; gap: 8px; }
+    .modal-alert-err { background: var(--red-lt); color: var(--red); border: 1px solid #fecaca; }
+    .modal-alert-ok  { background: var(--green-lt); color: var(--green); border: 1px solid #a7f3d0; }
+
+    /* ── Status update section ── */
+    .status-section { background: var(--amber-lt); border: 1.5px solid #fde68a; border-radius: 12px; padding: 16px 18px; margin-bottom: 18px; }
+    .status-section-title { font-size: 12px; font-weight: 700; color: var(--amber); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
+
+    /* ── Empty table ── */
+    .tbl-empty { padding: 60px 20px; text-align: center; color: var(--gray-400); }
+    .tbl-empty-icon { font-size: 40px; margin-bottom: 14px; }
+    .tbl-empty p { font-size: 14px; }
+
+    /* ── Skeleton ── */
+    .skel { background: linear-gradient(90deg, var(--gray-100) 25%, #e8ebf4 50%, var(--gray-100) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 6px; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    /* ── Responsive ── */
+    @media(max-width:900px) {
+      .sidebar { transform: translateX(-100%); transition: transform .25s; }
+      .sidebar.open { transform: none; }
+      .main { margin-left: 0; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:600px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .mf-grid-2, .mf-grid-3, .mf-grid-4 { grid-template-columns: 1fr; }
+      .page { padding: 20px 16px 48px; }
+      .topbar { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     ADMIN GATE
+═══════════════════════════════════════ -->
+<div class="gate" id="gateView">
+  <div class="gate-card">
+    <div class="gate-head">
+      <img src="https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png"
+           alt="DreamPacific Airways">
+      <h1>Admin Portal</h1>
+      <p>DreamPacific Airways · Authorized Access Only</p>
+    </div>
+    <div class="gate-body">
+      <div class="gate-err" id="gateErr">Invalid email or password.</div>
+      <label class="gate-label" for="gEmail">Email Address</label>
+      <input class="gate-input" type="email" id="gEmail" placeholder="admin@dreampacific.aero" autocomplete="email">
+      <label class="gate-label" for="gPass">Password</label>
+      <input class="gate-input" type="password" id="gPass" placeholder="Password" autocomplete="current-password">
+      <button class="gate-btn" id="gateBtn" onclick="gateLogin()">Sign In to Admin</button>
+      <div style="margin-top:18px;text-align:center"><a href="index.html" style="font-size:12px;color:var(--gray-400);text-decoration:none">← Back to DreamPacific.aero</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     APP SHELL
+═══════════════════════════════════════ -->
+<div class="app" id="appShell">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png"
+           alt="DreamPacific">
+      <div class="sidebar-logo-sub">Admin Portal</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Overview</div>
+      <button class="sidebar-link active" data-panel="dashboard" onclick="nav(this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Operations</div>
+      <button class="sidebar-link" data-panel="flights" onclick="nav(this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 2H6.5L2 12l5 2 5-4 5 4 5-2Z"/><path d="M12 10v10"/></svg>
+        Flights
+      </button>
+      <button class="sidebar-link" data-panel="bookings" onclick="nav(this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+        Bookings
+      </button>
+      <button class="sidebar-link" data-panel="users" onclick="nav(this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Users
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Setup</div>
+      <button class="sidebar-link" data-panel="aircraft" onclick="nav(this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Aircraft
+      </button>
+      <button class="sidebar-link" data-panel="airports" onclick="nav(this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
+        Airports
+      </button>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="sidebarInitials">A</div>
+        <div>
+          <div class="sidebar-user-name" id="sidebarName">Admin</div>
+          <div class="sidebar-user-role">Administrator</div>
+        </div>
+      </div>
+      <button class="sidebar-logout" onclick="doLogout()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── Main area ── -->
+  <div class="main">
+
+    <!-- Top bar -->
+    <div class="topbar">
+      <div class="topbar-title" id="topbarTitle">Dashboard</div>
+      <div class="topbar-right">
+        <button class="topbar-btn topbar-btn-ghost" onclick="window.open('index.html','_blank')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Site
+        </button>
+        <button class="topbar-btn topbar-btn-blue" id="topbarAddBtn" onclick="openAddFlight()" style="display:none">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Flight
+        </button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- ═══ DASHBOARD PANEL ═══ -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="stats-grid" id="statsGrid">
+          <div class="stat-card"><div class="stat-icon" style="background:#EFF6FF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0057B8" stroke-width="2"><path d="M17.5 2H6.5L2 12l5 2 5-4 5 4 5-2Z"/><path d="M12 10v10"/></svg></div><div class="stat-num skel" style="height:28px;width:60px;margin-bottom:8px" id="s-flights">—</div><div class="stat-lbl">Total Flights</div></div>
+          <div class="stat-card"><div class="stat-icon" style="background:#ECFDF5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg></div><div class="stat-num" id="s-bookings">—</div><div class="stat-lbl">Bookings</div></div>
+          <div class="stat-card"><div class="stat-icon" style="background:#F5F3FF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="stat-num" id="s-users">—</div><div class="stat-lbl">Registered Users</div></div>
+          <div class="stat-card"><div class="stat-icon" style="background:#FFFBEB"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="stat-num" id="s-revenue">—</div><div class="stat-lbl">Total Revenue</div></div>
+          <div class="stat-card"><div class="stat-icon" style="background:#EFF6FF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0057B8" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="stat-num" id="s-upcoming">—</div><div class="stat-lbl">Upcoming Flights</div></div>
+        </div>
+
+        <!-- Recent flights quick view -->
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">Recent Flights</div>
+            <button class="add-btn" onclick="nav(document.querySelector('[data-panel=flights]')); openAddFlight()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Flight
+            </button>
+          </div>
+          <table>
+            <thead><tr>
+              <th>Flight</th><th>Route</th><th>Departure</th><th>Status</th><th>Type</th>
+            </tr></thead>
+            <tbody id="dashFlightsTbody">
+              <tr><td colspan="5" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>Loading flights…</p></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ═══ FLIGHTS PANEL ═══ -->
+      <div class="panel" id="panel-flights">
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">All Flights</div>
+            <div class="table-actions">
+              <input class="table-search" type="text" id="flightSearch" placeholder="Search flight number…" oninput="filterFlights()">
+              <button class="add-btn" onclick="openAddFlight()">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add Flight
+              </button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr>
+                <th>Flight #</th><th>Airline</th><th>Route</th><th>Departure</th><th>Arrival</th><th>Status</th><th>Type</th><th>Pax</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="flightsTbody">
+                <tr><td colspan="9" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>Loading…</p></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ BOOKINGS PANEL ═══ -->
+      <div class="panel" id="panel-bookings">
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">All Bookings</div>
+            <input class="table-search" type="text" id="bookingSearch" placeholder="Search PNR or name…" oninput="filterBookings()">
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr>
+                <th>PNR</th><th>Passenger</th><th>Flight</th><th>Route</th><th>Departure</th><th>Cabin</th><th>Revenue</th><th>Status</th>
+              </tr></thead>
+              <tbody id="bookingsTbody">
+                <tr><td colspan="8" class="tbl-empty"><p>Loading…</p></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ USERS PANEL ═══ -->
+      <div class="panel" id="panel-users">
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">Registered Users</div>
+            <input class="table-search" type="text" id="userSearch" placeholder="Search name or email…" oninput="filterUsers()">
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr>
+                <th>Name</th><th>Email</th><th>Joined</th><th>Admin</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="usersTbody">
+                <tr><td colspan="5" class="tbl-empty"><p>Loading…</p></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ AIRCRAFT PANEL ═══ -->
+      <div class="panel" id="panel-aircraft">
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">Fleet Registry</div>
+            <button class="add-btn" onclick="openModal('aircraftModal')">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Aircraft
+            </button>
+          </div>
+          <table>
+            <thead><tr><th>Registration</th><th>Type</th><th>Name</th><th>Subsidiary</th><th>Cargo</th></tr></thead>
+            <tbody id="aircraftTbody"><tr><td colspan="5" class="tbl-empty"><p>Loading…</p></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ═══ AIRPORTS PANEL ═══ -->
+      <div class="panel" id="panel-airports">
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">Airports</div>
+            <button class="add-btn" onclick="openModal('airportModal')">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Airport
+            </button>
+          </div>
+          <table>
+            <thead><tr><th>Code</th><th>Name</th><th>City</th><th>Country</th><th>Timezone</th></tr></thead>
+            <tbody id="airportsTbody"><tr><td colspan="5" class="tbl-empty"><p>Loading…</p></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /page -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ═══════════════════════════════════════
+     ADD / EDIT FLIGHT MODAL
+═══════════════════════════════════════ -->
+<div class="modal-backdrop" id="flightModal" onclick="backdropClose(event,'flightModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="flightModalTitle">Add New Flight</h2>
+      <button class="modal-close" onclick="closeModal('flightModal')">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="modal-alert modal-alert-err" id="flightErr"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span id="flightErrMsg"></span></div>
+
+      <div class="mf-section">Flight Identity</div>
+      <div class="mf-grid-2">
+        <div class="mf-group">
+          <label>Flight Number *</label>
+          <input class="mf-input" id="f-num" placeholder="e.g. DP 101">
+          <div class="mf-hint">DreamPacific flights: DP XXX · Partner flights: AA 5050 / DP 5050</div>
+        </div>
+        <div class="mf-group">
+          <label>Flight Type *</label>
+          <select class="mf-select" id="f-type" onchange="onTypeChange()">
+            <option value="independent">DreamPacific Independent</option>
+            <option value="codeshare">Codeshare (Partner Brand)</option>
+            <option value="cargo">Cargo (Globestar)</option>
+            <option value="charter">Charter (Globestar)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Codeshare partner row (shown only for codeshare) -->
+      <div id="codeshareRow" style="display:none" class="mf-grid-2">
+        <div class="mf-group">
+          <label>Partner Airline *</label>
+          <select class="mf-select" id="f-partner">
+            <option value="">— Select airline —</option>
+            <option value="AA">American Airlines (AA)</option>
+            <option value="BA">British Airways (BA)</option>
+            <option value="EK">Emirates (EK)</option>
+            <option value="WN">Southwest Airlines (WN)</option>
+            <option value="B6">JetBlue Airways (B6)</option>
+            <option value="HA">Hawaiian Airlines (HA)</option>
+            <option value="CX">Cathay Pacific (CX)</option>
+          </select>
+        </div>
+        <div class="mf-group">
+          <label>Marketing Flight # (Partner)</label>
+          <input class="mf-input" id="f-mktg" placeholder="e.g. AA 5050">
+        </div>
+      </div>
+
+      <div class="mf-section">Route</div>
+      <div class="mf-grid-2">
+        <div class="mf-group">
+          <label>Origin Airport *</label>
+          <select class="mf-select" id="f-origin"></select>
+        </div>
+        <div class="mf-group">
+          <label>Destination Airport *</label>
+          <select class="mf-select" id="f-dest"></select>
+        </div>
+      </div>
+      <div class="mf-grid-2">
+        <div class="mf-group">
+          <label>Departure (local) *</label>
+          <input class="mf-input" type="datetime-local" id="f-dep">
+        </div>
+        <div class="mf-group">
+          <label>Arrival (local) *</label>
+          <input class="mf-input" type="datetime-local" id="f-arr">
+        </div>
+      </div>
+
+      <div class="mf-section">Aircraft & Gate</div>
+      <div class="mf-grid-2">
+        <div class="mf-group">
+          <label>Aircraft</label>
+          <select class="mf-select" id="f-aircraft">
+            <option value="">— Assign aircraft —</option>
+          </select>
+          <div class="mf-hint">Seats auto-generated when aircraft is assigned.</div>
+        </div>
+        <div class="mf-group">
+          <label>Status</label>
+          <select class="mf-select" id="f-status">
+            <option value="scheduled">Scheduled</option>
+            <option value="boarding">Boarding</option>
+            <option value="departed">Departed</option>
+            <option value="arrived">Arrived</option>
+            <option value="delayed">Delayed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+      <div class="mf-grid-2">
+        <div class="mf-group">
+          <label>Terminal</label>
+          <input class="mf-input" id="f-terminal" placeholder="e.g. B">
+        </div>
+        <div class="mf-group">
+          <label>Gate</label>
+          <input class="mf-input" id="f-gate" placeholder="e.g. B12">
+        </div>
+      </div>
+
+      <!-- Pricing (hidden for cargo) -->
+      <div id="pricingSection">
+        <div class="mf-section">Pricing (per person)</div>
+        <div class="mf-grid-4">
+          <div class="mf-group">
+            <label>Economy ($)</label>
+            <input class="mf-input" type="number" id="f-eco" placeholder="149" min="0">
+          </div>
+          <div class="mf-group">
+            <label>Prem. Economy ($)</label>
+            <input class="mf-input" type="number" id="f-peco" placeholder="299" min="0">
+          </div>
+          <div class="mf-group">
+            <label>Business ($)</label>
+            <input class="mf-input" type="number" id="f-biz" placeholder="799" min="0">
+          </div>
+          <div class="mf-group">
+            <label>First Class ($)</label>
+            <input class="mf-input" type="number" id="f-first" placeholder="2499" min="0">
+          </div>
+        </div>
+      </div>
+
+      <!-- Status update note (shown when editing) -->
+      <div id="statusNoteSection" style="display:none">
+        <div class="mf-section">Status Update Note</div>
+        <div class="mf-group">
+          <label>Passenger Message (optional)</label>
+          <textarea class="mf-textarea" id="f-statusmsg" placeholder="e.g. Flight delayed due to air traffic control. New departure time 21:45."></textarea>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button class="modal-cancel-btn" onclick="closeModal('flightModal')">Cancel</button>
+      <button class="modal-save-btn" id="flightSaveBtn" onclick="saveFlight()">Create Flight</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ AIRCRAFT MODAL ═══ -->
+<div class="modal-backdrop" id="aircraftModal" onclick="backdropClose(event,'aircraftModal')">
+  <div class="modal" style="max-width:480px">
+    <div class="modal-head">
+      <h2>Add Aircraft</h2>
+      <button class="modal-close" onclick="closeModal('aircraftModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-alert modal-alert-err" id="acErr"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span id="acErrMsg"></span></div>
+      <div class="mf-grid-2">
+        <div class="mf-group"><label>Registration *</label><input class="mf-input" id="ac-reg" placeholder="N501DP"></div>
+        <div class="mf-group"><label>Type *</label>
+          <select class="mf-select" id="ac-type">
+            <option value="A321neo">Airbus A321neo</option>
+            <option value="787">Boeing 787</option>
+            <option value="747-cargo">Boeing 747F (Cargo)</option>
+            <option value="747-charter">Boeing 747 (Charter)</option>
+          </select>
+        </div>
+      </div>
+      <div class="mf-group"><label>Aircraft Name</label><input class="mf-input" id="ac-name" placeholder="e.g. City of Felix Lego City"></div>
+      <div class="mf-grid-2">
+        <div class="mf-group"><label>Subsidiary</label>
+          <select class="mf-select" id="ac-sub">
+            <option value="DreamPacific">DreamPacific Airways</option>
+            <option value="Globestar">Globestar Airlines</option>
+          </select>
+        </div>
+        <div class="mf-group"><label>Cargo Only?</label>
+          <select class="mf-select" id="ac-cargo">
+            <option value="0">No — Passenger</option>
+            <option value="1">Yes — Cargo Only</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-cancel-btn" onclick="closeModal('aircraftModal')">Cancel</button>
+      <button class="modal-save-btn" onclick="saveAircraft()">Add Aircraft</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ AIRPORT MODAL ═══ -->
+<div class="modal-backdrop" id="airportModal" onclick="backdropClose(event,'airportModal')">
+  <div class="modal" style="max-width:480px">
+    <div class="modal-head">
+      <h2>Add / Update Airport</h2>
+      <button class="modal-close" onclick="closeModal('airportModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="mf-grid-2">
+        <div class="mf-group"><label>IATA Code *</label><input class="mf-input" id="ap-code" placeholder="FLX" style="text-transform:uppercase" maxlength="3"></div>
+        <div class="mf-group"><label>Timezone</label><input class="mf-input" id="ap-tz" placeholder="America/Los_Angeles"></div>
+      </div>
+      <div class="mf-group"><label>Airport Name *</label><input class="mf-input" id="ap-name" placeholder="Felix Lego City International Airport"></div>
+      <div class="mf-grid-2">
+        <div class="mf-group"><label>City *</label><input class="mf-input" id="ap-city" placeholder="Lego City"></div>
+        <div class="mf-group"><label>Country *</label><input class="mf-input" id="ap-country" placeholder="Republic of States"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-cancel-btn" onclick="closeModal('airportModal')">Cancel</button>
+      <button class="modal-save-btn" onclick="saveAirport()">Save Airport</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API = 'https://dreampacific-api.felixfeger46.workers.dev'; // ← update with your Worker URL
+
+  const PARTNERS = {
+    AA:{ name:'American Airlines', logo:'https://www.gstatic.com/flights/airline_logos/70px/AA.png' },
+    BA:{ name:'British Airways',   logo:'https://www.gstatic.com/flights/airline_logos/70px/BA.png' },
+    EK:{ name:'Emirates',          logo:'https://www.gstatic.com/flights/airline_logos/70px/EK.png' },
+    WN:{ name:'Southwest Airlines',logo:'https://www.gstatic.com/flights/airline_logos/70px/WN.png' },
+    B6:{ name:'JetBlue Airways',   logo:'https://www.gstatic.com/flights/airline_logos/70px/B6.png' },
+    HA:{ name:'Hawaiian Airlines', logo:'https://www.gstatic.com/flights/airline_logos/70px/HA.png' },
+    CX:{ name:'Cathay Pacific',    logo:'https://www.gstatic.com/flights/airline_logos/70px/CX.png' },
+  };
+  const DP_LOGO = 'https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png';
+  const TYPE_LABELS = { independent:'DreamPacific', codeshare:'Codeshare', cargo:'Cargo', charter:'Charter' };
+  const STATUS_BADGE = {
+    scheduled:'badge-green', boarding:'badge-blue', departed:'badge-gray',
+    arrived:'badge-gray', delayed:'badge-amber', cancelled:'badge-red'
+  };
+
+  // ── State ─────────────────────────────────────────────
+  let adminToken = null;
+  let adminUser  = null;
+  let allFlights  = [];
+  let allBookings = [];
+  let allUsers    = [];
+  let allAircraft = [];
+  let allAirports = [];
+  let editFlightId = null;
+
+  // ── Gate ──────────────────────────────────────────────
+  async function gateLogin() {
+    const email = document.getElementById('gEmail').value.trim();
+    const pass  = document.getElementById('gPass').value;
+    if (!email || !pass) { showGateErr('Please enter email and password.'); return; }
+
+    const btn = document.getElementById('gateBtn');
+    btn.disabled = true; btn.textContent = 'Signing in…';
+    document.getElementById('gateErr').classList.remove('show');
+
+    try {
+      const res  = await fetch(`${API}/api/auth/login`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email, password:pass}) });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Login failed');
+      if (!data.user.is_admin) throw new Error('This account does not have admin access.');
+
+      adminToken = data.token;
+      adminUser  = data.user;
+      localStorage.setItem('dp_admin_token', adminToken);
+      localStorage.setItem('dp_admin_user',  JSON.stringify(adminUser));
+      launchApp();
+    } catch(e) {
+      showGateErr(e.message);
+    } finally {
+      btn.disabled = false; btn.textContent = 'Sign In to Admin';
+    }
+  }
+
+  function showGateErr(msg) {
+    const el = document.getElementById('gateErr');
+    el.textContent = msg; el.classList.add('show');
+  }
+
+  document.getElementById('gPass').addEventListener('keydown', e => { if (e.key === 'Enter') gateLogin(); });
+
+  // ── Launch app ────────────────────────────────────────
+  function launchApp() {
+    document.getElementById('gateView').style.display = 'none';
+    document.getElementById('appShell').classList.add('visible');
+
+    const u = adminUser;
+    document.getElementById('sidebarName').textContent    = `${u.first_name} ${u.last_name}`;
+    document.getElementById('sidebarInitials').textContent = (u.first_name[0] + u.last_name[0]).toUpperCase();
+
+    loadAll();
+  }
+
+  function doLogout() {
+    localStorage.removeItem('dp_admin_token');
+    localStorage.removeItem('dp_admin_user');
+    location.reload();
+  }
+
+  // ── Session restore ───────────────────────────────────
+  function tryRestoreSession() {
+    try {
+      const t = localStorage.getItem('dp_admin_token');
+      const u = JSON.parse(localStorage.getItem('dp_admin_user') || 'null');
+      if (t && u && u.is_admin) { adminToken = t; adminUser = u; launchApp(); return; }
+    } catch(e) {}
+    document.getElementById('gateView').style.display = 'flex';
+  }
+
+  // ── Nav ───────────────────────────────────────────────
+  function nav(btn) {
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    btn.classList.add('active');
+    const panelId = btn.dataset.panel;
+
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + panelId).classList.add('active');
+
+    const titles = { dashboard:'Dashboard', flights:'Flights', bookings:'Bookings', users:'Users', aircraft:'Aircraft', airports:'Airports' };
+    document.getElementById('topbarTitle').textContent = titles[panelId] || '';
+    document.getElementById('topbarAddBtn').style.display = panelId === 'flights' ? 'flex' : 'none';
+
+    if (panelId === 'bookings' && !allBookings.length) loadBookings();
+    if (panelId === 'users'    && !allUsers.length)    loadUsers();
+    if (panelId === 'aircraft' && !allAircraft.length) loadAircraft();
+    if (panelId === 'airports' && !allAirports.length) loadAirports();
+  }
+
+  // ── Load all ──────────────────────────────────────────
+  async function loadAll() {
+    await Promise.all([loadStats(), loadFlightsData()]);
+  }
+
+  async function apiFetch(path, opts={}) {
+    const res = await fetch(API + path, {
+      ...opts, headers: { 'Authorization': 'Bearer ' + adminToken, 'Content-Type':'application/json', ...opts.headers }
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Request failed');
+    return data;
+  }
+
+  // ── Stats ─────────────────────────────────────────────
+  async function loadStats() {
+    try {
+      const s = await apiFetch('/api/admin/stats');
+      document.getElementById('s-flights').textContent  = s.total_flights ?? '—';
+      document.getElementById('s-bookings').textContent = s.total_bookings ?? '—';
+      document.getElementById('s-users').textContent    = s.total_users ?? '—';
+      document.getElementById('s-revenue').textContent  = s.total_revenue != null ? '$' + parseInt(s.total_revenue).toLocaleString() : '—';
+      document.getElementById('s-upcoming').textContent = s.upcoming_flights ?? '—';
+    } catch(e) {
+      ['s-flights','s-bookings','s-users','s-revenue','s-upcoming'].forEach(id => document.getElementById(id).textContent = '—');
+    }
+  }
+
+  // ── Flights ───────────────────────────────────────────
+  async function loadFlightsData() {
+    try {
+      allFlights = await apiFetch('/api/admin/flights');
+      // Populate aircraft dropdown
+      if (!allAircraft.length) allAircraft = await apiFetch('/api/admin/aircraft');
+      populateAircraftSelect();
+      // Populate airport dropdowns
+      if (!allAirports.length) allAirports = await apiFetch('/api/airports');
+      populateAirportSelects();
+
+      renderFlightsTable();
+      renderDashFlights();
+    } catch(e) {
+      document.getElementById('flightsTbody').innerHTML = `<tr><td colspan="9" class="tbl-empty"><p>Failed to load. Check API URL and token.</p></td></tr>`;
+    }
+  }
+
+  function renderDashFlights() {
+    const rows = allFlights.slice(0, 8);
+    if (!rows.length) { document.getElementById('dashFlightsTbody').innerHTML = `<tr><td colspan="5" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>No flights yet. Add your first flight!</p></td></tr>`; return; }
+    document.getElementById('dashFlightsTbody').innerHTML = rows.map(f => {
+      const isDP = f.flight_type === 'independent';
+      const partner = PARTNERS[f.codeshare_partner];
+      return `<tr>
+        <td><span class="flight-num">${f.flight_number}</span></td>
+        <td>${f.origin_city || f.origin} → ${f.dest_city || f.destination}</td>
+        <td>${fmtDate(f.departure_time)}</td>
+        <td><span class="badge ${STATUS_BADGE[f.status] || 'badge-gray'}">${f.status}</span></td>
+        <td><span class="badge ${isDP ? 'badge-blue' : 'badge-purple'}">${TYPE_LABELS[f.flight_type] || f.flight_type}</span></td>
+      </tr>`;
+    }).join('');
+  }
+
+  let flightsFiltered = [];
+  function filterFlights() {
+    const q = document.getElementById('flightSearch').value.toLowerCase();
+    flightsFiltered = q ? allFlights.filter(f => f.flight_number.toLowerCase().includes(q) || (f.origin+f.destination).toLowerCase().includes(q)) : allFlights;
+    renderFlightsTable(flightsFiltered);
+  }
+
+  function renderFlightsTable(list) {
+    const data = list || allFlights;
+    if (!data.length) { document.getElementById('flightsTbody').innerHTML = `<tr><td colspan="9" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>No flights found.</p></td></tr>`; return; }
+    document.getElementById('flightsTbody').innerHTML = data.map(f => {
+      const isDP    = f.flight_type === 'independent';
+      const partner = PARTNERS[f.codeshare_partner];
+      const logo    = isDP ? DP_LOGO : (partner?.logo || DP_LOGO);
+      const name    = isDP ? 'DreamPacific' : (partner?.name || f.codeshare_partner || 'DreamPacific');
+      return `<tr>
+        <td><span class="flight-num">${f.flight_number}</span></td>
+        <td><div class="airline-cell"><div class="airline-logo-sm"><img src="${logo}" alt="${name}" onerror="this.src='${DP_LOGO}'"></div><span style="font-size:13px;font-weight:500">${name}</span></div></td>
+        <td style="font-weight:600">${f.origin} → ${f.destination}</td>
+        <td>${fmtDate(f.departure_time)}</td>
+        <td>${fmtDate(f.arrival_time)}</td>
+        <td><span class="badge ${STATUS_BADGE[f.status] || 'badge-gray'}">${f.status}</span></td>
+        <td><span class="badge ${isDP ? 'badge-blue' : 'badge-purple'}">${TYPE_LABELS[f.flight_type] || f.flight_type}</span></td>
+        <td>${f.pax_count ?? '—'}</td>
+        <td>
+          <button class="tbl-action-btn tbl-edit" onclick="openEditFlight('${f.id}')">Edit</button>
+          <button class="tbl-action-btn tbl-delete" onclick="deleteFlight('${f.id}','${f.flight_number}')">Delete</button>
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  // ── Bookings ──────────────────────────────────────────
+  async function loadBookings() {
+    try {
+      allBookings = await apiFetch('/api/admin/bookings');
+      renderBookingsTable();
+    } catch(e) { document.getElementById('bookingsTbody').innerHTML = `<tr><td colspan="8" class="tbl-empty"><p>Failed to load bookings.</p></td></tr>`; }
+  }
+  function filterBookings() {
+    const q = document.getElementById('bookingSearch').value.toLowerCase();
+    const list = q ? allBookings.filter(b => b.pnr?.toLowerCase().includes(q) || (b.first_name+b.last_name).toLowerCase().includes(q)) : allBookings;
+    renderBookingsTable(list);
+  }
+  function renderBookingsTable(list) {
+    const data = list || allBookings;
+    if (!data.length) { document.getElementById('bookingsTbody').innerHTML = `<tr><td colspan="8" class="tbl-empty"><div class="tbl-empty-icon">🎫</div><p>No bookings yet.</p></td></tr>`; return; }
+    const CABIN = { economy:'Economy', premium_economy:'Prem. Economy', business:'Business', first:'First' };
+    const SC    = { confirmed:'badge-green', checked_in:'badge-blue', cancelled:'badge-red' };
+    document.getElementById('bookingsTbody').innerHTML = data.map(b => `<tr>
+      <td><span style="font-weight:800;font-feature-settings:'tnum';letter-spacing:.05em;color:var(--navy)">${b.pnr}</span></td>
+      <td>${b.first_name || ''} ${b.last_name || ''}<br><span style="font-size:11px;color:var(--gray-400)">${b.email || ''}</span></td>
+      <td><span class="flight-num">${b.flight_number || '—'}</span></td>
+      <td style="font-weight:600">${b.origin_city || b.origin || ''} → ${b.dest_city || b.destination || ''}</td>
+      <td>${b.departure_time ? fmtDate(b.departure_time) : '—'}</td>
+      <td>${CABIN[b.cabin_class] || b.cabin_class || '—'}</td>
+      <td style="font-weight:700">$${parseFloat(b.total_price||0).toLocaleString()}</td>
+      <td><span class="badge ${SC[b.status]||'badge-gray'}">${b.status}</span></td>
+    </tr>`).join('');
+  }
+
+  // ── Users ─────────────────────────────────────────────
+  async function loadUsers() {
+    try {
+      allUsers = await apiFetch('/api/admin/users');
+      renderUsersTable();
+    } catch(e) { document.getElementById('usersTbody').innerHTML = `<tr><td colspan="5" class="tbl-empty"><p>Failed to load users.</p></td></tr>`; }
+  }
+  function filterUsers() {
+    const q = document.getElementById('userSearch').value.toLowerCase();
+    const list = q ? allUsers.filter(u => (u.first_name+u.last_name+u.email).toLowerCase().includes(q)) : allUsers;
+    renderUsersTable(list);
+  }
+  function renderUsersTable(list) {
+    const data = list || allUsers;
+    if (!data.length) { document.getElementById('usersTbody').innerHTML = `<tr><td colspan="5" class="tbl-empty"><div class="tbl-empty-icon">👤</div><p>No users found.</p></td></tr>`; return; }
+    document.getElementById('usersTbody').innerHTML = data.map(u => `<tr>
+      <td style="font-weight:600">${u.first_name} ${u.last_name}</td>
+      <td>${u.email}</td>
+      <td style="color:var(--gray-400);font-size:12px">${u.created_at ? fmtDate(u.created_at) : '—'}</td>
+      <td>${u.is_admin ? '<span class="badge badge-purple">Admin</span>' : '<span class="badge badge-gray">Member</span>'}</td>
+      <td><button class="tbl-action-btn tbl-edit" onclick="toggleAdmin('${u.id}',${u.is_admin ? 0 : 1},'${u.first_name} ${u.last_name}')">${u.is_admin ? 'Remove Admin' : 'Make Admin'}</button></td>
+    </tr>`).join('');
+  }
+
+  async function toggleAdmin(userId, val, name) {
+    if (!confirm(`${val ? 'Grant' : 'Remove'} admin access for ${name}?`)) return;
+    try {
+      await apiFetch(`/api/admin/users/${userId}/admin`, { method:'PUT', body: JSON.stringify({ is_admin: val }) });
+      await loadUsers();
+    } catch(e) { alert('Failed to update user.'); }
+  }
+
+  // ── Aircraft ──────────────────────────────────────────
+  async function loadAircraft() {
+    try {
+      allAircraft = await apiFetch('/api/admin/aircraft');
+      populateAircraftSelect();
+      renderAircraftTable();
+    } catch(e) {}
+  }
+  function populateAircraftSelect() {
+    const sel = document.getElementById('f-aircraft');
+    const cur = sel.value;
+    sel.innerHTML = '<option value="">— No aircraft —</option>' + allAircraft.map(a => `<option value="${a.id}">${a.registration} — ${a.type} (${a.subsidiary})</option>`).join('');
+    if (cur) sel.value = cur;
+  }
+  function renderAircraftTable() {
+    if (!allAircraft.length) { document.getElementById('aircraftTbody').innerHTML = `<tr><td colspan="5" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>No aircraft registered.</p></td></tr>`; return; }
+    document.getElementById('aircraftTbody').innerHTML = allAircraft.map(a => `<tr>
+      <td style="font-weight:700;font-family:monospace">${a.registration}</td>
+      <td>${a.type}</td>
+      <td>${a.name || '—'}</td>
+      <td><span class="badge ${a.subsidiary === 'Globestar' ? 'badge-purple' : 'badge-blue'}">${a.subsidiary}</span></td>
+      <td>${a.is_cargo ? '<span class="badge badge-amber">Cargo</span>' : '<span class="badge badge-gray">Passenger</span>'}</td>
+    </tr>`).join('');
+  }
+
+  async function saveAircraft() {
+    const reg  = document.getElementById('ac-reg').value.trim().toUpperCase();
+    const type = document.getElementById('ac-type').value;
+    if (!reg) { alert('Registration is required.'); return; }
+    try {
+      await apiFetch('/api/admin/aircraft', { method:'POST', body: JSON.stringify({
+        registration: reg, type, name: document.getElementById('ac-name').value.trim() || null,
+        subsidiary: document.getElementById('ac-sub').value, is_cargo: parseInt(document.getElementById('ac-cargo').value)
+      })});
+      closeModal('aircraftModal');
+      allAircraft = []; await loadAircraft();
+    } catch(e) { alert('Failed to save aircraft: ' + e.message); }
+  }
+
+  // ── Airports ──────────────────────────────────────────
+  async function loadAirports() {
+    try {
+      allAirports = await apiFetch('/api/airports');
+      populateAirportSelects();
+      renderAirportsTable();
+    } catch(e) {}
+  }
+  function populateAirportSelects() {
+    ['f-origin','f-dest'].forEach(id => {
+      const sel = document.getElementById(id);
+      const cur = sel.value;
+      sel.innerHTML = '<option value="">— Select airport —</option>' + allAirports.map(a => `<option value="${a.code}">${a.code} — ${a.city}</option>`).join('');
+      if (cur) sel.value = cur;
+    });
+  }
+  function renderAirportsTable() {
+    if (!allAirports.length) { document.getElementById('airportsTbody').innerHTML = `<tr><td colspan="5" class="tbl-empty"><p>No airports.</p></td></tr>`; return; }
+    document.getElementById('airportsTbody').innerHTML = allAirports.map(a => `<tr>
+      <td style="font-weight:800;letter-spacing:.04em;color:var(--navy)">${a.code}</td>
+      <td>${a.name}</td>
+      <td>${a.city}</td>
+      <td>${a.country}</td>
+      <td style="font-size:12px;color:var(--gray-400)">${a.timezone || '—'}</td>
+    </tr>`).join('');
+  }
+  async function saveAirport() {
+    const code = document.getElementById('ap-code').value.trim().toUpperCase();
+    const name = document.getElementById('ap-name').value.trim();
+    const city = document.getElementById('ap-city').value.trim();
+    const country = document.getElementById('ap-country').value.trim();
+    if (!code || !name || !city || !country) { alert('Code, name, city, and country are required.'); return; }
+    try {
+      await apiFetch('/api/admin/airports', { method:'POST', body: JSON.stringify({ code, name, city, country, timezone: document.getElementById('ap-tz').value.trim() || null }) });
+      closeModal('airportModal');
+      allAirports = []; await loadAirports();
+    } catch(e) { alert('Failed to save airport: ' + e.message); }
+  }
+
+  // ── Flight modal: open add ────────────────────────────
+  function openAddFlight() {
+    editFlightId = null;
+    clearFlightForm();
+    document.getElementById('flightModalTitle').textContent = 'Add New Flight';
+    document.getElementById('flightSaveBtn').textContent = 'Create Flight';
+    document.getElementById('statusNoteSection').style.display = 'none';
+
+    // Default departure to tomorrow 08:00
+    const d = new Date(); d.setDate(d.getDate() + 1); d.setHours(8, 0, 0, 0);
+    const arr = new Date(d); arr.setHours(arr.getHours() + 3);
+    document.getElementById('f-dep').value = toLocalDT(d);
+    document.getElementById('f-arr').value = toLocalDT(arr);
+
+    openModal('flightModal');
+  }
+
+  function openEditFlight(id) {
+    const f = allFlights.find(x => x.id === id);
+    if (!f) return;
+    editFlightId = id;
+
+    clearFlightForm();
+    document.getElementById('flightModalTitle').textContent = `Edit Flight ${f.flight_number}`;
+    document.getElementById('flightSaveBtn').textContent = 'Save Changes';
+    document.getElementById('statusNoteSection').style.display = 'block';
+
+    document.getElementById('f-num').value     = f.flight_number;
+    document.getElementById('f-type').value    = f.flight_type;
+    document.getElementById('f-partner').value = f.codeshare_partner || '';
+    document.getElementById('f-mktg').value    = f.marketing_airline || '';
+    document.getElementById('f-origin').value  = f.origin;
+    document.getElementById('f-dest').value    = f.destination;
+    document.getElementById('f-dep').value     = toLocalDT(new Date(f.departure_time));
+    document.getElementById('f-arr').value     = toLocalDT(new Date(f.arrival_time));
+    document.getElementById('f-aircraft').value = f.aircraft_id || '';
+    document.getElementById('f-status').value  = f.status;
+    document.getElementById('f-terminal').value = f.terminal || '';
+    document.getElementById('f-gate').value     = f.gate || '';
+    document.getElementById('f-eco').value      = f.price_economy ?? '';
+    document.getElementById('f-peco').value     = f.price_premium_economy ?? '';
+    document.getElementById('f-biz').value      = f.price_business ?? '';
+    document.getElementById('f-first').value    = f.price_first ?? '';
+
+    onTypeChange();
+    openModal('flightModal');
+  }
+
+  function clearFlightForm() {
+    ['f-num','f-partner','f-mktg','f-terminal','f-gate','f-eco','f-peco','f-biz','f-first','f-statusmsg'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-type').value    = 'independent';
+    document.getElementById('f-status').value  = 'scheduled';
+    document.getElementById('f-aircraft').value = '';
+    document.getElementById('f-origin').value  = 'FLX';
+    document.getElementById('flightErr').classList.remove('show');
+    onTypeChange();
+  }
+
+  function onTypeChange() {
+    const type = document.getElementById('f-type').value;
+    document.getElementById('codeshareRow').style.display   = type === 'codeshare' ? 'grid' : 'none';
+    document.getElementById('pricingSection').style.display = type === 'cargo'     ? 'none'  : 'block';
+  }
+
+  async function saveFlight() {
+    const btn = document.getElementById('flightSaveBtn');
+    document.getElementById('flightErr').classList.remove('show');
+
+    const num  = document.getElementById('f-num').value.trim();
+    const type = document.getElementById('f-type').value;
+    const orig = document.getElementById('f-origin').value;
+    const dest = document.getElementById('f-dest').value;
+    const dep  = document.getElementById('f-dep').value;
+    const arr  = document.getElementById('f-arr').value;
+
+    if (!num || !orig || !dest || !dep || !arr) {
+      document.getElementById('flightErrMsg').textContent = 'Flight number, route, and times are required.';
+      document.getElementById('flightErr').classList.add('show'); return;
+    }
+    if (type === 'codeshare' && !document.getElementById('f-partner').value) {
+      document.getElementById('flightErrMsg').textContent = 'Please select a partner airline for codeshare flights.';
+      document.getElementById('flightErr').classList.add('show'); return;
+    }
+
+    const body = {
+      flight_number:          num,
+      flight_type:            type,
+      codeshare_partner:      type === 'codeshare' ? document.getElementById('f-partner').value : null,
+      marketing_airline:      document.getElementById('f-mktg').value.trim() || null,
+      aircraft_id:            document.getElementById('f-aircraft').value || null,
+      origin:                 orig,
+      destination:            dest,
+      departure_time:         new Date(dep).toISOString(),
+      arrival_time:           new Date(arr).toISOString(),
+      status:                 document.getElementById('f-status').value,
+      gate:                   document.getElementById('f-gate').value.trim() || null,
+      terminal:               document.getElementById('f-terminal').value.trim() || null,
+      price_economy:          parseFloatOrNull('f-eco'),
+      price_premium_economy:  parseFloatOrNull('f-peco'),
+      price_business:         parseFloatOrNull('f-biz'),
+      price_first:            parseFloatOrNull('f-first'),
+      message:                document.getElementById('f-statusmsg').value.trim() || null,
+    };
+
+    btn.disabled = true; btn.textContent = 'Saving…';
+    try {
+      if (editFlightId) {
+        await apiFetch(`/api/admin/flights/${editFlightId}`, { method:'PUT', body: JSON.stringify(body) });
+      } else {
+        await apiFetch('/api/admin/flights', { method:'POST', body: JSON.stringify(body) });
+      }
+      closeModal('flightModal');
+      allFlights = [];
+      await loadFlightsData();
+      await loadStats();
+    } catch(e) {
+      document.getElementById('flightErrMsg').textContent = e.message || 'Failed to save flight.';
+      document.getElementById('flightErr').classList.add('show');
+    } finally {
+      btn.disabled = false; btn.textContent = editFlightId ? 'Save Changes' : 'Create Flight';
+    }
+  }
+
+  async function deleteFlight(id, num) {
+    if (!confirm(`Delete flight ${num}? This will also remove all seats. Existing bookings will remain.`)) return;
+    try {
+      await apiFetch(`/api/admin/flights/${id}`, { method:'DELETE' });
+      allFlights = []; await loadFlightsData(); await loadStats();
+    } catch(e) { alert('Failed to delete flight: ' + e.message); }
+  }
+
+  // ── Modal helpers ─────────────────────────────────────
+  function openModal(id)  { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
+  function backdropClose(e, id) { if (e.target === document.getElementById(id)) closeModal(id); }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal-backdrop.open').forEach(m => m.classList.remove('open')); });
+
+  // ── Util ─────────────────────────────────────────────
+  function fmtDate(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) + ' ' +
+           d.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:true });
+  }
+
+  function toLocalDT(d) {
+    const pad = n => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }
+
+  function parseFloatOrNull(id) {
+    const v = document.getElementById(id).value;
+    return v === '' ? null : parseFloat(v);
+  }
+
+  // ── Boot ─────────────────────────────────────────────
+  tryRestoreSession();
+</script>
+</body>
+</html>
