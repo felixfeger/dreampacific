@@ -43,13 +43,13 @@
     .nav-logo { text-decoration: none; display: flex; align-items: center; margin-right: 32px; }
     .nav-logo img { height: 36px; display: block; }
     .nav-links { display: flex; list-style: none; flex: 1; }
-    .nav-links a { padding: 8px 13px; font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; border-radius: 7px; transition: color .15s, background .15s; white-space: nowrap; display: block; }
+    .nav-links a { padding: 8px 13px; font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; border-radius: 7px; transition: color .15s, background .15s; white-space[...]
     .nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
     .nav-links a.active { color: #fff; }
     .nav-end { margin-left: auto; display: flex; gap: 10px; align-items: center; }
-    .btn-ghost { padding: 7px 16px; font-size: 13px; font-weight: 600; font-family: inherit; color: rgba(255,255,255,.8); background: transparent; border: 1.5px solid rgba(255,255,255,.22); border-radius: 8px; cursor: pointer; text-decoration: none; transition: all .15s; }
+    .btn-ghost { padding: 7px 16px; font-size: 13px; font-weight: 600; font-family: inherit; color: rgba(255,255,255,.8); background: transparent; border: 1.5px solid rgba(255,255,255,.22); border-rad[...]
     .btn-ghost:hover { border-color: rgba(255,255,255,.55); color: #fff; }
-    .btn-solid { padding: 7px 18px; font-size: 13px; font-weight: 700; font-family: inherit; color: var(--navy); background: #fff; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: all .15s; }
+    .btn-solid { padding: 7px 18px; font-size: 13px; font-weight: 700; font-family: inherit; color: var(--navy); background: #fff; border: none; border-radius: 8px; cursor: pointer; text-decoration: n[...]
     .btn-solid:hover { background: var(--blue-lt); }
 
     /* ── Search summary bar ── */
@@ -89,11 +89,11 @@
     .edit-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: grid; grid-template-columns: 1fr 44px 1fr 1fr 1fr auto; gap: 10px; align-items: center; }
     .ep-field { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 9px; }
     .ep-field label { display: block; font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); padding: 8px 12px 2px; }
-    .ep-field input, .ep-field select { display: block; width: 100%; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #fff; background: none; border: none; outline: none; padding: 0 12px 8px; appearance: none; }
+    .ep-field input, .ep-field select { display: block; width: 100%; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #fff; background: none; border: none; outline: none; padding: 0 1[...]
     .ep-field input::placeholder { color: rgba(255,255,255,.35); }
-    .ep-swap { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.18); color: rgba(255,255,255,.7); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .2s; }
+    .ep-swap { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.18); color: rgba(255,255,255,.7); display: flex; align-items: cent[...]
     .ep-swap:hover { background: var(--blue); border-color: var(--blue); color: #fff; transform: rotate(180deg); }
-    .ep-search { height: 52px; padding: 0 24px; font-size: 14px; font-weight: 700; font-family: inherit; color: #fff; background: var(--blue); border: none; border-radius: 9px; cursor: pointer; white-space: nowrap; transition: background .2s; }
+    .ep-search { height: 52px; padding: 0 24px; font-size: 14px; font-weight: 700; font-family: inherit; color: #fff; background: var(--blue); border: none; border-radius: 9px; cursor: pointer; white-[...]
     .ep-search:hover { background: var(--blue-h); }
 
     /* ── Main layout ── */
@@ -103,7 +103,7 @@
     .results-count span { color: var(--blue); }
     .sort-row { display: flex; align-items: center; gap: 8px; }
     .sort-label { font-size: 12px; color: var(--gray-400); font-weight: 500; }
-    .sort-select { font-family: inherit; font-size: 13px; font-weight: 600; color: var(--text); background: #fff; border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 6px 12px; outline: none; cursor: pointer; }
+    .sort-select { font-family: inherit; font-size: 13px; font-weight: 600; color: var(--text); background: #fff; border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 6px 12px; outline: n[...]
 
     /* ── Flight card ── */
     .flight-card {
@@ -206,7 +206,7 @@
     .empty-icon { font-size: 56px; margin-bottom: 20px; }
     .empty-state h3 { font-size: 22px; font-weight: 700; color: var(--gray-800); margin-bottom: 10px; }
     .empty-state p { font-size: 14px; color: var(--gray-600); margin-bottom: 28px; }
-    .empty-cta { display: inline-block; padding: 11px 26px; background: var(--blue); color: #fff; border-radius: 9px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s; }
+    .empty-cta { display: inline-block; padding: 11px 26px; background: var(--blue); color: #fff; border-radius: 9px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .[...]
     .empty-cta:hover { background: var(--blue-h); }
 
     /* ── Filter chips ── */
@@ -395,9 +395,9 @@
   <div id="resultsContainer">
     <!-- Skeletons shown while loading -->
     <div id="loadingState">
-      <div class="skeleton-card"><div class="skel-row"><div class="skel" style="width:42px;height:42px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel" style="height:14px;width:140px"></div><div class="skel" style="height:11px;width:80px"></div></div><div class="skel" style="height:26px;width:60px"></div><div class="skel" style="height:2px;width:100px"></div><div class="skel" style="height:26px;width:60px"></div><div style="display:flex;flex-direction:column;gap:8px;margin-left:auto"><div class="skel" style="height:34px;width:110px;border-radius:8px"></div><div class="skel" style="height:34px;width:110px;border-radius:8px"></div></div></div></div>
-      <div class="skeleton-card"><div class="skel-row"><div class="skel" style="width:42px;height:42px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel" style="height:14px;width:120px"></div><div class="skel" style="height:11px;width:70px"></div></div><div class="skel" style="height:26px;width:60px"></div><div class="skel" style="height:2px;width:100px"></div><div class="skel" style="height:26px;width:60px"></div><div style="display:flex;flex-direction:column;gap:8px;margin-left:auto"><div class="skel" style="height:34px;width:110px;border-radius:8px"></div><div class="skel" style="height:34px;width:110px;border-radius:8px"></div></div></div></div>
-      <div class="skeleton-card"><div class="skel-row"><div class="skel" style="width:42px;height:42px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel" style="height:14px;width:160px"></div><div class="skel" style="height:11px;width:90px"></div></div><div class="skel" style="height:26px;width:60px"></div><div class="skel" style="height:2px;width:100px"></div><div class="skel" style="height:26px;width:60px"></div><div style="display:flex;flex-direction:column;gap:8px;margin-left:auto"><div class="skel" style="height:34px;width:110px;border-radius:8px"></div></div></div></div>
+      <div class="skeleton-card"><div class="skel-row"><div class="skel" style="width:42px;height:42px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap[...]
+      <div class="skeleton-card"><div class="skel-row"><div class="skel" style="width:42px;height:42px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap[...]
+      <div class="skeleton-card"><div class="skel-row"><div class="skel" style="width:42px;height:42px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap[...]
     </div>
 
     <div id="flightsList" style="display:none"></div>
@@ -441,6 +441,25 @@
     LGB: 'Long Beach', HNL: 'Honolulu', OGG: 'Maui', LHR: 'London', DXB: 'Dubai', HKG: 'Hong Kong',
   };
 
+  // ─── Timezone mapping ────────────────────────────────────
+  const TIMEZONES = {
+    FLX: 'America/Chicago',
+    LAX: 'America/Los_Angeles',
+    JFK: 'America/New_York',
+    ORD: 'America/Chicago',
+    MIA: 'America/New_York',
+    DFW: 'America/Chicago',
+    BOS: 'America/New_York',
+    LGA: 'America/New_York',
+    FLL: 'America/New_York',
+    LGB: 'America/Los_Angeles',
+    HNL: 'Pacific/Honolulu',
+    OGG: 'Pacific/Honolulu',
+    LHR: 'Europe/London',
+    DXB: 'Asia/Dubai',
+    HKG: 'Asia/Hong_Kong',
+  };
+
   // ─── Parse URL params ─────────────────────────────────────
   const params   = new URLSearchParams(location.search);
   let origin     = (params.get('origin') || 'FLX').toUpperCase();
@@ -477,7 +496,7 @@
 
   function formatDateDisplay(str) {
     if (!str) return '—';
-    const d = new Date(str + 'T12:00:00');
+    const d = new Date(str + 'T12:00:00Z');
     return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
   }
 
@@ -533,19 +552,26 @@
 
   // ─── Format helpers ──────────────────────────────────────
   function formatTime(iso, timeZone) {
-  const d = new Date(iso);
+    const d = new Date(iso);
+    return d.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+      timeZone: timeZone || 'UTC'
+    });
+  }
 
-  return d.toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true,
-    timeZone: timeZone || 'UTC'
-  });
-}
-  function formatDuration(dep, arr) {
-    const diff = (new Date(arr) - new Date(dep)) / 60000;
-    const h = Math.floor(diff / 60), m = diff % 60;
-    return `${h}h ${m}m`;
+  function formatDuration(depIso, arrIso) {
+    // Parse both times as UTC and calculate elapsed time
+    const dep = new Date(depIso);
+    const arr = new Date(arrIso);
+    const diffMs = arr - dep;
+    
+    // Handle flights that arrive the next day
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    
+    return `${diffHours}h ${diffMins}m`;
   }
 
   function fmtPrice(p) {
@@ -650,12 +676,12 @@
         <div class="fc-expand-inner">
           <div class="fc-detail-group">
             <div class="fc-detail-label">Departure</div>
-            <div class="fc-detail-value">${formatTime(f.departure_time)}</div>
+            <div class="fc-detail-value">${formatTime(f.departure_time, f.origin_timezone)}</div>
             <div class="fc-detail-sub">${f.origin_name || f.origin} · ${f.origin_city || ''}</div>
           </div>
           <div class="fc-detail-group">
             <div class="fc-detail-label">Arrival</div>
-            <div class="fc-detail-value">${formatTime(f.arrival_time)}</div>
+            <div class="fc-detail-value">${formatTime(f.arrival_time, f.destination_timezone)}</div>
             <div class="fc-detail-sub">${f.dest_name || f.destination} · ${f.dest_city || ''}</div>
           </div>
           <div class="fc-detail-group">
@@ -772,7 +798,7 @@
   function makeDemoFlights() {
     const base = date || tomorrow();
     function dt(h, m) {
-      const d = new Date(base + 'T' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':00');
+      const d = new Date(base + 'T' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':00Z');
       return d.toISOString();
     }
 
@@ -780,6 +806,7 @@
       { id:'d1', flight_number:'DP 101', flight_type:'independent', codeshare_partner:null,
         origin:'FLX', destination:'LAX', origin_city:'Lego City', dest_city:'Los Angeles',
         origin_name:'Felix Lego City International Airport', dest_name:'Los Angeles International Airport',
+        origin_timezone: TIMEZONES.FLX, destination_timezone: TIMEZONES.LAX,
         departure_time: dt(7,30), arrival_time: dt(9,0),
         price_economy:149, price_premium_economy:279, price_business:549, price_first:null,
         aircraft_type:'A321neo', status:'scheduled', gate:'B12', terminal:'B' },
@@ -787,6 +814,7 @@
       { id:'d2', flight_number:'DP 202', flight_type:'independent', codeshare_partner:null,
         origin:'FLX', destination:'LAX', origin_city:'Lego City', dest_city:'Los Angeles',
         origin_name:'Felix Lego City International Airport', dest_name:'Los Angeles International Airport',
+        origin_timezone: TIMEZONES.FLX, destination_timezone: TIMEZONES.LAX,
         departure_time: dt(13,45), arrival_time: dt(15,15),
         price_economy:169, price_premium_economy:299, price_business:599, price_first:null,
         aircraft_type:'A321neo', status:'scheduled', gate:'B14', terminal:'B' },
@@ -794,6 +822,7 @@
       { id:'d3', flight_number:'AA 5050 / DP 5050', flight_type:'codeshare', codeshare_partner:'AA',
         origin:'FLX', destination:'DFW', origin_city:'Lego City', dest_city:'Dallas',
         origin_name:'Felix Lego City International Airport', dest_name:'Dallas/Fort Worth International',
+        origin_timezone: TIMEZONES.FLX, destination_timezone: TIMEZONES.DFW,
         departure_time: dt(8,15), arrival_time: dt(12,5),
         price_economy:219, price_premium_economy:399, price_business:749, price_first:1499,
         aircraft_type:'787', status:'scheduled', gate:'C3', terminal:'C' },
@@ -801,13 +830,15 @@
       { id:'d4', flight_number:'BA 2800 / DP 2800', flight_type:'codeshare', codeshare_partner:'BA',
         origin:'FLX', destination:'LHR', origin_city:'Lego City', dest_city:'London',
         origin_name:'Felix Lego City International Airport', dest_name:'London Heathrow Airport',
-        departure_time: dt(21,30), arrival_time: dt(15,45),
+        origin_timezone: TIMEZONES.FLX, destination_timezone: TIMEZONES.LHR,
+        departure_time: dt(21,30), arrival_time: dt(8,45),
         price_economy:549, price_premium_economy:899, price_business:2199, price_first:4999,
         aircraft_type:'787', status:'scheduled', gate:'D1', terminal:'D' },
 
       { id:'d5', flight_number:'EK 6100 / DP 6100', flight_type:'codeshare', codeshare_partner:'EK',
         origin:'FLX', destination:'DXB', origin_city:'Lego City', dest_city:'Dubai',
         origin_name:'Felix Lego City International Airport', dest_name:'Dubai International Airport',
+        origin_timezone: TIMEZONES.FLX, destination_timezone: TIMEZONES.DXB,
         departure_time: dt(23,0), arrival_time: dt(21,30),
         price_economy:699, price_premium_economy:1199, price_business:2599, price_first:5999,
         aircraft_type:'787', status:'scheduled', gate:'D2', terminal:'D' },
@@ -815,6 +846,7 @@
       { id:'d6', flight_number:'WN 4400 / DP 4400', flight_type:'codeshare', codeshare_partner:'WN',
         origin:'FLX', destination:'LGA', origin_city:'Lego City', dest_city:'New York',
         origin_name:'Felix Lego City International Airport', dest_name:'LaGuardia Airport',
+        origin_timezone: TIMEZONES.FLX, destination_timezone: TIMEZONES.LGA,
         departure_time: dt(6,0), arrival_time: dt(14,20),
         price_economy:199, price_premium_economy:null, price_business:null, price_first:null,
         aircraft_type:'A321neo', status:'scheduled', gate:'A5', terminal:'A' },
@@ -822,6 +854,7 @@
       { id:'d7', flight_number:'B6 3300 / DP 3300', flight_type:'codeshare', codeshare_partner:'B6',
         origin:'FLX', destination:'JFK', origin_city:'Lego City', dest_city:'New York',
         origin_name:'Felix Lego City International Airport', dest_name:'JFK International Airport',
+        origin_timezone: TIMEZONES.FLX, destination_timezone: TIMEZONES.JFK,
         departure_time: dt(10,0), arrival_time: dt(18,30),
         price_economy:249, price_premium_economy:449, price_business:899, price_first:null,
         aircraft_type:'787', status:'scheduled', gate:'C8', terminal:'C' },
@@ -829,6 +862,7 @@
       { id:'d8', flight_number:'HA 7100 / DP 7100', flight_type:'codeshare', codeshare_partner:'HA',
         origin:'FLX', destination:'HNL', origin_city:'Lego City', dest_city:'Honolulu',
         origin_name:'Felix Lego City International Airport', dest_name:'Daniel K. Inouye International',
+        origin_timezone: TIMEZONES.FLX, destination_timezone: TIMEZONES.HNL,
         departure_time: dt(9,30), arrival_time: dt(12,15),
         price_economy:249, price_premium_economy:399, price_business:849, price_first:null,
         aircraft_type:'787', status:'scheduled', gate:'B7', terminal:'B' },
@@ -836,6 +870,7 @@
       { id:'d9', flight_number:'CX 8900 / DP 8900', flight_type:'codeshare', codeshare_partner:'CX',
         origin:'FLX', destination:'HKG', origin_city:'Lego City', dest_city:'Hong Kong',
         origin_name:'Felix Lego City International Airport', dest_name:'Hong Kong International Airport',
+        origin_timezone: TIMEZONES.FLX, destination_timezone: TIMEZONES.HKG,
         departure_time: dt(0,45), arrival_time: dt(6,30),
         price_economy:629, price_premium_economy:1099, price_business:2499, price_first:5499,
         aircraft_type:'787', status:'scheduled', gate:'D4', terminal:'D' },
