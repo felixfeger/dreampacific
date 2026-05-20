@@ -6,247 +6,188 @@
   <title>Book Flight — DreamPacific Airways</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:     #001B5E;
-      --navy-dk:  #000F3A;
-      --blue:     #0057B8;
-      --blue-h:   #004699;
-      --blue-lt:  #E6EEF9;
-      --white:    #FFFFFF;
-      --gray-50:  #F8F9FC;
-      --gray-100: #EEF0F6;
-      --gray-200: #D8DCE8;
-      --gray-300: #BEC7D8;
-      --gray-400: #8D97AF;
-      --gray-600: #535E78;
-      --gray-800: #252D42;
-      --text:     #0F1626;
-      --green:    #059669;
-      --green-lt: #ECFDF5;
-      --red:      #DC2626;
-      --red-lt:   #FEF2F2;
-      --amber:    #D97706;
-      --amber-lt: #FFFBEB;
+      --navy:    #001B5E; --navy-dk: #000F3A; --blue:  #0057B8;
+      --blue-h:  #004699; --blue-lt: #E6EEF9; --white: #FFFFFF;
+      --gray-50: #F8F9FC; --gray-100:#EEF0F6; --gray-200:#D8DCE8;
+      --gray-300:#BEC7D8; --gray-400:#8D97AF; --gray-600:#535E78;
+      --gray-800:#252D42; --text:    #0F1626;
+      --green:   #059669; --green-lt:#ECFDF5;
+      --red:     #DC2626; --red-lt:  #FEF2F2;
+      --amber:   #D97706; --amber-lt:#FFFBEB;
     }
-
     html { scroll-behavior: smooth; }
-    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: var(--text); background: var(--gray-50); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    body { font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:var(--text); background:var(--gray-50); -webkit-font-smoothing:antialiased; min-height:100vh; }
 
     /* ── Topbar ── */
-    .topbar { background: var(--navy-dk); padding: 6px 0; }
-    .topbar-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: flex; justify-content: space-between; align-items: center; }
-    .topbar-left { font-size: 11.5px; color: rgba(255,255,255,.44); display: flex; align-items: center; gap: 8px; }
-    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #34C759; }
-    .topbar-right a { font-size: 11.5px; color: rgba(255,255,255,.38); text-decoration: none; margin-left: 22px; transition: color .15s; }
-    .topbar-right a:hover { color: rgba(255,255,255,.82); }
+    .topbar { background:var(--navy-dk); padding:6px 0; }
+    .topbar-inner { max-width:1240px; margin:0 auto; padding:0 28px; display:flex; justify-content:space-between; align-items:center; }
+    .topbar-left { font-size:11.5px; color:rgba(255,255,255,.44); display:flex; align-items:center; gap:8px; }
+    .live-dot { width:6px; height:6px; border-radius:50%; background:#34C759; }
+    .topbar-right a { font-size:11.5px; color:rgba(255,255,255,.38); text-decoration:none; margin-left:22px; transition:color .15s; }
+    .topbar-right a:hover { color:rgba(255,255,255,.82); }
 
     /* ── Nav ── */
-    .nav { background: var(--navy); height: 64px; display: flex; align-items: center; position: sticky; top: 0; z-index: 200; border-bottom: 1px solid rgba(255,255,255,.06); }
-    .nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.4); }
-    .nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; width: 100%; display: flex; align-items: center; }
-    .nav-logo { text-decoration: none; display: flex; align-items: center; margin-right: 32px; }
-    .nav-logo img { height: 36px; display: block; }
-    .nav-links { display: flex; list-style: none; flex: 1; }
-    .nav-links a { padding: 8px 13px; font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; border-radius: 7px; transition: color .15s, background .15s; white-space: nowrap; display: block; }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
-    .nav-end { margin-left: auto; display: flex; gap: 10px; align-items: center; }
-    .btn-ghost-nav { padding: 7px 16px; font-size: 13px; font-weight: 600; font-family: inherit; color: rgba(255,255,255,.8); background: transparent; border: 1.5px solid rgba(255,255,255,.22); border-radius: 8px; cursor: pointer; text-decoration: none; transition: all .15s; }
-    .btn-ghost-nav:hover { border-color: rgba(255,255,255,.55); color: #fff; }
-    .btn-solid-nav { padding: 7px 18px; font-size: 13px; font-weight: 700; font-family: inherit; color: var(--navy); background: #fff; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: all .15s; }
-    .btn-solid-nav:hover { background: var(--blue-lt); }
+    .nav { background:var(--navy); height:64px; display:flex; align-items:center; position:sticky; top:0; z-index:200; border-bottom:1px solid rgba(255,255,255,.06); }
+    .nav.scrolled { box-shadow:0 4px 24px rgba(0,0,0,.4); }
+    .nav-inner { max-width:1240px; margin:0 auto; padding:0 28px; width:100%; display:flex; align-items:center; }
+    .nav-logo { text-decoration:none; display:flex; align-items:center; margin-right:32px; }
+    .nav-logo img { height:36px; display:block; }
+    .nav-links { display:flex; list-style:none; flex:1; }
+    .nav-links a { padding:8px 13px; font-size:13.5px; font-weight:500; color:rgba(255,255,255,.65); text-decoration:none; border-radius:7px; transition:color .15s,background .15s; white-space:nowrap; display:block; }
+    .nav-links a:hover { color:#fff; background:rgba(255,255,255,.08); }
+    .nav-end { margin-left:auto; display:flex; gap:10px; align-items:center; }
+    .btn-ghost-nav { padding:7px 16px; font-size:13px; font-weight:600; font-family:inherit; color:rgba(255,255,255,.8); background:transparent; border:1.5px solid rgba(255,255,255,.22); border-radius:8px; cursor:pointer; text-decoration:none; transition:all .15s; }
+    .btn-ghost-nav:hover { border-color:rgba(255,255,255,.55); color:#fff; }
+    .btn-solid-nav { padding:7px 18px; font-size:13px; font-weight:700; font-family:inherit; color:var(--navy); background:#fff; border:none; border-radius:8px; cursor:pointer; text-decoration:none; transition:all .15s; }
+    .btn-solid-nav:hover { background:var(--blue-lt); }
 
     /* ── Steps ── */
-    .steps-bar { background: #fff; border-bottom: 1px solid var(--gray-200); }
-    .steps-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: flex; }
-    .step-item { flex: 1; display: flex; align-items: center; gap: 10px; padding: 16px 0; border-bottom: 3px solid transparent; transition: border-color .3s; }
-    .step-item.active { border-color: var(--blue); }
-    .step-item.done   { border-color: var(--green); }
-    .step-num { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; border: 2px solid var(--gray-300); color: var(--gray-400); flex-shrink: 0; transition: all .3s; }
-    .step-item.active .step-num { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
-    .step-item.done   .step-num { border-color: var(--green); color: #fff; background: var(--green); }
-    .step-label { font-size: 13px; font-weight: 600; color: var(--gray-400); transition: color .3s; }
-    .step-item.active .step-label, .step-item.done .step-label { color: var(--text); }
-    .step-conn { width: 28px; height: 1.5px; background: var(--gray-200); align-self: center; flex-shrink: 0; }
+    .steps-bar { background:#fff; border-bottom:1px solid var(--gray-200); }
+    .steps-inner { max-width:1240px; margin:0 auto; padding:0 28px; display:flex; }
+    .step-item { flex:1; display:flex; align-items:center; gap:10px; padding:16px 0; border-bottom:3px solid transparent; transition:border-color .3s; }
+    .step-item.active { border-color:var(--blue); }
+    .step-item.done   { border-color:var(--green); }
+    .step-num { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; border:2px solid var(--gray-300); color:var(--gray-400); flex-shrink:0; transition:all .3s; }
+    .step-item.active .step-num { border-color:var(--blue); color:var(--blue); background:var(--blue-lt); }
+    .step-item.done   .step-num { border-color:var(--green); color:#fff; background:var(--green); }
+    .step-label { font-size:13px; font-weight:600; color:var(--gray-400); transition:color .3s; }
+    .step-item.active .step-label,.step-item.done .step-label { color:var(--text); }
+    .step-conn { width:28px; height:1.5px; background:var(--gray-200); align-self:center; flex-shrink:0; }
 
     /* ── Layout ── */
-    .page-body { max-width: 1240px; margin: 0 auto; padding: 32px 28px 80px; }
-    .booking-layout { display: grid; grid-template-columns: 1fr 340px; gap: 28px; align-items: start; }
+    .page-body { max-width:1240px; margin:0 auto; padding:32px 28px 80px; }
+    .booking-layout { display:grid; grid-template-columns:1fr 340px; gap:28px; align-items:start; }
 
     /* ── Cards ── */
-    .card { background: #fff; border: 1.5px solid var(--gray-200); border-radius: 18px; overflow: hidden; margin-bottom: 18px; }
-    .card-head { padding: 20px 26px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; gap: 12px; }
-    .card-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .card-head h2 { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
-    .card-head p  { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
-    .card-body { padding: 24px 26px; }
+    .card { background:#fff; border:1.5px solid var(--gray-200); border-radius:18px; overflow:hidden; margin-bottom:18px; }
+    .card-head { padding:20px 26px; border-bottom:1px solid var(--gray-100); display:flex; align-items:center; gap:12px; }
+    .card-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .card-head h2 { font-size:15px; font-weight:700; color:var(--text); letter-spacing:-.01em; }
+    .card-head p  { font-size:12px; color:var(--gray-400); margin-top:2px; }
+    .card-body { padding:24px 26px; }
 
     /* ── Form ── */
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-600); margin-bottom: 6px; }
-    .form-input, .form-select {
-      width: 100%; padding: 11px 14px; font-size: 14px; font-family: inherit; font-weight: 500;
-      color: var(--text); background: var(--gray-50); border: 1.5px solid var(--gray-200); border-radius: 10px;
-      outline: none; transition: border-color .15s, box-shadow .15s, background .15s; appearance: none;
-    }
-    .form-input:focus, .form-select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,87,184,.1); background: #fff; }
-    .form-input::placeholder { color: var(--gray-400); font-weight: 400; }
-    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom:16px; }
+    .form-group label { display:block; font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gray-600); margin-bottom:6px; }
+    .form-input, .form-select { width:100%; padding:11px 14px; font-size:14px; font-family:inherit; font-weight:500; color:var(--text); background:var(--gray-50); border:1.5px solid var(--gray-200); border-radius:10px; outline:none; transition:border-color .15s,box-shadow .15s,background .15s; appearance:none; }
+    .form-input:focus, .form-select:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,87,184,.1); background:#fff; }
+    .form-input::placeholder { color:var(--gray-400); font-weight:400; }
+    .form-row-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-row-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
 
     /* ── Pax section ── */
-    .pax-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--gray-100); }
-    .pax-header h3 { font-size: 14px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 9px; }
-    .pax-badge { width: 24px; height: 24px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
-    .copy-btn { font-size: 11.5px; color: var(--blue); font-weight: 600; background: none; border: none; cursor: pointer; font-family: inherit; transition: opacity .15s; }
-    .copy-btn:hover { opacity: .7; }
-    .pax-divider { border: none; border-top: 2px dashed var(--gray-200); margin: 22px 0; }
+    .pax-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--gray-100); }
+    .pax-header h3 { font-size:14px; font-weight:700; color:var(--text); display:flex; align-items:center; gap:9px; }
+    .pax-badge { width:24px; height:24px; border-radius:50%; background:var(--navy); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+    .copy-btn { font-size:11.5px; color:var(--blue); font-weight:600; background:none; border:none; cursor:pointer; font-family:inherit; }
+    .pax-divider { border:none; border-top:2px dashed var(--gray-200); margin:22px 0; }
 
     /* ── Seat map ── */
-    .seat-map-container { overflow-x: auto; padding-bottom: 8px; }
-    .seat-map-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
-    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-600); }
-    .legend-swatch { width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0; }
+    .seat-map-legend { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
+    .legend-item { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--gray-600); }
+    .legend-sw { width:16px; height:16px; border-radius:4px; flex-shrink:0; }
 
-    .cabin-section { margin-bottom: 22px; }
-    .cabin-tag { display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; border-radius: 20px; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+    .cabin-section { margin-bottom:22px; }
+    .cabin-tag { display:inline-flex; padding:3px 12px; border-radius:20px; font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:12px; }
 
-    .seat-row { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; }
-    .seat-row-num { width: 22px; font-size: 10px; color: var(--gray-400); font-weight: 600; text-align: right; flex-shrink: 0; }
-    .seat-aisle { width: 14px; flex-shrink: 0; }
-    .seat-btn {
-      width: 30px; height: 30px; border-radius: 6px; border: 1.5px solid;
-      font-size: 9px; font-weight: 700; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      font-family: inherit; transition: all .15s;
-    }
-    .seat-avail    { background: var(--green-lt); border-color: #6EE7B7; color: var(--green); }
-    .seat-avail:hover { background: var(--green); color: #fff; border-color: var(--green); transform: scale(1.1); }
-    .seat-taken    { background: var(--gray-100); border-color: var(--gray-200); color: var(--gray-300); cursor: not-allowed; }
-    .seat-selected { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 3px 10px rgba(0,87,184,.3); transform: scale(1.08); }
-    .seat-exit     { border-style: dashed; }
+    .seat-row { display:flex; align-items:center; gap:4px; margin-bottom:4px; }
+    .seat-row-num { width:22px; font-size:10px; color:var(--gray-400); font-weight:600; text-align:right; flex-shrink:0; }
+    .seat-aisle { width:14px; flex-shrink:0; }
+    .seat-btn { width:30px; height:30px; border-radius:6px; border:1.5px solid; font-size:9px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:inherit; transition:all .15s; }
+    .seat-avail    { background:var(--green-lt); border-color:#6EE7B7; color:var(--green); }
+    .seat-avail:hover { background:var(--green); color:#fff; border-color:var(--green); transform:scale(1.1); }
+    .seat-taken    { background:var(--gray-100); border-color:var(--gray-200); color:var(--gray-300); cursor:not-allowed; }
+    .seat-selected { background:var(--blue); border-color:var(--blue); color:#fff; box-shadow:0 3px 10px rgba(0,87,184,.3); transform:scale(1.08); }
+    .seat-exit     { border-style:dashed; }
 
-    .selected-seat-chip {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 12px; border-radius: 20px;
-      background: var(--blue-lt); border: 1px solid rgba(0,87,184,.2);
-      font-size: 12.5px; font-weight: 700; color: var(--blue);
-      margin-top: 10px;
-    }
-    .selected-seat-chip button { background: none; border: none; cursor: pointer; color: var(--blue); font-size: 14px; line-height: 1; padding: 0 0 0 2px; opacity: .6; }
-    .selected-seat-chip button:hover { opacity: 1; }
+    .sel-chip { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:20px; background:var(--blue-lt); border:1px solid rgba(0,87,184,.2); font-size:12.5px; font-weight:700; color:var(--blue); margin-right:6px; margin-top:6px; }
+    .sel-chip button { background:none; border:none; cursor:pointer; color:var(--blue); font-size:14px; line-height:1; padding:0 0 0 2px; opacity:.6; }
+    .sel-chip button:hover { opacity:1; }
 
-    /* ── Sidebar / price summary ── */
-    .summary-card { background: #fff; border: 1.5px solid var(--gray-200); border-radius: 18px; overflow: hidden; position: sticky; top: 88px; }
-    .summary-head { background: linear-gradient(135deg, var(--navy) 0%, #002FA8 100%); padding: 20px 22px; }
-    .summary-airline { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-    .summary-airline-logo { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; padding: 4px; }
-    .summary-airline-logo img { width: 100%; height: 100%; object-fit: contain; }
-    .summary-airline-name { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.9); }
-    .summary-airline-op   { font-size: 11px; color: rgba(255,255,255,.48); margin-top: 1px; }
-    .summary-route { display: flex; align-items: center; gap: 12px; }
-    .summary-iata  { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -.03em; line-height: 1; }
-    .summary-city  { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 2px; }
-    .summary-arr   { display: flex; flex-direction: column; align-items: center; flex: 1; }
-    .summary-line  { width: 100%; height: 1.5px; background: rgba(255,255,255,.2); position: relative; }
-    .summary-line::after { content:'▶'; position: absolute; right: -4px; top: 50%; transform: translateY(-50%); font-size: 8px; color: rgba(255,255,255,.3); }
-    .summary-ns    { font-size: 9.5px; color: rgba(255,255,255,.38); letter-spacing: .05em; text-transform: uppercase; margin-top: 4px; }
+    /* ── Summary sidebar ── */
+    .summary-card { background:#fff; border:1.5px solid var(--gray-200); border-radius:18px; overflow:hidden; position:sticky; top:88px; }
+    .summary-head { background:linear-gradient(135deg,var(--navy) 0%,#002FA8 100%); padding:20px 22px; }
+    .summary-airline { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+    .summary-logo { width:32px; height:32px; border-radius:8px; background:rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; padding:4px; }
+    .summary-logo img { width:100%; height:100%; object-fit:contain; }
+    .summary-airline-name { font-size:13px; font-weight:700; color:rgba(255,255,255,.9); }
+    .summary-airline-op   { font-size:11px; color:rgba(255,255,255,.48); margin-top:1px; }
+    .summary-route { display:flex; align-items:center; gap:12px; }
+    .summary-iata  { font-size:30px; font-weight:800; color:#fff; letter-spacing:-.03em; line-height:1; }
+    .summary-city  { font-size:11px; color:rgba(255,255,255,.5); margin-top:2px; }
+    .summary-arr   { display:flex; flex-direction:column; align-items:center; flex:1; }
+    .summary-line  { width:100%; height:1.5px; background:rgba(255,255,255,.2); position:relative; }
+    .summary-line::after { content:'▶'; position:absolute; right:-4px; top:50%; transform:translateY(-50%); font-size:8px; color:rgba(255,255,255,.3); }
+    .summary-ns    { font-size:9.5px; color:rgba(255,255,255,.38); letter-spacing:.05em; text-transform:uppercase; margin-top:4px; }
+    .summary-body { padding:20px 22px; }
+    .summary-row  { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .summary-row-label { font-size:12.5px; color:var(--gray-600); }
+    .summary-row-val   { font-size:13px; font-weight:600; color:var(--text); }
+    .summary-divider   { border:none; border-top:1px solid var(--gray-200); margin:14px 0; }
+    .summary-total     { font-size:22px; font-weight:800; color:var(--navy); letter-spacing:-.02em; }
+    .summary-total-label { font-size:11px; color:var(--gray-400); font-weight:500; }
+    .price-per-pax { font-size:12px; color:var(--gray-400); margin-top:2px; }
+    .trust-row { display:flex; flex-direction:column; gap:8px; margin-top:16px; }
+    .trust-item { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--gray-400); }
+    .trust-item svg { color:var(--green); flex-shrink:0; }
 
-    .summary-body { padding: 20px 22px; }
-    .summary-row  { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .summary-row-label { font-size: 12.5px; color: var(--gray-600); }
-    .summary-row-val   { font-size: 13px; font-weight: 600; color: var(--text); }
-    .summary-divider   { border: none; border-top: 1px solid var(--gray-200); margin: 14px 0; }
-    .summary-total     { font-size: 22px; font-weight: 800; color: var(--navy); letter-spacing: -.02em; }
-    .summary-total-label { font-size: 11px; color: var(--gray-400); font-weight: 500; }
-    .price-per-pax { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
-
-    .book-btn {
-      width: 100%; padding: 15px; font-size: 15px; font-weight: 700; font-family: inherit;
-      color: #fff; background: var(--blue); border: none; border-radius: 10px;
-      cursor: pointer; letter-spacing: .02em; transition: background .2s, transform .15s, box-shadow .2s;
-      margin-top: 16px;
-    }
-    .book-btn:hover { background: var(--blue-h); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,87,184,.3); }
-    .book-btn:active { transform: none; }
-    .book-btn:disabled { background: var(--gray-300); cursor: not-allowed; transform: none; box-shadow: none; }
-
-    .trust-row { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
-    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--gray-400); }
-    .trust-item svg { flex-shrink: 0; color: var(--green); }
+    .book-btn { width:100%; padding:14px; font-size:15px; font-weight:700; font-family:inherit; color:#fff; background:var(--blue); border:none; border-radius:10px; cursor:pointer; letter-spacing:.02em; transition:background .2s,transform .15s,box-shadow .2s; margin-top:16px; }
+    .book-btn:hover { background:var(--blue-h); transform:translateY(-1px); box-shadow:0 6px 20px rgba(0,87,184,.3); }
+    .book-btn:active { transform:none; }
+    .book-btn:disabled { background:var(--gray-300); cursor:not-allowed; transform:none; box-shadow:none; }
 
     /* ── Alerts ── */
-    .alert { padding: 12px 16px; border-radius: 10px; font-size: 13.5px; font-weight: 500; margin-bottom: 18px; display: none; align-items: flex-start; gap: 10px; line-height: 1.5; }
-    .alert.show { display: flex; }
-    .alert-error   { background: var(--red-lt);   color: var(--red);   border: 1px solid #fecaca; }
-    .alert-success { background: var(--green-lt);  color: var(--green); border: 1px solid #a7f3d0; }
-    .alert-info    { background: var(--blue-lt);   color: var(--blue);  border: 1px solid #bfdbfe; }
-    .alert svg { flex-shrink: 0; margin-top: 1px; }
+    .alert { padding:12px 16px; border-radius:10px; font-size:13.5px; font-weight:500; margin-bottom:18px; display:none; align-items:flex-start; gap:10px; line-height:1.5; }
+    .alert.show { display:flex; }
+    .alert-error   { background:var(--red-lt);   color:var(--red);   border:1px solid #fecaca; }
+    .alert-success { background:var(--green-lt);  color:var(--green); border:1px solid #a7f3d0; }
+    .alert-info    { background:var(--blue-lt);   color:var(--blue);  border:1px solid #bfdbfe; }
+    .alert svg { flex-shrink:0; margin-top:1px; }
 
     /* ── Confirmation ── */
-    .confirm-wrap { max-width: 680px; margin: 0 auto; }
-    .confirm-hero { background: linear-gradient(135deg, var(--green) 0%, #047857 100%); border-radius: 20px; padding: 36px; text-align: center; margin-bottom: 24px; position: relative; overflow: hidden; }
-    .confirm-hero::before { content:'✓'; position: absolute; font-size: 200px; font-weight: 900; color: rgba(255,255,255,.04); top: -40px; right: -20px; }
-    .confirm-hero-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.18); border: 3px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; }
-    .confirm-hero h2 { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: -.02em; margin-bottom: 8px; }
-    .confirm-hero p  { font-size: 14px; color: rgba(255,255,255,.68); }
-    .confirm-pnr { font-size: 42px; font-weight: 800; color: #fff; letter-spacing: .14em; margin: 16px 0 6px; }
-    .confirm-pnr-label { font-size: 11px; color: rgba(255,255,255,.5); letter-spacing: .12em; text-transform: uppercase; }
+    .confirm-wrap { max-width:680px; margin:0 auto; }
+    .confirm-hero { background:linear-gradient(135deg,var(--green) 0%,#047857 100%); border-radius:20px; padding:36px; text-align:center; margin-bottom:24px; }
+    .confirm-hero h2 { font-size:26px; font-weight:800; color:#fff; letter-spacing:-.02em; margin-bottom:8px; }
+    .confirm-hero p  { font-size:14px; color:rgba(255,255,255,.68); }
+    .confirm-pnr { font-size:44px; font-weight:800; color:#fff; letter-spacing:.14em; margin:16px 0 6px; font-family:monospace; }
+    .confirm-pnr-label { font-size:11px; color:rgba(255,255,255,.55); letter-spacing:.12em; text-transform:uppercase; }
+    .confirm-card { background:#fff; border:1.5px solid var(--gray-200); border-radius:18px; overflow:hidden; margin-bottom:18px; }
+    .confirm-card-head { padding:18px 24px; border-bottom:1px solid var(--gray-100); font-size:14px; font-weight:700; color:var(--text); }
+    .confirm-card-body { padding:20px 24px; }
+    .confirm-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .confirm-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px; }
+    .confirm-val   { font-size:14px; font-weight:700; color:var(--text); }
+    .confirm-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .confirm-btn { padding:12px 24px; font-size:14px; font-weight:700; font-family:inherit; border-radius:10px; cursor:pointer; text-decoration:none; display:inline-block; text-align:center; transition:all .2s; }
+    .confirm-btn-blue  { background:var(--blue); color:#fff; border:2px solid var(--blue); }
+    .confirm-btn-blue:hover  { background:var(--blue-h); border-color:var(--blue-h); }
+    .confirm-btn-ghost { background:#fff; color:var(--navy); border:2px solid var(--navy); }
+    .confirm-btn-ghost:hover { background:var(--gray-50); }
 
-    .confirm-card { background: #fff; border: 1.5px solid var(--gray-200); border-radius: 18px; overflow: hidden; margin-bottom: 18px; }
-    .confirm-card-head { padding: 18px 24px; border-bottom: 1px solid var(--gray-100); font-size: 14px; font-weight: 700; color: var(--text); }
-    .confirm-card-body { padding: 20px 24px; }
-    .confirm-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .confirm-detail-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 4px; }
-    .confirm-detail-val   { font-size: 14px; font-weight: 700; color: var(--text); }
+    /* ── Loading / error ── */
+    .fullpage-state { min-height:60vh; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:14px; text-align:center; padding:40px; }
+    .fullpage-state h2 { font-size:22px; font-weight:700; color:var(--gray-800); }
+    .fullpage-state p  { font-size:14px; color:var(--gray-600); max-width:380px; }
+    .fullpage-state a  { padding:11px 26px; background:var(--blue); color:#fff; border-radius:9px; font-size:14px; font-weight:700; text-decoration:none; }
+    .spinner { width:44px; height:44px; border:3px solid var(--gray-200); border-top-color:var(--blue); border-radius:50%; animation:spin .8s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
 
-    .confirm-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
-    .confirm-btn { padding: 12px 24px; font-size: 14px; font-weight: 700; font-family: inherit; border-radius: 10px; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; transition: all .2s; }
-    .confirm-btn-blue  { background: var(--blue); color: #fff; border: 2px solid var(--blue); }
-    .confirm-btn-blue:hover  { background: var(--blue-h); border-color: var(--blue-h); }
-    .confirm-btn-ghost { background: #fff; color: var(--navy); border: 2px solid var(--navy); }
-    .confirm-btn-ghost:hover { background: var(--gray-50); }
-
-    /* ── Error / loading full page ── */
-    .fullpage-state { min-height: 60vh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; text-align: center; padding: 40px; }
-    .fullpage-state-icon { font-size: 52px; }
-    .fullpage-state h2 { font-size: 22px; font-weight: 700; color: var(--gray-800); }
-    .fullpage-state p  { font-size: 14px; color: var(--gray-600); max-width: 380px; }
-    .fullpage-state a  { padding: 11px 26px; background: var(--blue); color: #fff; border-radius: 9px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s; }
-    .fullpage-state a:hover { background: var(--blue-h); }
-
-    .skel { background: linear-gradient(90deg,var(--gray-100) 25%,#e8ebf4 50%,var(--gray-100) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 8px; }
-    @keyframes shimmer { 0%{background-position:200% 0}100%{background-position:-200% 0} }
-
-    @media(max-width:960px) {
-      .booking-layout { grid-template-columns: 1fr; }
-      .summary-card { position: static; }
-    }
-    @media(max-width:640px) {
-      .topbar, .nav-links { display: none; }
-      .form-row-2, .form-row-3 { grid-template-columns: 1fr; }
-      .confirm-detail-grid { grid-template-columns: 1fr; }
-      .step-label { display: none; }
-    }
+    @media(max-width:960px) { .booking-layout { grid-template-columns:1fr; } .summary-card { position:static; } }
+    @media(max-width:640px)  { .topbar,.nav-links { display:none; } .form-row-2,.form-row-3 { grid-template-columns:1fr; } .confirm-grid { grid-template-columns:1fr; } .step-label { display:none; } }
   </style>
 </head>
 <body>
 
-<!-- ░░ Topbar ░░ -->
+<!-- Topbar -->
 <div class="topbar">
   <div class="topbar-inner">
-    <div class="topbar-left">
-      <span class="live-dot"></span>
-      Felix Lego City International Airport (FLX) · Republic of States
-    </div>
-    <div class="topbar-right">
-      <a href="status.html">Flight Status</a>
-      <a href="account.html">My Trips</a>
-    </div>
+    <div class="topbar-left"><span class="live-dot"></span>Felix Lego City International Airport (FLX) · Republic of States</div>
+    <div class="topbar-right"><a href="status.html">Flight Status</a><a href="account.html">My Trips</a></div>
   </div>
 </div>
 
-<!-- ░░ Nav ░░ -->
+<!-- Nav -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -267,66 +208,57 @@
   </div>
 </nav>
 
-<!-- ░░ Steps ░░ -->
+<!-- Steps -->
 <div class="steps-bar" id="stepsBar">
   <div class="steps-inner">
     <div class="step-item active" id="step1"><div class="step-num" id="sn1">1</div><div class="step-label">Passenger Details</div></div>
     <div class="step-conn"></div>
     <div class="step-item" id="step2"><div class="step-num" id="sn2">2</div><div class="step-label">Select Seats</div></div>
     <div class="step-conn"></div>
-    <div class="step-item" id="step3"><div class="step-num" id="sn3">3</div><div class="step-label">Review & Pay</div></div>
+    <div class="step-item" id="step3"><div class="step-num" id="sn3">3</div><div class="step-label">Review & Book</div></div>
     <div class="step-conn"></div>
     <div class="step-item" id="step4"><div class="step-num" id="sn4">4</div><div class="step-label">Confirmation</div></div>
   </div>
 </div>
 
-<!-- ░░ Main ░░ -->
+<!-- Main -->
 <div class="page-body" id="pageBody">
 
   <!-- Loading -->
   <div id="loadingView" class="fullpage-state">
-    <div style="width:48px;height:48px;border:3px solid var(--gray-200);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite"></div>
-    <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
-    <p style="color:var(--gray-400);font-size:14px">Loading flight details…</p>
+    <div class="spinner"></div>
+    <p style="color:var(--gray-400)">Loading flight details…</p>
   </div>
 
   <!-- Error -->
   <div id="errorView" class="fullpage-state" style="display:none">
-    <div class="fullpage-state-icon">✈️</div>
+    <div style="font-size:52px">✈️</div>
     <h2>Flight not found</h2>
     <p id="errorMsg">We couldn't load this flight. It may no longer be available.</p>
     <a href="flights.html">Search Other Flights</a>
   </div>
 
-  <!-- Booking form (steps 1-3) -->
+  <!-- Booking (steps 1-3) -->
   <div id="bookingView" style="display:none">
     <div class="booking-layout">
 
-      <!-- Left: forms -->
+      <!-- Left column -->
       <div id="formColumn">
 
-        <!-- ══ STEP 1: Passenger Details ══ -->
+        <!-- Step 1: Passenger Details -->
         <div id="panelStep1">
           <div class="card" id="passengersCard"></div>
-
-          <!-- Contact info -->
           <div class="card">
             <div class="card-head">
               <div class="card-icon" style="background:#ECFDF5">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.7h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
-              <div><h2>Contact Information</h2><p>For booking confirmation and flight updates</p></div>
+              <div><h2>Contact Information</h2><p>For confirmation and flight updates</p></div>
             </div>
             <div class="card-body">
               <div class="form-row-2">
-                <div class="form-group">
-                  <label for="contactEmail">Email Address *</label>
-                  <input class="form-input" type="email" id="contactEmail" placeholder="you@example.com" autocomplete="email">
-                </div>
-                <div class="form-group">
-                  <label for="contactPhone">Phone Number</label>
-                  <input class="form-input" type="tel" id="contactPhone" placeholder="+1 555 000 0000" autocomplete="tel">
-                </div>
+                <div class="form-group"><label for="contactEmail">Email Address *</label><input class="form-input" type="email" id="contactEmail" placeholder="you@example.com" autocomplete="email"></div>
+                <div class="form-group"><label for="contactPhone">Phone</label><input class="form-input" type="tel" id="contactPhone" placeholder="+1 555 000 0000" autocomplete="tel"></div>
               </div>
               <div class="alert alert-error" id="step1Error">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
@@ -337,37 +269,33 @@
           </div>
         </div>
 
-        <!-- ══ STEP 2: Seat Selection ══ -->
+        <!-- Step 2: Seat Selection -->
         <div id="panelStep2" style="display:none">
           <div class="card">
             <div class="card-head">
               <div class="card-icon" style="background:var(--blue-lt)">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg>
               </div>
-              <div><h2>Select Your Seat</h2><p id="seatSubtitle">Choose a seat for each passenger</p></div>
+              <div><h2>Select Your Seat</h2><p id="seatSubtitle">Optional — you can also select at check-in</p></div>
             </div>
             <div class="card-body">
               <div id="seatMapContainer"></div>
-              <div class="alert alert-info show" style="margin-top:12px">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                Seat selection is optional. You can also choose your seat during online check-in.
-              </div>
               <div style="display:flex;gap:12px;margin-top:18px">
-                <button onclick="goToStep(1)" style="padding:12px 20px;font-size:14px;font-weight:600;font-family:inherit;color:var(--gray-600);background:#fff;border:1.5px solid var(--gray-200);border-radius:10px;cursor:pointer;transition:all .15s">← Back</button>
-                <button class="book-btn" style="flex:1" onclick="goToStep3()">Review Booking →</button>
+                <button onclick="setStep(1)" style="padding:12px 20px;font-size:14px;font-weight:600;font-family:inherit;color:var(--gray-600);background:#fff;border:1.5px solid var(--gray-200);border-radius:10px;cursor:pointer">← Back</button>
+                <button class="book-btn" style="flex:1;margin-top:0" onclick="goToStep3()">Review Booking →</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ══ STEP 3: Review ══ -->
+        <!-- Step 3: Review -->
         <div id="panelStep3" style="display:none">
           <div class="card">
             <div class="card-head">
               <div class="card-icon" style="background:#FFFBEB">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               </div>
-              <div><h2>Review Your Booking</h2><p>Please confirm all details before proceeding</p></div>
+              <div><h2>Review Your Booking</h2><p>Confirm all details before proceeding</p></div>
             </div>
             <div class="card-body">
               <div id="reviewContent"></div>
@@ -376,17 +304,17 @@
                 <span id="bookErrorMsg"></span>
               </div>
               <div style="display:flex;gap:12px;margin-top:18px">
-                <button onclick="goToStep(2)" style="padding:12px 20px;font-size:14px;font-weight:600;font-family:inherit;color:var(--gray-600);background:#fff;border:1.5px solid var(--gray-200);border-radius:10px;cursor:pointer;transition:all .15s">← Back</button>
-                <button class="book-btn" style="flex:1" id="confirmBookBtn" onclick="confirmBooking()">Confirm & Book →</button>
+                <button onclick="setStep(2)" style="padding:12px 20px;font-size:14px;font-weight:600;font-family:inherit;color:var(--gray-600);background:#fff;border:1.5px solid var(--gray-200);border-radius:10px;cursor:pointer">← Back</button>
+                <button class="book-btn" style="flex:1;margin-top:0" id="confirmBookBtn" onclick="confirmBooking()">Confirm & Book →</button>
               </div>
-              <p style="font-size:11.5px;color:var(--gray-400);margin-top:12px;text-align:center">By confirming, you agree to DreamPacific Airways' terms and conditions.</p>
+              <p style="font-size:11.5px;color:var(--gray-400);margin-top:12px;text-align:center">By confirming you agree to DreamPacific Airways' terms and conditions.</p>
             </div>
           </div>
         </div>
 
       </div><!-- /formColumn -->
 
-      <!-- Right: summary -->
+      <!-- Right: price summary -->
       <div>
         <div class="summary-card" id="summaryCard">
           <div class="summary-head">
@@ -400,7 +328,7 @@
     </div>
   </div><!-- /bookingView -->
 
-  <!-- ══ STEP 4: Confirmation ══ -->
+  <!-- Confirmation -->
   <div id="confirmView" style="display:none">
     <div class="confirm-wrap" id="confirmContent"></div>
   </div>
@@ -408,7 +336,10 @@
 </div><!-- /page-body -->
 
 <script>
-  const API = 'https://dreampacific-api.felixfeger46.workers.dev'; // ← update with your Worker URL
+  // ── Config ────────────────────────────────────────────────
+  const API = 'https://dreampacific-api.felixfeger46.workers.dev'; // ← update
+
+  const DP_LOGO = 'https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png';
 
   const PARTNERS = {
     AA:{ name:'American Airlines', logo:'https://www.gstatic.com/flights/airline_logos/70px/AA.png' },
@@ -419,26 +350,34 @@
     HA:{ name:'Hawaiian Airlines', logo:'https://www.gstatic.com/flights/airline_logos/70px/HA.png' },
     CX:{ name:'Cathay Pacific',    logo:'https://www.gstatic.com/flights/airline_logos/70px/CX.png' },
   };
-  const DP_LOGO = 'https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png';
-  const CABIN_LABELS = { economy:'Economy', premium_economy:'Premium Economy', business:'Business', first:'First Class' };
-  const CITIES = { FLX:'Lego City',LAX:'Los Angeles',JFK:'New York',ORD:'Chicago',MIA:'Miami',DFW:'Dallas',BOS:'Boston',LGA:'New York',FLL:'Ft. Lauderdale',HNL:'Honolulu',OGG:'Maui',LHR:'London',DXB:'Dubai',HKG:'Hong Kong' };
 
-  // ── Parse URL ────────────────────────────────────
-  const p = new URLSearchParams(location.search);
-  const FLIGHT_ID  = p.get('flight_id') || p.get('flightId');
-  const CABIN      = p.get('cabin') || 'economy';
-  const PAX_COUNT  = Math.max(1, Math.min(9, parseInt(p.get('passengers') || '1', 10)));
-  const PNR_VIEW   = p.get('pnr'); // for viewing an existing booking
+  const CABIN_LABELS = {
+    economy:'Economy', premium_economy:'Premium Economy',
+    business:'Business Class', first:'First Class',
+  };
+  const CITIES = {
+    FLX:'Lego City',LAX:'Los Angeles',JFK:'New York',ORD:'Chicago',
+    MIA:'Miami',DFW:'Dallas',BOS:'Boston',LGA:'New York',FLL:'Ft. Lauderdale',
+    HNL:'Honolulu',OGG:'Maui',LHR:'London',DXB:'Dubai',HKG:'Hong Kong',
+  };
 
-  // ── State ─────────────────────────────────────────
+  // ── URL Params ────────────────────────────────────────────
+  const urlP       = new URLSearchParams(location.search);
+  const FLIGHT_ID  = urlP.get('flight_id') || urlP.get('flightId');
+  const CABIN      = urlP.get('cabin') || 'economy';
+  const PAX_COUNT  = Math.max(1, Math.min(9, parseInt(urlP.get('passengers') || '1', 10)));
+  const PNR_VIEW   = urlP.get('pnr');
+
+  // ── State ─────────────────────────────────────────────────
   let flight         = null;
   let allSeats       = [];
-  let seatSelections = {};  // { paxIndex: seat_id }
-  let currentStep    = 1;
+  let seatSelections = {};   // { paxIndex: seat_id }
   let passengerData  = [];
+  let currentSeatPax = 0;
 
-  // ── Boot ──────────────────────────────────────────
-  window.addEventListener('scroll', () => document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 10), {passive:true});
+  // ── Boot ──────────────────────────────────────────────────
+  window.addEventListener('scroll', () =>
+    document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 10), {passive:true});
 
   try {
     const u = JSON.parse(localStorage.getItem('dp_user') || 'null');
@@ -446,46 +385,47 @@
   } catch(e) {}
 
   async function init() {
-    if (!FLIGHT_ID && !PNR_VIEW) {
-      showError('No flight selected. Please search for a flight first.');
-      return;
-    }
-    if (PNR_VIEW) { await loadByPNR(); return; }
+    if (PNR_VIEW) { await loadByPNR(PNR_VIEW); return; }
+    if (!FLIGHT_ID) { showError('No flight selected. Please search for a flight first.'); return; }
     await loadFlight();
   }
 
+  // ── Load flight from API ──────────────────────────────────
   async function loadFlight() {
     try {
-      const res  = await fetch(`${API}/api/flights/${FLIGHT_ID}`);
-      if (!res.ok) throw new Error('Flight not available');
+      const res = await fetch(`${API}/api/flights/${FLIGHT_ID}`);
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}));
+        throw new Error(d.error || `Flight not found (${res.status})`);
+      }
       flight = await res.json();
 
-      // Load seats
-      const sr = await fetch(`${API}/api/flights/${FLIGHT_ID}/seats`);
-      if (sr.ok) allSeats = await sr.json();
+      // Load seats (non-fatal if this fails)
+      try {
+        const sr = await fetch(`${API}/api/flights/${FLIGHT_ID}/seats`);
+        if (sr.ok) allSeats = await sr.json();
+      } catch(e) { allSeats = []; }
 
       buildUI();
     } catch(e) {
-      showError(e.message || 'Could not load this flight.');
+      showError(e.message || 'Could not load this flight. Please try again.');
     }
   }
 
-  async function loadByPNR() {
-    // Show read-only confirmation for an existing booking
+  async function loadByPNR(pnr) {
     try {
       const token = localStorage.getItem('dp_token');
-      const res   = await fetch(`${API}/api/bookings/${PNR_VIEW}`, {
-        headers: token ? { Authorization: 'Bearer ' + token } : {}
-      });
+      const headers = token ? { Authorization: 'Bearer ' + token } : {};
+      const res  = await fetch(`${API}/api/bookings/${pnr}`, { headers });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Booking not found');
       renderConfirmation(data.booking, data.passengers);
     } catch(e) {
-      showError(e.message);
+      showError(e.message || 'Could not load this booking.');
     }
   }
 
-  // ── Show/hide views ───────────────────────────────
+  // ── Views ─────────────────────────────────────────────────
   function showError(msg) {
     document.getElementById('loadingView').style.display = 'none';
     document.getElementById('errorView').style.display   = 'flex';
@@ -501,38 +441,36 @@
     setStep(1);
   }
 
-  // ── Steps ──────────────────────────────────────────
+  // ── Steps ─────────────────────────────────────────────────
   function setStep(n) {
-    currentStep = n;
     [1,2,3,4].forEach(i => {
-      const el  = document.getElementById('step'+i);
-      const num = document.getElementById('sn'+i);
+      const el  = document.getElementById('step' + i);
+      const num = document.getElementById('sn' + i);
       el.classList.remove('active','done');
-      if (i < n)  { el.classList.add('done');   num.textContent = '✓'; }
-      if (i === n) { el.classList.add('active'); num.textContent = i; }
-      if (i > n)   { num.textContent = i; }
+      if (i < n)  { el.classList.add('done');  num.textContent = '✓'; }
+      if (i === n){ el.classList.add('active'); num.textContent = i; }
+      if (i > n)   num.textContent = i;
     });
-    document.getElementById('panelStep1').style.display = n === 1 ? 'block' : 'none';
-    document.getElementById('panelStep2').style.display = n === 2 ? 'block' : 'none';
-    document.getElementById('panelStep3').style.display = n === 3 ? 'block' : 'none';
-    document.getElementById('bookingView').style.display  = n <= 3 ? 'block' : 'none';
-    document.getElementById('confirmView').style.display  = n === 4 ? 'block' : 'none';
-    document.getElementById('stepsBar').style.display     = n === 4 ? 'none'  : 'block';
-    window.scrollTo({top:0, behavior:'smooth'});
+    document.getElementById('panelStep1').style.display  = n === 1 ? 'block' : 'none';
+    document.getElementById('panelStep2').style.display  = n === 2 ? 'block' : 'none';
+    document.getElementById('panelStep3').style.display  = n === 3 ? 'block' : 'none';
+    document.getElementById('bookingView').style.display = n <= 3  ? 'block' : 'none';
+    document.getElementById('confirmView').style.display = n === 4 ? 'block' : 'none';
+    document.getElementById('stepsBar').style.display    = n === 4 ? 'none'  : 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function goToStep(n) { setStep(n); }
-
-  // ── Step 1 validation ──────────────────────────────
+  // ── Step 1 ────────────────────────────────────────────────
   function goToStep2() {
     document.getElementById('step1Error').classList.remove('show');
-    const pax = collectPassengers();
+    const pax  = collectPassengers();
     const errs = [];
     pax.forEach((p, i) => {
-      if (!p.first_name) errs.push(`Passenger ${i+1}: First name is required`);
-      if (!p.last_name)  errs.push(`Passenger ${i+1}: Last name is required`);
+      if (!p.first_name) errs.push(`Passenger ${i+1}: first name is required`);
+      if (!p.last_name)  errs.push(`Passenger ${i+1}: last name is required`);
     });
-    if (!document.getElementById('contactEmail').value.trim()) errs.push('Contact email is required');
+    if (!document.getElementById('contactEmail').value.trim())
+      errs.push('Contact email is required');
 
     if (errs.length) {
       document.getElementById('step1ErrorMsg').textContent = errs[0];
@@ -549,27 +487,28 @@
     setStep(3);
   }
 
-  // ── Collect passenger form data ────────────────────
+  // ── Collect passenger form data ────────────────────────────
   function collectPassengers() {
-    return Array.from({length: PAX_COUNT}, (_, i) => ({
+    return Array.from({ length: PAX_COUNT }, (_, i) => ({
       first_name:      (document.getElementById(`pf-${i}`)?.value || '').trim(),
       last_name:       (document.getElementById(`pl-${i}`)?.value || '').trim(),
-      date_of_birth:   document.getElementById(`pd-${i}`)?.value || null,
+      date_of_birth:   document.getElementById(`pd-${i}`)?.value   || null,
       passport_number: (document.getElementById(`pp-${i}`)?.value || '').trim() || null,
       nationality:     (document.getElementById(`pn-${i}`)?.value || '').trim() || null,
-      meal_preference: document.getElementById(`pm-${i}`)?.value || null,
+      meal_preference: document.getElementById(`pm-${i}`)?.value   || null,
     }));
   }
 
-  // ── Build passenger card forms ─────────────────────
+  // ── Build passenger forms ──────────────────────────────────
   function buildPassengersCard() {
-    const cabin = CABIN_LABELS[CABIN] || CABIN;
-    let html = `<div class="card-head">
-      <div class="card-icon" style="background:var(--blue-lt)">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+    let html = `
+      <div class="card-head">
+        <div class="card-icon" style="background:var(--blue-lt)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <div><h2>Passenger Details</h2><p>${PAX_COUNT} passenger${PAX_COUNT>1?'s':''} · ${CABIN_LABELS[CABIN]||CABIN}</p></div>
       </div>
-      <div><h2>Passenger Details</h2><p>${PAX_COUNT} passenger${PAX_COUNT>1?'s':''} · ${cabin}</p></div>
-    </div><div class="card-body">`;
+      <div class="card-body">`;
 
     for (let i = 0; i < PAX_COUNT; i++) {
       if (i > 0) html += `<hr class="pax-divider">`;
@@ -587,7 +526,7 @@
           <div class="form-group"><label>Passport Number</label><input class="form-input" id="pp-${i}" placeholder="Optional"></div>
           <div class="form-group"><label>Nationality</label><input class="form-input" id="pn-${i}" placeholder="Optional"></div>
         </div>
-        <div class="form-group" style="max-width:280px">
+        <div class="form-group" style="max-width:260px">
           <label>Meal Preference</label>
           <select class="form-select" id="pm-${i}">
             <option value="">Standard</option>
@@ -599,11 +538,10 @@
           </select>
         </div>`;
     }
-
-    // Pre-fill pax 1 from logged-in user
     html += `</div>`;
     document.getElementById('passengersCard').innerHTML = html;
 
+    // Pre-fill from logged-in user
     try {
       const u = JSON.parse(localStorage.getItem('dp_user') || 'null');
       if (u) {
@@ -616,22 +554,22 @@
 
   function copyFromFirst(idx) {
     ['pf','pl','pd','pp','pn'].forEach(p => {
-      const src = document.getElementById(`${p}-0`);
-      const dst = document.getElementById(`${p}-${idx}`);
-      if (src && dst) dst.value = src.value;
+      const s = document.getElementById(`${p}-0`);
+      const t = document.getElementById(`${p}-${idx}`);
+      if (s && t) t.value = s.value;
     });
   }
 
-  // ── Summary sidebar ────────────────────────────────
+  // ── Summary sidebar ────────────────────────────────────────
   function buildSummary() {
     if (!flight) return;
     const isDP    = flight.flight_type === 'independent';
     const partner = PARTNERS[flight.codeshare_partner];
-    const airName = isDP ? 'DreamPacific Airways' : (partner?.name || 'DreamPacific Airways');
+    const airName = isDP ? 'DreamPacific Airways' : (partner?.name || flight.codeshare_airline_name || 'DreamPacific Airways');
     const airLogo = isDP ? DP_LOGO : (partner?.logo || DP_LOGO);
 
     document.getElementById('summaryAirline').innerHTML = `
-      <div class="summary-airline-logo"><img src="${airLogo}" alt="${airName}" onerror="this.src='${DP_LOGO}'"></div>
+      <div class="summary-logo"><img src="${airLogo}" alt="${airName}" onerror="this.src='${DP_LOGO}'"></div>
       <div>
         <div class="summary-airline-name">${airName}</div>
         ${!isDP ? `<div class="summary-airline-op">Operated by DreamPacific Airways</div>` : ''}
@@ -646,7 +584,7 @@
     const arr  = new Date(flight.arrival_time);
     const diff = Math.round((arr - dep) / 60000);
     const dur  = `${Math.floor(diff/60)}h ${diff%60}m`;
-    const price = flight['price_' + CABIN] || 0;
+    const price = flight[`price_${CABIN}`] || 0;
     const total = price * PAX_COUNT;
 
     document.getElementById('summaryBody').innerHTML = `
@@ -663,99 +601,91 @@
         <div class="summary-total">$${total.toLocaleString()}</div>
       </div>
       <div class="trust-row">
-        <div class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure booking — 256-bit SSL</div>
+        <div class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure — 256-bit SSL</div>
         <div class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg> Instant confirmation</div>
-        <div class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Free seat changes at check-in</div>
+        <div class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Free seat change at check-in</div>
       </div>`;
   }
 
-  // ── Seat map ───────────────────────────────────────
+  // ── Seat Map ───────────────────────────────────────────────
+  // FIX: Removed the 'bychain' typo bug. Single clean pass using 'groups'.
   function buildSeatMap() {
     if (!allSeats.length) {
-      document.getElementById('seatMapContainer').innerHTML = `<div class="alert alert-info show"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>No seat map available. Seats will be assigned at check-in.</div>`;
+      document.getElementById('seatMapContainer').innerHTML =
+        `<div class="alert alert-info show"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>No seat map available for this flight. A seat will be assigned at check-in.</div>`;
       return;
     }
-
-    if (PAX_COUNT > 1) {
-      document.getElementById('seatSubtitle').textContent = `Selecting for: Passenger ${currentSeatPax + 1}`;
-    }
-
     renderSeatGrid();
   }
 
-  let currentSeatPax = 0;
   function renderSeatGrid() {
-    const cabinOrder = ['first','business','premium_economy','economy'];
-    const cabinColors = { first:'#7C3AED', business:'#0057B8', premium_economy:'#059669', economy:'#535E78' };
-    const cabinNames  = { first:'First Class', business:'Business Class', premium_economy:'Premium Economy', economy:'Economy' };
-    const cabinBg     = { first:'#F5F3FF', business:'#EFF6FF', premium_economy:'#ECFDF5', economy:'#F8F9FC' };
-
-    const bycabin = {};
-    allSeats.forEach(s => {
-      if (!bycabin[s.cabin_class]) bychain = {};
-      if (!bychain[s.cabin_class]) bychain[s.cabin_class] = {};
-      const row = parseInt(s.seat_number);
-      if (!bychain[s.cabin_class][row]) bychain[s.cabin_class][row] = [];
-      bychain[s.cabin_class][row].push(s);
-    });
-
-    // Fix: rebuild properly
+    // Build group structure: { cabin: { rowNum: [seat, ...] } }
     const groups = {};
     allSeats.forEach(s => {
       if (!groups[s.cabin_class]) groups[s.cabin_class] = {};
-      const row = parseInt(s.seat_number);
+      const row = parseInt(s.seat_number, 10);
       if (!groups[s.cabin_class][row]) groups[s.cabin_class][row] = [];
       groups[s.cabin_class][row].push(s);
     });
 
-    // PAX switcher for multi-pax
+    const cabinOrder  = ['first','business','premium_economy','economy'];
+    const cabinColors = { first:'#7C3AED',business:'#0057B8',premium_economy:'#059669',economy:'#535E78' };
+    const cabinBg     = { first:'#F5F3FF',business:'#EFF6FF',premium_economy:'#ECFDF5',economy:'#F8F9FC' };
+    const cabinNames  = { first:'First Class',business:'Business Class',premium_economy:'Premium Economy',economy:'Economy' };
+
+    // Pax switcher (multi-passenger)
     let paxSwitcher = '';
     if (PAX_COUNT > 1) {
-      paxSwitcher = `<div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap">
-        ${Array.from({length:PAX_COUNT},(_,i) => {
-          const sid = seatSelections[i];
-          const seat = sid ? allSeats.find(s=>s.id===sid) : null;
-          return `<button onclick="switchPax(${i})" style="padding:7px 16px;border-radius:20px;font-size:12.5px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .15s;border:1.5px solid ${currentSeatPax===i?'var(--blue)':'var(--gray-200)'};background:${currentSeatPax===i?'var(--blue)':'#fff'};color:${currentSeatPax===i?'#fff':'var(--gray-600)'}">
-            Pax ${i+1}${seat?` · <span style="font-family:monospace">${seat.seat_number}</span>`:''}
+      paxSwitcher = `<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">` +
+        Array.from({length: PAX_COUNT}, (_, i) => {
+          const sid  = seatSelections[i];
+          const seat = sid ? allSeats.find(s => s.id === sid) : null;
+          const isMe = currentSeatPax === i;
+          return `<button onclick="switchSeatPax(${i})"
+            style="padding:6px 15px;border-radius:20px;font-size:12.5px;font-weight:700;font-family:inherit;cursor:pointer;
+                   border:1.5px solid ${isMe?'var(--blue)':'var(--gray-200)'};
+                   background:${isMe?'var(--blue)':'#fff'};
+                   color:${isMe?'#fff':'var(--gray-600)'};transition:all .15s">
+            Pax ${i+1}${seat?` · ${seat.seat_number}`:''}
           </button>`;
-        }).join('')}
-      </div>`;
+        }).join('') + `</div>`;
     }
 
     let html = paxSwitcher + `
       <div class="seat-map-legend">
-        <div class="legend-item"><div class="legend-swatch" style="background:var(--green-lt);border:1.5px solid #6EE7B7"></div> Available</div>
-        <div class="legend-item"><div class="legend-swatch" style="background:var(--blue);border:1.5px solid var(--blue)"></div> Selected</div>
-        <div class="legend-item"><div class="legend-swatch" style="background:var(--gray-100);border:1.5px solid var(--gray-200)"></div> Taken</div>
+        <div class="legend-item"><div class="legend-sw" style="background:var(--green-lt);border:1.5px solid #6EE7B7"></div>Available</div>
+        <div class="legend-item"><div class="legend-sw" style="background:var(--blue);border:1.5px solid var(--blue)"></div>Selected</div>
+        <div class="legend-item"><div class="legend-sw" style="background:var(--gray-100);border:1.5px solid var(--gray-200)"></div>Taken</div>
       </div>
-      <div style="font-size:11px;color:var(--gray-400);margin-bottom:16px">W = Window &nbsp;·&nbsp; A = Aisle &nbsp;·&nbsp; Dashed border = Exit row</div>`;
+      <div style="font-size:11px;color:var(--gray-400);margin-bottom:14px">W = Window &nbsp;·&nbsp; A = Aisle &nbsp;·&nbsp; Dashed = Exit row</div>`;
 
     cabinOrder.forEach(cabin => {
       if (!groups[cabin]) return;
-      const rows = Object.keys(groups[cabin]).map(Number).sort((a,b)=>a-b);
+      const rows = Object.keys(groups[cabin]).map(Number).sort((a,b) => a-b);
       html += `<div class="cabin-section"><span class="cabin-tag" style="background:${cabinBg[cabin]};color:${cabinColors[cabin]}">${cabinNames[cabin]}</span>`;
+
       rows.forEach(row => {
-        const seats = groups[cabin][row].sort((a,b)=>a.seat_number.localeCompare(b.seat_number));
+        const seats = groups[cabin][row].sort((a,b) => a.seat_number.localeCompare(b.seat_number));
         const half  = Math.ceil(seats.length / 2);
         const left  = seats.slice(0, half);
         const right = seats.slice(half);
 
         html += `<div class="seat-row"><span class="seat-row-num">${row}</span>`;
-        left.forEach(s => html += seatBtn(s));
+        left.forEach(s  => { html += renderSeatBtn(s); });
         html += `<div class="seat-aisle"></div>`;
-        right.forEach(s => html += seatBtn(s));
+        right.forEach(s => { html += renderSeatBtn(s); });
         html += `</div>`;
       });
       html += `</div>`;
     });
 
-    // Show selected seats summary
+    // Selected chips
     const selected = Object.entries(seatSelections);
     if (selected.length) {
-      html += `<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">`;
+      html += `<div style="margin-top:12px;display:flex;flex-wrap:wrap">`;
       selected.forEach(([paxIdx, seatId]) => {
         const seat = allSeats.find(s => s.id === seatId);
-        if (seat) html += `<div class="selected-seat-chip">Pax ${parseInt(paxIdx)+1}: ${seat.seat_number} <button onclick="clearSeat(${paxIdx})" title="Remove">×</button></div>`;
+        if (seat) html += `<div class="sel-chip">Pax ${parseInt(paxIdx)+1}: ${seat.seat_number}<button onclick="clearSeat(${paxIdx})" title="Remove">×</button></div>`;
       });
       html += `</div>`;
     }
@@ -763,7 +693,7 @@
     document.getElementById('seatMapContainer').innerHTML = html;
   }
 
-  function seatBtn(s) {
+  function renderSeatBtn(s) {
     const selectedByMe    = seatSelections[currentSeatPax] === s.id;
     const selectedByOther = Object.entries(seatSelections).some(([idx, sid]) => parseInt(idx) !== currentSeatPax && sid === s.id);
     const isTaken = !s.is_available || selectedByOther;
@@ -774,20 +704,25 @@
     else               cls += 'seat-avail';
     if (s.is_exit_row) cls += ' seat-exit';
 
-    const col = s.seat_number.replace(/[0-9]/g,'');
+    const col = s.seat_number.replace(/[0-9]/g, '');
     const lbl = s.is_window ? 'W' : s.is_aisle ? 'A' : col;
-    return `<button class="${cls}" title="Seat ${s.seat_number}" ${isTaken?'disabled':`onclick="pickSeat('${s.id}',${currentSeatPax})"`}>${lbl}</button>`;
+
+    return `<button class="${cls}" title="Seat ${s.seat_number}${s.is_window?' (Window)':s.is_aisle?' (Aisle)':''}"
+      ${isTaken ? 'disabled' : `onclick="pickSeat('${s.id}',${currentSeatPax})"`}>${lbl}</button>`;
   }
 
-  function switchPax(idx) { currentSeatPax = idx; renderSeatGrid(); }
+  function switchSeatPax(idx) { currentSeatPax = idx; renderSeatGrid(); }
 
   function pickSeat(seatId, paxIdx) {
-    if (seatSelections[paxIdx] === seatId) { delete seatSelections[paxIdx]; }
-    else {
+    if (seatSelections[paxIdx] === seatId) {
+      delete seatSelections[paxIdx];
+    } else {
       seatSelections[paxIdx] = seatId;
       // Auto-advance to next unassigned pax
       if (PAX_COUNT > 1) {
-        for (let i = 0; i < PAX_COUNT; i++) { if (!seatSelections[i]) { currentSeatPax = i; break; } }
+        for (let i = 0; i < PAX_COUNT; i++) {
+          if (seatSelections[i] === undefined) { currentSeatPax = i; break; }
+        }
       }
     }
     renderSeatGrid();
@@ -795,33 +730,32 @@
 
   function clearSeat(paxIdx) { delete seatSelections[paxIdx]; renderSeatGrid(); }
 
-  // ── Review ─────────────────────────────────────────
+  // ── Review ─────────────────────────────────────────────────
   function buildReview() {
-    const dep  = new Date(flight.departure_time);
-    const arr  = new Date(flight.arrival_time);
-    const price = flight['price_' + CABIN] || 0;
+    const dep   = new Date(flight.departure_time);
+    const arr   = new Date(flight.arrival_time);
+    const price = flight[`price_${CABIN}`] || 0;
     const total = price * PAX_COUNT;
 
     const isDP    = flight.flight_type === 'independent';
     const partner = PARTNERS[flight.codeshare_partner];
-    const airName = isDP ? 'DreamPacific Airways' : (partner?.name || 'DreamPacific Airways');
+    const airName = isDP ? 'DreamPacific Airways' : (partner?.name || flight.codeshare_airline_name || 'DreamPacific Airways');
 
-    let paxRows = passengerData.map((pax, i) => {
-      const seatId = seatSelections[i];
-      const seat   = seatId ? allSeats.find(s => s.id === seatId) : null;
+    const paxRows = passengerData.map((pax, i) => {
+      const seat = seatSelections[i] ? allSeats.find(s => s.id === seatSelections[i]) : null;
       return `<div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--gray-100);font-size:13.5px">
         <span style="font-weight:600">${pax.first_name} ${pax.last_name}</span>
-        <span style="color:var(--gray-600)">${seat ? `Seat ${seat.seat_number}` : 'Seat TBA'}</span>
+        <span style="color:var(--gray-600)">${seat ? `Seat ${seat.seat_number}` : 'Seat TBA at check-in'}</span>
       </div>`;
     }).join('');
 
     document.getElementById('reviewContent').innerHTML = `
       <div style="background:var(--gray-50);border-radius:12px;padding:18px;margin-bottom:18px">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:12px">Flight</div>
         <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px">${flight.flight_number} · ${airName}</div>
-        <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px">${flight.origin} → ${flight.destination}</div>
-        <div style="font-size:13px;color:var(--gray-600)">${dep.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})} · ${dep.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true})} → ${arr.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true})}</div>
-        <div style="font-size:13px;color:var(--gray-600);margin-top:4px">${CABIN_LABELS[CABIN]||CABIN}</div>
+        ${!isDP ? `<div style="font-size:12px;color:var(--gray-400);margin-bottom:10px">Operated by DreamPacific Airways</div>` : '<div style="margin-bottom:10px"></div>'}
+        <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px">${flight.origin} → ${flight.destination}</div>
+        <div style="font-size:13px;color:var(--gray-600)">${dep.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}</div>
+        <div style="font-size:13px;color:var(--gray-600);margin-top:2px">${dep.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true})} → ${arr.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true})} · ${CABIN_LABELS[CABIN]||CABIN}</div>
       </div>
       <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:8px">Passengers</div>
       ${paxRows}
@@ -831,35 +765,46 @@
       </div>`;
   }
 
-  // ── Confirm booking ────────────────────────────────
+  // ── Confirm booking (THE KEY FIXED FUNCTION) ───────────────
   async function confirmBooking() {
     const btn = document.getElementById('confirmBookBtn');
     document.getElementById('bookError').classList.remove('show');
     btn.disabled = true; btn.textContent = 'Booking…';
 
+    // FIX: Always try to get token — works for both logged-in and guest users.
+    // Guest users simply won't have a token, which is now accepted by the worker.
     const token = localStorage.getItem('dp_token');
-    const seatIds = Object.entries(seatSelections)
-      .sort(([a],[b]) => a-b)
-      .map(([,sid]) => sid);
+
+    const headers = { 'Content-Type': 'application/json' };
+    if (token) headers['Authorization'] = 'Bearer ' + token;
+
+    // Build seat_ids array ordered by passenger index
+    const seatIds = Array.from({ length: PAX_COUNT }, (_, i) => seatSelections[i]).filter(Boolean);
 
     const body = {
-      flight_id:   FLIGHT_ID,
-      cabin_class: CABIN,
-      passengers:  passengerData,
-      seat_ids:    seatIds.length ? seatIds : undefined,
+      flight_id:    FLIGHT_ID,    // FIX: matches worker field name exactly
+      cabin_class:  CABIN,        // FIX: matches worker field name exactly
+      passengers:   passengerData,
+      seat_ids:     seatIds.length ? seatIds : undefined,
     };
 
     try {
       const res  = await fetch(`${API}/api/bookings`, {
-        method: 'POST',
-        headers: { 'Content-Type':'application/json', ...(token ? {Authorization:'Bearer '+token} : {}) },
-        body: JSON.stringify(body),
+        method: 'POST', headers, body: JSON.stringify(body),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Booking failed');
 
-      renderConfirmation(data.booking, data.passengers);
+      if (!res.ok) {
+        // FIX: surface the actual error from the worker instead of a generic message
+        throw new Error(data.error || `Booking failed (${res.status})`);
+      }
+
+      // FIX: worker returns { booking, passengers } — use those field names
+      if (!data.booking) throw new Error('Unexpected response from server — please try again');
+
+      renderConfirmation(data.booking, data.passengers || []);
       setStep(4);
+
     } catch(e) {
       document.getElementById('bookErrorMsg').textContent = e.message || 'Something went wrong. Please try again.';
       document.getElementById('bookError').classList.add('show');
@@ -868,25 +813,29 @@
     }
   }
 
-  // ── Confirmation view ──────────────────────────────
+  // ── Confirmation ───────────────────────────────────────────
   function renderConfirmation(booking, passengers) {
+    // FIX: use consistent field names returned by the fixed worker
     const dep = new Date(booking.departure_time);
     const arr = new Date(booking.arrival_time);
     const isDP    = booking.flight_type === 'independent' || !booking.codeshare_partner;
     const partner = PARTNERS[booking.codeshare_partner];
-    const airName = isDP ? 'DreamPacific Airways' : (partner?.name || 'DreamPacific Airways');
+    const airName = isDP
+      ? 'DreamPacific Airways'
+      : (partner?.name || booking.codeshare_airline_name || 'DreamPacific Airways');
 
-    const paxRows = (passengers||[]).map(pax => `
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--gray-100);font-size:13.5px">
+    const paxRows = (passengers || []).map(pax =>
+      `<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--gray-100);font-size:13.5px">
         <span style="font-weight:600">${pax.first_name} ${pax.last_name}</span>
         <span style="color:var(--gray-600)">${pax.seat_number ? `Seat ${pax.seat_number}` : 'Seat TBA at check-in'}</span>
-      </div>`).join('');
+      </div>`
+    ).join('');
 
     document.getElementById('confirmContent').innerHTML = `
       <div class="confirm-hero">
-        <div class="confirm-hero-icon">✈</div>
+        <div style="width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.18);border:3px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:26px">✓</div>
         <h2>Booking Confirmed!</h2>
-        <p>Your DreamPacific booking is confirmed. Save your reference number.</p>
+        <p>Your DreamPacific booking is confirmed. Save your reference number below.</p>
         <div class="confirm-pnr">${booking.pnr}</div>
         <div class="confirm-pnr-label">Booking Reference</div>
       </div>
@@ -896,13 +845,13 @@
         <div class="confirm-card-body">
           <div style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:4px">${booking.flight_number} · ${airName}</div>
           ${!isDP ? `<div style="font-size:12px;color:var(--gray-400);margin-bottom:12px">Operated by DreamPacific Airways</div>` : '<div style="margin-bottom:12px"></div>'}
-          <div class="confirm-detail-grid">
-            <div><div class="confirm-detail-label">From</div><div class="confirm-detail-val">${booking.origin} · ${CITIES[booking.origin]||booking.origin_city||''}</div></div>
-            <div><div class="confirm-detail-label">To</div><div class="confirm-detail-val">${booking.destination} · ${CITIES[booking.destination]||booking.dest_city||''}</div></div>
-            <div><div class="confirm-detail-label">Departure</div><div class="confirm-detail-val">${dep.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} ${dep.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true})}</div></div>
-            <div><div class="confirm-detail-label">Arrival</div><div class="confirm-detail-val">${arr.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true})}</div></div>
-            <div><div class="confirm-detail-label">Cabin</div><div class="confirm-detail-val">${CABIN_LABELS[booking.cabin_class]||booking.cabin_class}</div></div>
-            <div><div class="confirm-detail-label">Total Paid</div><div class="confirm-detail-val">$${parseFloat(booking.total_price||0).toLocaleString()}</div></div>
+          <div class="confirm-grid">
+            <div><div class="confirm-label">From</div><div class="confirm-val">${booking.origin}${booking.origin_city?` · ${booking.origin_city}`:''}</div></div>
+            <div><div class="confirm-label">To</div><div class="confirm-val">${booking.destination}${booking.dest_city?` · ${booking.dest_city}`:''}</div></div>
+            <div><div class="confirm-label">Departure</div><div class="confirm-val">${dep.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} ${dep.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true})}</div></div>
+            <div><div class="confirm-label">Arrival</div><div class="confirm-val">${arr.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true})}</div></div>
+            <div><div class="confirm-label">Cabin</div><div class="confirm-val">${CABIN_LABELS[booking.cabin_class]||booking.cabin_class}</div></div>
+            <div><div class="confirm-label">Total Paid</div><div class="confirm-val">$${parseFloat(booking.total_price||0).toLocaleString()}</div></div>
           </div>
         </div>
       </div>
@@ -914,20 +863,18 @@
 
       <div class="confirm-card">
         <div class="confirm-card-head">What's Next?</div>
-        <div class="confirm-card-body">
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="width:32px;height:32px;border-radius:50%;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--blue);flex-shrink:0">1</div>
-              <div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Save your booking reference</div><div style="font-size:13px;color:var(--gray-600)">Your PNR is <strong>${booking.pnr}</strong>. You'll need this to check in.</div></div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="width:32px;height:32px;border-radius:50%;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--blue);flex-shrink:0">2</div>
-              <div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Check in online</div><div style="font-size:13px;color:var(--gray-600)">Online check-in opens 24 hours before departure. Select your seat and get your boarding pass.</div></div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="width:32px;height:32px;border-radius:50%;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--blue);flex-shrink:0">3</div>
-              <div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Arrive at the airport</div><div style="font-size:13px;color:var(--gray-600)">Please arrive at Felix Lego City International Airport (FLX) at least 2 hours before departure.</div></div>
-            </div>
+        <div class="confirm-card-body" style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:30px;height:30px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+            <div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Save your booking reference</div><div style="font-size:13px;color:var(--gray-600)">Your PNR is <strong>${booking.pnr}</strong>. You'll need this to check in.</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:30px;height:30px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+            <div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Check in online</div><div style="font-size:13px;color:var(--gray-600)">Online check-in opens 24 hours before departure. Select your seat and get your boarding pass.</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:30px;height:30px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+            <div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Arrive at the airport</div><div style="font-size:13px;color:var(--gray-600)">Please arrive at Felix Lego City International Airport (FLX) at least 2 hours before departure.</div></div>
           </div>
         </div>
       </div>
@@ -935,12 +882,12 @@
       <div class="confirm-actions">
         <a href="checkin.html?pnr=${booking.pnr}" class="confirm-btn confirm-btn-blue">Online Check-In →</a>
         <a href="account.html" class="confirm-btn confirm-btn-ghost">View My Trips</a>
-        <a href="index.html" class="confirm-btn" style="background:var(--gray-100);color:var(--gray-800);border:none">Book Another Flight</a>
+        <a href="index.html" class="confirm-btn" style="background:var(--gray-100);color:var(--gray-800);border:none">Book Another</a>
       </div>`;
 
-    document.getElementById('confirmView').style.display = 'block';
-    document.getElementById('bookingView').style.display = 'none';
-    document.getElementById('loadingView').style.display = 'none';
+    document.getElementById('confirmView').style.display  = 'block';
+    document.getElementById('bookingView').style.display  = 'none';
+    document.getElementById('loadingView').style.display  = 'none';
   }
 
   init();
