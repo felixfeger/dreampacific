@@ -535,14 +535,13 @@
   function formatTime(iso, timeZone) {
   const d = new Date(iso);
 
-  return new Intl.DateTimeFormat('en-US', {
+  return d.toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: true,
     timeZone: timeZone || 'UTC'
-  }).format(d);
+  });
 }
-
   function formatDuration(dep, arr) {
     const diff = (new Date(arr) - new Date(dep)) / 60000;
     const h = Math.floor(diff / 60), m = diff % 60;
