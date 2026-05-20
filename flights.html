@@ -607,7 +607,7 @@
         <!-- Route -->
         <div class="fc-route">
           <div class="fc-time-block">
-            <div class="fc-time">${formatTime(f.departure_time)}</div>
+            <div class="fc-time">${formatTime(f.departure_time, f.origin_timezone)}</div>
             <div class="fc-code">${f.origin}</div>
           </div>
           <div class="fc-middle">
@@ -622,7 +622,7 @@
             <div class="fc-nonstop">NONSTOP</div>
           </div>
           <div class="fc-time-block">
-            <div class="fc-time">${formatTime(f.arrival_time)}</div>
+            <div class="fc-time">${formatTime(f.arrival_time, f.destination_timezone)}</div>
             <div class="fc-code">${f.destination}</div>
           </div>
         </div>
