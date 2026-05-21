@@ -322,12 +322,12 @@ const API = 'https://dreampaicfic-api.felixfeger46.workers.dev'; // ← update
 const AP_TZ = {
   FLX:'America/Los_Angeles', LAX:'America/Los_Angeles', LGB:'America/Los_Angeles',
   JFK:'America/New_York',    LGA:'America/New_York',    BOS:'America/New_York',
-  MIA:'America/New_York',    FLL:'America/New_York',
-  ORD:'America/Chicago',     DFW:'America/Chicago',
+  MIA:'America/New_York',    FLL:'America/New_York',    SYD:'Australia/Sydney',
+  ORD:'America/Chicago',     DFW:'America/Chicago',     DEN:'America/Denver', 
   HNL:'Pacific/Honolulu',    OGG:'Pacific/Honolulu',
-  LHR:'Europe/London',
-  DXB:'Asia/Dubai',
-  HKG:'Asia/Hong_Kong',
+  LHR:'Europe/London',       HLC:'America/Los_Angeles',
+  DXB:'Asia/Dubai',          PHX:'America/Phoniex',
+  HKG:'Asia/Hong_Kong',      MCI:'America/Kansas_City',
 };
 
 const DP_LOGO = 'https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png';
@@ -341,7 +341,7 @@ const PARTNERS = {
   CX:{ name:'Cathay Pacific',    logo:'https://www.gstatic.com/flights/airline_logos/70px/CX.png' },
 };
 const CABIN_LABELS = { economy:'Economy', premium_economy:'Premium Economy', business:'Business Class', first:'First Class' };
-const CITIES = { FLX:'Lego City',LAX:'Los Angeles',JFK:'New York',ORD:'Chicago',MIA:'Miami',DFW:'Dallas',BOS:'Boston',LGA:'New York',FLL:'Ft. Lauderdale',HNL:'Honolulu',OGG:'Maui',LHR:'London',DXB:'Dubai',HKG:'Hong Kong' };
+const CITIES = { FLX:'Lego City',LAX:'Los Angeles',JFK:'New York',ORD:'Chicago',MIA:'Miami',DFW:'Dallas',BOS:'Boston',LGA:'New York',FLL:'Fort Lauderdale',HNL:'Honolulu',OGG:'Maui',LHR:'London',DXB:'Dubai',HKG:'Hong Kong',SYD:'Sydney',PHX:'Phoenix',MCI:'Kansas City',HLC:'Heartlake Beach' };
 
 // ── Timezone helpers (shared logic with flights.html) ─────────
 function fmtLocal(utcIso, ianaZone, timeOnly = true) {
