@@ -6,261 +6,173 @@
   <title>Flight Results — DreamPacific Airways</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:     #001B5E;
-      --navy-dk:  #000F3A;
-      --blue:     #0057B8;
-      --blue-h:   #004699;
-      --blue-lt:  #E6EEF9;
-      --white:    #FFFFFF;
-      --gray-50:  #F8F9FC;
-      --gray-100: #EEF0F6;
-      --gray-200: #D8DCE8;
-      --gray-400: #8D97AF;
-      --gray-600: #535E78;
-      --gray-800: #252D42;
-      --text:     #0F1626;
-      --green:    #059669;
-      --green-lt: #ECFDF5;
+      --navy:    #001B5E; --navy-dk: #000F3A; --blue:  #0057B8;
+      --blue-h:  #004699; --blue-lt: #E6EEF9;
+      --gray-50: #F8F9FC; --gray-100:#EEF0F6; --gray-200:#D8DCE8;
+      --gray-300:#BEC7D8; --gray-400:#8D97AF; --gray-600:#535E78;
+      --gray-800:#252D42; --text:    #0F1626;
+      --green:   #059669; --green-lt:#ECFDF5;
+      --red:     #DC2626; --red-lt:  #FEF2F2;
+      --amber:   #D97706; --amber-lt:#FFFBEB;
     }
-
     html { scroll-behavior: smooth; }
-    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: var(--text); background: var(--gray-50); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    body { font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:var(--text); background:var(--gray-50); -webkit-font-smoothing:antialiased; min-height:100vh; }
 
     /* ── Topbar ── */
-    .topbar { background: var(--navy-dk); padding: 6px 0; }
-    .topbar-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: flex; justify-content: space-between; align-items: center; }
-    .topbar-left { font-size: 11.5px; color: rgba(255,255,255,.44); display: flex; align-items: center; gap: 8px; }
-    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #34C759; }
-    .topbar-right a { font-size: 11.5px; color: rgba(255,255,255,.38); text-decoration: none; margin-left: 22px; transition: color .15s; }
-    .topbar-right a:hover { color: rgba(255,255,255,.82); }
+    .topbar { background:var(--navy-dk); padding:6px 0; }
+    .topbar-inner { max-width:1240px; margin:0 auto; padding:0 28px; display:flex; justify-content:space-between; align-items:center; }
+    .topbar-left { font-size:11.5px; color:rgba(255,255,255,.44); display:flex; align-items:center; gap:8px; }
+    .live-dot { width:6px; height:6px; border-radius:50%; background:#34C759; }
+    .topbar-right a { font-size:11.5px; color:rgba(255,255,255,.38); text-decoration:none; margin-left:22px; transition:color .15s; }
+    .topbar-right a:hover { color:rgba(255,255,255,.82); }
 
     /* ── Nav ── */
-    .nav { background: var(--navy); height: 64px; display: flex; align-items: center; position: sticky; top: 0; z-index: 200; border-bottom: 1px solid rgba(255,255,255,.06); }
-    .nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.4); }
-    .nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; width: 100%; display: flex; align-items: center; }
-    .nav-logo { text-decoration: none; display: flex; align-items: center; margin-right: 32px; }
-    .nav-logo img { height: 36px; display: block; }
-    .nav-links { display: flex; list-style: none; flex: 1; }
-    .nav-links a { padding: 8px 13px; font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; border-radius: 7px; transition: color .15s, background .15s; white-space: nowrap; display: block; }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
-    .nav-links a.active { color: #fff; }
-    .nav-end { margin-left: auto; display: flex; gap: 10px; align-items: center; }
-    .btn-ghost { padding: 7px 16px; font-size: 13px; font-weight: 600; font-family: inherit; color: rgba(255,255,255,.8); background: transparent; border: 1.5px solid rgba(255,255,255,.22); border-radius: 8px; cursor: pointer; text-decoration: none; transition: all .15s; }
-    .btn-ghost:hover { border-color: rgba(255,255,255,.55); color: #fff; }
-    .btn-solid { padding: 7px 18px; font-size: 13px; font-weight: 700; font-family: inherit; color: var(--navy); background: #fff; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: all .15s; }
-    .btn-solid:hover { background: var(--blue-lt); }
+    .nav { background:var(--navy); height:64px; display:flex; align-items:center; position:sticky; top:0; z-index:200; border-bottom:1px solid rgba(255,255,255,.06); transition:box-shadow .3s; }
+    .nav.scrolled { box-shadow:0 4px 24px rgba(0,0,0,.4); }
+    .nav-inner { max-width:1240px; margin:0 auto; padding:0 28px; width:100%; display:flex; align-items:center; }
+    .nav-logo { text-decoration:none; display:flex; align-items:center; margin-right:32px; }
+    .nav-logo img { height:36px; display:block; }
+    .nav-links { display:flex; list-style:none; flex:1; }
+    .nav-links a { padding:8px 13px; font-size:13.5px; font-weight:500; color:rgba(255,255,255,.65); text-decoration:none; border-radius:7px; transition:color .15s,background .15s; white-space:nowrap; display:block; }
+    .nav-links a:hover { color:#fff; background:rgba(255,255,255,.08); }
+    .nav-links a.active { color:#fff; }
+    .nav-end { margin-left:auto; display:flex; gap:10px; align-items:center; }
+    .btn-ghost-nav { padding:7px 16px; font-size:13px; font-weight:600; font-family:inherit; color:rgba(255,255,255,.8); background:transparent; border:1.5px solid rgba(255,255,255,.22); border-radius:8px; cursor:pointer; text-decoration:none; transition:all .15s; }
+    .btn-ghost-nav:hover { border-color:rgba(255,255,255,.55); color:#fff; }
+    .btn-solid-nav { padding:7px 18px; font-size:13px; font-weight:700; font-family:inherit; color:var(--navy); background:#fff; border:none; border-radius:8px; cursor:pointer; text-decoration:none; }
+    .btn-solid-nav:hover { background:var(--blue-lt); }
 
     /* ── Search summary bar ── */
-    .search-bar { background: var(--navy); border-top: 1px solid rgba(255,255,255,.08); padding: 18px 0; }
-    .search-bar-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; gap: 0; flex-wrap: wrap; gap: 12px; }
-    .search-route { display: flex; align-items: center; gap: 12px; }
-    .route-airport { text-align: center; }
-    .route-code { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: -.02em; line-height: 1; }
-    .route-city { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 2px; }
-    .route-arrow { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 0 8px; }
-    .route-line { width: 80px; height: 1.5px; background: rgba(255,255,255,.2); position: relative; }
-    .route-line::after { content: '▶'; position: absolute; right: -6px; top: 50%; transform: translateY(-50%); font-size: 9px; color: rgba(255,255,255,.3); }
-    .route-nonstop { font-size: 10px; color: rgba(255,255,255,.35); letter-spacing: .04em; }
-    .search-meta { display: flex; gap: 8px; margin-left: 24px; flex-wrap: wrap; }
-    .meta-pill {
-      padding: 5px 13px; border-radius: 20px;
-      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.14);
-      font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.75);
-      display: flex; align-items: center; gap: 6px;
-    }
-    .meta-pill svg { opacity: .6; }
-    .search-edit-btn {
-      margin-left: auto; padding: 8px 18px;
-      font-size: 13px; font-weight: 600; font-family: inherit;
-      color: rgba(255,255,255,.8); background: rgba(255,255,255,.08);
-      border: 1.5px solid rgba(255,255,255,.18); border-radius: 8px; cursor: pointer;
-      text-decoration: none; transition: all .15s;
-    }
-    .search-edit-btn:hover { background: rgba(255,255,255,.14); color: #fff; }
+    .search-bar { background:var(--navy); border-top:1px solid rgba(255,255,255,.08); padding:16px 0; }
+    .search-bar-inner { max-width:1240px; margin:0 auto; padding:0 28px; display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+    .route-block { display:flex; align-items:center; gap:14px; }
+    .route-iata { font-size:26px; font-weight:800; color:#fff; letter-spacing:-.02em; line-height:1; }
+    .route-city { font-size:11px; color:rgba(255,255,255,.45); margin-top:2px; }
+    .route-arrow-wrap { display:flex; flex-direction:column; align-items:center; gap:3px; padding:0 6px; }
+    .route-line { width:72px; height:1.5px; background:rgba(255,255,255,.2); position:relative; }
+    .route-line::after { content:'▶'; position:absolute; right:-5px; top:50%; transform:translateY(-50%); font-size:8px; color:rgba(255,255,255,.3); }
+    .route-tag { font-size:10px; color:rgba(255,255,255,.35); letter-spacing:.04em; }
+    .meta-pills { display:flex; gap:8px; flex-wrap:wrap; margin-left:18px; }
+    .meta-pill { padding:5px 12px; border-radius:20px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.14); font-size:12px; font-weight:500; color:rgba(255,255,255,.75); display:flex; align-items:center; gap:6px; }
+    .edit-btn { margin-left:auto; padding:8px 18px; font-size:13px; font-weight:600; font-family:inherit; color:rgba(255,255,255,.8); background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.18); border-radius:8px; cursor:pointer; transition:all .15s; }
+    .edit-btn:hover { background:rgba(255,255,255,.14); color:#fff; }
 
-    /* ── Edit search panel ── */
-    .edit-panel {
-      background: var(--navy-dk); border-bottom: 1px solid rgba(255,255,255,.07);
-      padding: 20px 0; display: none;
-    }
-    .edit-panel.open { display: block; }
-    .edit-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: grid; grid-template-columns: 1fr 44px 1fr 1fr 1fr auto; gap: 10px; align-items: center; }
-    .ep-field { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 9px; }
-    .ep-field label { display: block; font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); padding: 8px 12px 2px; }
-    .ep-field input, .ep-field select { display: block; width: 100%; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #fff; background: none; border: none; outline: none; padding: 0 12px 8px; appearance: none; }
-    .ep-field input::placeholder { color: rgba(255,255,255,.35); }
-    .ep-swap { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.18); color: rgba(255,255,255,.7); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .2s; }
-    .ep-swap:hover { background: var(--blue); border-color: var(--blue); color: #fff; transform: rotate(180deg); }
-    .ep-search { height: 52px; padding: 0 24px; font-size: 14px; font-weight: 700; font-family: inherit; color: #fff; background: var(--blue); border: none; border-radius: 9px; cursor: pointer; white-space: nowrap; transition: background .2s; }
-    .ep-search:hover { background: var(--blue-h); }
+    /* ── Edit panel ── */
+    .edit-panel { background:var(--navy-dk); border-bottom:1px solid rgba(255,255,255,.07); padding:18px 0; display:none; }
+    .edit-panel.open { display:block; }
+    .edit-inner { max-width:1240px; margin:0 auto; padding:0 28px; display:grid; grid-template-columns:1fr 42px 1fr 1fr 1fr auto; gap:10px; align-items:center; }
+    .ep-field { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:9px; }
+    .ep-field label { display:block; font-size:9px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.35); padding:8px 12px 2px; }
+    .ep-field input, .ep-field select { display:block; width:100%; font-family:inherit; font-size:13.5px; font-weight:600; color:#fff; background:none; border:none; outline:none; padding:0 12px 8px; appearance:none; }
+    .ep-swap { width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,.1); border:1.5px solid rgba(255,255,255,.18); color:rgba(255,255,255,.7); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .2s; }
+    .ep-swap:hover { background:var(--blue); border-color:var(--blue); color:#fff; transform:rotate(180deg); }
+    .ep-go { height:50px; padding:0 22px; font-size:14px; font-weight:700; font-family:inherit; color:#fff; background:var(--blue); border:none; border-radius:9px; cursor:pointer; white-space:nowrap; transition:background .2s; }
+    .ep-go:hover { background:var(--blue-h); }
 
-    /* ── Main layout ── */
-    .page-body { max-width: 1240px; margin: 0 auto; padding: 28px 28px 64px; }
-    .results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
-    .results-count { font-size: 15px; font-weight: 600; color: var(--gray-800); }
-    .results-count span { color: var(--blue); }
-    .sort-row { display: flex; align-items: center; gap: 8px; }
-    .sort-label { font-size: 12px; color: var(--gray-400); font-weight: 500; }
-    .sort-select { font-family: inherit; font-size: 13px; font-weight: 600; color: var(--text); background: #fff; border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 6px 12px; outline: none; cursor: pointer; }
-
-    /* ── Flight card ── */
-    .flight-card {
-      background: #fff; border: 1.5px solid var(--gray-200); border-radius: 16px;
-      margin-bottom: 14px; overflow: hidden;
-      transition: border-color .2s, box-shadow .2s, transform .15s;
-    }
-    .flight-card:hover { border-color: #c0cfe8; box-shadow: 0 6px 32px rgba(0,27,94,.1); transform: translateY(-1px); }
-
-    .flight-card-main { display: grid; grid-template-columns: 200px 1fr auto; align-items: center; padding: 22px 26px; gap: 28px; }
-
-    /* Airline column */
-    .fc-airline { display: flex; flex-direction: column; gap: 6px; }
-    .fc-airline-logo {
-      display: flex; align-items: center; gap: 10px;
-    }
-    .fc-logo-wrap {
-      width: 42px; height: 42px; border-radius: 10px; background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      display: flex; align-items: center; justify-content: center; padding: 5px; flex-shrink: 0;
-    }
-    .fc-logo-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
-    .fc-airline-name { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.25; }
-    .fc-op-by {
-      font-size: 10.5px; color: var(--gray-400); font-weight: 500; line-height: 1.4;
-      display: flex; align-items: center; gap: 4px;
-    }
-    .fc-op-by img { width: 12px; height: 12px; object-fit: contain; border-radius: 2px; }
-    .fc-flight-num { font-size: 11px; color: var(--gray-400); font-weight: 600; letter-spacing: .04em; margin-top: 2px; }
-
-    /* Route column */
-    .fc-route { display: flex; align-items: center; gap: 0; flex: 1; }
-    .fc-time-block { text-align: center; }
-    .fc-time { font-size: 26px; font-weight: 800; color: var(--text); letter-spacing: -.03em; line-height: 1; }
-    .fc-code { font-size: 11px; color: var(--gray-400); font-weight: 600; letter-spacing: .04em; margin-top: 3px; }
-    .fc-middle { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 20px; }
-    .fc-duration { font-size: 12px; font-weight: 700; color: var(--gray-600); letter-spacing: .02em; }
-    .fc-line-wrap { width: 100%; display: flex; align-items: center; gap: 0; }
-    .fc-dot { width: 6px; height: 6px; border-radius: 50%; border: 2px solid var(--gray-400); flex-shrink: 0; }
-        .fc-line { flex: 1; height: 1.5px; background: var(--gray-300, #ccc); }
-    .fc-plane-icon { font-size: 14px; transform: rotate(0deg); color: var(--blue); line-height: 1; flex-shrink: 0; padding: 0 4px; }
-    .fc-nonstop { font-size: 11px; color: var(--green); font-weight: 700; letter-spacing: .04em; }
-
-    /* Cabin price column */
-    .fc-cabins { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; min-width: 180px; }
-    .cabin-row { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 12px; }
-    .cabin-name { font-size: 11.5px; color: var(--gray-600); font-weight: 500; white-space: nowrap; min-width: 100px; text-align: right; }
-    .cabin-btn {
-      padding: 7px 16px; border-radius: 8px;
-      font-size: 13px; font-weight: 700; font-family: inherit;
-      background: var(--blue-lt); color: var(--blue);
-      border: 1.5px solid rgba(0,87,184,.15); cursor: pointer;
-      white-space: nowrap; min-width: 90px; text-align: center;
-      transition: all .18s;
-    }
-    .cabin-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); transform: scale(1.03); }
-    .cabin-btn.sold-out { background: var(--gray-100); color: var(--gray-400); border-color: transparent; cursor: not-allowed; font-weight: 500; }
-    .cabin-btn.sold-out:hover { transform: none; }
-
-    /* Expand row */
-    .fc-expand-row {
-      padding: 0 26px; border-top: 1px solid var(--gray-100);
-      display: none; background: var(--gray-50);
-    }
-    .fc-expand-row.open { display: block; }
-    .fc-expand-inner { padding: 18px 0; display: flex; gap: 40px; flex-wrap: wrap; }
-    .fc-detail-group { }
-    .fc-detail-label { font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 5px; }
-    .fc-detail-value { font-size: 13.5px; font-weight: 600; color: var(--text); }
-    .fc-detail-sub { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
-
-    /* Toggle details btn */
-    .fc-toggle-btn {
-      width: 100%; padding: 10px 26px;
-      font-size: 12px; font-weight: 600; color: var(--gray-400);
-      background: none; border: none; border-top: 1px solid var(--gray-100);
-      cursor: pointer; text-align: left; font-family: inherit;
-      display: flex; align-items: center; gap: 6px; transition: color .15s;
-    }
-    .fc-toggle-btn:hover { color: var(--blue); }
-    .fc-toggle-icon { transition: transform .2s; }
-    .fc-toggle-btn.open .fc-toggle-icon { transform: rotate(180deg); }
-
-    /* ── Special badges ── */
-    .dp-badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      background: #EEF4FF; border: 1px solid rgba(0,87,184,.15);
-      border-radius: 5px; padding: 2px 8px;
-      font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: .04em;
-    }
-
-    /* ── Loading skeleton ── */
-    .skeleton-card { background: #fff; border: 1.5px solid var(--gray-200); border-radius: 16px; padding: 22px 26px; margin-bottom: 14px; }
-    .skel { background: linear-gradient(90deg, var(--gray-100) 25%, #e8ebf4 50%, var(--gray-100) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-    .skel-row { display: flex; align-items: center; gap: 20px; }
-
-    /* ── Empty state ── */
-    .empty-state { text-align: center; padding: 80px 20px; }
-    .empty-icon { font-size: 56px; margin-bottom: 20px; }
-    .empty-state h3 { font-size: 22px; font-weight: 700; color: var(--gray-800); margin-bottom: 10px; }
-    .empty-state p { font-size: 14px; color: var(--gray-600); margin-bottom: 28px; }
-    .empty-cta { display: inline-block; padding: 11px 26px; background: var(--blue); color: #fff; border-radius: 9px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s; }
-    .empty-cta:hover { background: var(--blue-h); }
+    /* ── Page body ── */
+    .page-body { max-width:1240px; margin:0 auto; padding:24px 28px 64px; }
+    .results-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px; }
+    .results-count { font-size:14.5px; font-weight:600; color:var(--gray-800); }
+    .results-count span { color:var(--blue); }
+    .sort-wrap { display:flex; align-items:center; gap:8px; }
+    .sort-label { font-size:12px; color:var(--gray-400); }
+    .sort-sel { font-family:inherit; font-size:13px; font-weight:600; color:var(--text); background:#fff; border:1.5px solid var(--gray-200); border-radius:8px; padding:6px 12px; outline:none; cursor:pointer; }
 
     /* ── Filter chips ── */
-    .filter-row { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
-    .filter-label { font-size: 11px; font-weight: 700; color: var(--gray-400); letter-spacing: .08em; text-transform: uppercase; }
-    .filter-chip {
-      padding: 5px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 600;
-      background: #fff; border: 1.5px solid var(--gray-200); color: var(--gray-600);
-      cursor: pointer; transition: all .15s; font-family: inherit;
-    }
-    .filter-chip.active { background: var(--navy); color: #fff; border-color: var(--navy); }
-    .filter-chip:hover:not(.active) { border-color: var(--blue); color: var(--blue); }
+    .filter-row { display:flex; gap:7px; margin-bottom:18px; flex-wrap:wrap; align-items:center; }
+    .filter-lbl { font-size:10.5px; font-weight:700; color:var(--gray-400); letter-spacing:.08em; text-transform:uppercase; margin-right:2px; }
+    .chip { padding:5px 14px; border-radius:20px; font-size:12.5px; font-weight:600; background:#fff; border:1.5px solid var(--gray-200); color:var(--gray-600); cursor:pointer; transition:all .15s; font-family:inherit; }
+    .chip.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+    .chip:hover:not(.on) { border-color:var(--blue); color:var(--blue); }
 
-    /* ── Responsive ── */
-    @media(max-width:900px){
-      .flight-card-main { grid-template-columns: 1fr; gap: 16px; }
-      .fc-cabins { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
-      .cabin-row { width: auto; }
-      .edit-inner { grid-template-columns: 1fr 40px 1fr; }
-    }
-    @media(max-width:640px){
-      .topbar { display: none; }
-      .nav-links { display: none; }
-      .search-bar-inner { flex-direction: column; align-items: flex-start; }
-      .search-edit-btn { margin-left: 0; }
-      .edit-inner { grid-template-columns: 1fr; }
-      .ep-swap { display: none; }
-    }
+    /* ── Flight card ── */
+    .flight-card { background:#fff; border:1.5px solid var(--gray-200); border-radius:16px; margin-bottom:12px; overflow:hidden; transition:border-color .2s,box-shadow .2s,transform .15s; }
+    .flight-card:hover { border-color:#c0cfe8; box-shadow:0 6px 32px rgba(0,27,94,.1); transform:translateY(-1px); }
+
+    .fc-main { display:grid; grid-template-columns:200px 1fr auto; align-items:center; padding:20px 24px; gap:24px; }
+
+    /* Airline col */
+    .fc-airline { display:flex; flex-direction:column; gap:6px; }
+    .fc-logo-row { display:flex; align-items:center; gap:10px; }
+    .fc-logo { width:40px; height:40px; border-radius:10px; background:var(--gray-50); border:1px solid var(--gray-200); display:flex; align-items:center; justify-content:center; padding:5px; flex-shrink:0; }
+    .fc-logo img { width:100%; height:100%; object-fit:contain; }
+    .fc-name { font-size:13.5px; font-weight:700; color:var(--text); line-height:1.25; }
+    .fc-opby { font-size:10.5px; color:var(--gray-400); font-weight:500; margin-top:2px; }
+    .fc-num  { font-size:11px; color:var(--gray-400); font-weight:600; letter-spacing:.04em; margin-top:3px; }
+
+    /* Route col */
+    .fc-route { display:flex; align-items:center; flex:1; }
+    .fc-time-block { text-align:center; min-width:80px; }
+    .fc-time { font-size:24px; font-weight:800; color:var(--text); letter-spacing:-.03em; line-height:1; }
+    .fc-tz   { font-size:10px; color:var(--gray-400); font-weight:600; margin-top:2px; letter-spacing:.04em; }
+    .fc-mid  { flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:0 16px; }
+    .fc-dur  { font-size:12px; font-weight:700; color:var(--gray-600); }
+    .fc-line-wrap { width:100%; display:flex; align-items:center; gap:0; }
+    .fc-dot  { width:6px; height:6px; border-radius:50%; border:2px solid var(--gray-300); flex-shrink:0; }
+    .fc-line { flex:1; height:1.5px; background:var(--gray-200); }
+    .fc-plane { font-size:14px; color:var(--blue); padding:0 4px; flex-shrink:0; }
+    .fc-ns   { font-size:10.5px; color:var(--green); font-weight:700; letter-spacing:.04em; }
+
+    /* Cabin prices col */
+    .fc-prices { display:flex; flex-direction:column; gap:7px; align-items:flex-end; min-width:175px; }
+    .cabin-row { display:flex; align-items:center; justify-content:space-between; width:100%; gap:10px; }
+    .cabin-name { font-size:11.5px; color:var(--gray-600); font-weight:500; min-width:110px; text-align:right; white-space:nowrap; }
+    .cabin-btn { padding:7px 15px; border-radius:8px; font-size:13px; font-weight:700; font-family:inherit; background:var(--blue-lt); color:var(--blue); border:1.5px solid rgba(0,87,184,.15); cursor:pointer; min-width:86px; text-align:center; transition:all .18s; }
+    .cabin-btn:hover { background:var(--blue); color:#fff; border-color:var(--blue); transform:scale(1.03); }
+
+    /* Details expand */
+    .fc-toggle { width:100%; padding:9px 24px; font-size:12px; font-weight:600; color:var(--gray-400); background:none; border:none; border-top:1px solid var(--gray-100); cursor:pointer; text-align:left; font-family:inherit; display:flex; align-items:center; gap:6px; transition:color .15s; }
+    .fc-toggle:hover { color:var(--blue); }
+    .fc-toggle-icon { transition:transform .2s; display:inline-block; }
+    .fc-toggle.open .fc-toggle-icon { transform:rotate(180deg); }
+    .fc-details { display:none; padding:16px 24px; background:var(--gray-50); border-top:1px solid var(--gray-100); }
+    .fc-details.open { display:block; }
+    .fc-details-grid { display:flex; gap:32px; flex-wrap:wrap; }
+    .fc-detail { }
+    .fc-detail-lbl { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px; }
+    .fc-detail-val { font-size:13.5px; font-weight:600; color:var(--text); }
+    .fc-detail-sub { font-size:11.5px; color:var(--gray-400); margin-top:1px; }
+
+    /* Status badge */
+    .status-badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:700; }
+    .st-scheduled { background:var(--green-lt); color:var(--green); }
+    .st-boarding   { background:var(--blue-lt);  color:var(--blue); }
+    .st-delayed    { background:var(--amber-lt); color:var(--amber); }
+    .st-departed   { background:var(--gray-100); color:var(--gray-600); }
+    .st-arrived    { background:var(--gray-100); color:var(--gray-600); }
+    .st-cancelled  { background:var(--red-lt);   color:var(--red); }
+
+    /* Skeletons */
+    .skel { background:linear-gradient(90deg,var(--gray-100) 25%,#e8ebf4 50%,var(--gray-100) 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; border-radius:8px; }
+    @keyframes shimmer { 0%{background-position:200% 0}100%{background-position:-200% 0} }
+    .skel-card { background:#fff; border:1.5px solid var(--gray-200); border-radius:16px; padding:22px 24px; margin-bottom:12px; display:flex; align-items:center; gap:20px; }
+
+    /* Empty */
+    .empty { text-align:center; padding:72px 20px; }
+    .empty-icon { font-size:52px; margin-bottom:18px; }
+    .empty h3 { font-size:22px; font-weight:700; color:var(--gray-800); margin-bottom:10px; }
+    .empty p  { font-size:14px; color:var(--gray-600); margin-bottom:26px; }
+    .empty a  { display:inline-block; padding:11px 26px; background:var(--blue); color:#fff; border-radius:9px; font-size:14px; font-weight:700; text-decoration:none; }
+
+    @media(max-width:860px) { .fc-main { grid-template-columns:1fr; } .fc-prices { align-items:flex-start; flex-direction:row; flex-wrap:wrap; } .edit-inner { grid-template-columns:1fr 42px 1fr; } }
+    @media(max-width:640px) { .topbar,.nav-links { display:none; } .search-bar-inner { flex-direction:column; align-items:flex-start; } .edit-inner { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
 
-<!-- ░░ Topbar ░░ -->
+<!-- Topbar -->
 <div class="topbar">
   <div class="topbar-inner">
-    <div class="topbar-left">
-      <span class="live-dot"></span>
-      Felix Lego City International Airport (FLX) · Republic States
-    </div>
-    <div class="topbar-right">
-      <a href="status.html">Flight Status</a>
-      <a href="checkin.html">Check-In</a>
-      <a href="account.html">My Trips</a>
-    </div>
+    <div class="topbar-left"><span class="live-dot"></span>Felix Lego City International Airport (FLX) · Republic of States</div>
+    <div class="topbar-right"><a href="status.html">Flight Status</a><a href="checkin.html">Check-In</a><a href="account.html">My Trips</a></div>
   </div>
 </div>
 
-<!-- ░░ Navigation ░░ -->
+<!-- Nav -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <img src="https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png"
-           alt="DreamPacific Airways">
-    </a>
+    <a href="index.html" class="nav-logo"><img src="https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png" alt="DreamPacific Airways"></a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Book</a></li>
       <li><a href="checkin.html">Check-In</a></li>
@@ -270,105 +182,51 @@
       <li><a href="flights.html">All Flights</a></li>
     </ul>
     <div class="nav-end">
-      <a href="account.html" class="btn-ghost" id="navSignIn">Sign In</a>
-      <a href="account.html?tab=register" class="btn-solid">Create Account</a>
+      <a href="account.html" class="btn-ghost-nav" id="navSignIn">Sign In</a>
+      <a href="account.html?tab=register" class="btn-solid-nav">Create Account</a>
     </div>
   </div>
 </nav>
 
-<!-- ░░ Search summary bar ░░ -->
+<!-- Search summary -->
 <div class="search-bar">
   <div class="search-bar-inner">
-    <div class="search-route">
-      <div class="route-airport">
-        <div class="route-code" id="dispOrigin">FLX</div>
-        <div class="route-city" id="dispOriginCity">Lego City</div>
-      </div>
-      <div class="route-arrow">
-        <div class="route-line"></div>
-        <div class="route-nonstop">NONSTOP</div>
-      </div>
-      <div class="route-airport">
-        <div class="route-code" id="dispDest">—</div>
-        <div class="route-city" id="dispDestCity">Destination</div>
-      </div>
+    <div class="route-block">
+      <div><div class="route-iata" id="dispOrigin">FLX</div><div class="route-city" id="dispOriginCity">Lego City</div></div>
+      <div class="route-arrow-wrap"><div class="route-line"></div><div class="route-tag">NONSTOP</div></div>
+      <div><div class="route-iata" id="dispDest">—</div><div class="route-city" id="dispDestCity">Destination</div></div>
     </div>
-
-    <div class="search-meta">
-      <div class="meta-pill" id="dispDate">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        <span id="dispDateText">—</span>
-      </div>
-      <div class="meta-pill" id="dispCabin">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
-        <span id="dispCabinText">Economy</span>
-      </div>
-      <div class="meta-pill">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-        <span id="dispPaxText">1 Passenger</span>
-      </div>
+    <div class="meta-pills">
+      <div class="meta-pill" id="pillDate">📅 <span id="pillDateTxt">—</span></div>
+      <div class="meta-pill" id="pillCabin">💺 <span id="pillCabinTxt">Economy</span></div>
+      <div class="meta-pill">👤 <span id="pillPaxTxt">1 Passenger</span></div>
     </div>
-
-    <button class="search-edit-btn" id="editToggle">Edit Search ↕</button>
+    <button class="edit-btn" id="editToggle">Edit Search ↕</button>
   </div>
 </div>
 
-<!-- ░░ Edit search panel ░░ -->
+<!-- Edit panel -->
 <div class="edit-panel" id="editPanel">
   <div class="edit-inner">
-    <div class="ep-field">
-      <label>From</label>
-      <input type="text" id="ep-from" list="ap-list2" autocomplete="off">
-    </div>
-    <button class="ep-swap" id="epSwap" title="Swap">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
-    </button>
-    <div class="ep-field">
-      <label>To</label>
-      <input type="text" id="ep-to" list="ap-list2" autocomplete="off">
-    </div>
-    <div class="ep-field">
-      <label>Date</label>
-      <input type="date" id="ep-date">
-    </div>
-    <div class="ep-field">
-      <label>Cabin</label>
-      <select id="ep-cabin">
-        <option value="economy">Economy</option>
-        <option value="premium_economy">Premium Economy</option>
-        <option value="business">Business</option>
-        <option value="first">First Class</option>
-      </select>
-    </div>
-    <button class="ep-search" id="epSearch">Update →</button>
+    <div class="ep-field"><label>From</label><input id="ep-from" list="aplist2" autocomplete="off"></div>
+    <button class="ep-swap" id="epSwap" title="Swap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg></button>
+    <div class="ep-field"><label>To</label><input id="ep-to" list="aplist2" autocomplete="off"></div>
+    <div class="ep-field"><label>Date</label><input type="date" id="ep-date"></div>
+    <div class="ep-field"><label>Cabin</label><select id="ep-cabin"><option value="economy">Economy</option><option value="premium_economy">Premium Economy</option><option value="business">Business</option><option value="first">First Class</option></select></div>
+    <button class="ep-go" id="epGo">Update →</button>
   </div>
-  <datalist id="ap-list2">
-    <option value="Lego City (FLX)">
-    <option value="Los Angeles (LAX)">
-    <option value="New York JFK (JFK)">
-    <option value="Chicago O'Hare (ORD)">
-    <option value="Miami (MIA)">
-    <option value="Dallas/Fort Worth (DFW)">
-    <option value="Boston (BOS)">
-    <option value="Fort Lauderdale (FLL)">
-    <option value="Honolulu (HNL)">
-    <option value="Maui (OGG)">
-    <option value="London Heathrow (LHR)">
-    <option value="Dubai (DXB)">
-    <option value="Hong Kong (HKG)">
+  <datalist id="aplist2">
+    <option value="Lego City (FLX)"><option value="Los Angeles (LAX)"><option value="New York JFK (JFK)"><option value="Chicago O'Hare (ORD)"><option value="Miami (MIA)"><option value="Dallas/Fort Worth (DFW)"><option value="Boston (BOS)"><option value="Fort Lauderdale (FLL)"><option value="Honolulu (HNL)"><option value="Maui (OGG)"><option value="London Heathrow (LHR)"><option value="Dubai (DXB)"><option value="Hong Kong (HKG)">
   </datalist>
 </div>
 
-<!-- ░░ Page body ░░ -->
+<!-- Results -->
 <div class="page-body">
-
-  <div class="results-header">
-    <div class="results-count" id="resultsCount">
-      <span id="countNum">0</span> flights found
-    </div>
-    <div class="sort-row">
+  <div class="results-hdr">
+    <div class="results-count"><span id="countNum">—</span> flights found</div>
+    <div class="sort-wrap">
       <span class="sort-label">Sort by</span>
-      <select class="sort-select" id="sortSelect">
+      <select class="sort-sel" id="sortSel">
         <option value="dep_asc">Departure — Earliest first</option>
         <option value="dep_desc">Departure — Latest first</option>
         <option value="price_asc">Price — Lowest first</option>
@@ -377,480 +235,493 @@
     </div>
   </div>
 
-  <!-- Filters -->
   <div class="filter-row">
-    <span class="filter-label">Show</span>
-    <button class="filter-chip active" data-filter="all">All Flights</button>
-    <button class="filter-chip" data-filter="dreampacific">DreamPacific</button>
-    <button class="filter-chip" data-filter="AA">American Airlines</button>
-    <button class="filter-chip" data-filter="BA">British Airways</button>
-    <button class="filter-chip" data-filter="EK">Emirates</button>
-    <button class="filter-chip" data-filter="WN">Southwest</button>
-    <button class="filter-chip" data-filter="B6">JetBlue</button>
-    <button class="filter-chip" data-filter="HA">Hawaiian</button>
-    <button class="filter-chip" data-filter="CX">Cathay Pacific</button>
+    <span class="filter-lbl">Show</span>
+    <button class="chip on" data-f="all">All Flights</button>
+    <button class="chip" data-f="independent">DreamPacific</button>
+    <button class="chip" data-f="AA">American Airlines</button>
+    <button class="chip" data-f="BA">British Airways</button>
+    <button class="chip" data-f="EK">Emirates</button>
+    <button class="chip" data-f="WN">Southwest</button>
+    <button class="chip" data-f="B6">JetBlue</button>
+    <button class="chip" data-f="HA">Hawaiian</button>
+    <button class="chip" data-f="CX">Cathay Pacific</button>
   </div>
 
-  <!-- Results container -->
-  <div id="resultsContainer">
-    <!-- Skeletons shown while loading -->
-    <div id="loadingState">
-      <div class="skeleton-card"><div class="skel-row"><div class="skel" style="width:42px;height:42px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel" style="height:14px;width:140px"></div><div class="skel" style="height:11px;width:80px"></div></div><div class="skel" style="height:26px;width:60px"></div><div class="skel" style="height:2px;width:100px"></div><div class="skel" style="height:26px;width:60px"></div><div style="display:flex;flex-direction:column;gap:8px;margin-left:auto"><div class="skel" style="height:34px;width:110px;border-radius:8px"></div><div class="skel" style="height:34px;width:110px;border-radius:8px"></div></div></div></div>
-      <div class="skeleton-card"><div class="skel-row"><div class="skel" style="width:42px;height:42px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel" style="height:14px;width:120px"></div><div class="skel" style="height:11px;width:70px"></div></div><div class="skel" style="height:26px;width:60px"></div><div class="skel" style="height:2px;width:100px"></div><div class="skel" style="height:26px;width:60px"></div><div style="display:flex;flex-direction:column;gap:8px;margin-left:auto"><div class="skel" style="height:34px;width:110px;border-radius:8px"></div><div class="skel" style="height:34px;width:110px;border-radius:8px"></div></div></div></div>
-      <div class="skeleton-card"><div class="skel-row"><div class="skel" style="width:42px;height:42px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel" style="height:14px;width:160px"></div><div class="skel" style="height:11px;width:90px"></div></div><div class="skel" style="height:26px;width:60px"></div><div class="skel" style="height:2px;width:100px"></div><div class="skel" style="height:26px;width:60px"></div><div style="display:flex;flex-direction:column;gap:8px;margin-left:auto"><div class="skel" style="height:34px;width:110px;border-radius:8px"></div></div></div></div>
-    </div>
-
-    <div id="flightsList" style="display:none"></div>
-    <div id="emptyState" style="display:none" class="empty-state">
-      <div class="empty-icon">✈️</div>
-      <h3>No flights found</h3>
-      <p>Try adjusting your dates or route — we may have service on other days.</p>
-      <a href="index.html" class="empty-cta">Back to Search</a>
-    </div>
+  <!-- Skeletons -->
+  <div id="loadingState">
+    <div class="skel-card"><div class="skel" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap:9px"><div class="skel" style="height:14px;width:150px"></div><div class="skel" style="height:11px;width:90px"></div></div><div class="skel" style="height:24px;width:56px"></div><div class="skel" style="height:1.5px;width:90px"></div><div class="skel" style="height:24px;width:56px"></div><div style="display:flex;flex-direction:column;gap:8px;margin-left:auto"><div class="skel" style="height:32px;width:100px;border-radius:8px"></div><div class="skel" style="height:32px;width:100px;border-radius:8px"></div></div></div>
+    <div class="skel-card"><div class="skel" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap:9px"><div class="skel" style="height:14px;width:120px"></div><div class="skel" style="height:11px;width:80px"></div></div><div class="skel" style="height:24px;width:56px"></div><div class="skel" style="height:1.5px;width:90px"></div><div class="skel" style="height:24px;width:56px"></div><div style="display:flex;flex-direction:column;gap:8px;margin-left:auto"><div class="skel" style="height:32px;width:100px;border-radius:8px"></div></div></div>
+    <div class="skel-card"><div class="skel" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div><div style="flex:1;display:flex;flex-direction:column;gap:9px"><div class="skel" style="height:14px;width:170px"></div><div class="skel" style="height:11px;width:100px"></div></div><div class="skel" style="height:24px;width:56px"></div><div class="skel" style="height:1.5px;width:90px"></div><div class="skel" style="height:24px;width:56px"></div><div style="display:flex;flex-direction:column;gap:8px;margin-left:auto"><div class="skel" style="height:32px;width:100px;border-radius:8px"></div><div class="skel" style="height:32px;width:100px;border-radius:8px"></div><div class="skel" style="height:32px;width:100px;border-radius:8px"></div></div></div>
   </div>
 
+  <div id="flightsList" style="display:none"></div>
+  <div id="emptyState" style="display:none" class="empty">
+    <div class="empty-icon">✈️</div>
+    <h3>No flights found</h3>
+    <p>Try adjusting your dates, route, or filter. We may have service on another day.</p>
+    <a href="index.html">Back to Search</a>
+  </div>
 </div>
 
 <script>
-  // ─── Config ───────────────────────────────────────────────
-  const API = 'https://dreampacific-api.felixfeger46.workers.dev'; // ← update
+// ── Config ───────────────────────────────────────────────────────
+const API = 'https://dreampacific-api.felixfeger46.workers.dev'; // ← update
 
-  // ─── Partner info ────────────────────────────────────────
-  const PARTNERS = {
-    AA: { name: 'American Airlines',  logo: 'https://www.gstatic.com/flights/airline_logos/70px/AA.png' },
-    BA: { name: 'British Airways',    logo: 'https://www.gstatic.com/flights/airline_logos/70px/BA.png' },
-    EK: { name: 'Emirates',           logo: 'https://www.gstatic.com/flights/airline_logos/70px/EK.png' },
-    WN: { name: 'Southwest Airlines', logo: 'https://www.gstatic.com/flights/airline_logos/70px/WN.png' },
-    B6: { name: 'JetBlue Airways',    logo: 'https://www.gstatic.com/flights/airline_logos/70px/B6.png' },
-    HA: { name: 'Hawaiian Airlines',  logo: 'https://www.gstatic.com/flights/airline_logos/70px/HA.png' },
-    CX: { name: 'Cathay Pacific',     logo: 'https://www.gstatic.com/flights/airline_logos/70px/CX.png' },
-  };
+// ── Airport timezone map ─────────────────────────────────────────
+// Used to convert UTC stored times → local airport times for display
+const AP_TZ = {
+  FLX:'America/Los_Angeles', LAX:'America/Los_Angeles', LGB:'America/Los_Angeles',
+  JFK:'America/New_York',    LGA:'America/New_York',    BOS:'America/New_York',
+  MIA:'America/New_York',    FLL:'America/New_York',    SYD:'Australia/Sydney',
+  ORD:'America/Chicago',     DFW:'America/Chicago',     DEN:'America/Denver', 
+  HNL:'Pacific/Honolulu',    OGG:'Pacific/Honolulu',
+  LHR:'Europe/London',       HLC:'America/Los_Angeles',
+  DXB:'Asia/Dubai',          PHX:'America/Phoniex',
+  HKG:'Asia/Hong_Kong',      MCI:'America/Kansas_City',
+};
 
-  const DP_LOGO = 'https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png';
+// ── Partner data ─────────────────────────────────────────────────
+const PARTNERS = {
+  AA:{ name:'American Airlines', logo:'https://www.gstatic.com/flights/airline_logos/70px/AA.png' },
+  BA:{ name:'British Airways',   logo:'https://www.gstatic.com/flights/airline_logos/70px/BA.png' },
+  EK:{ name:'Emirates',          logo:'https://www.gstatic.com/flights/airline_logos/70px/EK.png' },
+  WN:{ name:'Southwest Airlines',logo:'https://www.gstatic.com/flights/airline_logos/70px/WN.png' },
+  B6:{ name:'JetBlue Airways',   logo:'https://www.gstatic.com/flights/airline_logos/70px/B6.png' },
+  HA:{ name:'Hawaiian Airlines', logo:'https://www.gstatic.com/flights/airline_logos/70px/HA.png' },
+  CX:{ name:'Cathay Pacific',    logo:'https://www.gstatic.com/flights/airline_logos/70px/CX.png' },
+};
+const DP_LOGO = 'https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png';
 
-  const CABIN_LABELS = {
-    economy: 'Economy',
-    premium_economy: 'Premium Economy',
-    business: 'Business',
-    first: 'First Class',
-  };
+const CABIN_LABELS = { economy:'Economy', premium_economy:'Premium Economy', business:'Business', first:'First Class' };
+const CITIES = { FLX:'Lego City',LAX:'Los Angeles',JFK:'New York',ORD:'Chicago',MIA:'Miami',DFW:'Dallas',BOS:'Boston',LGA:'New York',FLL:'Ft. Lauderdale',HNL:'Honolulu',OGG:'Maui',LHR:'London',DXB:'Dubai',HKG:'Hong Kong' };
 
-  const CITIES = {
-    FLX: 'Lego City', LAX: 'Los Angeles', JFK: 'New York', ORD: 'Chicago',
-    MIA: 'Miami', DFW: 'Dallas', BOS: 'Boston', LGA: 'New York', FLL: 'Ft. Lauderdale',
-    LGB: 'Long Beach', HNL: 'Honolulu', OGG: 'Maui', LHR: 'London', DXB: 'Dubai', HKG: 'Hong Kong',
-  };
-
-  // ─── Parse URL params ─────────────────────────────────────
-  const params   = new URLSearchParams(location.search);
-  let origin     = (params.get('origin') || 'FLX').toUpperCase();
-  let dest       = (params.get('destination') || '').toUpperCase();
-  let date       = params.get('date') || tomorrow();
-  let cabin      = params.get('cabin') || 'economy';
-  let passengers = parseInt(params.get('passengers') || '1', 10);
-  let partner    = params.get('partner') || '';
-
-  let allFlights = [];
-  let activeFilter = partner || 'all';
-
-  function tomorrow() {
-    const d = new Date(); d.setDate(d.getDate() + 1);
-    return d.toISOString().split('T')[0];
-  }
-
-  function iata(str) {
-    if (!str) return '';
-    const m = str.match(/\(([A-Z]{3})\)/);
-    return m ? m[1] : str.trim().toUpperCase().slice(0, 3);
-  }
-
-  // ─── Display search summary ───────────────────────────────
-  function updateSummary() {
-    document.getElementById('dispOrigin').textContent = origin;
-    document.getElementById('dispOriginCity').textContent = CITIES[origin] || origin;
-    document.getElementById('dispDest').textContent = dest || '—';
-    document.getElementById('dispDestCity').textContent = CITIES[dest] || dest || 'All destinations';
-    document.getElementById('dispDateText').textContent = formatDateDisplay(date);
-    document.getElementById('dispCabinText').textContent = CABIN_LABELS[cabin] || 'Economy';
-    document.getElementById('dispPaxText').textContent = passengers + ' Passenger' + (passengers > 1 ? 's' : '');
-  }
-
-  function formatDateDisplay(str) {
-    if (!str) return '—';
-    const d = new Date(str + 'T12:00:00');
-    return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-  }
-
-  // ─── Nav auth ─────────────────────────────────────────────
+// ── Timezone display helpers ─────────────────────────────────────
+/**
+ * Format a UTC ISO datetime string for display in a given IANA timezone.
+ * Returned string is ALWAYS the local time in that airport's zone.
+ */
+function fmtLocal(utcIso, ianaZone, opts = {}) {
+  if (!utcIso) return '—';
   try {
-    const user = JSON.parse(localStorage.getItem('dp_user') || 'null');
-    if (user) { const b = document.getElementById('navSignIn'); b.textContent = `Hi, ${user.first_name}`; b.href = 'account.html'; }
-  } catch(e) {}
+    return new Date(utcIso).toLocaleTimeString('en-US', {
+      timeZone: ianaZone || 'UTC',
+      hour: '2-digit', minute: '2-digit', hour12: true,
+      ...opts,
+    });
+  } catch { return '—'; }
+}
 
-  // ─── Nav scroll ──────────────────────────────────────────
-  window.addEventListener('scroll', () => document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 10), {passive:true});
+function fmtLocalDate(utcIso, ianaZone) {
+  if (!utcIso) return '—';
+  try {
+    return new Date(utcIso).toLocaleDateString('en-US', {
+      timeZone: ianaZone || 'UTC',
+      weekday:'short', month:'short', day:'numeric',
+    });
+  } catch { return '—'; }
+}
 
-  // ─── Edit panel ──────────────────────────────────────────
-  document.getElementById('editToggle').addEventListener('click', () => {
-    const p = document.getElementById('editPanel');
-    const open = p.classList.toggle('open');
-    if (open) {
-      document.getElementById('ep-from').value = origin ? `${CITIES[origin] || origin} (${origin})` : '';
-      document.getElementById('ep-to').value   = dest   ? `${CITIES[dest]   || dest}   (${dest})`   : '';
-      document.getElementById('ep-date').value = date;
-      document.getElementById('ep-cabin').value = cabin;
+function tzAbbr(ianaZone) {
+  // Extract short abbr like "PST", "GMT", "HKT"
+  try {
+    return new Intl.DateTimeFormat('en-US', { timeZone:ianaZone, timeZoneName:'short' })
+      .formatToParts(new Date())
+      .find(p => p.type === 'timeZoneName')?.value || '';
+  } catch { return ''; }
+}
+
+/**
+ * Flight duration: always computed from UTC timestamps so cross-timezone
+ * overnight flights (e.g. LAX→LHR) show correct hours.
+ */
+function flightDuration(depUtc, arrUtc) {
+  const diff = Math.round((new Date(arrUtc) - new Date(depUtc)) / 60000);
+  if (diff <= 0) return '—';
+  const h = Math.floor(diff / 60), m = diff % 60;
+  return `${h}h${m > 0 ? ` ${m}m` : ''}`;
+}
+
+// ── URL params ───────────────────────────────────────────────────
+const urlP    = new URLSearchParams(location.search);
+let origin    = (urlP.get('origin') || 'FLX').toUpperCase();
+let dest      = (urlP.get('destination') || '').toUpperCase();
+let date      = urlP.get('date') || tomorrowUTC();
+let cabin     = urlP.get('cabin') || 'economy';
+let passengers = parseInt(urlP.get('passengers') || '1', 10);
+let partnerFilter = urlP.get('partner') || '';
+
+let allFlights   = [];
+let activeFilter = partnerFilter || 'all';
+
+function tomorrowUTC() {
+  const d = new Date(); d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().split('T')[0];
+}
+function iata(str) {
+  if (!str) return '';
+  const m = str.match(/\(([A-Z]{3})\)/);
+  return m ? m[1] : str.trim().toUpperCase().slice(0,3);
+}
+
+// ── Update summary bar ───────────────────────────────────────────
+function updateSummary() {
+  document.getElementById('dispOrigin').textContent    = origin;
+  document.getElementById('dispOriginCity').textContent = CITIES[origin] || origin;
+  document.getElementById('dispDest').textContent      = dest || '—';
+  document.getElementById('dispDestCity').textContent  = CITIES[dest]   || dest || 'All destinations';
+
+  // Show date in origin airport's local timezone
+  const originTz = AP_TZ[origin] || 'UTC';
+  const pillDate = date ? new Date(date + 'T12:00:00Z').toLocaleDateString('en-US', { timeZone:originTz, weekday:'short', month:'short', day:'numeric' }) : '—';
+  document.getElementById('pillDateTxt').textContent  = pillDate;
+  document.getElementById('pillCabinTxt').textContent = CABIN_LABELS[cabin] || 'Economy';
+  document.getElementById('pillPaxTxt').textContent   = `${passengers} Passenger${passengers>1?'s':''}`;
+}
+
+// ── Nav auth ─────────────────────────────────────────────────────
+window.addEventListener('scroll', () => document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 10), {passive:true});
+try { const u=JSON.parse(localStorage.getItem('dp_user')||'null'); if(u){const b=document.getElementById('navSignIn');b.textContent=`Hi, ${u.first_name}`;b.href='account.html';} } catch(e){}
+
+// ── Edit panel ───────────────────────────────────────────────────
+document.getElementById('editToggle').addEventListener('click', () => {
+  const p = document.getElementById('editPanel');
+  if (p.classList.toggle('open')) {
+    document.getElementById('ep-from').value  = `${CITIES[origin]||origin} (${origin})`;
+    document.getElementById('ep-to').value    = dest ? `${CITIES[dest]||dest} (${dest})` : '';
+    document.getElementById('ep-date').value  = date;
+    document.getElementById('ep-cabin').value = cabin;
+  }
+});
+document.getElementById('epSwap').addEventListener('click', () => {
+  const f=document.getElementById('ep-from'), t=document.getElementById('ep-to');
+  [f.value, t.value] = [t.value, f.value];
+});
+document.getElementById('epGo').addEventListener('click', () => {
+  const o=iata(document.getElementById('ep-from').value);
+  const d=iata(document.getElementById('ep-to').value);
+  if (!o) return;
+  const p = new URLSearchParams({ origin:o, destination:d, date:document.getElementById('ep-date').value, cabin:document.getElementById('ep-cabin').value, passengers });
+  location.href = 'flights.html?' + p;
+});
+
+// ── Filter chips ─────────────────────────────────────────────────
+document.querySelectorAll('.chip').forEach(c => {
+  c.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on');
+    activeFilter = c.dataset.f;
+    renderFlights();
+  });
+});
+if (partnerFilter) {
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.dataset.f === partnerFilter));
+}
+
+// ── Sort ─────────────────────────────────────────────────────────
+document.getElementById('sortSel').addEventListener('change', renderFlights);
+
+// ── Build flight card HTML ───────────────────────────────────────
+function buildCard(f) {
+  const isDP    = f.flight_type === 'independent';
+  const partner = PARTNERS[f.codeshare_partner];
+  const airName = isDP ? 'DreamPacific Airways' : (partner?.name || f.codeshare_airline_name || 'DreamPacific Airways');
+  const airLogo = isDP ? DP_LOGO : (partner?.logo || DP_LOGO);
+
+  // Timezone-aware display
+  const originTz = AP_TZ[f.origin] || 'UTC';
+  const destTz   = AP_TZ[f.destination] || 'UTC';
+  const depTime  = fmtLocal(f.departure_time, originTz);
+  const arrTime  = fmtLocal(f.arrival_time,   destTz);
+  const depTzAbbr = tzAbbr(originTz);
+  const arrTzAbbr = tzAbbr(destTz);
+  const duration  = flightDuration(f.departure_time, f.arrival_time);
+
+  // Cabin price rows
+  const cabins = ['economy','premium_economy','business','first'];
+  const priceRows = cabins.map(c => {
+    const price = f[`price_${c}`];
+    if (price == null) return '';
+    const total = Math.round(price * passengers);
+    return `<div class="cabin-row">
+      <span class="cabin-name">${CABIN_LABELS[c]}</span>
+      <button class="cabin-btn" onclick="selectFlight('${f.id}','${c}',${passengers})">
+        $${total.toLocaleString()}
+      </button>
+    </div>`;
+  }).join('');
+
+  const statusCls = { scheduled:'st-scheduled',boarding:'st-boarding',delayed:'st-delayed',departed:'st-departed',arrived:'st-arrived',cancelled:'st-cancelled' };
+
+  const opBy = !isDP
+    ? `<div class="fc-opby">Operated by DreamPacific Airways</div>`
+    : `<div class="fc-opby" style="color:var(--blue);font-weight:700">DP Operated</div>`;
+
+  // Details section
+  const gateDetail   = f.gate     ? `<div class="fc-detail"><div class="fc-detail-lbl">Gate</div><div class="fc-detail-val">${f.gate}</div></div>` : '';
+  const termDetail   = f.terminal ? `<div class="fc-detail"><div class="fc-detail-lbl">Terminal</div><div class="fc-detail-val">${f.terminal}</div></div>` : '';
+  const acDetail     = f.aircraft_type ? `<div class="fc-detail"><div class="fc-detail-lbl">Aircraft</div><div class="fc-detail-val">${acName(f.aircraft_type)}</div></div>` : '';
+
+  return `
+  <div class="flight-card" data-type="${f.flight_type}" data-partner="${f.codeshare_partner||'dp'}">
+    <div class="fc-main">
+      <!-- Airline -->
+      <div class="fc-airline">
+        <div class="fc-logo-row">
+          <div class="fc-logo"><img src="${airLogo}" alt="${airName}" onerror="this.src='${DP_LOGO}'"></div>
+          <div>
+            <div class="fc-name">${airName}</div>
+            ${opBy}
+          </div>
+        </div>
+        <div class="fc-num">${f.flight_number}</div>
+      </div>
+
+      <!-- Route — times shown in local airport timezone -->
+      <div class="fc-route">
+        <div class="fc-time-block">
+          <div class="fc-time">${depTime}</div>
+          <div class="fc-tz">${f.origin} · ${depTzAbbr}</div>
+        </div>
+        <div class="fc-mid">
+          <div class="fc-dur">${duration}</div>
+          <div class="fc-line-wrap">
+            <div class="fc-dot"></div>
+            <div class="fc-line"></div>
+            <div class="fc-plane">✈</div>
+            <div class="fc-line"></div>
+            <div class="fc-dot"></div>
+          </div>
+          <div class="fc-ns">NONSTOP</div>
+        </div>
+        <div class="fc-time-block">
+          <div class="fc-time">${arrTime}</div>
+          <div class="fc-tz">${f.destination} · ${arrTzAbbr}</div>
+        </div>
+      </div>
+
+      <!-- Prices -->
+      <div class="fc-prices">
+        ${priceRows || '<div style="font-size:13px;color:var(--gray-400)">No fares available</div>'}
+      </div>
+    </div>
+
+    <!-- Toggle details -->
+    <button class="fc-toggle" id="tog-${f.id}" onclick="toggleDetails('${f.id}')">
+      <span class="fc-toggle-icon">▾</span>
+      Flight details &nbsp;·&nbsp; ${fmtLocalDate(f.departure_time, originTz)}
+      <span class="status-badge ${statusCls[f.status]||'st-scheduled'}" style="margin-left:auto">${f.status}</span>
+    </button>
+    <div class="fc-details" id="det-${f.id}">
+      <div class="fc-details-grid">
+        <div class="fc-detail">
+          <div class="fc-detail-lbl">Departure</div>
+          <div class="fc-detail-val">${depTime}</div>
+          <div class="fc-detail-sub">${f.origin_name||f.origin} · ${f.origin_city||''} · ${depTzAbbr}</div>
+        </div>
+        <div class="fc-detail">
+          <div class="fc-detail-lbl">Arrival</div>
+          <div class="fc-detail-val">${arrTime}</div>
+          <div class="fc-detail-sub">${f.dest_name||f.destination} · ${f.dest_city||''} · ${arrTzAbbr}</div>
+        </div>
+        <div class="fc-detail">
+          <div class="fc-detail-lbl">Flight Time</div>
+          <div class="fc-detail-val">${duration}</div>
+          <div class="fc-detail-sub">Nonstop service</div>
+        </div>
+        ${acDetail}${gateDetail}${termDetail}
+        <div class="fc-detail">
+          <div class="fc-detail-lbl">Flight Number</div>
+          <div class="fc-detail-val">${f.flight_number}</div>
+          <div class="fc-detail-sub">${isDP ? 'DreamPacific Airways' : `${airName} · Operated by DreamPacific Airways`}</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function acName(t) {
+  return { 'A321neo':'Airbus A321neo','737':'Boeing 737','787':'Boeing 787 Dreamliner','A380':'Airbus A380','747-charter':'Boeing 747 (Charter)','747-cargo':'Boeing 747F (Cargo)' }[t] || t;
+}
+
+// ── Toggle details ───────────────────────────────────────────────
+function toggleDetails(id) {
+  const det = document.getElementById('det-' + id);
+  const tog = document.getElementById('tog-' + id);
+  const open = det.classList.toggle('open');
+  tog.classList.toggle('open', open);
+}
+
+// ── Render flights list ──────────────────────────────────────────
+function renderFlights() {
+  let list = [...allFlights];
+
+  // Apply filter
+  if (activeFilter !== 'all') {
+    if (activeFilter === 'independent') {
+      list = list.filter(f => f.flight_type === 'independent');
+    } else {
+      list = list.filter(f => f.codeshare_partner === activeFilter);
     }
-  });
-  document.getElementById('epSwap').addEventListener('click', () => {
-    const f = document.getElementById('ep-from'), t = document.getElementById('ep-to');
-    [f.value, t.value] = [t.value, f.value];
-  });
-  document.getElementById('epSearch').addEventListener('click', () => {
-    const o = iata(document.getElementById('ep-from').value);
-    const d = iata(document.getElementById('ep-to').value);
-    if (!o) return;
-    const p = new URLSearchParams({
-      origin: o, destination: d,
-      date:   document.getElementById('ep-date').value,
-      cabin:  document.getElementById('ep-cabin').value,
-      passengers,
-    });
-    location.href = 'flights.html?' + p;
+  }
+
+  // Sort
+  const sort = document.getElementById('sortSel').value;
+  list.sort((a, b) => {
+    if (sort === 'dep_asc')   return new Date(a.departure_time) - new Date(b.departure_time);
+    if (sort === 'dep_desc')  return new Date(b.departure_time) - new Date(a.departure_time);
+    if (sort === 'price_asc') return (a[`price_${cabin}`]||9999) - (b[`price_${cabin}`]||9999);
+    if (sort === 'arr_asc')   return new Date(a.arrival_time)   - new Date(b.arrival_time);
+    return 0;
   });
 
-  // ─── Filters ─────────────────────────────────────────────
-  document.querySelectorAll('.filter-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      activeFilter = chip.dataset.filter;
-      renderFlights();
-    });
-  });
+  document.getElementById('countNum').textContent = list.length;
+  const container = document.getElementById('flightsList');
+  const empty     = document.getElementById('emptyState');
 
-  // ─── Sort ────────────────────────────────────────────────
-  document.getElementById('sortSelect').addEventListener('change', renderFlights);
+  if (!list.length) {
+    container.style.display = 'none';
+    empty.style.display     = 'block';
+  } else {
+    container.innerHTML = list.map(buildCard).join('');
+    container.style.display = 'block';
+    empty.style.display     = 'none';
+  }
+}
 
-  // ─── Format helpers ──────────────────────────────────────
-  function formatTime(iso, timeZone) {
-  const d = new Date(iso);
+// ── Select flight → booking page ─────────────────────────────────
+function selectFlight(flightId, cabinClass, pax) {
+  const p = new URLSearchParams({ flight_id:flightId, cabin:cabinClass, passengers:pax });
+  window.location.href = 'booking.html?' + p;
+}
 
-  return d.toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true,
-    timeZone: timeZone || 'UTC'
+// ── Load from API ─────────────────────────────────────────────────
+async function loadFlights() {
+  updateSummary();
+
+  // We search by UTC date. For accuracy, we also fetch the day before and after
+  // to handle edge cases where local midnight != UTC midnight for this airport.
+  // Simple approach: pass the UTC date string the user selected.
+  const apiParams = new URLSearchParams();
+  if (origin) apiParams.set('origin', origin);
+  if (dest)   apiParams.set('destination', dest);
+  if (date)   apiParams.set('date', date);
+
+  try {
+    const res  = await fetch(`${API}/api/flights/search?${apiParams}`);
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    allFlights = Array.isArray(data) ? data : [];
+  } catch {
+    allFlights = makeDemoFlights();
+  }
+
+  // Set active filter chip if partner was in URL
+  if (partnerFilter) {
+    document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.dataset.f === partnerFilter));
+    activeFilter = partnerFilter;
+  }
+
+  document.getElementById('loadingState').style.display = 'none';
+  renderFlights();
+}
+
+// ── Demo data (fallback when API not configured) ─────────────────
+function makeDemoFlights() {
+  // Times stored as UTC — these are realistic UTC equivalents of local times:
+  // e.g. FLX (LAX tz, UTC-8): 7:30 AM PST = 15:30 UTC
+  const b = date || tomorrowUTC();
+  const dt = (utcHour, utcMin) => `${b}T${String(utcHour).padStart(2,'0')}:${String(utcMin).padStart(2,'0')}:00Z`;
+
+  const demos = [
+    // DP 101 FLX→LAX: departs 7:30 AM PST (15:30 UTC), arrives 9:00 AM PST (17:00 UTC) — 1h30m flight
+    { id:'d1', flight_number:'DP 101', flight_type:'independent', codeshare_partner:null,
+      origin:'FLX', destination:'LAX', origin_city:'Lego City', dest_city:'Los Angeles',
+      origin_name:'Felix Lego City International Airport', dest_name:'Los Angeles International Airport',
+      departure_time:dt(15,30), arrival_time:dt(17,0),
+      price_economy:149, price_premium_economy:279, price_business:549, price_first:null,
+      aircraft_type:'A321neo', status:'scheduled', gate:'B12', terminal:'B' },
+
+    // DP 202 FLX→LAX afternoon: departs 1:45 PM PST (21:45 UTC), arrives 3:15 PM PST (23:15 UTC)
+    { id:'d2', flight_number:'DP 202', flight_type:'independent', codeshare_partner:null,
+      origin:'FLX', destination:'LAX', origin_city:'Lego City', dest_city:'Los Angeles',
+      origin_name:'Felix Lego City International Airport', dest_name:'Los Angeles International Airport',
+      departure_time:dt(21,45), arrival_time:dt(23,15),
+      price_economy:169, price_premium_economy:299, price_business:599, price_first:null,
+      aircraft_type:'A321neo', status:'scheduled', gate:'B14', terminal:'B' },
+
+    // AA codeshare FLX→DFW: 8:15 AM PST (16:15 UTC) → 12:05 PM CST (18:05 UTC) — 1h50m
+    { id:'d3', flight_number:'AA 5050 / DP 5050', flight_type:'codeshare', codeshare_partner:'AA',
+      origin:'FLX', destination:'DFW', origin_city:'Lego City', dest_city:'Dallas',
+      origin_name:'Felix Lego City International Airport', dest_name:'Dallas/Fort Worth International',
+      departure_time:dt(16,15), arrival_time:dt(18,5),
+      price_economy:219, price_premium_economy:399, price_business:749, price_first:1499,
+      aircraft_type:'787', status:'scheduled', gate:'C3', terminal:'C' },
+
+    // BA FLX→LHR: 9:30 PM PST (05:30 UTC next day), arrives 2:45 PM GMT+0 (14:45 UTC) — ~9h15m
+    { id:'d4', flight_number:'BA 2800 / DP 2800', flight_type:'codeshare', codeshare_partner:'BA',
+      origin:'FLX', destination:'LHR', origin_city:'Lego City', dest_city:'London',
+      origin_name:'Felix Lego City International Airport', dest_name:'London Heathrow Airport',
+      departure_time:dt(5,30), arrival_time:`${nextDay(b)}T14:45:00Z`,
+      price_economy:549, price_premium_economy:899, price_business:2199, price_first:4999,
+      aircraft_type:'787', status:'scheduled', gate:'D1', terminal:'D' },
+
+    // EK FLX→DXB: 11:00 PM PST (07:00 UTC next day), arrives 9:30 PM GST+4 (17:30 UTC) — ~10h30m
+    { id:'d5', flight_number:'EK 6100 / DP 6100', flight_type:'codeshare', codeshare_partner:'EK',
+      origin:'FLX', destination:'DXB', origin_city:'Lego City', dest_city:'Dubai',
+      origin_name:'Felix Lego City International Airport', dest_name:'Dubai International Airport',
+      departure_time:dt(7,0), arrival_time:`${nextDay(b)}T17:30:00Z`,
+      price_economy:699, price_premium_economy:1199, price_business:2599, price_first:5999,
+      aircraft_type:'787', status:'scheduled', gate:'D2', terminal:'D' },
+
+    // WN FLX→LGA: 6:00 AM PST (14:00 UTC), arrives 2:20 PM EST (19:20 UTC) — 5h20m
+    { id:'d6', flight_number:'WN 4400 / DP 4400', flight_type:'codeshare', codeshare_partner:'WN',
+      origin:'FLX', destination:'LGA', origin_city:'Lego City', dest_city:'New York',
+      origin_name:'Felix Lego City International Airport', dest_name:'LaGuardia Airport',
+      departure_time:dt(14,0), arrival_time:dt(19,20),
+      price_economy:199, price_premium_economy:null, price_business:null, price_first:null,
+      aircraft_type:'737', status:'scheduled', gate:'A5', terminal:'A' },
+
+    // B6 FLX→JFK: 10:00 AM PST (18:00 UTC), arrives 6:30 PM EST (23:30 UTC) — 5h30m
+    { id:'d7', flight_number:'B6 3300 / DP 3300', flight_type:'codeshare', codeshare_partner:'B6',
+      origin:'FLX', destination:'JFK', origin_city:'Lego City', dest_city:'New York',
+      origin_name:'Felix Lego City International Airport', dest_name:'JFK International Airport',
+      departure_time:dt(18,0), arrival_time:dt(23,30),
+      price_economy:249, price_premium_economy:449, price_business:899, price_first:null,
+      aircraft_type:'787', status:'scheduled', gate:'C8', terminal:'C' },
+
+    // HA FLX→HNL: 9:30 AM PST (17:30 UTC), arrives 12:15 PM HST (22:15 UTC) — 4h45m
+    { id:'d8', flight_number:'HA 7100 / DP 7100', flight_type:'codeshare', codeshare_partner:'HA',
+      origin:'FLX', destination:'HNL', origin_city:'Lego City', dest_city:'Honolulu',
+      origin_name:'Felix Lego City International Airport', dest_name:'Daniel K. Inouye International',
+      departure_time:dt(17,30), arrival_time:dt(22,15),
+      price_economy:249, price_premium_economy:399, price_business:849, price_first:null,
+      aircraft_type:'787', status:'scheduled', gate:'B7', terminal:'B' },
+
+    // CX FLX→HKG: 12:45 AM PST (08:45 UTC), arrives 6:30 AM HKT (22:30 UTC) — ~13h45m
+    { id:'d9', flight_number:'CX 8900 / DP 8900', flight_type:'codeshare', codeshare_partner:'CX',
+      origin:'FLX', destination:'HKG', origin_city:'Lego City', dest_city:'Hong Kong',
+      origin_name:'Felix Lego City International Airport', dest_name:'Hong Kong International Airport',
+      departure_time:dt(8,45), arrival_time:`${nextDay(b)}T22:30:00Z`,
+      price_economy:629, price_premium_economy:1099, price_business:2499, price_first:5499,
+      aircraft_type:'787', status:'scheduled', gate:'D4', terminal:'D' },
+  ];
+
+  return demos.filter(f => {
+    if (origin && f.origin !== origin) return false;
+    if (dest   && f.destination !== dest) return false;
+    return true;
   });
 }
-  function formatDuration(dep, arr) {
-    const diff = (new Date(arr) - new Date(dep)) / 60000;
-    const h = Math.floor(diff / 60), m = diff % 60;
-    return `${h}h ${m}m`;
-  }
 
-  function fmtPrice(p) {
-    if (p == null) return null;
-    return '$' + Math.round(p).toLocaleString();
-  }
+function nextDay(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00Z');
+  d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().split('T')[0];
+}
 
-  // ─── Render a single card ─────────────────────────────────
-  function buildCard(f) {
-    const isDP = f.flight_type === 'independent';
-    const partner = PARTNERS[f.codeshare_partner];
-    const airlineName = isDP ? 'DreamPacific Airways' : (partner?.name || f.codeshare_partner || 'DreamPacific Airways');
-    const logoUrl = isDP ? DP_LOGO : (partner?.logo || DP_LOGO);
-
-    const cabinOrder = ['economy', 'premium_economy', 'business', 'first'];
-    const cabinRows = cabinOrder.map(c => {
-      const price = f['price_' + c];
-      if (price == null) return '';
-      const total = (price * passengers).toFixed(0);
-      return `
-        <div class="cabin-row">
-          <span class="cabin-name">${CABIN_LABELS[c]}</span>
-          <button class="cabin-btn"
-            onclick="selectFlight('${f.id}','${c}',${passengers})"
-            title="${CABIN_LABELS[c]}">
-            $${parseInt(total).toLocaleString()}
-          </button>
-        </div>`;
-    }).join('');
-
-    const gate     = f.gate     ? `<div class="fc-detail-group"><div class="fc-detail-label">Gate</div><div class="fc-detail-value">${f.gate}</div></div>` : '';
-    const terminal = f.terminal ? `<div class="fc-detail-group"><div class="fc-detail-label">Terminal</div><div class="fc-detail-value">${f.terminal}</div></div>` : '';
-
-    const statusColor = { scheduled:'#059669', delayed:'#D97706', boarding:'#0057B8', departed:'#6B7280', cancelled:'#DC2626' };
-    const sc = statusColor[f.status] || '#6B7280';
-
-    const operatedRow = !isDP ? `
-      <div class="fc-op-by">
-        <img src="${DP_LOGO}" alt="DP" style="width:12px;height:12px;object-fit:contain;border-radius:2px;background:#001B5E;padding:1px">
-        Operated by DreamPacific Airways
-      </div>` : `<div class="fc-op-by"><span class="dp-badge">DP Operated</span></div>`;
-
-    const cardId = 'card-' + f.id;
-
-    return `
-    <div class="flight-card" id="${cardId}" data-partner="${f.codeshare_partner || 'dreampacific'}" data-type="${f.flight_type}">
-      <div class="flight-card-main">
-
-        <!-- Airline -->
-        <div class="fc-airline">
-          <div class="fc-airline-logo">
-            <div class="fc-logo-wrap">
-              <img src="${logoUrl}" alt="${airlineName}"
-                   onerror="this.src='${DP_LOGO}'">
-            </div>
-            <div>
-              <div class="fc-airline-name">${airlineName}</div>
-              ${operatedRow}
-            </div>
-          </div>
-          <div class="fc-flight-num">${f.flight_number}</div>
-        </div>
-
-        <!-- Route -->
-        <div class="fc-route">
-          <div class="fc-time-block">
-            <div class="fc-time">${formatTime(f.departure_time, f.origin_timezone)}</div>
-            <div class="fc-code">${f.origin}</div>
-          </div>
-          <div class="fc-middle">
-            <div class="fc-duration">${formatDuration(f.departure_time, f.arrival_time)}</div>
-            <div class="fc-line-wrap">
-              <div class="fc-dot"></div>
-              <div class="fc-line"></div>
-              <div class="fc-plane-icon">✈</div>
-              <div class="fc-line"></div>
-              <div class="fc-dot"></div>
-            </div>
-            <div class="fc-nonstop">NONSTOP</div>
-          </div>
-          <div class="fc-time-block">
-            <div class="fc-time">${formatTime(f.arrival_time, f.destination_timezone)}</div>
-            <div class="fc-code">${f.destination}</div>
-          </div>
-        </div>
-
-        <!-- Cabins -->
-        <div class="fc-cabins">
-          ${cabinRows || '<div style="font-size:13px;color:var(--gray-400);">No fares available</div>'}
-        </div>
-      </div>
-
-      <!-- Toggle details -->
-      <button class="fc-toggle-btn" onclick="toggleDetails('${f.id}')">
-        <span class="fc-toggle-icon">▾</span>
-        Flight details · ${f.origin_city || f.origin} → ${f.dest_city || f.destination}
-        <span style="margin-left:auto;font-size:11px;padding:2px 8px;border-radius:12px;background:${sc}20;color:${sc};font-weight:700;text-transform:capitalize">${f.status}</span>
-      </button>
-
-      <!-- Expanded details -->
-      <div class="fc-expand-row" id="exp-${f.id}">
-        <div class="fc-expand-inner">
-          <div class="fc-detail-group">
-            <div class="fc-detail-label">Departure</div>
-            <div class="fc-detail-value">${formatTime(f.departure_time)}</div>
-            <div class="fc-detail-sub">${f.origin_name || f.origin} · ${f.origin_city || ''}</div>
-          </div>
-          <div class="fc-detail-group">
-            <div class="fc-detail-label">Arrival</div>
-            <div class="fc-detail-value">${formatTime(f.arrival_time)}</div>
-            <div class="fc-detail-sub">${f.dest_name || f.destination} · ${f.dest_city || ''}</div>
-          </div>
-          <div class="fc-detail-group">
-            <div class="fc-detail-label">Flight Duration</div>
-            <div class="fc-detail-value">${formatDuration(f.departure_time, f.arrival_time)}</div>
-            <div class="fc-detail-sub">Nonstop service</div>
-          </div>
-          ${!isDP && f.aircraft_type ? `
-          <div class="fc-detail-group">
-            <div class="fc-detail-label">Aircraft</div>
-            <div class="fc-detail-value">${f.aircraft_type === '787' ? 'Boeing 787 Dreamliner' : f.aircraft_type === 'A321neo' ? 'Airbus A321neo' : f.aircraft_type}</div>
-            <div class="fc-detail-sub">${isDP ? 'DreamPacific' : f.aircraft_subsidiary || 'DreamPacific'} fleet</div>
-          </div>` : isDP && f.aircraft_type ? `
-          <div class="fc-detail-group">
-            <div class="fc-detail-label">Aircraft</div>
-            <div class="fc-detail-value">${f.aircraft_type === '787' ? 'Boeing 787 Dreamliner' : f.aircraft_type === 'A321neo' ? 'Airbus A321neo' : f.aircraft_type}</div>
-            <div class="fc-detail-sub">DreamPacific fleet</div>
-          </div>` : ''}
-          ${gate} ${terminal}
-          <div class="fc-detail-group">
-            <div class="fc-detail-label">Flight Number</div>
-            <div class="fc-detail-value">${f.flight_number}</div>
-            <div class="fc-detail-sub">${isDP ? 'DreamPacific Airways' : `${airlineName} · Operated by DreamPacific Airways`}</div>
-          </div>
-        </div>
-      </div>
-    </div>`;
-  }
-
-  // ─── Render all / filtered flights ───────────────────────
-  function renderFlights() {
-    let list = [...allFlights];
-
-    // Filter
-    if (activeFilter !== 'all') {
-      if (activeFilter === 'dreampacific') {
-        list = list.filter(f => f.flight_type === 'independent');
-      } else {
-        list = list.filter(f => f.codeshare_partner === activeFilter);
-      }
-    }
-
-    // Sort
-    const sort = document.getElementById('sortSelect').value;
-    list.sort((a, b) => {
-      if (sort === 'dep_asc')   return new Date(a.departure_time) - new Date(b.departure_time);
-      if (sort === 'dep_desc')  return new Date(b.departure_time) - new Date(a.departure_time);
-      if (sort === 'price_asc') return (a['price_' + cabin] || 9999) - (b['price_' + cabin] || 9999);
-      if (sort === 'arr_asc')   return new Date(a.arrival_time)   - new Date(b.arrival_time);
-      return 0;
-    });
-
-    const container = document.getElementById('flightsList');
-    const empty     = document.getElementById('emptyState');
-    document.getElementById('countNum').textContent = list.length;
-
-    if (list.length === 0) {
-      container.style.display = 'none';
-      empty.style.display = 'block';
-    } else {
-      container.innerHTML = list.map(buildCard).join('');
-      container.style.display = 'block';
-      empty.style.display = 'none';
-    }
-  }
-
-  // ─── Toggle flight details ────────────────────────────────
-  function toggleDetails(id) {
-    const row = document.getElementById('exp-' + id);
-    const btn = row.previousElementSibling;
-    const open = row.classList.toggle('open');
-    btn.classList.toggle('open', open);
-  }
-
-  // ─── Select flight → go to booking ───────────────────────
-  function selectFlight(flightId, cabinClass, pax) {
-    const p = new URLSearchParams({ flight_id: flightId, cabin: cabinClass, passengers: pax });
-    window.location.href = 'booking.html?' + p;
-  }
-
-  // ─── Load flights from API ────────────────────────────────
-  async function loadFlights() {
-    updateSummary();
-
-    // If no dest filter, show all for origin on that date
-    const apiParams = new URLSearchParams();
-    if (origin) apiParams.set('origin', origin);
-    if (dest)   apiParams.set('destination', dest);
-    if (date)   apiParams.set('date', date);
-
-    try {
-      const res = await fetch(`${API}/api/flights/search?${apiParams}`);
-      if (!res.ok) throw new Error('API error');
-      const data = await res.json();
-      allFlights = Array.isArray(data) ? data : [];
-    } catch (e) {
-      // Fallback demo data when API not configured
-      allFlights = makeDemoFlights();
-    }
-
-    // Activate filter from URL param
-    if (partner) {
-      document.querySelectorAll('.filter-chip').forEach(c => {
-        c.classList.toggle('active', c.dataset.filter === partner);
-      });
-      activeFilter = partner;
-    }
-
-    document.getElementById('loadingState').style.display = 'none';
-    renderFlights();
-  }
-
-  // ─── Demo data ───────────────────────────────────────────
-  function makeDemoFlights() {
-    const base = date || tomorrow();
-    function dt(h, m) {
-      const d = new Date(base + 'T' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':00');
-      return d.toISOString();
-    }
-
-    const demos = [
-      { id:'d1', flight_number:'DP 101', flight_type:'independent', codeshare_partner:null,
-        origin:'FLX', destination:'LAX', origin_city:'Lego City', dest_city:'Los Angeles',
-        origin_name:'Felix Lego City International Airport', dest_name:'Los Angeles International Airport',
-        departure_time: dt(7,30), arrival_time: dt(9,0),
-        price_economy:149, price_premium_economy:279, price_business:549, price_first:null,
-        aircraft_type:'A321neo', status:'scheduled', gate:'B12', terminal:'B' },
-
-      { id:'d2', flight_number:'DP 202', flight_type:'independent', codeshare_partner:null,
-        origin:'FLX', destination:'LAX', origin_city:'Lego City', dest_city:'Los Angeles',
-        origin_name:'Felix Lego City International Airport', dest_name:'Los Angeles International Airport',
-        departure_time: dt(13,45), arrival_time: dt(15,15),
-        price_economy:169, price_premium_economy:299, price_business:599, price_first:null,
-        aircraft_type:'A321neo', status:'scheduled', gate:'B14', terminal:'B' },
-
-      { id:'d3', flight_number:'AA 5050 / DP 5050', flight_type:'codeshare', codeshare_partner:'AA',
-        origin:'FLX', destination:'DFW', origin_city:'Lego City', dest_city:'Dallas',
-        origin_name:'Felix Lego City International Airport', dest_name:'Dallas/Fort Worth International',
-        departure_time: dt(8,15), arrival_time: dt(12,5),
-        price_economy:219, price_premium_economy:399, price_business:749, price_first:1499,
-        aircraft_type:'787', status:'scheduled', gate:'C3', terminal:'C' },
-
-      { id:'d4', flight_number:'BA 2800 / DP 2800', flight_type:'codeshare', codeshare_partner:'BA',
-        origin:'FLX', destination:'LHR', origin_city:'Lego City', dest_city:'London',
-        origin_name:'Felix Lego City International Airport', dest_name:'London Heathrow Airport',
-        departure_time: dt(21,30), arrival_time: dt(15,45),
-        price_economy:549, price_premium_economy:899, price_business:2199, price_first:4999,
-        aircraft_type:'787', status:'scheduled', gate:'D1', terminal:'D' },
-
-      { id:'d5', flight_number:'EK 6100 / DP 6100', flight_type:'codeshare', codeshare_partner:'EK',
-        origin:'FLX', destination:'DXB', origin_city:'Lego City', dest_city:'Dubai',
-        origin_name:'Felix Lego City International Airport', dest_name:'Dubai International Airport',
-        departure_time: dt(23,0), arrival_time: dt(21,30),
-        price_economy:699, price_premium_economy:1199, price_business:2599, price_first:5999,
-        aircraft_type:'787', status:'scheduled', gate:'D2', terminal:'D' },
-
-      { id:'d6', flight_number:'WN 4400 / DP 4400', flight_type:'codeshare', codeshare_partner:'WN',
-        origin:'FLX', destination:'LGA', origin_city:'Lego City', dest_city:'New York',
-        origin_name:'Felix Lego City International Airport', dest_name:'LaGuardia Airport',
-        departure_time: dt(6,0), arrival_time: dt(14,20),
-        price_economy:199, price_premium_economy:null, price_business:null, price_first:null,
-        aircraft_type:'A321neo', status:'scheduled', gate:'A5', terminal:'A' },
-
-      { id:'d7', flight_number:'B6 3300 / DP 3300', flight_type:'codeshare', codeshare_partner:'B6',
-        origin:'FLX', destination:'JFK', origin_city:'Lego City', dest_city:'New York',
-        origin_name:'Felix Lego City International Airport', dest_name:'JFK International Airport',
-        departure_time: dt(10,0), arrival_time: dt(18,30),
-        price_economy:249, price_premium_economy:449, price_business:899, price_first:null,
-        aircraft_type:'787', status:'scheduled', gate:'C8', terminal:'C' },
-
-      { id:'d8', flight_number:'HA 7100 / DP 7100', flight_type:'codeshare', codeshare_partner:'HA',
-        origin:'FLX', destination:'HNL', origin_city:'Lego City', dest_city:'Honolulu',
-        origin_name:'Felix Lego City International Airport', dest_name:'Daniel K. Inouye International',
-        departure_time: dt(9,30), arrival_time: dt(12,15),
-        price_economy:249, price_premium_economy:399, price_business:849, price_first:null,
-        aircraft_type:'787', status:'scheduled', gate:'B7', terminal:'B' },
-
-      { id:'d9', flight_number:'CX 8900 / DP 8900', flight_type:'codeshare', codeshare_partner:'CX',
-        origin:'FLX', destination:'HKG', origin_city:'Lego City', dest_city:'Hong Kong',
-        origin_name:'Felix Lego City International Airport', dest_name:'Hong Kong International Airport',
-        departure_time: dt(0,45), arrival_time: dt(6,30),
-        price_economy:629, price_premium_economy:1099, price_business:2499, price_first:5499,
-        aircraft_type:'787', status:'scheduled', gate:'D4', terminal:'D' },
-    ];
-
-    // Filter demo data by route if specified
-    return demos.filter(f => {
-      if (origin && f.origin !== origin) return false;
-      if (dest   && f.destination !== dest) return false;
-      return true;
-    });
-  }
-
-  // ─── Boot ─────────────────────────────────────────────────
-  loadFlights();
+// ── Boot ─────────────────────────────────────────────────────────
+loadFlights();
 </script>
 </body>
 </html>
