@@ -258,6 +258,7 @@
     <option value="London Heathrow (LHR)">
     <option value="Dubai (DXB)">
     <option value="Hong Kong (HKG)">
+      <option value="Kansas City(MCI)">
   </datalist>
 </div>
 
@@ -331,6 +332,8 @@ const AP_TZ = {
   LHR: 'Europe/London',
   DXB: 'Asia/Dubai',
   HKG: 'Asia/Hong_Kong',
+  HLC: 'America/Los_Angeles',
+  MCI: 'America/Kansas_City',
 };
 
 // ── Partner data ──────────────────────────────────────────────────
@@ -352,7 +355,7 @@ const CITIES = {
   FLX:'Lego City', LAX:'Los Angeles', JFK:'New York', ORD:'Chicago',
   MIA:'Miami', DFW:'Dallas', BOS:'Boston', LGA:'New York',
   FLL:'Fort Lauderdale', HNL:'Honolulu', OGG:'Maui',
-  LHR:'London', DXB:'Dubai', HKG:'Hong Kong',
+  LHR:'London', DXB:'Dubai', HKG:'Hong Kong', SYD: 'Sydney', HLC: 'Heartlake Beach'
 };
 
 // ── Timezone display helpers ──────────────────────────────────────
@@ -456,19 +459,38 @@ function localDayToUTCRange(localDateStr, ianaZone) {
   const get = t => parts.find(p => p.type === t)?.value || '0';
   const localDateAtNoon = `${get('year')}-${get('month')}-${get('day')}`;
 
-  // Build "00:00:00" and "23:59:59" in that local date as UTC-offsets
-  // We find the UTC offset by comparing local noon string to UTC noon
-  const localNoonStr = `${localDateAtNoon}T12:00:00`;
-  const utcOffset = (noonUtc.getTime() - new Date(localNoonStr + 'Z').getTime()); // in ms; positive = behind UTC
+// Get the timezone offset at noon for this airport/date
+const utcParts = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'UTC',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false,
+}).formatToParts(noonUtc);
 
-  // Local midnight = local 00:00:00 on the chosen date
-  const localMidnight = new Date(`${localDateStr}T00:00:00Z`);
-  const dayStartUtc   = new Date(localMidnight.getTime() + utcOffset);
+const utcGet = t => utcParts.find(p => p.type === t)?.value || '0';
 
-  // Local end of day = 23:59:59
-  const localEndOfDay = new Date(`${localDateStr}T23:59:59Z`);
-  const dayEndUtc     = new Date(localEndOfDay.getTime() + utcOffset);
+const utcNoonStr =
+  `${utcGet('year')}-${utcGet('month')}-${utcGet('day')}T` +
+  `${utcGet('hour')}:${utcGet('minute')}:${utcGet('second')}`;
 
+const localNoonDate = new Date(`${localDateAtNoon}T12:00:00`);
+const utcNoonDate   = new Date(utcNoonStr + 'Z');
+
+// Correct offset in milliseconds
+const utcOffset = localNoonDate.getTime() - utcNoonDate.getTime();
+
+// Local midnight converted to UTC
+const localMidnight = new Date(`${localDateStr}T00:00:00`);
+const dayStartUtc   = new Date(localMidnight.getTime() - utcOffset);
+
+// Local end of day converted to UTC
+const localEndOfDay = new Date(`${localDateStr}T23:59:59`);
+const dayEndUtc     = new Date(localEndOfDay.getTime() - utcOffset);
+  
   return {
     departure_after:  dayStartUtc.toISOString(),
     departure_before: dayEndUtc.toISOString(),
