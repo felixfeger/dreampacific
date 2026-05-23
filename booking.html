@@ -49,8 +49,8 @@
     .step-item.active { border-color:var(--blue); }
     .step-item.done   { border-color:var(--green); }
     .step-num { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; border:2px solid var(--gray-300); color:var(--gray-400); flex-shrink:0; transition:all .3s; }
-    .step-item.active .step-num { border-color:var(--blue); color:var(--blue); background:var(--blue-lt); }
-    .step-item.done   .step-num { border-color:var(--green); color:#fff; background:var(--green); }
+    .step-item.active .step-num { border-color:var(--blue);  color:var(--blue);  background:var(--blue-lt); }
+    .step-item.done   .step-num { border-color:var(--green); color:#fff;         background:var(--green); }
     .step-label { font-size:13px; font-weight:600; color:var(--gray-400); transition:color .3s; }
     .step-item.active .step-label, .step-item.done .step-label { color:var(--text); }
     .step-conn { width:28px; height:1.5px; background:var(--gray-200); align-self:center; flex-shrink:0; }
@@ -76,7 +76,7 @@
     .form-row-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
     .form-row-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
 
-    /* ── Pax section ── */
+    /* ── Passenger section ── */
     .pax-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--gray-100); }
     .pax-header h3 { font-size:14px; font-weight:700; color:var(--text); display:flex; align-items:center; gap:9px; }
     .pax-badge { width:24px; height:24px; border-radius:50%; background:var(--navy); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; }
@@ -87,23 +87,14 @@
     .seat-map-legend { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
     .legend-item { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--gray-600); }
     .legend-sw { width:16px; height:16px; border-radius:4px; flex-shrink:0; }
-
     .cabin-section { margin-bottom:24px; }
-    .cabin-section-label { font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; margin-bottom:10px; padding:4px 12px; border-radius:20px; display:inline-block; }
-
-    /* Each row of seats */
+    .cabin-section-label { display:inline-block; padding:3px 12px; border-radius:20px; font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:12px; }
     .seat-row { display:flex; align-items:center; gap:5px; margin-bottom:5px; }
     .seat-row-num { width:24px; font-size:10px; color:var(--gray-400); font-weight:600; text-align:right; flex-shrink:0; }
     .seat-aisle { width:16px; flex-shrink:0; }
 
-    /* Seat button — just shows the letter (A, B, C…) */
-    .seat-btn {
-      width:34px; height:34px; border-radius:7px; border:1.5px solid;
-      font-size:11px; font-weight:800; cursor:pointer;
-      display:flex; align-items:center; justify-content:center;
-      flex-shrink:0; font-family:inherit; transition:all .15s;
-      letter-spacing:0;
-    }
+    /* Seat button — shows the column letter (A, B, C…) only */
+    .seat-btn { width:34px; height:34px; border-radius:7px; border:1.5px solid; font-size:11px; font-weight:800; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:inherit; transition:all .15s; letter-spacing:0; }
     .seat-avail    { background:var(--green-lt); border-color:#6EE7B7; color:var(--green); }
     .seat-avail:hover { background:var(--green); color:#fff; border-color:var(--green); transform:scale(1.1); }
     .seat-taken    { background:var(--gray-100); border-color:var(--gray-200); color:var(--gray-300); cursor:not-allowed; }
@@ -131,7 +122,7 @@
     .summary-body  { padding:20px 22px; }
     .summary-row   { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
     .summary-row-label { font-size:12.5px; color:var(--gray-600); }
-    .summary-row-val   { font-size:13px; font-weight:600; color:var(--text); }
+    .summary-row-val   { font-size:13px; font-weight:600; color:var(--text); text-align:right; }
     .summary-divider   { border:none; border-top:1px solid var(--gray-200); margin:14px 0; }
     .summary-total     { font-size:22px; font-weight:800; color:var(--navy); letter-spacing:-.02em; }
     .summary-total-label { font-size:11px; color:var(--gray-400); }
@@ -148,7 +139,7 @@
     /* ── Alerts ── */
     .alert { padding:12px 16px; border-radius:10px; font-size:13.5px; font-weight:500; margin-bottom:18px; display:none; align-items:flex-start; gap:10px; line-height:1.5; }
     .alert.show { display:flex; }
-    .alert-error { background:var(--red-lt); color:var(--red); border:1px solid #fecaca; }
+    .alert-error { background:var(--red-lt);  color:var(--red);  border:1px solid #fecaca; }
     .alert-info  { background:var(--blue-lt); color:var(--blue); border:1px solid #bfdbfe; }
     .alert svg { flex-shrink:0; margin-top:1px; }
 
@@ -177,6 +168,7 @@
     .fullpage h2 { font-size:22px; font-weight:700; color:var(--gray-800); }
     .fullpage p  { font-size:14px; color:var(--gray-600); max-width:380px; }
     .fullpage a  { padding:11px 26px; background:var(--blue); color:#fff; border-radius:9px; font-size:14px; font-weight:700; text-decoration:none; }
+    .fullpage a:hover { background:var(--blue-h); }
     .spinner { width:44px; height:44px; border:3px solid var(--gray-200); border-top-color:var(--blue); border-radius:50%; animation:spin .8s linear infinite; }
     @keyframes spin { to { transform:rotate(360deg); } }
 
@@ -197,7 +189,9 @@
 <!-- Nav -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png" alt="DreamPacific Airways"></a>
+    <a href="index.html" class="nav-logo">
+      <img src="https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png" alt="DreamPacific Airways">
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Book</a></li>
       <li><a href="checkin.html">Check-In</a></li>
@@ -229,8 +223,17 @@
 <!-- Page -->
 <div class="page-body" id="pageBody">
 
-  <div id="loadingView" class="fullpage"><div class="spinner"></div><p style="color:var(--gray-400)">Loading flight details…</p></div>
-  <div id="errorView"   class="fullpage" style="display:none"><div style="font-size:52px">✈️</div><h2>Flight not found</h2><p id="errorMsg">We couldn't load this flight.</p><a href="flights.html">Search Other Flights</a></div>
+  <div id="loadingView" class="fullpage">
+    <div class="spinner"></div>
+    <p style="color:var(--gray-400)">Loading flight details…</p>
+  </div>
+
+  <div id="errorView" class="fullpage" style="display:none">
+    <div style="font-size:52px">✈️</div>
+    <h2>Flight not found</h2>
+    <p id="errorMsg">We couldn't load this flight.</p>
+    <a href="flights.html">Search Other Flights</a>
+  </div>
 
   <div id="bookingView" style="display:none">
     <div class="booking-layout">
@@ -238,12 +241,14 @@
       <!-- Left column -->
       <div id="formCol">
 
-        <!-- Step 1 -->
+        <!-- Step 1: Passenger Details -->
         <div id="panelStep1">
           <div class="card" id="passengersCard"></div>
           <div class="card">
             <div class="card-head">
-              <div class="card-icon" style="background:#ECFDF5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.7h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div class="card-icon" style="background:#ECFDF5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.7h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
               <div><h2>Contact Information</h2><p>For confirmation and flight updates</p></div>
             </div>
             <div class="card-body">
@@ -251,22 +256,30 @@
                 <div class="form-group"><label for="contactEmail">Email Address *</label><input class="form-input" type="email" id="contactEmail" placeholder="you@example.com" autocomplete="email"></div>
                 <div class="form-group"><label for="contactPhone">Phone</label><input class="form-input" type="tel" id="contactPhone" placeholder="+1 555 000 0000" autocomplete="tel"></div>
               </div>
-              <div class="alert alert-error" id="step1Err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span id="step1ErrMsg"></span></div>
+              <div class="alert alert-error" id="step1Err">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                <span id="step1ErrMsg"></span>
+              </div>
               <button class="book-btn" onclick="goStep2()">Continue to Seat Selection →</button>
             </div>
           </div>
         </div>
 
-        <!-- Step 2 -->
+        <!-- Step 2: Seat Selection -->
         <div id="panelStep2" style="display:none">
           <div class="card">
             <div class="card-head">
-              <div class="card-icon" style="background:var(--blue-lt)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg></div>
+              <div class="card-icon" style="background:var(--blue-lt)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg>
+              </div>
               <div><h2>Select Your Seat</h2><p id="seatSubtitle">Optional — you can also select at check-in</p></div>
             </div>
             <div class="card-body">
               <div id="seatMapContainer"></div>
-              <div class="alert alert-info show" style="margin-top:14px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Seat selection is optional. You may also select seats during online check-in.</div>
+              <div class="alert alert-info show" style="margin-top:14px">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Seat selection is optional. You may also select seats during online check-in.
+              </div>
               <div style="display:flex;gap:12px;margin-top:18px">
                 <button onclick="setStep(1)" style="padding:12px 20px;font-size:14px;font-weight:600;font-family:inherit;color:var(--gray-600);background:#fff;border:1.5px solid var(--gray-200);border-radius:10px;cursor:pointer">← Back</button>
                 <button class="book-btn" style="flex:1;margin-top:0" onclick="goStep3()">Review Booking →</button>
@@ -275,16 +288,21 @@
           </div>
         </div>
 
-        <!-- Step 3 -->
+        <!-- Step 3: Review -->
         <div id="panelStep3" style="display:none">
           <div class="card">
             <div class="card-head">
-              <div class="card-icon" style="background:#FFFBEB"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              <div class="card-icon" style="background:#FFFBEB">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
               <div><h2>Review Your Booking</h2><p>Confirm all details before proceeding</p></div>
             </div>
             <div class="card-body">
               <div id="reviewContent"></div>
-              <div class="alert alert-error" id="bookErr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span id="bookErrMsg"></span></div>
+              <div class="alert alert-error" id="bookErr">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                <span id="bookErrMsg"></span>
+              </div>
               <div style="display:flex;gap:12px;margin-top:18px">
                 <button onclick="setStep(2)" style="padding:12px 20px;font-size:14px;font-weight:600;font-family:inherit;color:var(--gray-600);background:#fff;border:1.5px solid var(--gray-200);border-radius:10px;cursor:pointer">← Back</button>
                 <button class="book-btn" style="flex:1;margin-top:0" id="confirmBtn" onclick="confirmBooking()">Confirm & Book →</button>
@@ -293,9 +311,10 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Right: summary -->
+      </div><!-- /formCol -->
+
+      <!-- Right: price summary -->
       <div>
         <div class="summary-card">
           <div class="summary-head">
@@ -305,32 +324,37 @@
           <div class="summary-body" id="summaryBody"></div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Confirmation -->
+    </div>
+  </div><!-- /bookingView -->
+
+  <!-- Confirmation (Step 4) -->
   <div id="confirmView" style="display:none">
     <div class="confirm-wrap" id="confirmContent"></div>
   </div>
-</div>
+
+</div><!-- /page-body -->
 
 <script>
-// ── Config ────────────────────────────────────────────────────
-const API = 'https://dreampaicfic-api.felixfeger46.workers.dev'; // ← update
+// ── Config ────────────────────────────────────────────────────────
+const API = 'https://dreampacific-api.felixfeger46.workers.dev';
 
-// ── Airport timezone map (same as flights.html) ───────────────
+// ── Airport timezone map ──────────────────────────────────────────
+// Mirrors the map in flights.html and admin.html — single source of truth.
 const AP_TZ = {
   FLX:'America/Los_Angeles', LAX:'America/Los_Angeles', LGB:'America/Los_Angeles',
   JFK:'America/New_York',    LGA:'America/New_York',    BOS:'America/New_York',
-  MIA:'America/New_York',    FLL:'America/New_York',    SYD:'Australia/Sydney',
-  ORD:'America/Chicago',     DFW:'America/Chicago',     DEN:'America/Denver', 
+  MIA:'America/New_York',    FLL:'America/New_York',
+  ORD:'America/Chicago',     DFW:'America/Chicago',
   HNL:'Pacific/Honolulu',    OGG:'Pacific/Honolulu',
-  LHR:'Europe/London',       HLC:'America/Los_Angeles',
-  DXB:'Asia/Dubai',          PHX:'America/Phoniex',
-  HKG:'Asia/Hong_Kong',      MCI:'America/Kansas_City',
+  LHR:'Europe/London',
+  DXB:'Asia/Dubai',
+  HKG:'Asia/Hong_Kong',
 };
 
+// ── Constants ─────────────────────────────────────────────────────
 const DP_LOGO = 'https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png';
+
 const PARTNERS = {
   AA:{ name:'American Airlines', logo:'https://www.gstatic.com/flights/airline_logos/70px/AA.png' },
   BA:{ name:'British Airways',   logo:'https://www.gstatic.com/flights/airline_logos/70px/BA.png' },
@@ -340,76 +364,154 @@ const PARTNERS = {
   HA:{ name:'Hawaiian Airlines', logo:'https://www.gstatic.com/flights/airline_logos/70px/HA.png' },
   CX:{ name:'Cathay Pacific',    logo:'https://www.gstatic.com/flights/airline_logos/70px/CX.png' },
 };
-const CABIN_LABELS = { economy:'Economy', premium_economy:'Premium Economy', business:'Business Class', first:'First Class' };
-const CITIES = { FLX:'Lego City',LAX:'Los Angeles',JFK:'New York',ORD:'Chicago',MIA:'Miami',DFW:'Dallas',BOS:'Boston',LGA:'New York',FLL:'Fort Lauderdale',HNL:'Honolulu',OGG:'Maui',LHR:'London',DXB:'Dubai',HKG:'Hong Kong',SYD:'Sydney',PHX:'Phoenix',MCI:'Kansas City',HLC:'Heartlake Beach' };
 
-// ── Timezone helpers (shared logic with flights.html) ─────────
-function fmtLocal(utcIso, ianaZone, timeOnly = true) {
+const CABIN_LABELS = {
+  economy:'Economy', premium_economy:'Premium Economy',
+  business:'Business Class', first:'First Class',
+};
+
+const CITIES = {
+  FLX:'Lego City', LAX:'Los Angeles', JFK:'New York', ORD:'Chicago',
+  MIA:'Miami',     DFW:'Dallas',      BOS:'Boston',   LGA:'New York',
+  FLL:'Ft. Lauderdale', HNL:'Honolulu', OGG:'Maui',
+  LHR:'London',    DXB:'Dubai',       HKG:'Hong Kong',
+};
+
+// ── Timezone helpers ──────────────────────────────────────────────
+// All times from the API are UTC ISO strings.
+// We convert them to the airport's local timezone for display only.
+
+function fmtTime(utcIso, ianaZone) {
   if (!utcIso) return '—';
   try {
-    const opts = timeOnly
-      ? { timeZone:ianaZone||'UTC', hour:'2-digit', minute:'2-digit', hour12:true }
-      : { timeZone:ianaZone||'UTC', weekday:'short', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit', hour12:true };
-    return new Date(utcIso).toLocaleTimeString('en-US', opts);
+    return new Date(utcIso).toLocaleTimeString('en-US', {
+      timeZone: ianaZone || 'UTC',
+      hour: '2-digit', minute: '2-digit', hour12: true,
+    });
   } catch { return '—'; }
 }
-function fmtLocalDate(utcIso, ianaZone) {
+
+function fmtDateLong(utcIso, ianaZone) {
   if (!utcIso) return '—';
-  try { return new Date(utcIso).toLocaleDateString('en-US', { timeZone:ianaZone||'UTC', weekday:'long', month:'long', day:'numeric', year:'numeric' }); }
-  catch { return '—'; }
-}
-function tzAbbr(ianaZone) {
-  try { return new Intl.DateTimeFormat('en-US',{timeZone:ianaZone,timeZoneName:'short'}).formatToParts(new Date()).find(p=>p.type==='timeZoneName')?.value||''; }
-  catch { return ''; }
-}
-function flightDuration(depUtc, arrUtc) {
-  const diff = Math.round((new Date(arrUtc) - new Date(depUtc)) / 60000);
-  if (diff <= 0) return '—';
-  return `${Math.floor(diff/60)}h ${diff%60}m`;
+  try {
+    return new Date(utcIso).toLocaleDateString('en-US', {
+      timeZone: ianaZone || 'UTC',
+      weekday: 'long', month: 'long', day: 'numeric', year: 'numeric',
+    });
+  } catch { return '—'; }
 }
 
-// ── URL Params ────────────────────────────────────────────────
+function fmtDateShort(utcIso, ianaZone) {
+  if (!utcIso) return '—';
+  try {
+    return new Date(utcIso).toLocaleDateString('en-US', {
+      timeZone: ianaZone || 'UTC',
+      weekday: 'short', month: 'short', day: 'numeric',
+    });
+  } catch { return '—'; }
+}
+
+function tzAbbr(ianaZone) {
+  try {
+    return new Intl.DateTimeFormat('en-US', { timeZone: ianaZone, timeZoneName: 'short' })
+      .formatToParts(new Date())
+      .find(p => p.type === 'timeZoneName')?.value || '';
+  } catch { return ''; }
+}
+
+/**
+ * Compute flight duration from UTC timestamps.
+ * Correctly handles all long-haul and cross-dateline routes.
+ */
+function flightDuration(depUtc, arrUtc) {
+  const diffMs = new Date(arrUtc).getTime() - new Date(depUtc).getTime();
+  if (diffMs <= 0) return '—';
+  const h = Math.floor(diffMs / 3_600_000);
+  const m = Math.round((diffMs % 3_600_000) / 60000);
+  return m > 0 ? `${h}h ${m}m` : `${h}h`;
+}
+
+/**
+ * Get the IANA timezone for an airport code.
+ * Uses the timezone returned by the API (from airports table join)
+ * if available, otherwise falls back to the AP_TZ constant map.
+ */
+function getAirportTz(code, flightObj) {
+  // Try to use the timezone attached to the flight from the DB join
+  if (flightObj) {
+    if (code === flightObj.origin      && flightObj.origin_timezone) return flightObj.origin_timezone;
+    if (code === flightObj.destination && flightObj.dest_timezone)   return flightObj.dest_timezone;
+  }
+  return AP_TZ[code] || 'UTC';
+}
+
+// ── URL Params ─────────────────────────────────────────────────────
 const urlP      = new URLSearchParams(location.search);
 const FLIGHT_ID = urlP.get('flight_id') || urlP.get('flightId');
-const CABIN     = urlP.get('cabin') || 'economy';
+const CABIN     = urlP.get('cabin')     || 'economy';
 const PAX_COUNT = Math.max(1, Math.min(9, parseInt(urlP.get('passengers') || '1', 10)));
 const PNR_VIEW  = urlP.get('pnr');
 
-// ── State ─────────────────────────────────────────────────────
+// ── State ──────────────────────────────────────────────────────────
 let flight         = null;
 let allSeats       = [];
 let seatSelections = {};   // { paxIndex: seat_id }
 let passengerData  = [];
 let currentSeatPax = 0;
 
-// ── Boot ──────────────────────────────────────────────────────
-window.addEventListener('scroll', () => document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 10), {passive:true});
-try { const u=JSON.parse(localStorage.getItem('dp_user')||'null'); if(u){const b=document.getElementById('navSignIn');b.textContent=`Hi, ${u.first_name}`;b.href='account.html';} } catch(e){}
+// ── Boot ───────────────────────────────────────────────────────────
+window.addEventListener('scroll', () =>
+  document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 10), { passive: true });
+
+try {
+  const u = JSON.parse(localStorage.getItem('dp_user') || 'null');
+  if (u) {
+    const b = document.getElementById('navSignIn');
+    b.textContent = `Hi, ${u.first_name}`;
+    b.href = 'account.html';
+  }
+} catch(e) {}
 
 async function init() {
-  if (PNR_VIEW) { await loadByPNR(PNR_VIEW); return; }
-  if (!FLIGHT_ID) { showError('No flight selected. Please search for a flight first.'); return; }
+  if (PNR_VIEW)  { await loadByPNR(PNR_VIEW); return; }
+  if (!FLIGHT_ID){ showError('No flight selected. Please search for a flight first.'); return; }
   await loadFlight();
 }
 
+// ── Load flight ────────────────────────────────────────────────────
 async function loadFlight() {
   try {
     const res = await fetch(`${API}/api/flights/${FLIGHT_ID}`);
-    if (!res.ok) { const d=await res.json().catch(()=>({})); throw new Error(d.error||'Flight not found'); }
+    if (!res.ok) {
+      const d = await res.json().catch(() => ({}));
+      throw new Error(d.error || `Flight not found (${res.status})`);
+    }
     flight = await res.json();
-    try { const sr=await fetch(`${API}/api/flights/${FLIGHT_ID}/seats`); if(sr.ok) allSeats=await sr.json(); } catch {}
+
+    // Load seat map (non-fatal)
+    try {
+      const sr = await fetch(`${API}/api/flights/${FLIGHT_ID}/seats`);
+      if (sr.ok) allSeats = await sr.json();
+    } catch {}
+
     buildUI();
-  } catch(e) { showError(e.message); }
+  } catch(e) {
+    showError(e.message || 'Could not load this flight. Please try again.');
+  }
 }
 
 async function loadByPNR(pnr) {
   try {
     const token = localStorage.getItem('dp_token');
-    const res   = await fetch(`${API}/api/bookings/${pnr}`, { headers:token?{Authorization:'Bearer '+token}:{} });
-    const data  = await res.json();
+    const res   = await fetch(`${API}/api/bookings/${pnr}`, {
+      headers: token ? { Authorization: 'Bearer ' + token } : {},
+    });
+    const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Booking not found');
-    renderConfirmation(data.booking, data.passengers);
-  } catch(e) { showError(e.message); }
+    renderConfirmation(data.booking, data.passengers || []);
+  } catch(e) {
+    showError(e.message || 'Could not load this booking.');
+  }
 }
 
 function showError(msg) {
@@ -427,105 +529,178 @@ function buildUI() {
   setStep(1);
 }
 
-// ── Steps ─────────────────────────────────────────────────────
+// ── Steps ──────────────────────────────────────────────────────────
 function setStep(n) {
   [1,2,3,4].forEach(i => {
-    const el=document.getElementById('step'+i), num=document.getElementById('sn'+i);
+    const el  = document.getElementById('step' + i);
+    const num = document.getElementById('sn'   + i);
     el.classList.remove('active','done');
-    if (i < n)  { el.classList.add('done');  num.textContent='✓'; }
-    if (i === n){ el.classList.add('active'); num.textContent=i; }
-    if (i > n)   num.textContent=i;
+    if (i < n)   { el.classList.add('done');  num.textContent = '✓'; }
+    if (i === n) { el.classList.add('active'); num.textContent = i; }
+    if (i > n)     num.textContent = i;
   });
-  document.getElementById('panelStep1').style.display  = n===1?'block':'none';
-  document.getElementById('panelStep2').style.display  = n===2?'block':'none';
-  document.getElementById('panelStep3').style.display  = n===3?'block':'none';
-  document.getElementById('bookingView').style.display = n<=3 ?'block':'none';
-  document.getElementById('confirmView').style.display = n===4?'block':'none';
-  document.getElementById('stepsBar').style.display    = n===4?'none':'block';
-  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('panelStep1').style.display  = n === 1 ? 'block' : 'none';
+  document.getElementById('panelStep2').style.display  = n === 2 ? 'block' : 'none';
+  document.getElementById('panelStep3').style.display  = n === 3 ? 'block' : 'none';
+  document.getElementById('bookingView').style.display = n <= 3  ? 'block' : 'none';
+  document.getElementById('confirmView').style.display = n === 4 ? 'block' : 'none';
+  document.getElementById('stepsBar').style.display    = n === 4 ? 'none'  : 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── Step 1 ────────────────────────────────────────────────────
+// ── Step 1 validation ───────────────────────────────────────────────
 function goStep2() {
   document.getElementById('step1Err').classList.remove('show');
   const pax  = collectPassengers();
   const errs = [];
-  pax.forEach((p,i) => { if (!p.first_name) errs.push(`Passenger ${i+1}: first name required`); if (!p.last_name) errs.push(`Passenger ${i+1}: last name required`); });
-  if (!document.getElementById('contactEmail').value.trim()) errs.push('Contact email is required');
-  if (errs.length) { document.getElementById('step1ErrMsg').textContent=errs[0]; document.getElementById('step1Err').classList.add('show'); return; }
+  pax.forEach((p, i) => {
+    if (!p.first_name) errs.push(`Passenger ${i+1}: first name is required`);
+    if (!p.last_name)  errs.push(`Passenger ${i+1}: last name is required`);
+  });
+  if (!document.getElementById('contactEmail').value.trim())
+    errs.push('Contact email is required');
+
+  if (errs.length) {
+    document.getElementById('step1ErrMsg').textContent = errs[0];
+    document.getElementById('step1Err').classList.add('show');
+    return;
+  }
   passengerData = pax;
   setStep(2);
 }
-function goStep3() { passengerData=collectPassengers(); buildReview(); setStep(3); }
 
+function goStep3() {
+  passengerData = collectPassengers();
+  buildReview();
+  setStep(3);
+}
+
+// ── Collect passenger form data ────────────────────────────────────
 function collectPassengers() {
-  return Array.from({length:PAX_COUNT},(_,i) => ({
-    first_name:      (document.getElementById(`pf-${i}`)?.value||'').trim(),
-    last_name:       (document.getElementById(`pl-${i}`)?.value||'').trim(),
-    date_of_birth:   document.getElementById(`pd-${i}`)?.value||null,
-    passport_number: (document.getElementById(`pp-${i}`)?.value||'').trim()||null,
-    nationality:     (document.getElementById(`pn-${i}`)?.value||'').trim()||null,
-    meal_preference: document.getElementById(`pm-${i}`)?.value||null,
+  return Array.from({ length: PAX_COUNT }, (_, i) => ({
+    first_name:      (document.getElementById(`pf-${i}`)?.value || '').trim(),
+    last_name:       (document.getElementById(`pl-${i}`)?.value || '').trim(),
+    date_of_birth:   document.getElementById(`pd-${i}`)?.value  || null,
+    passport_number: (document.getElementById(`pp-${i}`)?.value || '').trim() || null,
+    nationality:     (document.getElementById(`pn-${i}`)?.value || '').trim() || null,
+    meal_preference: document.getElementById(`pm-${i}`)?.value  || null,
   }));
 }
 
+// ── Build passenger forms ──────────────────────────────────────────
 function buildPassengersCard() {
-  let html = `<div class="card-head"><div class="card-icon" style="background:var(--blue-lt)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><h2>Passenger Details</h2><p>${PAX_COUNT} passenger${PAX_COUNT>1?'s':''} · ${CABIN_LABELS[CABIN]||CABIN}</p></div></div><div class="card-body">`;
-  for (let i=0;i<PAX_COUNT;i++) {
-    if (i>0) html += `<hr class="pax-divider">`;
-    html += `<div class="pax-header"><h3><div class="pax-badge">${i+1}</div>Passenger ${i+1}</h3>${i>0?`<button class="copy-btn" onclick="copyFirst(${i})">Copy from Passenger 1</button>`:''}</div>
-    <div class="form-row-2">
-      <div class="form-group"><label>First Name *</label><input class="form-input" id="pf-${i}" placeholder="As on passport" autocomplete="given-name"></div>
-      <div class="form-group"><label>Last Name *</label><input class="form-input" id="pl-${i}" placeholder="As on passport" autocomplete="family-name"></div>
+  let html = `
+    <div class="card-head">
+      <div class="card-icon" style="background:var(--blue-lt)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      </div>
+      <div><h2>Passenger Details</h2><p>${PAX_COUNT} passenger${PAX_COUNT>1?'s':''} · ${CABIN_LABELS[CABIN]||CABIN}</p></div>
     </div>
-    <div class="form-row-3">
-      <div class="form-group"><label>Date of Birth</label><input class="form-input" type="date" id="pd-${i}"></div>
-      <div class="form-group"><label>Passport Number</label><input class="form-input" id="pp-${i}" placeholder="Optional"></div>
-      <div class="form-group"><label>Nationality</label><input class="form-input" id="pn-${i}" placeholder="Optional"></div>
-    </div>
-    <div class="form-group" style="max-width:260px"><label>Meal Preference</label>
-      <select class="form-select" id="pm-${i}"><option value="">Standard</option><option value="vegetarian">Vegetarian</option><option value="vegan">Vegan</option><option value="kosher">Kosher</option><option value="halal">Halal</option><option value="gluten-free">Gluten-Free</option></select>
-    </div>`;
+    <div class="card-body">`;
+
+  for (let i = 0; i < PAX_COUNT; i++) {
+    if (i > 0) html += `<hr class="pax-divider">`;
+    html += `
+      <div class="pax-header">
+        <h3><div class="pax-badge">${i+1}</div> Passenger ${i+1}</h3>
+        ${i > 0 ? `<button class="copy-btn" onclick="copyFirst(${i})">Copy from Passenger 1</button>` : ''}
+      </div>
+      <div class="form-row-2">
+        <div class="form-group"><label>First Name *</label><input class="form-input" id="pf-${i}" placeholder="As on passport" autocomplete="given-name"></div>
+        <div class="form-group"><label>Last Name *</label><input class="form-input" id="pl-${i}" placeholder="As on passport" autocomplete="family-name"></div>
+      </div>
+      <div class="form-row-3">
+        <div class="form-group"><label>Date of Birth</label><input class="form-input" type="date" id="pd-${i}"></div>
+        <div class="form-group"><label>Passport Number</label><input class="form-input" id="pp-${i}" placeholder="Optional"></div>
+        <div class="form-group"><label>Nationality</label><input class="form-input" id="pn-${i}" placeholder="Optional"></div>
+      </div>
+      <div class="form-group" style="max-width:260px">
+        <label>Meal Preference</label>
+        <select class="form-select" id="pm-${i}">
+          <option value="">Standard</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="kosher">Kosher</option>
+          <option value="halal">Halal</option>
+          <option value="gluten-free">Gluten-Free</option>
+        </select>
+      </div>`;
   }
   html += `</div>`;
   document.getElementById('passengersCard').innerHTML = html;
-  try { const u=JSON.parse(localStorage.getItem('dp_user')||'null'); if(u){document.getElementById('pf-0').value=u.first_name||'';document.getElementById('pl-0').value=u.last_name||'';document.getElementById('contactEmail').value=u.email||'';} } catch {}
+
+  // Pre-fill from logged-in user
+  try {
+    const u = JSON.parse(localStorage.getItem('dp_user') || 'null');
+    if (u) {
+      document.getElementById('pf-0').value = u.first_name || '';
+      document.getElementById('pl-0').value = u.last_name  || '';
+      document.getElementById('contactEmail').value = u.email || '';
+    }
+  } catch {}
 }
 
 function copyFirst(idx) {
-  ['pf','pl','pd','pp','pn'].forEach(p => { const s=document.getElementById(`${p}-0`),t=document.getElementById(`${p}-${idx}`); if(s&&t) t.value=s.value; });
+  ['pf','pl','pd','pp','pn'].forEach(p => {
+    const s = document.getElementById(`${p}-0`);
+    const t = document.getElementById(`${p}-${idx}`);
+    if (s && t) t.value = s.value;
+  });
 }
 
-// ── Summary ───────────────────────────────────────────────────
+// ── Summary sidebar ────────────────────────────────────────────────
 function buildSummary() {
   if (!flight) return;
-  const isDP    = flight.flight_type==='independent';
+
+  const isDP    = flight.flight_type === 'independent';
   const partner = PARTNERS[flight.codeshare_partner];
-  const airName = isDP?'DreamPacific Airways':(partner?.name||flight.codeshare_airline_name||'DreamPacific Airways');
-  const airLogo = isDP?DP_LOGO:(partner?.logo||DP_LOGO);
+  const airName = isDP ? 'DreamPacific Airways' : (partner?.name || flight.codeshare_airline_name || 'DreamPacific Airways');
+  const airLogo = isDP ? DP_LOGO : (partner?.logo || DP_LOGO);
 
-  document.getElementById('summaryAirline').innerHTML = `<div class="summary-logo"><img src="${airLogo}" alt="${airName}" onerror="this.src='${DP_LOGO}'"></div><div><div class="summary-airline-name">${airName}</div>${!isDP?`<div class="summary-airline-op">Operated by DreamPacific Airways</div>`:''}</div>`;
-  document.getElementById('summaryRoute').innerHTML = `<div><div class="summary-iata">${flight.origin}</div><div class="summary-city">${CITIES[flight.origin]||flight.origin_city||flight.origin}</div></div><div class="summary-arr"><div class="summary-line"></div><div class="summary-ns">Nonstop</div></div><div><div class="summary-iata">${flight.destination}</div><div class="summary-city">${CITIES[flight.destination]||flight.dest_city||flight.destination}</div></div>`;
+  const originTz   = getAirportTz(flight.origin,      flight);
+  const destTz     = getAirportTz(flight.destination,  flight);
+  const depTime    = fmtTime(flight.departure_time, originTz);
+  const arrTime    = fmtTime(flight.arrival_time,   destTz);
+  const depTzAbbr  = tzAbbr(originTz);
+  const arrTzAbbr  = tzAbbr(destTz);
+  const dur        = flightDuration(flight.departure_time, flight.arrival_time);
+  const price      = flight[`price_${CABIN}`] || 0;
+  const total      = price * PAX_COUNT;
 
-  // Times shown in local airport timezone
-  const originTz = AP_TZ[flight.origin]      || 'UTC';
-  const destTz   = AP_TZ[flight.destination] || 'UTC';
-  const depTime  = fmtLocal(flight.departure_time, originTz);
-  const arrTime  = fmtLocal(flight.arrival_time,   destTz);
-  const dur      = flightDuration(flight.departure_time, flight.arrival_time);
-  const price    = flight[`price_${CABIN}`] || 0;
-  const total    = price * PAX_COUNT;
+  document.getElementById('summaryAirline').innerHTML = `
+    <div class="summary-logo"><img src="${airLogo}" alt="${airName}" onerror="this.src='${DP_LOGO}'"></div>
+    <div>
+      <div class="summary-airline-name">${airName}</div>
+      ${!isDP ? `<div class="summary-airline-op">Operated by DreamPacific Airways</div>` : ''}
+    </div>`;
+
+  document.getElementById('summaryRoute').innerHTML = `
+    <div>
+      <div class="summary-iata">${flight.origin}</div>
+      <div class="summary-city">${CITIES[flight.origin] || flight.origin_city || flight.origin}</div>
+    </div>
+    <div class="summary-arr"><div class="summary-line"></div><div class="summary-ns">Nonstop</div></div>
+    <div>
+      <div class="summary-iata">${flight.destination}</div>
+      <div class="summary-city">${CITIES[flight.destination] || flight.dest_city || flight.destination}</div>
+    </div>`;
 
   document.getElementById('summaryBody').innerHTML = `
     <div class="summary-row"><span class="summary-row-label">Flight</span><span class="summary-row-val">${flight.flight_number}</span></div>
-    <div class="summary-row"><span class="summary-row-label">Date</span><span class="summary-row-val">${fmtLocalDate(flight.departure_time,originTz).split(',').slice(0,2).join(',')}</span></div>
-    <div class="summary-row"><span class="summary-row-label">Departure</span><span class="summary-row-val">${depTime} ${tzAbbr(originTz)}</span></div>
-    <div class="summary-row"><span class="summary-row-label">Arrival</span><span class="summary-row-val">${arrTime} ${tzAbbr(destTz)}</span></div>
+    <div class="summary-row"><span class="summary-row-label">Date</span><span class="summary-row-val">${fmtDateShort(flight.departure_time, originTz)}</span></div>
+    <div class="summary-row"><span class="summary-row-label">Departure</span><span class="summary-row-val">${depTime} ${depTzAbbr}</span></div>
+    <div class="summary-row"><span class="summary-row-label">Arrival</span><span class="summary-row-val">${arrTime} ${arrTzAbbr}</span></div>
     <div class="summary-row"><span class="summary-row-label">Flight Time</span><span class="summary-row-val">${dur}</span></div>
-    <div class="summary-row"><span class="summary-row-label">Cabin</span><span class="summary-row-val">${CABIN_LABELS[CABIN]||CABIN}</span></div>
+    <div class="summary-row"><span class="summary-row-label">Cabin</span><span class="summary-row-val">${CABIN_LABELS[CABIN] || CABIN}</span></div>
     <div class="summary-row"><span class="summary-row-label">Passengers</span><span class="summary-row-val">${PAX_COUNT}</span></div>
     <hr class="summary-divider">
-    <div class="summary-row"><div><div class="summary-total-label">Total</div><div class="price-pax">$${price.toLocaleString()} × ${PAX_COUNT} pax</div></div><div class="summary-total">$${total.toLocaleString()}</div></div>
+    <div class="summary-row">
+      <div>
+        <div class="summary-total-label">Total</div>
+        <div class="price-pax">$${price.toLocaleString()} × ${PAX_COUNT} pax</div>
+      </div>
+      <div class="summary-total">$${total.toLocaleString()}</div>
+    </div>
     <div class="trust-row">
       <div class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure — 256-bit SSL</div>
       <div class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>Instant confirmation</div>
@@ -533,17 +708,21 @@ function buildSummary() {
     </div>`;
 }
 
-// ── Seat map ──────────────────────────────────────────────────
+// ── Seat map ───────────────────────────────────────────────────────
 function buildSeatMap() {
   if (!allSeats.length) {
-    document.getElementById('seatMapContainer').innerHTML = `<div class="alert alert-info show"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>No seat map available. A seat will be assigned at check-in.</div>`;
+    document.getElementById('seatMapContainer').innerHTML = `
+      <div class="alert alert-info show">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        No seat map available for this flight. A seat will be assigned at check-in.
+      </div>`;
     return;
   }
   renderSeatGrid();
 }
 
 function renderSeatGrid() {
-  // Group seats: { cabin: { rowNum: [seat, ...] } }
+  // Group seats by cabin → row number
   const groups = {};
   allSeats.forEach(s => {
     if (!groups[s.cabin_class]) groups[s.cabin_class] = {};
@@ -553,18 +732,25 @@ function renderSeatGrid() {
   });
 
   const cabinOrder  = ['first','business','premium_economy','economy'];
-  const cabinColors = { first:'#7C3AED',business:'#0057B8',premium_economy:'#059669',economy:'#535E78' };
-  const cabinBg     = { first:'#F5F3FF',business:'#EFF6FF',premium_economy:'#ECFDF5',economy:'#F8F9FC' };
-  const cabinNames  = { first:'First Class',business:'Business Class',premium_economy:'Premium Economy',economy:'Economy' };
+  const cabinColors = { first:'#7C3AED', business:'#0057B8', premium_economy:'#059669', economy:'#535E78' };
+  const cabinBg     = { first:'#F5F3FF', business:'#EFF6FF', premium_economy:'#ECFDF5', economy:'#F8F9FC' };
+  const cabinNames  = { first:'First Class', business:'Business Class', premium_economy:'Premium Economy', economy:'Economy' };
 
-  // Multi-pax switcher
+  // Passenger switcher for multi-pax bookings
   let switcher = '';
   if (PAX_COUNT > 1) {
     switcher = `<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">` +
-      Array.from({length:PAX_COUNT},(_,i)=>{
-        const sid=seatSelections[i], seat=sid?allSeats.find(s=>s.id===sid):null;
-        const isMe=currentSeatPax===i;
-        return `<button onclick="switchPax(${i})" style="padding:6px 15px;border-radius:20px;font-size:12.5px;font-weight:700;font-family:inherit;cursor:pointer;border:1.5px solid ${isMe?'var(--blue)':'var(--gray-200)'};background:${isMe?'var(--blue)':'#fff'};color:${isMe?'#fff':'var(--gray-600)'}">Pax ${i+1}${seat?` · ${seat.seat_number}`:''}</button>`;
+      Array.from({ length: PAX_COUNT }, (_, i) => {
+        const sid  = seatSelections[i];
+        const seat = sid ? allSeats.find(s => s.id === sid) : null;
+        const isMe = currentSeatPax === i;
+        return `<button onclick="switchPax(${i})"
+          style="padding:6px 15px;border-radius:20px;font-size:12.5px;font-weight:700;font-family:inherit;cursor:pointer;
+                 border:1.5px solid ${isMe?'var(--blue)':'var(--gray-200)'};
+                 background:${isMe?'var(--blue)':'#fff'};
+                 color:${isMe?'#fff':'var(--gray-600)'}">
+          Pax ${i+1}${seat ? ` · ${seat.seat_number}` : ''}
+        </button>`;
       }).join('') + `</div>`;
   }
 
@@ -577,39 +763,40 @@ function renderSeatGrid() {
 
   cabinOrder.forEach(cabin => {
     if (!groups[cabin]) return;
-    const rows = Object.keys(groups[cabin]).map(Number).sort((a,b)=>a-b);
-    html += `<div class="cabin-section"><span class="cabin-section-label" style="background:${cabinBg[cabin]};color:${cabinColors[cabin]}">${cabinNames[cabin]}</span>`;
+    const rows = Object.keys(groups[cabin]).map(Number).sort((a, b) => a - b);
+
+    html += `<div class="cabin-section">
+      <span class="cabin-section-label" style="background:${cabinBg[cabin]};color:${cabinColors[cabin]}">${cabinNames[cabin]}</span>`;
 
     rows.forEach(row => {
-      // Sort seats in row by column letter
-      const seats = groups[cabin][row].sort((a,b) => {
-        const la = a.seat_number.replace(/[0-9]/g,'');
-        const lb = b.seat_number.replace(/[0-9]/g,'');
+      // Sort seats in this row alphabetically by column letter
+      const seats = groups[cabin][row].sort((a, b) => {
+        const la = a.seat_number.replace(/[0-9]/g, '');
+        const lb = b.seat_number.replace(/[0-9]/g, '');
         return la.localeCompare(lb);
       });
 
-      // Find aisle position: split at midpoint for most layouts
+      // Split into left/right around the aisle (midpoint split)
       const half  = Math.ceil(seats.length / 2);
       const left  = seats.slice(0, half);
       const right = seats.slice(half);
 
       html += `<div class="seat-row"><span class="seat-row-num">${row}</span>`;
-
-      left.forEach(s => { html += renderSeatBtn(s); });
+      left.forEach(s  => { html += renderSeatBtn(s); });
       html += `<div class="seat-aisle"></div>`;
       right.forEach(s => { html += renderSeatBtn(s); });
-
       html += `</div>`;
     });
+
     html += `</div>`;
   });
 
-  // Selected chips
-  const sel = Object.entries(seatSelections);
-  if (sel.length) {
+  // Show selected seat chips
+  const selected = Object.entries(seatSelections);
+  if (selected.length) {
     html += `<div style="margin-top:12px;display:flex;flex-wrap:wrap">`;
-    sel.forEach(([paxIdx, seatId]) => {
-      const seat = allSeats.find(s=>s.id===seatId);
+    selected.forEach(([paxIdx, seatId]) => {
+      const seat = allSeats.find(s => s.id === seatId);
       if (seat) html += `<div class="sel-chip">Pax ${parseInt(paxIdx)+1}: ${seat.seat_number}<button onclick="clearSeat(${paxIdx})" title="Remove">×</button></div>`;
     });
     html += `</div>`;
@@ -620,107 +807,145 @@ function renderSeatGrid() {
 
 function renderSeatBtn(s) {
   const selByMe    = seatSelections[currentSeatPax] === s.id;
-  const selByOther = Object.entries(seatSelections).some(([idx,sid])=>parseInt(idx)!==currentSeatPax&&sid===s.id);
-  const isTaken    = !s.is_available || selByOther;
+  const selByOther = Object.entries(seatSelections).some(([idx, sid]) =>
+    parseInt(idx) !== currentSeatPax && sid === s.id);
+  const isTaken = !s.is_available || selByOther;
 
   let cls = 'seat-btn ';
   if (selByMe)   cls += 'seat-selected';
   else if (isTaken) cls += 'seat-taken';
   else           cls += 'seat-avail';
 
-  // Label: JUST the column letter (A, B, C, etc.)
-  const col = s.seat_number.replace(/[0-9]/g,'');
+  // Label: just the column LETTER (A, B, C, D, E, F…)
+  // No "W", "A", "M" hints — the passenger reads the seat number from the tooltip.
+  const col = s.seat_number.replace(/[0-9]/g, '');
 
   return `<button class="${cls}" title="Seat ${s.seat_number}"
-    ${isTaken?'disabled':`onclick="pickSeat('${s.id}',${currentSeatPax})"`}>${col}</button>`;
+    ${isTaken ? 'disabled' : `onclick="pickSeat('${s.id}',${currentSeatPax})"`}>${col}</button>`;
 }
 
-function switchPax(idx) { currentSeatPax=idx; renderSeatGrid(); }
+function switchPax(idx) { currentSeatPax = idx; renderSeatGrid(); }
 
 function pickSeat(seatId, paxIdx) {
-  if (seatSelections[paxIdx]===seatId) { delete seatSelections[paxIdx]; }
-  else {
-    seatSelections[paxIdx]=seatId;
-    // Auto-advance to next unassigned pax
-    if (PAX_COUNT>1) { for(let i=0;i<PAX_COUNT;i++){if(seatSelections[i]===undefined){currentSeatPax=i;break;}} }
+  // Toggle: click same seat again to deselect
+  if (seatSelections[paxIdx] === seatId) {
+    delete seatSelections[paxIdx];
+  } else {
+    seatSelections[paxIdx] = seatId;
+    // Auto-advance to next unassigned passenger
+    if (PAX_COUNT > 1) {
+      for (let i = 0; i < PAX_COUNT; i++) {
+        if (seatSelections[i] === undefined) { currentSeatPax = i; break; }
+      }
+    }
   }
   renderSeatGrid();
 }
-function clearSeat(paxIdx) { delete seatSelections[paxIdx]; renderSeatGrid(); }
 
-// ── Review ────────────────────────────────────────────────────
+function clearSeat(paxIdx) {
+  delete seatSelections[paxIdx];
+  renderSeatGrid();
+}
+
+// ── Review page ────────────────────────────────────────────────────
 function buildReview() {
-  const originTz = AP_TZ[flight.origin]      || 'UTC';
-  const destTz   = AP_TZ[flight.destination] || 'UTC';
-  const isDP     = flight.flight_type==='independent';
+  const originTz = getAirportTz(flight.origin,      flight);
+  const destTz   = getAirportTz(flight.destination, flight);
+  const isDP     = flight.flight_type === 'independent';
   const partner  = PARTNERS[flight.codeshare_partner];
-  const airName  = isDP?'DreamPacific Airways':(partner?.name||flight.codeshare_airline_name||'DreamPacific Airways');
-  const price    = flight[`price_${CABIN}`]||0;
+  const airName  = isDP ? 'DreamPacific Airways' : (partner?.name || flight.codeshare_airline_name || 'DreamPacific Airways');
+  const price    = flight[`price_${CABIN}`] || 0;
 
-  const paxRows = passengerData.map((pax,i)=>{
-    const seat=seatSelections[i]?allSeats.find(s=>s.id===seatSelections[i]):null;
-    return `<div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--gray-100);font-size:13.5px"><span style="font-weight:600">${pax.first_name} ${pax.last_name}</span><span style="color:var(--gray-600)">${seat?`Seat ${seat.seat_number}`:'Seat TBA at check-in'}</span></div>`;
+  const paxRows = passengerData.map((pax, i) => {
+    const seat = seatSelections[i] ? allSeats.find(s => s.id === seatSelections[i]) : null;
+    return `<div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--gray-100);font-size:13.5px">
+      <span style="font-weight:600">${pax.first_name} ${pax.last_name}</span>
+      <span style="color:var(--gray-600)">${seat ? `Seat ${seat.seat_number}` : 'Seat TBA at check-in'}</span>
+    </div>`;
   }).join('');
 
   document.getElementById('reviewContent').innerHTML = `
     <div style="background:var(--gray-50);border-radius:12px;padding:18px;margin-bottom:18px">
       <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px">${flight.flight_number} · ${airName}</div>
-      ${!isDP?`<div style="font-size:12px;color:var(--gray-400);margin-bottom:10px">Operated by DreamPacific Airways</div>`:'<div style="margin-bottom:10px"></div>'}
+      ${!isDP ? `<div style="font-size:12px;color:var(--gray-400);margin-bottom:10px">Operated by DreamPacific Airways</div>` : '<div style="margin-bottom:10px"></div>'}
       <div style="font-size:15px;font-weight:600;margin-bottom:4px">${flight.origin} → ${flight.destination}</div>
-      <div style="font-size:13px;color:var(--gray-600)">${fmtLocalDate(flight.departure_time,originTz)}</div>
-      <div style="font-size:13px;color:var(--gray-600);margin-top:2px">${fmtLocal(flight.departure_time,originTz)} ${tzAbbr(originTz)} → ${fmtLocal(flight.arrival_time,destTz)} ${tzAbbr(destTz)} · ${CABIN_LABELS[CABIN]||CABIN}</div>
-      <div style="font-size:12px;color:var(--gray-400);margin-top:4px">Flight time: ${flightDuration(flight.departure_time,flight.arrival_time)}</div>
+      <div style="font-size:13px;color:var(--gray-600)">${fmtDateLong(flight.departure_time, originTz)}</div>
+      <div style="font-size:13px;color:var(--gray-600);margin-top:2px">
+        ${fmtTime(flight.departure_time, originTz)} ${tzAbbr(originTz)}
+        → ${fmtTime(flight.arrival_time, destTz)} ${tzAbbr(destTz)}
+        · ${CABIN_LABELS[CABIN] || CABIN}
+      </div>
+      <div style="font-size:12px;color:var(--gray-400);margin-top:4px">
+        Flight time: ${flightDuration(flight.departure_time, flight.arrival_time)}
+      </div>
     </div>
     <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:8px">Passengers</div>
     ${paxRows}
-    <div style="display:flex;justify-content:space-between;padding:14px 0;font-size:16px;font-weight:800"><span>Total</span><span style="color:var(--navy)">$${(price*PAX_COUNT).toLocaleString()}</span></div>`;
+    <div style="display:flex;justify-content:space-between;padding:14px 0;font-size:16px;font-weight:800">
+      <span>Total</span>
+      <span style="color:var(--navy)">$${(price * PAX_COUNT).toLocaleString()}</span>
+    </div>`;
 }
 
-// ── Confirm booking ───────────────────────────────────────────
+// ── Confirm booking ────────────────────────────────────────────────
 async function confirmBooking() {
   const btn = document.getElementById('confirmBtn');
   document.getElementById('bookErr').classList.remove('show');
-  btn.disabled=true; btn.textContent='Booking…';
+  btn.disabled = true; btn.textContent = 'Booking…';
 
+  // Auth token is optional — guest bookings are accepted by the worker
   const token   = localStorage.getItem('dp_token');
-  const headers = { 'Content-Type':'application/json' };
+  const headers = { 'Content-Type': 'application/json' };
   if (token) headers['Authorization'] = 'Bearer ' + token;
 
-  const seatIds = Array.from({length:PAX_COUNT},(_,i)=>seatSelections[i]).filter(Boolean);
+  // Build seat_ids array ordered by passenger index
+  const seatIds = Array.from({ length: PAX_COUNT }, (_, i) => seatSelections[i]).filter(Boolean);
+
+  // Field names exactly match what the worker's bookingCreate() expects
+  const body = {
+    flight_id:    FLIGHT_ID,    // must match worker field name
+    cabin_class:  CABIN,        // must match worker field name
+    passengers:   passengerData,
+    seat_ids:     seatIds.length ? seatIds : undefined,
+  };
 
   try {
     const res  = await fetch(`${API}/api/bookings`, {
-      method:'POST', headers,
-      body: JSON.stringify({
-        flight_id:   FLIGHT_ID,
-        cabin_class: CABIN,
-        passengers:  passengerData,
-        seat_ids:    seatIds.length ? seatIds : undefined,
-      }),
+      method: 'POST', headers, body: JSON.stringify(body),
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.error||`Booking failed (${res.status})`);
+
+    if (!res.ok) throw new Error(data.error || `Booking failed (${res.status})`);
     if (!data.booking) throw new Error('Unexpected server response — please try again');
-    renderConfirmation(data.booking, data.passengers||[]);
+
+    renderConfirmation(data.booking, data.passengers || []);
     setStep(4);
+
   } catch(e) {
-    document.getElementById('bookErrMsg').textContent = e.message||'Something went wrong. Please try again.';
+    document.getElementById('bookErrMsg').textContent = e.message || 'Something went wrong. Please try again.';
     document.getElementById('bookErr').classList.add('show');
   } finally {
-    btn.disabled=false; btn.textContent='Confirm & Book →';
+    btn.disabled = false; btn.textContent = 'Confirm & Book →';
   }
 }
 
-// ── Confirmation ──────────────────────────────────────────────
+// ── Confirmation view ──────────────────────────────────────────────
 function renderConfirmation(booking, passengers) {
-  const originTz = AP_TZ[booking.origin]      || 'UTC';
-  const destTz   = AP_TZ[booking.destination] || 'UTC';
-  const isDP     = booking.flight_type==='independent'||!booking.codeshare_partner;
-  const partner  = PARTNERS[booking.codeshare_partner];
-  const airName  = isDP?'DreamPacific Airways':(partner?.name||booking.codeshare_airline_name||'DreamPacific Airways');
+  // Times from the API are always UTC — we convert to local airport time for display
+  const originTz = booking.origin_timezone || AP_TZ[booking.origin]      || 'UTC';
+  const destTz   = booking.dest_timezone   || AP_TZ[booking.destination] || 'UTC';
 
-  const paxRows = (passengers||[]).map(pax =>
-    `<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--gray-100);font-size:13.5px"><span style="font-weight:600">${pax.first_name} ${pax.last_name}</span><span style="color:var(--gray-600)">${pax.seat_number?`Seat ${pax.seat_number}`:'Seat TBA at check-in'}</span></div>`
+  const isDP    = booking.flight_type === 'independent' || !booking.codeshare_partner;
+  const partner = PARTNERS[booking.codeshare_partner];
+  const airName = isDP
+    ? 'DreamPacific Airways'
+    : (partner?.name || booking.codeshare_airline_name || 'DreamPacific Airways');
+
+  const paxRows = passengers.map(pax =>
+    `<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--gray-100);font-size:13.5px">
+      <span style="font-weight:600">${pax.first_name} ${pax.last_name}</span>
+      <span style="color:var(--gray-600)">${pax.seat_number ? `Seat ${pax.seat_number}` : 'Seat TBA at check-in'}</span>
+    </div>`
   ).join('');
 
   document.getElementById('confirmContent').innerHTML = `
@@ -731,34 +956,48 @@ function renderConfirmation(booking, passengers) {
       <div class="confirm-pnr">${booking.pnr}</div>
       <div class="confirm-pnr-label">Booking Reference</div>
     </div>
+
     <div class="confirm-card">
       <div class="confirm-card-head">Flight Details</div>
       <div class="confirm-card-body">
         <div style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:4px">${booking.flight_number} · ${airName}</div>
-        ${!isDP?`<div style="font-size:12px;color:var(--gray-400);margin-bottom:12px">Operated by DreamPacific Airways</div>`:'<div style="margin-bottom:12px"></div>'}
+        ${!isDP ? `<div style="font-size:12px;color:var(--gray-400);margin-bottom:12px">Operated by DreamPacific Airways</div>` : '<div style="margin-bottom:12px"></div>'}
         <div class="confirm-grid">
-          <div><div class="confirm-lbl">From</div><div class="confirm-val">${booking.origin}${booking.origin_city?` · ${booking.origin_city}`:''}</div></div>
-          <div><div class="confirm-lbl">To</div><div class="confirm-val">${booking.destination}${booking.dest_city?` · ${booking.dest_city}`:''}</div></div>
-          <div><div class="confirm-lbl">Departure</div><div class="confirm-val">${fmtLocal(booking.departure_time,originTz)} ${tzAbbr(originTz)}</div></div>
-          <div><div class="confirm-lbl">Arrival</div><div class="confirm-val">${fmtLocal(booking.arrival_time,destTz)} ${tzAbbr(destTz)}</div></div>
-          <div><div class="confirm-lbl">Flight Time</div><div class="confirm-val">${flightDuration(booking.departure_time,booking.arrival_time)}</div></div>
-          <div><div class="confirm-lbl">Cabin</div><div class="confirm-val">${CABIN_LABELS[booking.cabin_class]||booking.cabin_class}</div></div>
-          <div><div class="confirm-lbl">Total Paid</div><div class="confirm-val">$${parseFloat(booking.total_price||0).toLocaleString()}</div></div>
+          <div><div class="confirm-lbl">From</div><div class="confirm-val">${booking.origin}${booking.origin_city ? ` · ${booking.origin_city}` : ''}</div></div>
+          <div><div class="confirm-lbl">To</div><div class="confirm-val">${booking.destination}${booking.dest_city ? ` · ${booking.dest_city}` : ''}</div></div>
+          <div><div class="confirm-lbl">Departure</div><div class="confirm-val">${fmtTime(booking.departure_time, originTz)} ${tzAbbr(originTz)}</div></div>
+          <div><div class="confirm-lbl">Arrival</div><div class="confirm-val">${fmtTime(booking.arrival_time, destTz)} ${tzAbbr(destTz)}</div></div>
+          <div><div class="confirm-lbl">Date</div><div class="confirm-val">${fmtDateShort(booking.departure_time, originTz)}</div></div>
+          <div><div class="confirm-lbl">Flight Time</div><div class="confirm-val">${flightDuration(booking.departure_time, booking.arrival_time)}</div></div>
+          <div><div class="confirm-lbl">Cabin</div><div class="confirm-val">${CABIN_LABELS[booking.cabin_class] || booking.cabin_class}</div></div>
+          <div><div class="confirm-lbl">Total Paid</div><div class="confirm-val">$${parseFloat(booking.total_price || 0).toLocaleString()}</div></div>
         </div>
       </div>
     </div>
+
     <div class="confirm-card">
       <div class="confirm-card-head">Passengers</div>
       <div class="confirm-card-body">${paxRows}</div>
     </div>
+
     <div class="confirm-card">
       <div class="confirm-card-head">What's Next?</div>
       <div class="confirm-card-body" style="display:flex;flex-direction:column;gap:16px">
-        <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:30px;height:30px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div><div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Save your booking reference</div><div style="font-size:13px;color:var(--gray-600)">Your PNR is <strong>${booking.pnr}</strong>. You'll need this to check in.</div></div></div>
-        <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:30px;height:30px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div><div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Check in online</div><div style="font-size:13px;color:var(--gray-600)">Check-in opens 24 hours before departure. Select your seat and get your boarding pass.</div></div></div>
-        <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:30px;height:30px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div><div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Arrive at the airport</div><div style="font-size:13px;color:var(--gray-600)">Please arrive at Felix Lego City International Airport (FLX) at least 2 hours before departure.</div></div></div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+          <div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Save your booking reference</div><div style="font-size:13px;color:var(--gray-600)">Your PNR is <strong>${booking.pnr}</strong>. You'll need this to check in.</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+          <div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Check in online</div><div style="font-size:13px;color:var(--gray-600)">Check-in opens 24 hours before departure. Select your seat and get your boarding pass.</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+          <div><div style="font-size:14px;font-weight:700;margin-bottom:2px">Arrive at the airport</div><div style="font-size:13px;color:var(--gray-600)">Please arrive at Felix Lego City International Airport (FLX) at least 2 hours before departure.</div></div>
+        </div>
       </div>
     </div>
+
     <div class="confirm-actions">
       <a href="checkin.html?pnr=${booking.pnr}" class="confirm-btn confirm-btn-blue">Online Check-In →</a>
       <a href="account.html" class="confirm-btn confirm-btn-ghost">View My Trips</a>
@@ -770,6 +1009,7 @@ function renderConfirmation(booking, passengers) {
   document.getElementById('loadingView').style.display  = 'none';
 }
 
+// ── Boot ───────────────────────────────────────────────────────────
 init();
 </script>
 </body>
