@@ -317,23 +317,37 @@ const API = 'https://dreampacific-api.felixfeger46.workers.dev';
 //  1. Convert user-selected local date → UTC range for API queries
 //  2. Convert UTC stored times → local airport times for display
 const AP_TZ = {
-  FLX: 'America/Los_Angeles',
-  LAX: 'America/Los_Angeles',
-  LGB: 'America/Los_Angeles',
-  JFK: 'America/New_York',
-  LGA: 'America/New_York',
-  BOS: 'America/New_York',
-  MIA: 'America/New_York',
-  FLL: 'America/New_York',
-  ORD: 'America/Chicago',
-  DFW: 'America/Chicago',
-  HNL: 'Pacific/Honolulu',
-  OGG: 'Pacific/Honolulu',
-  LHR: 'Europe/London',
-  DXB: 'Asia/Dubai',
-  HKG: 'Asia/Hong_Kong',
-  HLC: 'America/Los_Angeles',
-  MCI: 'America/Kansas_City',
+ // United States – Pacific
+  FLX:'America/Los_Angeles', LAX:'America/Los_Angeles', LGB:'America/Los_Angeles',
+  SFO:'America/Los_Angeles', SAN:'America/Los_Angeles', SEA:'America/Los_Angeles',
+  PDX:'America/Los_Angeles', LAS:'America/Los_Angeles',
+  // United States – Mountain
+  DEN:'America/Denver',      SLC:'America/Denver',      PHX:'America/Phoenix',
+  // United States – Central
+  ORD:'America/Chicago', DFW:'America/Chicago', IAH:'America/Chicago',
+  MSP:'America/Chicago', STL:'America/Chicago', MCI:'America/Chicago',
+  MDW:'America/Chicago', OMA:'America/Chicago', MKE:'America/Chicago',
+  // United States – Eastern
+  JFK:'America/New_York', LGA:'America/New_York', EWR:'America/New_York',
+  BOS:'America/New_York', MIA:'America/New_York', FLL:'America/New_York',
+  MCO:'America/New_York', ATL:'America/New_York', CLT:'America/New_York',
+  DCA:'America/New_York', IAD:'America/New_York', PHL:'America/New_York',
+  DTW:'America/New_York', CLE:'America/New_York', PIT:'America/New_York',
+  // Hawaii / Pacific
+  HNL:'Pacific/Honolulu', OGG:'Pacific/Honolulu', KOA:'Pacific/Honolulu',
+  // Europe
+  LHR:'Europe/London',    LGW:'Europe/London',    MAN:'Europe/London',
+  CDG:'Europe/Paris',     AMS:'Europe/Amsterdam', FRA:'Europe/Berlin',
+  MAD:'Europe/Madrid',    BCN:'Europe/Madrid',    FCO:'Europe/Rome',
+  ZRH:'Europe/Zurich',
+  // Middle East
+  DXB:'Asia/Dubai', AUH:'Asia/Dubai', DOH:'Asia/Qatar',
+  // Asia
+  HKG:'Asia/Hong_Kong', SIN:'Asia/Singapore', NRT:'Asia/Tokyo',
+  HND:'Asia/Tokyo',     ICN:'Asia/Seoul',      PVG:'Asia/Shanghai',
+  PEK:'Asia/Shanghai',  BKK:'Asia/Bangkok',
+  // Australia
+  SYD:'Australia/Sydney', MEL:'Australia/Melbourne',
 };
 
 // ── Partner data ──────────────────────────────────────────────────
@@ -346,7 +360,7 @@ const PARTNERS = {
   B6: { name: 'JetBlue Airways',    logo: 'https://www.gstatic.com/flights/airline_logos/70px/B6.png' },
   HA: { name: 'Hawaiian Airlines',  logo: 'https://www.gstatic.com/flights/airline_logos/70px/HA.png' },
   CX: { name: 'Cathay Pacific',     logo: 'https://www.gstatic.com/flights/airline_logos/70px/CX.png' },
-  AA: { name: 'United Airlines',     logo: 'https://www.gstatic.com/flights/airline_logos/70px/UA.png' },
+  UA: { name: 'United Airlines',     logo: 'https://www.gstatic.com/flights/airline_logos/70px/UA.png' },
 };
 const CABIN_LABELS = {
   economy: 'Economy', premium_economy: 'Premium Economy',
