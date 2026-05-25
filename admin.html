@@ -16,8 +16,6 @@
     }
     html,body { height:100%; }
     body { font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:var(--text); background:var(--gray-50); -webkit-font-smoothing:antialiased; display:flex; flex-direction:column; }
-
-    /* ── Gate ── */
     .gate { min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--navy-dk); padding:24px; }
     .gate-card { background:#fff; border-radius:20px; width:100%; max-width:400px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,.4); }
     .gate-head { background:linear-gradient(135deg,var(--navy) 0%,#002FA8 100%); padding:32px; text-align:center; }
@@ -33,19 +31,15 @@
     .gate-btn:disabled { background:var(--gray-300); cursor:not-allowed; }
     .gate-err { background:var(--red-lt); border:1px solid #fecaca; color:var(--red); font-size:13px; padding:9px 12px; border-radius:8px; margin-bottom:14px; display:none; }
     .gate-err.show { display:block; }
-
-    /* ── App shell ── */
     .app { display:none; flex:1; flex-direction:row; min-height:100vh; }
     .app.visible { display:flex; }
-
-    /* ── Sidebar ── */
     .sidebar { width:var(--sidebar-w); background:var(--navy-dk); flex-shrink:0; display:flex; flex-direction:column; position:fixed; top:0; left:0; bottom:0; z-index:100; overflow-y:auto; }
     .sidebar-logo { padding:20px 20px 16px; border-bottom:1px solid rgba(255,255,255,.06); }
     .sidebar-logo img { height:34px; display:block; }
     .sidebar-logo-sub { font-size:9.5px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.28); margin-top:6px; }
     .sidebar-section { padding:18px 12px 6px; }
     .sidebar-section-label { font-size:9px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.25); padding:0 8px; margin-bottom:4px; }
-    .sidebar-link { display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:8px; font-size:13px; font-weight:500; color:rgba(255,255,255,.58); text-decoration:none; cursor:pointer; transition:background .15s,color .15s; border:none; background:none; width:100%; text-align:left; font-family:inherit; }
+    .sidebar-link { display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:8px; font-size:13px; font-weight:500; color:rgba(255,255,255,.58); cursor:pointer; transition:background .15s,color .15s; border:none; background:none; width:100%; text-align:left; font-family:inherit; }
     .sidebar-link:hover { background:rgba(255,255,255,.07); color:rgba(255,255,255,.88); }
     .sidebar-link.active { background:rgba(255,255,255,.12); color:#fff; font-weight:600; }
     .sidebar-link svg { flex-shrink:0; opacity:.7; }
@@ -57,8 +51,6 @@
     .sidebar-user-role { font-size:10.5px; color:rgba(255,255,255,.32); }
     .sidebar-logout { display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:8px; font-size:12.5px; font-weight:500; color:rgba(255,255,255,.4); cursor:pointer; background:none; border:none; width:100%; font-family:inherit; transition:all .15s; }
     .sidebar-logout:hover { background:rgba(255,255,255,.06); color:rgba(255,255,255,.7); }
-
-    /* ── Main ── */
     .main { margin-left:var(--sidebar-w); flex:1; display:flex; flex-direction:column; min-height:100vh; }
     .topbar { background:#fff; border-bottom:1px solid var(--gray-200); padding:0 32px; height:60px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:50; }
     .topbar-title { font-size:17px; font-weight:700; color:var(--text); letter-spacing:-.01em; }
@@ -71,16 +63,12 @@
     .page { padding:28px 32px 64px; flex:1; }
     .panel { display:none; }
     .panel.active { display:block; }
-
-    /* ── Stats ── */
     .stats-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-bottom:32px; }
     .stat-card { background:#fff; border:1.5px solid var(--gray-200); border-radius:14px; padding:20px 22px; transition:border-color .2s,box-shadow .2s; }
     .stat-card:hover { border-color:var(--blue); box-shadow:0 4px 20px rgba(0,27,94,.09); }
     .stat-icon { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
     .stat-num { font-size:28px; font-weight:800; letter-spacing:-.03em; line-height:1; margin-bottom:4px; }
     .stat-lbl { font-size:12px; color:var(--gray-400); font-weight:500; }
-
-    /* ── Table ── */
     .table-card { background:#fff; border:1.5px solid var(--gray-200); border-radius:16px; overflow:hidden; }
     .table-header { padding:18px 24px; border-bottom:1px solid var(--gray-100); display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
     .table-title { font-size:15px; font-weight:700; color:var(--text); }
@@ -95,23 +83,21 @@
     tbody tr:last-child td { border-bottom:none; }
     tbody tr:hover { background:var(--gray-50); }
     .badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; white-space:nowrap; }
-    .badge-green  { background:var(--green-lt); color:var(--green); }
-    .badge-blue   { background:var(--blue-lt);  color:var(--blue); }
-    .badge-amber  { background:var(--amber-lt); color:var(--amber); }
-    .badge-red    { background:var(--red-lt);   color:var(--red); }
-    .badge-purple { background:var(--purple-lt);color:var(--purple); }
-    .badge-gray   { background:var(--gray-100); color:var(--gray-600); }
+    .badge-green { background:var(--green-lt); color:var(--green); }
+    .badge-blue  { background:var(--blue-lt);  color:var(--blue); }
+    .badge-amber { background:var(--amber-lt); color:var(--amber); }
+    .badge-red   { background:var(--red-lt);   color:var(--red); }
+    .badge-purple{ background:var(--purple-lt);color:var(--purple); }
+    .badge-gray  { background:var(--gray-100); color:var(--gray-600); }
     .tbl-btn { padding:5px 11px; font-size:12px; font-weight:600; font-family:inherit; border-radius:6px; cursor:pointer; border:none; transition:all .15s; }
     .tbl-edit { background:var(--blue-lt); color:var(--blue); }
-    .tbl-edit:hover  { background:var(--blue); color:#fff; }
+    .tbl-edit:hover { background:var(--blue); color:#fff; }
     .tbl-del  { background:var(--red-lt); color:var(--red); margin-left:4px; }
-    .tbl-del:hover   { background:var(--red); color:#fff; }
+    .tbl-del:hover  { background:var(--red); color:#fff; }
     .flight-num { font-size:13px; font-weight:800; color:var(--navy); font-feature-settings:'tnum'; }
     .airline-cell { display:flex; align-items:center; gap:8px; }
     .airline-logo-sm { width:26px; height:26px; border-radius:6px; background:var(--gray-50); border:1px solid var(--gray-200); display:flex; align-items:center; justify-content:center; padding:3px; flex-shrink:0; }
     .airline-logo-sm img { width:100%; height:100%; object-fit:contain; }
-
-    /* ── Modal ── */
     .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:400; display:none; align-items:flex-start; justify-content:center; padding:32px 16px; overflow-y:auto; }
     .modal-backdrop.open { display:flex; }
     .modal { background:#fff; border-radius:20px; width:100%; max-width:700px; box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden; margin:auto; }
@@ -125,13 +111,12 @@
     .mf-group label { display:block; font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gray-600); margin-bottom:6px; }
     .mf-input,.mf-select { width:100%; padding:10px 13px; font-size:13.5px; font-family:inherit; font-weight:500; color:var(--text); background:var(--gray-50); border:1.5px solid var(--gray-200); border-radius:9px; outline:none; transition:border-color .15s,box-shadow .15s,background .15s; }
     .mf-input:focus,.mf-select:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,87,184,.1); background:#fff; }
-    .mf-textarea { width:100%; padding:10px 13px; font-size:13.5px; font-family:inherit; font-weight:500; color:var(--text); background:var(--gray-50); border:1.5px solid var(--gray-200); border-radius:9px; outline:none; resize:vertical; min-height:80px; transition:border-color .15s; }
+    .mf-textarea { width:100%; padding:10px 13px; font-size:13.5px; font-family:inherit; font-weight:500; color:var(--text); background:var(--gray-50); border:1.5px solid var(--gray-200); border-radius:9px; outline:none; resize:vertical; min-height:80px; }
     .mf-textarea:focus { border-color:var(--blue); background:#fff; }
     .mf-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .mf-grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
     .mf-grid-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; }
     .mf-section { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); margin:22px 0 14px; padding-bottom:8px; border-bottom:1.5px solid var(--blue-lt); }
-    .mf-hint { font-size:11px; color:var(--gray-400); margin-top:4px; }
+    .mf-hint { font-size:11px; margin-top:4px; }
     .mf-tz-note { font-size:11.5px; color:var(--blue); font-weight:600; background:var(--blue-lt); padding:8px 12px; border-radius:8px; margin-bottom:16px; display:flex; align-items:flex-start; gap:8px; }
     .modal-save-btn { padding:10px 26px; font-size:14px; font-weight:700; font-family:inherit; color:#fff; background:var(--blue); border:none; border-radius:9px; cursor:pointer; transition:background .2s; }
     .modal-save-btn:hover { background:var(--blue-h); }
@@ -141,24 +126,20 @@
     .modal-alert { padding:10px 14px; border-radius:9px; font-size:13px; font-weight:500; margin-bottom:16px; display:none; align-items:flex-start; gap:8px; }
     .modal-alert.show { display:flex; }
     .modal-alert-err { background:var(--red-lt); color:var(--red); border:1px solid #fecaca; }
-    .modal-alert-ok  { background:var(--green-lt); color:var(--green); border:1px solid #a7f3d0; }
     .tbl-empty { padding:60px 20px; text-align:center; color:var(--gray-400); }
     .tbl-empty-icon { font-size:40px; margin-bottom:14px; }
+    .utc-chip { background:#F0FDF4; border:1px solid #86EFAC; border-radius:8px; padding:10px 14px; font-size:12px; color:#166534; margin-bottom:16px; font-family:monospace; display:none; line-height:1.6; }
+    .utc-chip.show { display:block; }
+    .utc-chip.bad { background:var(--red-lt); border-color:#fecaca; color:var(--red); }
     .skel { background:linear-gradient(90deg,var(--gray-100) 25%,#e8ebf4 50%,var(--gray-100) 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; border-radius:6px; }
     @keyframes shimmer { 0%{background-position:200% 0}100%{background-position:-200% 0} }
-
-    /* UTC debug chip */
-    .utc-chip { background:var(--gray-100); border:1px solid var(--gray-200); border-radius:8px; padding:10px 14px; font-size:12px; color:var(--gray-600); margin-bottom:16px; font-family:monospace; display:none; }
-    .utc-chip.show { display:block; }
-    .utc-chip strong { color:var(--gray-800); }
-
     @media(max-width:900px) { .sidebar{transform:translateX(-100%);transition:transform .25s} .sidebar.open{transform:none} .main{margin-left:0} .stats-grid{grid-template-columns:1fr 1fr} }
-    @media(max-width:600px) { .stats-grid{grid-template-columns:1fr} .mf-grid-2,.mf-grid-3,.mf-grid-4{grid-template-columns:1fr} .page{padding:20px 16px 48px} .topbar{padding:0 16px} }
+    @media(max-width:600px) { .stats-grid{grid-template-columns:1fr} .mf-grid-2,.mf-grid-4{grid-template-columns:1fr} .page{padding:20px 16px 48px} .topbar{padding:0 16px} }
   </style>
 </head>
 <body>
 
-<!-- ── Gate ── -->
+<!-- Gate -->
 <div class="gate" id="gateView">
   <div class="gate-card">
     <div class="gate-head">
@@ -178,10 +159,8 @@
   </div>
 </div>
 
-<!-- ── App shell ── -->
+<!-- App -->
 <div class="app" id="appShell">
-
-  <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
       <img src="https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png" alt="DreamPacific">
@@ -190,34 +169,28 @@
     <div class="sidebar-section">
       <div class="sidebar-section-label">Overview</div>
       <button class="sidebar-link active" data-panel="dashboard" onclick="nav(this)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        Dashboard
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard
       </button>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-section-label">Operations</div>
       <button class="sidebar-link" data-panel="flights" onclick="nav(this)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 2H6.5L2 12l5 2 5-4 5 4 5-2Z"/><path d="M12 10v10"/></svg>
-        Flights
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 2H6.5L2 12l5 2 5-4 5 4 5-2Z"/><path d="M12 10v10"/></svg>Flights
       </button>
       <button class="sidebar-link" data-panel="bookings" onclick="nav(this)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
-        Bookings
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>Bookings
       </button>
       <button class="sidebar-link" data-panel="users" onclick="nav(this)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Users
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Users
       </button>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-section-label">Setup</div>
       <button class="sidebar-link" data-panel="aircraft" onclick="nav(this)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Aircraft
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Aircraft
       </button>
       <button class="sidebar-link" data-panel="airports" onclick="nav(this)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
-        Airports
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>Airports
       </button>
     </div>
     <div class="sidebar-bottom">
@@ -226,24 +199,20 @@
         <div><div class="sidebar-user-name" id="sidebarName">Admin</div><div class="sidebar-user-role">Administrator</div></div>
       </div>
       <button class="sidebar-logout" onclick="doLogout()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        Sign Out
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out
       </button>
     </div>
   </aside>
 
-  <!-- Main -->
   <div class="main">
     <div class="topbar">
       <div class="topbar-title" id="topbarTitle">Dashboard</div>
       <div class="topbar-right">
         <button class="topbar-btn topbar-btn-ghost" onclick="window.open('index.html','_blank')">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          View Site
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Site
         </button>
         <button class="topbar-btn topbar-btn-blue" id="topbarAddBtn" onclick="openAddFlight()" style="display:none">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Add Flight
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Flight
         </button>
       </div>
     </div>
@@ -263,11 +232,10 @@
           <div class="table-header">
             <div class="table-title">Recent Flights</div>
             <button class="add-btn" onclick="nav(document.querySelector('[data-panel=flights]')); openAddFlight()">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add Flight
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Flight
             </button>
           </div>
-          <table><thead><tr><th>Flight</th><th>Route</th><th>Departure (Local)</th><th>Status</th><th>Type</th></tr></thead>
+          <table><thead><tr><th>Flight</th><th>Route</th><th>Departure (Local)</th><th>Duration</th><th>Status</th></tr></thead>
           <tbody id="dashFlightsTbody"><tr><td colspan="5" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>Loading…</p></td></tr></tbody></table>
         </div>
       </div>
@@ -280,8 +248,7 @@
             <div class="table-actions">
               <input class="table-search" type="text" id="flightSearch" placeholder="Search flight number…" oninput="filterFlights()">
               <button class="add-btn" onclick="openAddFlight()">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                Add Flight
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Flight
               </button>
             </div>
           </div>
@@ -336,7 +303,7 @@
   </div>
 </div>
 
-<!-- ══ Flight Modal ══ -->
+<!-- Flight Modal -->
 <div class="modal-backdrop" id="flightModal" onclick="backdropClose(event,'flightModal')">
   <div class="modal">
     <div class="modal-head">
@@ -344,12 +311,10 @@
       <button class="modal-close" onclick="closeModal('flightModal')">✕</button>
     </div>
     <div class="modal-body">
-
       <div class="mf-tz-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         <span>Enter times in the <strong>local airport timezone</strong>. They are automatically converted to UTC before saving.</span>
       </div>
-
       <div class="modal-alert modal-alert-err" id="flightErr">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
         <span id="flightErrMsg"></span>
@@ -357,12 +322,8 @@
 
       <div class="mf-section">Flight Identity</div>
       <div class="mf-grid-2">
-        <div class="mf-group">
-          <label>Flight Number *</label>
-          <input class="mf-input" id="f-num" placeholder="e.g. DP 101  or  AA 5050 / DP 5050">
-        </div>
-        <div class="mf-group">
-          <label>Flight Type *</label>
+        <div class="mf-group"><label>Flight Number *</label><input class="mf-input" id="f-num" placeholder="e.g. DP 101  or  AA 5050 / DP 5050"></div>
+        <div class="mf-group"><label>Flight Type *</label>
           <select class="mf-select" id="f-type" onchange="onTypeChange()">
             <option value="independent">DreamPacific Independent</option>
             <option value="codeshare">Codeshare (Partner Brand)</option>
@@ -371,10 +332,8 @@
           </select>
         </div>
       </div>
-
       <div id="codeshareRow" style="display:none" class="mf-grid-2">
-        <div class="mf-group">
-          <label>Partner Airline *</label>
+        <div class="mf-group"><label>Partner Airline *</label>
           <select class="mf-select" id="f-partner">
             <option value="">— Select airline —</option>
             <option value="AA">American Airlines (AA)</option>
@@ -386,24 +345,14 @@
             <option value="CX">Cathay Pacific (CX)</option>
           </select>
         </div>
-        <div class="mf-group">
-          <label>Partner Flight # (marketing)</label>
-          <input class="mf-input" id="f-mktg" placeholder="e.g. AA 5050">
-        </div>
+        <div class="mf-group"><label>Partner Flight # (marketing)</label><input class="mf-input" id="f-mktg" placeholder="e.g. AA 5050"></div>
       </div>
 
       <div class="mf-section">Route</div>
       <div class="mf-grid-2">
-        <div class="mf-group">
-          <label>Origin Airport *</label>
-          <select class="mf-select" id="f-origin" onchange="updateTzLabels()"></select>
-        </div>
-        <div class="mf-group">
-          <label>Destination Airport *</label>
-          <select class="mf-select" id="f-dest" onchange="updateTzLabels()"></select>
-        </div>
+        <div class="mf-group"><label>Origin Airport *</label><select class="mf-select" id="f-origin" onchange="updateTzLabels()"></select></div>
+        <div class="mf-group"><label>Destination Airport *</label><select class="mf-select" id="f-dest" onchange="updateTzLabels()"></select></div>
       </div>
-
       <div class="mf-grid-2">
         <div class="mf-group">
           <label for="f-dep">Departure — local time at origin *</label>
@@ -417,33 +366,17 @@
         </div>
       </div>
 
-      <!-- UTC preview — lets admin verify the conversion before saving -->
-      <div class="utc-chip" id="utcPreview">
-        <strong>UTC stored in DB:</strong>
-        Dep <span id="prevDepUtc">—</span>
-        &nbsp;→&nbsp;
-        Arr <span id="prevArrUtc">—</span>
-        &nbsp;·&nbsp;
-        Flight time: <span id="prevDuration" style="font-weight:700;color:var(--blue)">—</span>
-      </div>
+      <!-- Live UTC conversion preview -->
+      <div class="utc-chip" id="utcPreview"></div>
 
       <div class="mf-section">Aircraft &amp; Gate</div>
       <div class="mf-grid-2">
-        <div class="mf-group">
-          <label>Aircraft</label>
-          <select class="mf-select" id="f-aircraft">
-            <option value="">— Assign aircraft (auto-generates seats) —</option>
-          </select>
-        </div>
-        <div class="mf-group">
-          <label>Status</label>
+        <div class="mf-group"><label>Aircraft</label><select class="mf-select" id="f-aircraft"><option value="">— Assign aircraft (auto-generates seats) —</option></select></div>
+        <div class="mf-group"><label>Status</label>
           <select class="mf-select" id="f-status">
-            <option value="scheduled">Scheduled</option>
-            <option value="boarding">Boarding</option>
-            <option value="departed">Departed</option>
-            <option value="arrived">Arrived</option>
-            <option value="delayed">Delayed</option>
-            <option value="cancelled">Cancelled</option>
+            <option value="scheduled">Scheduled</option><option value="boarding">Boarding</option>
+            <option value="departed">Departed</option><option value="arrived">Arrived</option>
+            <option value="delayed">Delayed</option><option value="cancelled">Cancelled</option>
           </select>
         </div>
       </div>
@@ -462,19 +395,17 @@
         </div>
       </div>
 
-      <div style="margin-top:4px;display:flex;align-items:center;gap:10px;padding:12px 0">
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 0">
         <input type="checkbox" id="f-recurring" style="width:16px;height:16px;accent-color:var(--blue)">
         <label for="f-recurring" style="font-size:13px;font-weight:600;color:var(--text)">Repeat daily (auto-cloned by cron worker)</label>
       </div>
 
       <div id="statusNoteSection" style="display:none">
         <div class="mf-section">Status Update Message</div>
-        <div class="mf-group">
-          <label>Passenger message (optional)</label>
+        <div class="mf-group"><label>Passenger message (optional)</label>
           <textarea class="mf-textarea" id="f-statusmsg" placeholder="e.g. Flight delayed due to ATC. New departure 21:45."></textarea>
         </div>
       </div>
-
     </div>
     <div class="modal-footer">
       <button class="modal-cancel-btn" onclick="closeModal('flightModal')">Cancel</button>
@@ -483,7 +414,7 @@
   </div>
 </div>
 
-<!-- ══ Aircraft Modal ══ -->
+<!-- Aircraft Modal -->
 <div class="modal-backdrop" id="aircraftModal" onclick="backdropClose(event,'aircraftModal')">
   <div class="modal" style="max-width:480px">
     <div class="modal-head"><h2>Add Aircraft</h2><button class="modal-close" onclick="closeModal('aircraftModal')">✕</button></div>
@@ -492,23 +423,16 @@
         <div class="mf-group"><label>Registration *</label><input class="mf-input" id="ac-reg" placeholder="N501DP" style="text-transform:uppercase"></div>
         <div class="mf-group"><label>Type *</label>
           <select class="mf-select" id="ac-type">
-            <option value="A321neo">Airbus A321neo</option>
-            <option value="737">Boeing 737</option>
-            <option value="787">Boeing 787 Dreamliner</option>
-            <option value="A380">Airbus A380</option>
-            <option value="747-charter">Boeing 747 (Charter)</option>
-            <option value="747-cargo">Boeing 747F (Cargo)</option>
+            <option value="A321neo">Airbus A321neo</option><option value="737">Boeing 737</option>
+            <option value="787">Boeing 787 Dreamliner</option><option value="A380">Airbus A380</option>
+            <option value="747-charter">Boeing 747 (Charter)</option><option value="747-cargo">Boeing 747F (Cargo)</option>
           </select>
         </div>
       </div>
       <div class="mf-group"><label>Aircraft Name</label><input class="mf-input" id="ac-name" placeholder="e.g. City of Felix Lego City"></div>
       <div class="mf-grid-2">
-        <div class="mf-group"><label>Subsidiary</label>
-          <select class="mf-select" id="ac-sub"><option value="DreamPacific">DreamPacific Airways</option><option value="Globestar">Globestar Airlines</option></select>
-        </div>
-        <div class="mf-group"><label>Cargo Only?</label>
-          <select class="mf-select" id="ac-cargo"><option value="0">No — Passenger</option><option value="1">Yes — Cargo Only</option></select>
-        </div>
+        <div class="mf-group"><label>Subsidiary</label><select class="mf-select" id="ac-sub"><option value="DreamPacific">DreamPacific Airways</option><option value="Globestar">Globestar Airlines</option></select></div>
+        <div class="mf-group"><label>Cargo Only?</label><select class="mf-select" id="ac-cargo"><option value="0">No — Passenger</option><option value="1">Yes — Cargo Only</option></select></div>
       </div>
     </div>
     <div class="modal-footer">
@@ -518,14 +442,14 @@
   </div>
 </div>
 
-<!-- ══ Airport Modal ══ -->
+<!-- Airport Modal -->
 <div class="modal-backdrop" id="airportModal" onclick="backdropClose(event,'airportModal')">
   <div class="modal" style="max-width:480px">
     <div class="modal-head"><h2>Add / Update Airport</h2><button class="modal-close" onclick="closeModal('airportModal')">✕</button></div>
     <div class="modal-body">
       <div class="mf-grid-2">
         <div class="mf-group"><label>IATA Code *</label><input class="mf-input" id="ap-code" placeholder="FLX" style="text-transform:uppercase" maxlength="3"></div>
-        <div class="mf-group"><label>IANA Timezone *</label><input class="mf-input" id="ap-tz" placeholder="America/Los_Angeles"><div class="mf-hint">Required for correct flight time conversion</div></div>
+        <div class="mf-group"><label>IANA Timezone *</label><input class="mf-input" id="ap-tz" placeholder="America/Chicago"><div class="mf-hint" style="color:var(--amber)">Required — times will be wrong without this</div></div>
       </div>
       <div class="mf-group"><label>Airport Name *</label><input class="mf-input" id="ap-name" placeholder="Felix Lego City International Airport"></div>
       <div class="mf-grid-2">
@@ -541,19 +465,43 @@
 </div>
 
 <script>
-// ── Config ───────────────────────────────────────────────────────
 const API = 'https://dreampacific-api.felixfeger46.workers.dev';
 
-// ── Fallback timezone map ────────────────────────────────────────
-// Used ONLY when the airports table in D1 does not have a timezone set.
-// Always prefer the value from allAirports (loaded from D1).
+// ── Fallback timezone map ─────────────────────────────────────────
+// Only used when the airport's timezone column in D1 is empty.
+// Always prefer the D1 value (allAirports[x].timezone).
 const AP_TZ_FALLBACK = {
+  // United States – Pacific
   FLX:'America/Los_Angeles', LAX:'America/Los_Angeles', LGB:'America/Los_Angeles',
-  JFK:'America/New_York',    LGA:'America/New_York',    BOS:'America/New_York',
-  MIA:'America/New_York',    FLL:'America/New_York',    MCI:'America/Kansas_City',
-  ORD:'America/Chicago',     DFW:'America/Chicago',     HLC:'America/Los_Angeles',
-  HNL:'Pacific/Honolulu',    OGG:'Pacific/Honolulu',    SYD:'Australia/Sydney',
-  LHR:'Europe/London',       DXB:'Asia/Dubai',          HKG:'Asia/Hong_Kong',
+  SFO:'America/Los_Angeles', SAN:'America/Los_Angeles', SEA:'America/Los_Angeles',
+  PDX:'America/Los_Angeles', LAS:'America/Los_Angeles',
+  // United States – Mountain
+  DEN:'America/Denver',      SLC:'America/Denver',      PHX:'America/Phoenix',
+  // United States – Central
+  ORD:'America/Chicago', DFW:'America/Chicago', IAH:'America/Chicago',
+  MSP:'America/Chicago', STL:'America/Chicago', MCI:'America/Chicago',
+  MDW:'America/Chicago', OMA:'America/Chicago', MKE:'America/Chicago',
+  // United States – Eastern
+  JFK:'America/New_York', LGA:'America/New_York', EWR:'America/New_York',
+  BOS:'America/New_York', MIA:'America/New_York', FLL:'America/New_York',
+  MCO:'America/New_York', ATL:'America/New_York', CLT:'America/New_York',
+  DCA:'America/New_York', IAD:'America/New_York', PHL:'America/New_York',
+  DTW:'America/New_York', CLE:'America/New_York', PIT:'America/New_York',
+  // Hawaii / Pacific
+  HNL:'Pacific/Honolulu', OGG:'Pacific/Honolulu', KOA:'Pacific/Honolulu',
+  // Europe
+  LHR:'Europe/London',    LGW:'Europe/London',    MAN:'Europe/London',
+  CDG:'Europe/Paris',     AMS:'Europe/Amsterdam', FRA:'Europe/Berlin',
+  MAD:'Europe/Madrid',    BCN:'Europe/Madrid',    FCO:'Europe/Rome',
+  ZRH:'Europe/Zurich',
+  // Middle East
+  DXB:'Asia/Dubai', AUH:'Asia/Dubai', DOH:'Asia/Qatar',
+  // Asia
+  HKG:'Asia/Hong_Kong', SIN:'Asia/Singapore', NRT:'Asia/Tokyo',
+  HND:'Asia/Tokyo',     ICN:'Asia/Seoul',      PVG:'Asia/Shanghai',
+  PEK:'Asia/Shanghai',  BKK:'Asia/Bangkok',
+  // Australia
+  SYD:'Australia/Sydney', MEL:'Australia/Melbourne',
 };
 
 const DP_LOGO = 'https://static.wixstatic.com/media/519b66_d28876c1bc754d5fb2963fb87b181267~mv2.png/v1/fill/w_100,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dreampacificlogodark.png';
@@ -566,83 +514,121 @@ const PARTNERS = {
   HA:{ name:'Hawaiian Airlines', logo:'https://www.gstatic.com/flights/airline_logos/70px/HA.png' },
   CX:{ name:'Cathay Pacific',    logo:'https://www.gstatic.com/flights/airline_logos/70px/CX.png' },
 };
-const TYPE_LABELS   = { independent:'DreamPacific', codeshare:'Codeshare', cargo:'Cargo', charter:'Charter' };
-const STATUS_BADGE  = { scheduled:'badge-green', boarding:'badge-blue', departed:'badge-gray', arrived:'badge-gray', delayed:'badge-amber', cancelled:'badge-red' };
-const CABIN_LABELS  = { economy:'Economy', premium_economy:'Prem. Economy', business:'Business', first:'First' };
+const TYPE_LABELS  = { independent:'DreamPacific', codeshare:'Codeshare', cargo:'Cargo', charter:'Charter' };
+const STATUS_BADGE = { scheduled:'badge-green', boarding:'badge-blue', departed:'badge-gray', arrived:'badge-gray', delayed:'badge-amber', cancelled:'badge-red' };
+const CABIN_LABELS = { economy:'Economy', premium_economy:'Prem. Economy', business:'Business', first:'First' };
 
-// ── State ────────────────────────────────────────────────────────
 let adminToken = null, adminUser = null;
 let allFlights = [], allBookings = [], allUsers = [], allAircraft = [], allAirports = [];
 let editFlightId = null;
 
 // ════════════════════════════════════════════════════════════════
-// TIMEZONE CONVERSION  ← THE FIXED FUNCTION
+// THE FIXED localAirportTimeToUTC
 // ════════════════════════════════════════════════════════════════
 /**
- * Convert a datetime-local string entered in a specific airport's local
- * timezone into a proper UTC ISO string for storage in D1.
+ * Convert a datetime-local string (e.g. "2026-05-22T10:00") entered in a
+ * specific airport's local timezone → correct UTC ISO string for D1 storage.
  *
- * This is the ONLY place where local times enter the system.
- * Everything stored in D1 and returned by the API is UTC.
+ * WHY THE PREVIOUS VERSIONS WERE BROKEN:
+ *   - v1 used `sv-SE` locale + `.replace(' ','T')` string manipulation.
+ *     In some V8 / JavaScriptCore environments the formatted string has extra
+ *     punctuation or space variants, making new Date() return NaN → wrong offset.
+ *   - v2 fixed the sign (+ instead of −) but kept the fragile string parse,
+ *     so it broke for UTC− timezones in some engines (NaN → offset=NaN → wrong).
+ *
+ * THIS VERSION uses formatToParts() exclusively — pure numeric extraction,
+ * zero string parsing, works in all browsers and Cloudflare Workers.
  *
  * ALGORITHM:
- *   1. Treat the local input as if it were UTC → `fake`
- *      e.g. "2026-05-22T10:00" → fake = 2026-05-22T10:00:00Z
+ *   1. Parse the local input into year/month/day/hour/minute numbers.
+ *   2. Create `fake` = that date/time treated as if it were UTC.
+ *   3. Use Intl.DateTimeFormat.formatToParts(fake) to find what a clock
+ *      in `ianaZone` reads at that fake-UTC instant.
+ *   4. Build `localShown` from those parts as a UTC Date (numbers only).
+ *   5. offsetMs = fake − localShown   (positive = zone behind UTC, negative = ahead)
+ *   6. actualUTC = fake + offsetMs    (always +, because offset sign encodes direction)
  *
- *   2. Ask Intl: what does a clock in `ianaZone` show at `fake` UTC?
- *      e.g. LAX (UTC-7) shows 03:00 → localShown = 2026-05-22T03:00:00Z
- *
- *   3. Compute offset = fake − localShown
- *      e.g. 10:00 − 03:00 = +7h  (LAX is 7 hours behind UTC)
- *
- *   4. actualUTC = fake + offset   ← THE FIX (was "− offset" before, which was wrong)
- *      e.g. 10:00 + 7h = 17:00 UTC ✓
- *
- * VERIFICATION with a UTC+ timezone (Dubai, UTC+4):
- *   Admin enters: 10:00 AM Dubai
- *   fake         = 10:00 UTC
- *   localShown   = Dubai shows 14:00 at 10:00 UTC → localShown = 14:00 UTC
- *   offset       = 10:00 − 14:00 = −4h
- *   actualUTC    = 10:00 + (−4h) = 06:00 UTC ✓  (10 AM Dubai = 6 AM UTC)
+ * VERIFIED:
+ *   LAX (UTC−7): 10:00 AM local → fake=10:00Z, localShown=03:00Z,
+ *                offset=+7h, UTC=17:00Z ✓
+ *   MCI (UTC−5): 12:00 PM local → fake=12:00Z, localShown=07:00Z,
+ *                offset=+5h, UTC=17:00Z ✓
+ *   HNL (UTC−10): 08:00 AM local → fake=08:00Z, localShown=22:00Z (prev day),
+ *                offset=+10h, UTC=18:00Z ✓
+ *   LHR (UTC+1 BST): 09:00 AM local → fake=09:00Z, localShown=10:00Z,
+ *                offset=−1h, UTC=08:00Z ✓
+ *   DXB (UTC+4): 10:00 AM local → fake=10:00Z, localShown=14:00Z,
+ *                offset=−4h, UTC=06:00Z ✓
+ *   HKG (UTC+8): 23:00 PM local → fake=23:00Z, localShown=07:00Z (next day),
+ *                offset=−8h, UTC=15:00Z ✓
  */
 function localAirportTimeToUTC(localDateTimeStr, ianaZone) {
-  if (!localDateTimeStr || !ianaZone) return new Date(localDateTimeStr + ':00Z').toISOString();
+  // Fallback: if no zone provided, treat input as UTC directly
+  if (!localDateTimeStr) return '';
+  if (!ianaZone || ianaZone === 'UTC') {
+    return new Date(localDateTimeStr + ':00Z').toISOString();
+  }
 
-  // Step 1: treat the local input as a fake UTC instant
-  const fake = new Date(localDateTimeStr + ':00Z');
+  // Step 1: parse the "YYYY-MM-DDTHH:MM" string into components (no Date constructor)
+  const [datePart, timePart] = localDateTimeStr.split('T');
+  const [year, month, day]   = datePart.split('-').map(Number);
+  const [hour, minute]       = (timePart || '00:00').split(':').map(Number);
 
-  // Step 2: find what the target timezone clock reads at this fake UTC instant
-  const fmt = new Intl.DateTimeFormat('sv-SE', {  // sv-SE = YYYY-MM-DD HH:MM:SS
+  // Step 2: create fake = treat those numbers as UTC
+  const fake = new Date(Date.UTC(year, month - 1, day, hour, minute, 0, 0));
+
+  // Step 3: find what the target timezone clock shows at `fake`
+  // Using formatToParts avoids ALL locale-dependent string formats
+  const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: ianaZone,
-    year:'numeric', month:'2-digit', day:'2-digit',
-    hour:'2-digit', minute:'2-digit', second:'2-digit',
+    year:   'numeric',
+    month:  'numeric',   // returns "5" not "05" — safe to parseInt
+    day:    'numeric',
+    hour:   'numeric',   // 0-23 when hour12:false
+    minute: 'numeric',
+    second: 'numeric',
     hour12: false,
-  });
-  const localShownStr = fmt.format(fake).replace(' ', 'T') + 'Z';
-  const localShown    = new Date(localShownStr);
+  }).formatToParts(fake);
 
-  // Step 3: offset (ms) = fake − localShown
-  //   positive → timezone is behind UTC (e.g. Americas)
-  //   negative → timezone is ahead of UTC (e.g. Asia, Middle East)
+  // Extract each part by type — pure numbers, no parsing fragility
+  const get = type => {
+    const p = parts.find(p => p.type === type);
+    return p ? parseInt(p.value, 10) : 0;
+  };
+
+  let h = get('hour');
+  if (h === 24) h = 0; // some engines return 24 for midnight
+
+  // Step 4: build localShown as a UTC Date using the extracted numbers
+  const localShown = new Date(Date.UTC(
+    get('year'), get('month') - 1, get('day'),
+    h, get('minute'), get('second'), 0
+  ));
+
+  // Step 5: offset = fake − localShown
+  //   positive → zone is behind UTC (Americas)
+  //   negative → zone is ahead of UTC (Europe, Asia, Middle East)
   const offsetMs = fake.getTime() - localShown.getTime();
 
-  // Step 4: actual UTC = fake + offset   ← FIXED (was "−" before)
+  // Step 6: actual UTC = fake + offset
   const actualUtc = new Date(fake.getTime() + offsetMs);
   return actualUtc.toISOString();
 }
 
-// ── Get airport IANA timezone ────────────────────────────────────
-// Primary: from allAirports (loaded from D1)
-// Fallback: AP_TZ_FALLBACK constant map
+// ── Get airport IANA timezone ─────────────────────────────────────
+// Primary source: allAirports (loaded from D1 airports table)
+// Fallback: AP_TZ_FALLBACK constant map above
 function getAirportTz(code) {
   if (!code) return 'UTC';
   const ap = allAirports.find(a => a.code === code);
-  return (ap?.timezone) || AP_TZ_FALLBACK[code] || 'UTC';
+  const tz = ap?.timezone;
+  if (tz) return tz;                         // D1 value — use this
+  return AP_TZ_FALLBACK[code] || 'UTC';      // hardcoded fallback
 }
 
-// ── Display helpers ──────────────────────────────────────────────
+// ── Display helpers ───────────────────────────────────────────────
 // All times from the API are UTC ISO strings.
-// We convert to local airport time only for display.
+// Convert to local airport time only for display.
 function fmtLocal(utcIso, ianaZone) {
   if (!utcIso) return '—';
   try {
@@ -655,119 +641,108 @@ function fmtLocal(utcIso, ianaZone) {
 }
 
 function flightDuration(depUtc, arrUtc) {
+  if (!depUtc || !arrUtc) return '—';
   const diff = Math.round((new Date(arrUtc).getTime() - new Date(depUtc).getTime()) / 60000);
   if (diff <= 0) return '—';
   return `${Math.floor(diff/60)}h ${diff%60}m`;
 }
 
-// Convert stored UTC ISO → datetime-local string in a given timezone
-// Used to pre-fill the edit form with local times.
+// Convert stored UTC → datetime-local string in a given timezone (for edit form pre-fill)
 function utcToLocalDT(utcIso, ianaZone) {
   if (!utcIso) return '';
   try {
-    const d   = new Date(utcIso);
-    const fmt = new Intl.DateTimeFormat('sv-SE', {
+    const d     = new Date(utcIso);
+    // Use formatToParts (same approach as localAirportTimeToUTC — no string fragility)
+    const parts = new Intl.DateTimeFormat('en-US', {
       timeZone: ianaZone || 'UTC',
-      year:'numeric', month:'2-digit', day:'2-digit',
-      hour:'2-digit', minute:'2-digit',
-    });
-    return fmt.format(d).replace(' ', 'T');
+      year: 'numeric', month: 'numeric', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', hour12: false,
+    }).formatToParts(d);
+    const get = t => String(parseInt(parts.find(p=>p.type===t)?.value||'0',10)).padStart(2,'0');
+    const yr  = parts.find(p=>p.type==='year')?.value || '2026';
+    return `${yr}-${get('month')}-${get('day')}T${get('hour')}:${get('minute')}`;
   } catch { return ''; }
 }
 
-// ── Gate ─────────────────────────────────────────────────────────
+// ── Gate ──────────────────────────────────────────────────────────
 async function gateLogin() {
-  const email = document.getElementById('gEmail').value.trim();
-  const pass  = document.getElementById('gPass').value;
-  if (!email || !pass) { showGateErr('Please enter email and password.'); return; }
-  const btn = document.getElementById('gateBtn');
-  btn.disabled=true; btn.textContent='Signing in…';
+  const email=document.getElementById('gEmail').value.trim();
+  const pass =document.getElementById('gPass').value;
+  if (!email||!pass){showGateErr('Please enter email and password.');return;}
+  const btn=document.getElementById('gateBtn');
+  btn.disabled=true;btn.textContent='Signing in…';
   document.getElementById('gateErr').classList.remove('show');
   try {
-    const res  = await fetch(`${API}/api/auth/login`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email, password:pass}) });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Login failed');
+    const res =await fetch(`${API}/api/auth/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});
+    const data=await res.json();
+    if (!res.ok) throw new Error(data.error||'Login failed');
     if (!data.user.is_admin) throw new Error('This account does not have admin access.');
-    adminToken = data.token; adminUser = data.user;
-    localStorage.setItem('dp_admin_token', adminToken);
-    localStorage.setItem('dp_admin_user',  JSON.stringify(adminUser));
+    adminToken=data.token;adminUser=data.user;
+    localStorage.setItem('dp_admin_token',adminToken);
+    localStorage.setItem('dp_admin_user',JSON.stringify(adminUser));
     launchApp();
-  } catch(e) {
-    showGateErr(e.message);
-  } finally {
-    btn.disabled=false; btn.textContent='Sign In to Admin';
-  }
+  } catch(e){showGateErr(e.message);}
+  finally{btn.disabled=false;btn.textContent='Sign In to Admin';}
 }
-function showGateErr(msg) { const el=document.getElementById('gateErr'); el.textContent=msg; el.classList.add('show'); }
-document.getElementById('gPass').addEventListener('keydown', e => { if (e.key==='Enter') gateLogin(); });
+function showGateErr(msg){const el=document.getElementById('gateErr');el.textContent=msg;el.classList.add('show');}
+document.getElementById('gPass').addEventListener('keydown',e=>{if(e.key==='Enter')gateLogin();});
 
-// ── Launch app ───────────────────────────────────────────────────
-function launchApp() {
-  document.getElementById('gateView').style.display = 'none';
+function launchApp(){
+  document.getElementById('gateView').style.display='none';
   document.getElementById('appShell').classList.add('visible');
-  const u = adminUser;
-  document.getElementById('sidebarName').textContent     = `${u.first_name} ${u.last_name}`;
-  document.getElementById('sidebarInitials').textContent = (u.first_name[0]+u.last_name[0]).toUpperCase();
+  const u=adminUser;
+  document.getElementById('sidebarName').textContent=(u.first_name+' '+u.last_name);
+  document.getElementById('sidebarInitials').textContent=(u.first_name[0]+u.last_name[0]).toUpperCase();
   loadAll();
 }
-function doLogout() {
-  localStorage.removeItem('dp_admin_token');
-  localStorage.removeItem('dp_admin_user');
-  location.reload();
-}
-function tryRestoreSession() {
-  try {
-    const t = localStorage.getItem('dp_admin_token');
-    const u = JSON.parse(localStorage.getItem('dp_admin_user')||'null');
-    if (t && u && u.is_admin) { adminToken=t; adminUser=u; launchApp(); return; }
-  } catch {}
-  document.getElementById('gateView').style.display = 'flex';
+function doLogout(){localStorage.removeItem('dp_admin_token');localStorage.removeItem('dp_admin_user');location.reload();}
+function tryRestoreSession(){
+  try{
+    const t=localStorage.getItem('dp_admin_token');
+    const u=JSON.parse(localStorage.getItem('dp_admin_user')||'null');
+    if(t&&u&&u.is_admin){adminToken=t;adminUser=u;launchApp();return;}
+  }catch{}
+  document.getElementById('gateView').style.display='flex';
 }
 
-// ── Navigation ───────────────────────────────────────────────────
-function nav(btn) {
-  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+function nav(btn){
+  document.querySelectorAll('.sidebar-link').forEach(l=>l.classList.remove('active'));
   btn.classList.add('active');
-  const pid = btn.dataset.panel;
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const pid=btn.dataset.panel;
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('panel-'+pid).classList.add('active');
-  const titles = { dashboard:'Dashboard', flights:'Flights', bookings:'Bookings', users:'Users', aircraft:'Aircraft', airports:'Airports' };
-  document.getElementById('topbarTitle').textContent = titles[pid]||'';
-  document.getElementById('topbarAddBtn').style.display = pid==='flights'?'flex':'none';
-  if (pid==='bookings' && !allBookings.length) loadBookings();
-  if (pid==='users'    && !allUsers.length)    loadUsers();
-  if (pid==='aircraft' && !allAircraft.length) loadAircraft();
-  if (pid==='airports' && !allAirports.length) loadAirports();
+  const titles={dashboard:'Dashboard',flights:'Flights',bookings:'Bookings',users:'Users',aircraft:'Aircraft',airports:'Airports'};
+  document.getElementById('topbarTitle').textContent=titles[pid]||'';
+  document.getElementById('topbarAddBtn').style.display=pid==='flights'?'flex':'none';
+  if(pid==='bookings'&&!allBookings.length)loadBookings();
+  if(pid==='users'   &&!allUsers.length)   loadUsers();
+  if(pid==='aircraft'&&!allAircraft.length)loadAircraft();
+  if(pid==='airports'&&!allAirports.length)loadAirports();
 }
 
-// ── API fetch ─────────────────────────────────────────────────────
-async function apiFetch(path, opts={}) {
-  const res  = await fetch(API+path, { ...opts, headers:{ Authorization:`Bearer ${adminToken}`, 'Content-Type':'application/json', ...opts.headers } });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error||'Request failed');
+async function apiFetch(path,opts={}){
+  const res=await fetch(API+path,{...opts,headers:{Authorization:`Bearer ${adminToken}`,'Content-Type':'application/json',...opts.headers}});
+  const data=await res.json();
+  if(!res.ok)throw new Error(data.error||'Request failed');
   return data;
 }
 
-async function loadAll() {
-  await Promise.all([loadStats(), loadFlightsData()]);
+async function loadAll(){await Promise.all([loadStats(),loadFlightsData()]);}
+
+async function loadStats(){
+  try{
+    const s=await apiFetch('/api/admin/stats');
+    document.getElementById('s-flights').textContent =s.total_flights??'—';
+    document.getElementById('s-bookings').textContent=s.total_bookings??'—';
+    document.getElementById('s-users').textContent   =s.total_users??'—';
+    document.getElementById('s-revenue').textContent =s.total_revenue!=null?'$'+parseInt(s.total_revenue).toLocaleString():'—';
+    document.getElementById('s-upcoming').textContent=s.upcoming_flights??'—';
+  }catch{['s-flights','s-bookings','s-users','s-revenue','s-upcoming'].forEach(id=>document.getElementById(id).textContent='—');}
 }
 
-// ── Stats ─────────────────────────────────────────────────────────
-async function loadStats() {
-  try {
-    const s = await apiFetch('/api/admin/stats');
-    document.getElementById('s-flights').textContent  = s.total_flights??'—';
-    document.getElementById('s-bookings').textContent = s.total_bookings??'—';
-    document.getElementById('s-users').textContent    = s.total_users??'—';
-    document.getElementById('s-revenue').textContent  = s.total_revenue!=null?'$'+parseInt(s.total_revenue).toLocaleString():'—';
-    document.getElementById('s-upcoming').textContent = s.upcoming_flights??'—';
-  } catch { ['s-flights','s-bookings','s-users','s-revenue','s-upcoming'].forEach(id=>document.getElementById(id).textContent='—'); }
-}
-
-// ── Flights ───────────────────────────────────────────────────────
-async function loadFlightsData() {
-  try {
-    [allFlights, allAircraft, allAirports] = await Promise.all([
+async function loadFlightsData(){
+  try{
+    [allFlights,allAircraft,allAirports]=await Promise.all([
       apiFetch('/api/admin/flights'),
       apiFetch('/api/admin/aircraft'),
       apiFetch('/api/airports'),
@@ -776,48 +751,49 @@ async function loadFlightsData() {
     populateAirportSelects();
     renderFlightsTable();
     renderDashFlights();
-  } catch(e) {
-    document.getElementById('flightsTbody').innerHTML = `<tr><td colspan="10" class="tbl-empty"><p>Failed to load. Check API URL and admin token.</p></td></tr>`;
+  }catch(e){
+    document.getElementById('flightsTbody').innerHTML=`<tr><td colspan="10" class="tbl-empty"><p>Failed to load. Check API URL and admin token.</p></td></tr>`;
   }
 }
 
-function renderDashFlights() {
-  const rows = allFlights.slice(0,8);
-  if (!rows.length) { document.getElementById('dashFlightsTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>No flights yet.</p></td></tr>`; return; }
-  document.getElementById('dashFlightsTbody').innerHTML = rows.map(f => {
-    const tz = f.origin_timezone || getAirportTz(f.origin);
+function renderDashFlights(){
+  const rows=allFlights.slice(0,8);
+  if(!rows.length){document.getElementById('dashFlightsTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>No flights yet.</p></td></tr>`;return;}
+  document.getElementById('dashFlightsTbody').innerHTML=rows.map(f=>{
+    const tz=f.origin_timezone||getAirportTz(f.origin);
+    const dur=flightDuration(f.departure_time,f.arrival_time);
     return `<tr>
       <td><span class="flight-num">${f.flight_number}</span></td>
       <td>${f.origin_city||f.origin} → ${f.dest_city||f.destination}</td>
-      <td style="font-size:12.5px">${fmtLocal(f.departure_time, tz)}</td>
+      <td style="font-size:12.5px">${fmtLocal(f.departure_time,tz)}</td>
+      <td style="font-weight:600;color:${dur==='—'?'var(--red)':'var(--text)'}">${dur}</td>
       <td><span class="badge ${STATUS_BADGE[f.status]||'badge-gray'}">${f.status}</span></td>
-      <td><span class="badge ${f.flight_type==='independent'?'badge-blue':'badge-purple'}">${TYPE_LABELS[f.flight_type]||f.flight_type}</span></td>
     </tr>`;
   }).join('');
 }
 
-function filterFlights() {
-  const q = document.getElementById('flightSearch').value.toLowerCase();
-  renderFlightsTable(q ? allFlights.filter(f=>f.flight_number.toLowerCase().includes(q)||(f.origin+f.destination).toLowerCase().includes(q)) : allFlights);
+function filterFlights(){
+  const q=document.getElementById('flightSearch').value.toLowerCase();
+  renderFlightsTable(q?allFlights.filter(f=>f.flight_number.toLowerCase().includes(q)||(f.origin+f.destination).toLowerCase().includes(q)):allFlights);
 }
 
-function renderFlightsTable(list) {
-  const data = list||allFlights;
-  if (!data.length) { document.getElementById('flightsTbody').innerHTML=`<tr><td colspan="10" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>No flights found.</p></td></tr>`; return; }
-  document.getElementById('flightsTbody').innerHTML = data.map(f => {
-    const isDP     = f.flight_type==='independent';
-    const partner  = PARTNERS[f.codeshare_partner];
-    const logo     = isDP?DP_LOGO:(partner?.logo||DP_LOGO);
-    const name     = isDP?'DreamPacific':(partner?.name||f.codeshare_partner||'DreamPacific');
-    const originTz = f.origin_timezone || getAirportTz(f.origin);
-    const destTz   = f.dest_timezone   || getAirportTz(f.destination);
-    const dur      = flightDuration(f.departure_time, f.arrival_time);
+function renderFlightsTable(list){
+  const data=list||allFlights;
+  if(!data.length){document.getElementById('flightsTbody').innerHTML=`<tr><td colspan="10" class="tbl-empty"><div class="tbl-empty-icon">✈</div><p>No flights found.</p></td></tr>`;return;}
+  document.getElementById('flightsTbody').innerHTML=data.map(f=>{
+    const isDP   =f.flight_type==='independent';
+    const partner=PARTNERS[f.codeshare_partner];
+    const logo   =isDP?DP_LOGO:(partner?.logo||DP_LOGO);
+    const name   =isDP?'DreamPacific':(partner?.name||f.codeshare_partner||'DreamPacific');
+    const originTz=f.origin_timezone||getAirportTz(f.origin);
+    const destTz  =f.dest_timezone  ||getAirportTz(f.destination);
+    const dur     =flightDuration(f.departure_time,f.arrival_time);
     return `<tr>
       <td><span class="flight-num">${f.flight_number}</span></td>
       <td><div class="airline-cell"><div class="airline-logo-sm"><img src="${logo}" alt="${name}" onerror="this.src='${DP_LOGO}'"></div><span style="font-size:13px;font-weight:500">${name}</span></div></td>
       <td style="font-weight:600">${f.origin} → ${f.destination}</td>
-      <td style="font-size:12.5px">${fmtLocal(f.departure_time, originTz)}</td>
-      <td style="font-size:12.5px">${fmtLocal(f.arrival_time, destTz)}</td>
+      <td style="font-size:12.5px">${fmtLocal(f.departure_time,originTz)}</td>
+      <td style="font-size:12.5px">${fmtLocal(f.arrival_time,destTz)}</td>
       <td style="font-weight:600;color:${dur==='—'?'var(--red)':'var(--text)'}">${dur}</td>
       <td><span class="badge ${STATUS_BADGE[f.status]||'badge-gray'}">${f.status}</span></td>
       <td><span class="badge ${isDP?'badge-blue':'badge-purple'}">${TYPE_LABELS[f.flight_type]||f.flight_type}</span></td>
@@ -830,21 +806,17 @@ function renderFlightsTable(list) {
   }).join('');
 }
 
-// ── Bookings ──────────────────────────────────────────────────────
-async function loadBookings() {
-  try { allBookings=await apiFetch('/api/admin/bookings'); renderBookingsTable(); }
-  catch { document.getElementById('bookingsTbody').innerHTML=`<tr><td colspan="8" class="tbl-empty"><p>Failed to load.</p></td></tr>`; }
+async function loadBookings(){
+  try{allBookings=await apiFetch('/api/admin/bookings');renderBookingsTable();}
+  catch{document.getElementById('bookingsTbody').innerHTML=`<tr><td colspan="8" class="tbl-empty"><p>Failed to load.</p></td></tr>`;}
 }
-function filterBookings() {
-  const q = document.getElementById('bookingSearch').value.toLowerCase();
-  renderBookingsTable(q?allBookings.filter(b=>b.pnr?.toLowerCase().includes(q)||(b.first_name+b.last_name).toLowerCase().includes(q)):allBookings);
-}
-function renderBookingsTable(list) {
-  const data = list||allBookings;
-  if (!data.length) { document.getElementById('bookingsTbody').innerHTML=`<tr><td colspan="8" class="tbl-empty"><div class="tbl-empty-icon">🎫</div><p>No bookings yet.</p></td></tr>`; return; }
-  const SC = { confirmed:'badge-green', checked_in:'badge-blue', cancelled:'badge-red' };
-  document.getElementById('bookingsTbody').innerHTML = data.map(b => {
-    const tz = b.origin_timezone || getAirportTz(b.origin);
+function filterBookings(){const q=document.getElementById('bookingSearch').value.toLowerCase();renderBookingsTable(q?allBookings.filter(b=>b.pnr?.toLowerCase().includes(q)||(b.first_name+b.last_name).toLowerCase().includes(q)):allBookings);}
+function renderBookingsTable(list){
+  const data=list||allBookings;
+  if(!data.length){document.getElementById('bookingsTbody').innerHTML=`<tr><td colspan="8" class="tbl-empty"><div class="tbl-empty-icon">🎫</div><p>No bookings yet.</p></td></tr>`;return;}
+  const SC={confirmed:'badge-green',checked_in:'badge-blue',cancelled:'badge-red'};
+  document.getElementById('bookingsTbody').innerHTML=data.map(b=>{
+    const tz=b.origin_timezone||getAirportTz(b.origin);
     return `<tr>
       <td style="font-weight:800;letter-spacing:.05em;color:var(--navy)">${b.pnr}</td>
       <td>${b.first_name||''} ${b.last_name||''}<br><span style="font-size:11px;color:var(--gray-400)">${b.email||'Guest'}</span></td>
@@ -858,19 +830,15 @@ function renderBookingsTable(list) {
   }).join('');
 }
 
-// ── Users ─────────────────────────────────────────────────────────
-async function loadUsers() {
-  try { allUsers=await apiFetch('/api/admin/users'); renderUsersTable(); }
-  catch { document.getElementById('usersTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><p>Failed to load.</p></td></tr>`; }
+async function loadUsers(){
+  try{allUsers=await apiFetch('/api/admin/users');renderUsersTable();}
+  catch{document.getElementById('usersTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><p>Failed to load.</p></td></tr>`;}
 }
-function filterUsers() {
-  const q = document.getElementById('userSearch').value.toLowerCase();
-  renderUsersTable(q?allUsers.filter(u=>(u.first_name+u.last_name+u.email).toLowerCase().includes(q)):allUsers);
-}
-function renderUsersTable(list) {
-  const data = list||allUsers;
-  if (!data.length) { document.getElementById('usersTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><div class="tbl-empty-icon">👤</div><p>No users found.</p></td></tr>`; return; }
-  document.getElementById('usersTbody').innerHTML = data.map(u=>`<tr>
+function filterUsers(){const q=document.getElementById('userSearch').value.toLowerCase();renderUsersTable(q?allUsers.filter(u=>(u.first_name+u.last_name+u.email).toLowerCase().includes(q)):allUsers);}
+function renderUsersTable(list){
+  const data=list||allUsers;
+  if(!data.length){document.getElementById('usersTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><div class="tbl-empty-icon">👤</div><p>No users found.</p></td></tr>`;return;}
+  document.getElementById('usersTbody').innerHTML=data.map(u=>`<tr>
     <td style="font-weight:600">${u.first_name} ${u.last_name}</td>
     <td>${u.email}</td>
     <td style="font-size:12px;color:var(--gray-400)">${u.created_at?new Date(u.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'—'}</td>
@@ -878,294 +846,267 @@ function renderUsersTable(list) {
     <td><button class="tbl-btn tbl-edit" onclick="toggleAdmin('${u.id}',${u.is_admin?0:1},'${u.first_name} ${u.last_name}')">${u.is_admin?'Remove Admin':'Make Admin'}</button></td>
   </tr>`).join('');
 }
-async function toggleAdmin(userId,val,name) {
-  if (!confirm(`${val?'Grant':'Remove'} admin access for ${name}?`)) return;
-  try { await apiFetch(`/api/admin/users/${userId}/admin`,{method:'PUT',body:JSON.stringify({is_admin:val})}); await loadUsers(); }
-  catch(e) { alert('Failed: '+e.message); }
+async function toggleAdmin(userId,val,name){
+  if(!confirm(`${val?'Grant':'Remove'} admin access for ${name}?`))return;
+  try{await apiFetch(`/api/admin/users/${userId}/admin`,{method:'PUT',body:JSON.stringify({is_admin:val})});await loadUsers();}
+  catch(e){alert('Failed: '+e.message);}
 }
 
-// ── Aircraft ──────────────────────────────────────────────────────
-async function loadAircraft() {
-  try { allAircraft=await apiFetch('/api/admin/aircraft'); populateAircraftSelect(); renderAircraftTable(); }
-  catch {}
+async function loadAircraft(){
+  try{allAircraft=await apiFetch('/api/admin/aircraft');populateAircraftSelect();renderAircraftTable();}catch{}
 }
-function populateAircraftSelect() {
-  const sel=document.getElementById('f-aircraft'), cur=sel.value;
-  sel.innerHTML='<option value="">— No aircraft (seats not generated) —</option>'+
-    allAircraft.map(a=>`<option value="${a.id}">${a.registration} — ${a.type} (${a.subsidiary})</option>`).join('');
-  if (cur) sel.value=cur;
+function populateAircraftSelect(){
+  const sel=document.getElementById('f-aircraft'),cur=sel.value;
+  sel.innerHTML='<option value="">— No aircraft (seats not generated) —</option>'+allAircraft.map(a=>`<option value="${a.id}">${a.registration} — ${a.type} (${a.subsidiary})</option>`).join('');
+  if(cur)sel.value=cur;
 }
-function renderAircraftTable() {
-  if (!allAircraft.length) { document.getElementById('aircraftTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><p>No aircraft registered.</p></td></tr>`; return; }
-  document.getElementById('aircraftTbody').innerHTML = allAircraft.map(a=>`<tr>
+function renderAircraftTable(){
+  if(!allAircraft.length){document.getElementById('aircraftTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><p>No aircraft registered.</p></td></tr>`;return;}
+  document.getElementById('aircraftTbody').innerHTML=allAircraft.map(a=>`<tr>
     <td style="font-weight:700;font-family:monospace">${a.registration}</td>
     <td>${a.type}</td><td>${a.name||'—'}</td>
     <td><span class="badge ${a.subsidiary==='Globestar'?'badge-purple':'badge-blue'}">${a.subsidiary}</span></td>
     <td>${a.is_cargo?'<span class="badge badge-amber">Cargo</span>':'<span class="badge badge-gray">Passenger</span>'}</td>
   </tr>`).join('');
 }
-async function saveAircraft() {
+async function saveAircraft(){
   const reg=document.getElementById('ac-reg').value.trim().toUpperCase();
   const type=document.getElementById('ac-type').value;
-  if (!reg) { alert('Registration is required.'); return; }
-  try {
+  if(!reg){alert('Registration is required.');return;}
+  try{
     await apiFetch('/api/admin/aircraft',{method:'POST',body:JSON.stringify({registration:reg,type,name:document.getElementById('ac-name').value.trim()||null,subsidiary:document.getElementById('ac-sub').value,is_cargo:parseInt(document.getElementById('ac-cargo').value)})});
-    closeModal('aircraftModal'); allAircraft=[]; await loadAircraft();
-  } catch(e) { alert('Failed: '+e.message); }
+    closeModal('aircraftModal');allAircraft=[];await loadAircraft();
+  }catch(e){alert('Failed: '+e.message);}
 }
 
-// ── Airports ──────────────────────────────────────────────────────
-async function loadAirports() {
-  try { allAirports=await apiFetch('/api/airports'); populateAirportSelects(); renderAirportsTable(); }
-  catch {}
+async function loadAirports(){
+  try{allAirports=await apiFetch('/api/airports');populateAirportSelects();renderAirportsTable();}catch{}
 }
-function populateAirportSelects() {
-  ['f-origin','f-dest'].forEach(id => {
-    const sel=document.getElementById(id), cur=sel.value;
+function populateAirportSelects(){
+  ['f-origin','f-dest'].forEach(id=>{
+    const sel=document.getElementById(id),cur=sel.value;
     sel.innerHTML='<option value="">— Select airport —</option>'+allAirports.map(a=>`<option value="${a.code}">${a.code} — ${a.city}</option>`).join('');
-    if (cur) sel.value=cur;
+    if(cur)sel.value=cur;
   });
   updateTzLabels();
 }
-function renderAirportsTable() {
-  if (!allAirports.length) { document.getElementById('airportsTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><p>No airports.</p></td></tr>`; return; }
-  document.getElementById('airportsTbody').innerHTML = allAirports.map(a=>`<tr>
+function renderAirportsTable(){
+  if(!allAirports.length){document.getElementById('airportsTbody').innerHTML=`<tr><td colspan="5" class="tbl-empty"><p>No airports.</p></td></tr>`;return;}
+  document.getElementById('airportsTbody').innerHTML=allAirports.map(a=>`<tr>
     <td style="font-weight:800;letter-spacing:.04em;color:var(--navy)">${a.code}</td>
     <td>${a.name}</td><td>${a.city}</td><td>${a.country}</td>
-    <td style="font-size:12px;${a.timezone?'color:var(--green)':'color:var(--red);font-weight:600'}">${a.timezone||'⚠ Not set — times will be wrong'}</td>
+    <td style="font-size:12px;${a.timezone?'color:var(--green);font-weight:600':'color:var(--red);font-weight:700'}">${a.timezone||'⚠ Not set — fix this!'}</td>
   </tr>`).join('');
 }
-async function saveAirport() {
-  const code=document.getElementById('ap-code').value.trim().toUpperCase();
-  const name=document.getElementById('ap-name').value.trim();
-  const city=document.getElementById('ap-city').value.trim();
-  const country=document.getElementById('ap-country').value.trim();
+async function saveAirport(){
+  const code    =document.getElementById('ap-code').value.trim().toUpperCase();
+  const name    =document.getElementById('ap-name').value.trim();
+  const city    =document.getElementById('ap-city').value.trim();
+  const country =document.getElementById('ap-country').value.trim();
   const timezone=document.getElementById('ap-tz').value.trim();
-  if (!code||!name||!city||!country) { alert('Code, name, city, and country are required.'); return; }
-  if (!timezone) { if (!confirm('No timezone set — flight times may display incorrectly. Save anyway?')) return; }
-  try {
+  if(!code||!name||!city||!country){alert('Code, name, city, and country are required.');return;}
+  if(!timezone&&!confirm('No timezone set — flight times will be wrong. Save anyway?'))return;
+  try{
     await apiFetch('/api/admin/airports',{method:'POST',body:JSON.stringify({code,name,city,country,timezone:timezone||null})});
-    closeModal('airportModal'); allAirports=[]; await loadAirports();
-    // Re-populate selects so new airport is available
-    populateAirportSelects();
-  } catch(e) { alert('Failed: '+e.message); }
+    closeModal('airportModal');allAirports=[];await loadAirports();populateAirportSelects();
+  }catch(e){alert('Failed: '+e.message);}
 }
 
-// ── Timezone labels in flight modal ──────────────────────────────
-function updateTzLabels() {
-  const originCode = document.getElementById('f-origin').value;
-  const destCode   = document.getElementById('f-dest').value;
-  const originTz   = getAirportTz(originCode);
-  const destTz     = getAirportTz(destCode);
-
-  document.getElementById('depTzHint').textContent = originCode
-    ? `Local time at ${originCode} (${originTz})`
-    : 'Select origin airport first';
-  document.getElementById('arrTzHint').textContent = destCode
-    ? `Local time at ${destCode} (${destTz})`
-    : 'Select destination airport first';
-
+// ── Timezone label + UTC preview ─────────────────────────────────
+function updateTzLabels(){
+  const oc=document.getElementById('f-origin').value;
+  const dc=document.getElementById('f-dest').value;
+  const oTz=getAirportTz(oc);
+  const dTz=getAirportTz(dc);
+  document.getElementById('depTzHint').textContent=oc?`Local time at ${oc} (${oTz})`:'Select origin airport first';
+  document.getElementById('arrTzHint').textContent=dc?`Local time at ${dc} (${dTz})`:'Select destination airport first';
   updateUTCPreview();
 }
 
-// Show a live UTC preview so admin can verify conversion before saving
-function updateUTCPreview() {
-  const originCode = document.getElementById('f-origin').value;
-  const destCode   = document.getElementById('f-dest').value;
-  const depVal     = document.getElementById('f-dep').value;
-  const arrVal     = document.getElementById('f-arr').value;
-  const chip       = document.getElementById('utcPreview');
+function updateUTCPreview(){
+  const oc  =document.getElementById('f-origin').value;
+  const dc  =document.getElementById('f-dest').value;
+  const depV=document.getElementById('f-dep').value;
+  const arrV=document.getElementById('f-arr').value;
+  const chip=document.getElementById('utcPreview');
 
-  if (!originCode || !destCode || !depVal || !arrVal) { chip.classList.remove('show'); return; }
+  if(!oc||!dc||!depV||!arrV){chip.classList.remove('show');return;}
 
-  try {
-    const originTz  = getAirportTz(originCode);
-    const destTz    = getAirportTz(destCode);
-    const depUtcISO = localAirportTimeToUTC(depVal, originTz);
-    const arrUtcISO = localAirportTimeToUTC(arrVal, destTz);
-    const dur       = flightDuration(depUtcISO, arrUtcISO);
+  try{
+    const oTz      =getAirportTz(oc);
+    const dTz      =getAirportTz(dc);
+    const depUtcISO=localAirportTimeToUTC(depV,oTz);
+    const arrUtcISO=localAirportTimeToUTC(arrV,dTz);
+    const dur      =flightDuration(depUtcISO,arrUtcISO);
+    const bad      =dur==='—';
 
-    const fmtUtc = iso => new Date(iso).toUTCString().replace(':00 GMT','Z');
-    document.getElementById('prevDepUtc').textContent = fmtUtc(depUtcISO);
-    document.getElementById('prevArrUtc').textContent = fmtUtc(arrUtcISO);
-    document.getElementById('prevDuration').textContent = dur;
-    document.getElementById('prevDuration').style.color = (dur === '—') ? 'var(--red)' : 'var(--blue)';
+    const fmtUtc=iso=>new Date(iso).toUTCString().replace(' GMT','');
+    chip.innerHTML=`<strong>UTC stored in DB:</strong><br>`+
+      `Dep: ${fmtUtc(depUtcISO)}<br>`+
+      `Arr: ${fmtUtc(arrUtcISO)}<br>`+
+      `<strong>Flight time: ${dur}</strong>`;
+    chip.classList.remove('bad');
+    if(bad)chip.classList.add('bad');
     chip.classList.add('show');
-  } catch { chip.classList.remove('show'); }
+  }catch(e){
+    chip.innerHTML=`⚠ Conversion error: ${e.message}`;
+    chip.classList.add('show','bad');
+  }
 }
 
-// Wire live preview to time inputs
-['f-dep','f-arr'].forEach(id => document.getElementById(id).addEventListener('change', updateUTCPreview));
-['f-origin','f-dest'].forEach(id => document.getElementById(id).addEventListener('change', updateTzLabels));
+['f-dep','f-arr'].forEach(id=>document.getElementById(id).addEventListener('change',updateUTCPreview));
+['f-origin','f-dest'].forEach(id=>document.getElementById(id).addEventListener('change',updateTzLabels));
 
-// ── Flight modal: open add ────────────────────────────────────────
-function openAddFlight() {
-  editFlightId = null;
-  clearFlightForm();
-  document.getElementById('flightModalTitle').textContent = 'Add New Flight';
-  document.getElementById('flightSaveBtn').textContent    = 'Create Flight';
-  document.getElementById('statusNoteSection').style.display = 'none';
-
-  // Default: tomorrow 08:00
-  const pad = n => String(n).padStart(2,'0');
-  const tmr = new Date(); tmr.setDate(tmr.getDate()+1);
-  const ymd = `${tmr.getFullYear()}-${pad(tmr.getMonth()+1)}-${pad(tmr.getDate())}`;
-  document.getElementById('f-dep').value = `${ymd}T08:00`;
-  document.getElementById('f-arr').value = `${ymd}T11:00`;
-  document.getElementById('f-origin').value = 'FLX';
+// ── Flight modal ──────────────────────────────────────────────────
+function openAddFlight(){
+  editFlightId=null;clearFlightForm();
+  document.getElementById('flightModalTitle').textContent='Add New Flight';
+  document.getElementById('flightSaveBtn').textContent='Create Flight';
+  document.getElementById('statusNoteSection').style.display='none';
+  const pad=n=>String(n).padStart(2,'0');
+  const tmr=new Date();tmr.setDate(tmr.getDate()+1);
+  const ymd=`${tmr.getFullYear()}-${pad(tmr.getMonth()+1)}-${pad(tmr.getDate())}`;
+  document.getElementById('f-dep').value=`${ymd}T08:00`;
+  document.getElementById('f-arr').value=`${ymd}T11:00`;
+  document.getElementById('f-origin').value='FLX';
   updateTzLabels();
   openModal('flightModal');
 }
 
-function openEditFlight(id) {
-  const f = allFlights.find(x=>x.id===id);
-  if (!f) return;
-  editFlightId = id;
-  clearFlightForm();
-  document.getElementById('flightModalTitle').textContent = `Edit: ${f.flight_number}`;
-  document.getElementById('flightSaveBtn').textContent    = 'Save Changes';
-  document.getElementById('statusNoteSection').style.display = 'block';
-
-  document.getElementById('f-num').value      = f.flight_number;
-  document.getElementById('f-type').value     = f.flight_type;
-  document.getElementById('f-partner').value  = f.codeshare_partner||'';
-  document.getElementById('f-mktg').value     = f.marketing_airline||'';
-  document.getElementById('f-origin').value   = f.origin;
-  document.getElementById('f-dest').value     = f.destination;
-  document.getElementById('f-aircraft').value = f.aircraft_id||'';
-  document.getElementById('f-status').value   = f.status;
-  document.getElementById('f-terminal').value = f.terminal||'';
-  document.getElementById('f-gate').value     = f.gate||'';
-  document.getElementById('f-eco').value      = f.price_economy??'';
-  document.getElementById('f-peco').value     = f.price_premium_economy??'';
-  document.getElementById('f-biz').value      = f.price_business??'';
-  document.getElementById('f-first').value    = f.price_first??'';
-  document.getElementById('f-recurring').checked = !!f.is_recurring;
-
-  // Pre-fill times in LOCAL airport timezone (converted back from UTC)
-  const originTz = f.origin_timezone || getAirportTz(f.origin);
-  const destTz   = f.dest_timezone   || getAirportTz(f.destination);
-  document.getElementById('f-dep').value = utcToLocalDT(f.departure_time, originTz);
-  document.getElementById('f-arr').value = utcToLocalDT(f.arrival_time,   destTz);
-
-  onTypeChange();
-  updateTzLabels();
-  openModal('flightModal');
+function openEditFlight(id){
+  const f=allFlights.find(x=>x.id===id);if(!f)return;
+  editFlightId=id;clearFlightForm();
+  document.getElementById('flightModalTitle').textContent=`Edit: ${f.flight_number}`;
+  document.getElementById('flightSaveBtn').textContent='Save Changes';
+  document.getElementById('statusNoteSection').style.display='block';
+  document.getElementById('f-num').value     =f.flight_number;
+  document.getElementById('f-type').value    =f.flight_type;
+  document.getElementById('f-partner').value =f.codeshare_partner||'';
+  document.getElementById('f-mktg').value    =f.marketing_airline||'';
+  document.getElementById('f-origin').value  =f.origin;
+  document.getElementById('f-dest').value    =f.destination;
+  document.getElementById('f-aircraft').value=f.aircraft_id||'';
+  document.getElementById('f-status').value  =f.status;
+  document.getElementById('f-terminal').value=f.terminal||'';
+  document.getElementById('f-gate').value    =f.gate||'';
+  document.getElementById('f-eco').value     =f.price_economy??'';
+  document.getElementById('f-peco').value    =f.price_premium_economy??'';
+  document.getElementById('f-biz').value     =f.price_business??'';
+  document.getElementById('f-first').value   =f.price_first??'';
+  document.getElementById('f-recurring').checked=!!f.is_recurring;
+  // Pre-fill times in LOCAL airport timezone (round-trip from UTC)
+  const oTz=f.origin_timezone||getAirportTz(f.origin);
+  const dTz=f.dest_timezone  ||getAirportTz(f.destination);
+  document.getElementById('f-dep').value=utcToLocalDT(f.departure_time,oTz);
+  document.getElementById('f-arr').value=utcToLocalDT(f.arrival_time,  dTz);
+  onTypeChange();updateTzLabels();openModal('flightModal');
 }
 
-function clearFlightForm() {
+function clearFlightForm(){
   ['f-num','f-partner','f-mktg','f-terminal','f-gate','f-eco','f-peco','f-biz','f-first','f-statusmsg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  document.getElementById('f-type').value    = 'independent';
-  document.getElementById('f-status').value  = 'scheduled';
-  document.getElementById('f-aircraft').value= '';
-  document.getElementById('f-dest').value    = '';
-  document.getElementById('f-recurring').checked = false;
+  document.getElementById('f-type').value    ='independent';
+  document.getElementById('f-status').value  ='scheduled';
+  document.getElementById('f-aircraft').value='';
+  document.getElementById('f-dest').value    ='';
+  document.getElementById('f-recurring').checked=false;
   document.getElementById('flightErr').classList.remove('show');
-  document.getElementById('utcPreview').classList.remove('show');
+  document.getElementById('utcPreview').classList.remove('show','bad');
   onTypeChange();
 }
 
-function onTypeChange() {
-  const type = document.getElementById('f-type').value;
-  document.getElementById('codeshareRow').style.display   = type==='codeshare'?'grid':'none';
-  document.getElementById('pricingSection').style.display = type==='cargo'?'none':'block';
+function onTypeChange(){
+  const type=document.getElementById('f-type').value;
+  document.getElementById('codeshareRow').style.display   =type==='codeshare'?'grid':'none';
+  document.getElementById('pricingSection').style.display =type==='cargo'?'none':'block';
 }
 
 // ── Save flight ───────────────────────────────────────────────────
-async function saveFlight() {
-  const btn = document.getElementById('flightSaveBtn');
+async function saveFlight(){
+  const btn=document.getElementById('flightSaveBtn');
   document.getElementById('flightErr').classList.remove('show');
 
-  const flightNumber = document.getElementById('f-num').value.trim();
-  const flightType   = document.getElementById('f-type').value;
-  const originCode   = document.getElementById('f-origin').value;
-  const destCode     = document.getElementById('f-dest').value;
-  const depLocalVal  = document.getElementById('f-dep').value;
-  const arrLocalVal  = document.getElementById('f-arr').value;
+  const flightNumber=document.getElementById('f-num').value.trim();
+  const flightType  =document.getElementById('f-type').value;
+  const originCode  =document.getElementById('f-origin').value;
+  const destCode    =document.getElementById('f-dest').value;
+  const depLocalVal =document.getElementById('f-dep').value;
+  const arrLocalVal =document.getElementById('f-arr').value;
 
-  if (!flightNumber || !originCode || !destCode || !depLocalVal || !arrLocalVal) {
-    document.getElementById('flightErrMsg').textContent = 'Flight number, route, and times are required.';
-    document.getElementById('flightErr').classList.add('show'); return;
+  if(!flightNumber||!originCode||!destCode||!depLocalVal||!arrLocalVal){
+    document.getElementById('flightErrMsg').textContent='Flight number, route, and times are required.';
+    document.getElementById('flightErr').classList.add('show');return;
   }
-  if (flightType==='codeshare' && !document.getElementById('f-partner').value) {
-    document.getElementById('flightErrMsg').textContent = 'Please select a partner airline for codeshare flights.';
-    document.getElementById('flightErr').classList.add('show'); return;
+  if(flightType==='codeshare'&&!document.getElementById('f-partner').value){
+    document.getElementById('flightErrMsg').textContent='Please select a partner airline for codeshare flights.';
+    document.getElementById('flightErr').classList.add('show');return;
   }
 
-  // ── Convert local airport times → UTC ────────────────────────
-  // Uses the FIXED localAirportTimeToUTC (sign corrected)
-  const originTz  = getAirportTz(originCode);
-  const destTz    = getAirportTz(destCode);
-  const depUtcISO = localAirportTimeToUTC(depLocalVal, originTz);
-  const arrUtcISO = localAirportTimeToUTC(arrLocalVal, destTz);
+  // Convert local airport times → UTC using the FIXED function
+  const oTz      =getAirportTz(originCode);
+  const dTz      =getAirportTz(destCode);
+  const depUtcISO=localAirportTimeToUTC(depLocalVal,oTz);
+  const arrUtcISO=localAirportTimeToUTC(arrLocalVal,dTz);
 
   // Validate duration is positive
-  const durMs = new Date(arrUtcISO).getTime() - new Date(depUtcISO).getTime();
-  if (durMs <= 0) {
-    document.getElementById('flightErrMsg').textContent =
-      `Arrival time must be after departure time. ` +
-      `Computed duration: ${Math.round(durMs/60000)} minutes. ` +
-      `Check your local times and that the correct airports are selected.`;
-    document.getElementById('flightErr').classList.add('show'); return;
+  const durMs=new Date(arrUtcISO).getTime()-new Date(depUtcISO).getTime();
+  if(durMs<=0){
+    const durMins=Math.round(durMs/60000);
+    document.getElementById('flightErrMsg').textContent=
+      `Arrival must be after departure. Computed duration: ${durMins} min. `+
+      `Origin TZ: ${oTz}, Dest TZ: ${dTz}. Check your times.`;
+    document.getElementById('flightErr').classList.add('show');return;
   }
 
-  // Build payload — field names match worker INSERT column order exactly
-  const payload = {
-    flight_number:         flightNumber,
-    flight_type:           flightType,
-    codeshare_partner:     flightType==='codeshare' ? document.getElementById('f-partner').value : null,
-    marketing_airline:     document.getElementById('f-mktg').value.trim() || null,
-    aircraft_id:           document.getElementById('f-aircraft').value || null,
-    origin:                originCode,
-    destination:           destCode,
-    departure_time:        depUtcISO,    // UTC
-    arrival_time:          arrUtcISO,    // UTC
-    price_economy:         parseFloatOrNull('f-eco'),
-    price_premium_economy: parseFloatOrNull('f-peco'),
-    price_business:        parseFloatOrNull('f-biz'),
-    price_first:           parseFloatOrNull('f-first'),
-    gate:                  document.getElementById('f-gate').value.trim()     || null,
-    terminal:              document.getElementById('f-terminal').value.trim() || null,
-    is_recurring:          document.getElementById('f-recurring').checked,
-    status:                document.getElementById('f-status').value,
-    message:               document.getElementById('f-statusmsg')?.value.trim() || null,
+  const payload={
+    flight_number:        flightNumber,
+    flight_type:          flightType,
+    codeshare_partner:    flightType==='codeshare'?document.getElementById('f-partner').value:null,
+    marketing_airline:    document.getElementById('f-mktg').value.trim()||null,
+    aircraft_id:          document.getElementById('f-aircraft').value||null,
+    origin:               originCode,
+    destination:          destCode,
+    departure_time:       depUtcISO,   // UTC
+    arrival_time:         arrUtcISO,   // UTC
+    price_economy:        parseFloatOrNull('f-eco'),
+    price_premium_economy:parseFloatOrNull('f-peco'),
+    price_business:       parseFloatOrNull('f-biz'),
+    price_first:          parseFloatOrNull('f-first'),
+    gate:                 document.getElementById('f-gate').value.trim()||null,
+    terminal:             document.getElementById('f-terminal').value.trim()||null,
+    is_recurring:         document.getElementById('f-recurring').checked,
+    status:               document.getElementById('f-status').value,
+    message:              document.getElementById('f-statusmsg')?.value.trim()||null,
   };
 
-  btn.disabled=true; btn.textContent='Saving…';
-  try {
-    if (editFlightId) {
+  btn.disabled=true;btn.textContent='Saving…';
+  try{
+    if(editFlightId){
       await apiFetch(`/api/admin/flights/${editFlightId}`,{method:'PUT',body:JSON.stringify(payload)});
-    } else {
+    }else{
       await apiFetch('/api/admin/flights',{method:'POST',body:JSON.stringify(payload)});
     }
-    closeModal('flightModal');
-    allFlights=[]; await loadFlightsData(); await loadStats();
-  } catch(e) {
-    document.getElementById('flightErrMsg').textContent = e.message||'Failed to save flight.';
+    closeModal('flightModal');allFlights=[];await loadFlightsData();await loadStats();
+  }catch(e){
+    document.getElementById('flightErrMsg').textContent=e.message||'Failed to save flight.';
     document.getElementById('flightErr').classList.add('show');
-  } finally {
-    btn.disabled=false; btn.textContent=editFlightId?'Save Changes':'Create Flight';
+  }finally{
+    btn.disabled=false;btn.textContent=editFlightId?'Save Changes':'Create Flight';
   }
 }
 
-async function deleteFlight(id,num) {
-  if (!confirm(`Delete flight ${num}? Seats will be removed. Existing bookings are kept.`)) return;
-  try { await apiFetch(`/api/admin/flights/${id}`,{method:'DELETE'}); allFlights=[]; await loadFlightsData(); await loadStats(); }
-  catch(e) { alert('Failed: '+e.message); }
+async function deleteFlight(id,num){
+  if(!confirm(`Delete flight ${num}? Seats removed. Existing bookings kept.`))return;
+  try{await apiFetch(`/api/admin/flights/${id}`,{method:'DELETE'});allFlights=[];await loadFlightsData();await loadStats();}
+  catch(e){alert('Failed: '+e.message);}
 }
 
-// ── Modal helpers ─────────────────────────────────────────────────
-function openModal(id)  { document.getElementById(id).classList.add('open');    document.body.style.overflow='hidden'; }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
-function backdropClose(e,id) { if (e.target===document.getElementById(id)) closeModal(id); }
-document.addEventListener('keydown', e => { if (e.key==='Escape') document.querySelectorAll('.modal-backdrop.open').forEach(m=>m.classList.remove('open')); });
+function openModal(id) {document.getElementById(id).classList.add('open');   document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+function backdropClose(e,id){if(e.target===document.getElementById(id))closeModal(id);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-backdrop.open').forEach(m=>m.classList.remove('open'));});
 
-function parseFloatOrNull(id) {
-  const v = document.getElementById(id)?.value;
-  return (!v || v==='') ? null : parseFloat(v);
-}
+function parseFloatOrNull(id){const v=document.getElementById(id)?.value;return(!v||v==='')? null:parseFloat(v);}
 
-// ── Boot ──────────────────────────────────────────────────────────
 tryRestoreSession();
 </script>
 </body>
